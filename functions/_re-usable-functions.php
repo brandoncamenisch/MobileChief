@@ -186,7 +186,7 @@
 		
 		global $pluginchiefmsbdir;
 		
-		return apply_filters('plchf_phone_preview_image',$pluginchiefmsbdir . '/images/iphone.png');	
+		return apply_filters('plchf_phone_preview_image',$pluginchiefmsbdir . 'images/iphone.png');	
 		
 	}
 	
@@ -198,7 +198,34 @@
 		
 		global $pluginchiefmsbdir;
 		
-		return '<iframe src="https://qrlcs.mobi/m/2353-contact/" width="220" height="345"></iframe>';	
+		$screen = get_current_screen();
+		
+		// Get Screen ID on Edit Page, page
+		if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
+			
+			// Get the Page We're Editing
+		    $id = $_GET['page_id'];
+		  
+		// Get the Site ID on the Edit Site Page 
+	    } elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
+	    	
+	    	// Get the Home Page
+	    	$id = $_GET['site_id'];
+	    	
+	    	// Get Site Home Page
+	    	$posts = get_posts('post_parent='.$id.'&posts_per_page=1');
+	    	
+	    	foreach ($posts as $post) {
+		    	$id = $post->ID;
+	    	}
+	    	
+	    	$id = $id;
+	    	 	
+	    }
+	    
+	    $url = get_permalink($id);
+		
+		return '<iframe src="'.$url.'" zoom="80%" width="480" height="345"></iframe>';	
 		
 	}
 
@@ -521,22 +548,26 @@ function plchf_msb_googl_shortlink($url) {
 	}
 	
 	add_action('init','plchf_msb_create_new_site');
+
+/* ----------------------------------------------------------------------------
+	Create Default Home Page Upon Site Creation 
+---------------------------------------------------------------------------- */
 	
 	function plchf_msb_default_theme_default_pages($new_site){
 	
 		$home = array(
-			'comment_status'=> 'closed',      		// 'closed' means no comments.
-			'ping_status' 	=> 'closed',      		// 'closed' means pingbacks or trackbacks turned off
-			'post_author' 	=> $user_ID,      		// The user ID number of the author.
-			'post_name' 	=> ''.$postid.'-home', 	// The name (slug) for your post
-			'post_status' 	=> 'publish',     		// Set the status of the new post. 
-			'post_title' 	=> 'Home', 	      		// The title of your post.
-			'post_parent'   => $new_site,			// Post Parent
-			'post_type' 	=> 'pluginchiefmsb-sites'		// Post Type
+			'comment_status'=> 'closed',      			// 'closed' means no comments.
+			'ping_status' 	=> 'closed',      			// 'closed' means pingbacks or trackbacks turned off
+			'post_author' 	=> $user_ID,      			// The user ID number of the author.
+			'post_name' 	=> ''.$postid.'-home', 		// The name (slug) for your post
+			'post_status' 	=> 'publish',     			// Set the status of the new post. 
+			'post_title' 	=> 'Home', 	      			// The title of your post.
+			'post_parent'   => $new_site,				// Post Parent
+			'post_type' 	=> 'pluginchiefmsb-sites'	// Post Type
 		);
 		
 		// Insert Default Page for new Sites
-		wp_insert_post( $home );
+		apply_filters('plchf_msb_insert_default_home_page', wp_insert_post( $home ));
 		
 	}
 	
