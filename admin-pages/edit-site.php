@@ -122,5 +122,6 @@
 		
 		<?php } ?><!-- End Actual Site Check -->
 		
-	<?	
+	<?php
+	
 	}

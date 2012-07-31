@@ -143,4 +143,6 @@ function mobile_site_builder_sites() {
 		
 		<?php get_pluginchiefmsb_footer(); ?>
 
-<? }
+	<?php 
+		
+	}

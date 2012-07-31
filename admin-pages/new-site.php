@@ -194,6 +194,6 @@
 		
 		<?php get_pluginchiefmsb_footer(); ?>
 		
-		
-		<?
+	<?php
+	
 	}
