@@ -225,7 +225,7 @@
 	    
 	    $url = get_permalink($id);
 		
-		return '<iframe src="'.$url.'" zoom="80%" width="480" height="345"></iframe>';	
+		return '<iframe src="'.$url.'" width="230" height="343"></iframe>';	
 		
 	}
 

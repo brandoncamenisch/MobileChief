@@ -246,7 +246,7 @@ hr.soften {
 }
 .marketing h1 {
   margin: 36px 0 27px;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 300;
   text-align: center;
 }
@@ -661,7 +661,7 @@ form.well {
     margin-right: 0;
   }
   .jumbotron h1 {
-    font-size: 45px;
+    font-size: 35px;
     margin-right: 0;
   }
   .jumbotron p {
@@ -702,7 +702,7 @@ form.well {
     text-align: center;
   }
   .example-sites .thumbnail > img {
-    max-width: 270px;
+    max-width: 100%;
   }
 
   table code {
