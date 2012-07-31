@@ -78,7 +78,7 @@
 				
 						echo '<li>';
 						
-							echo '<a href="admin.php?page=pluginchiefmsb/edit-page&mobile_page_id='.$post->ID.'">';
+							echo '<a href="admin.php?page=pluginchiefmsb/edit-page&page_id='.$post->ID.'">';
 								
 								echo $post->post_title; 
 								

@@ -26,7 +26,14 @@
 	function pluginchiefmsb_edit_page_menu_page_content() {
 	?>
 	
-		<?php get_pluginchiefmsb_header(); ?>
+		<?php 
+			
+		$page_id = $_GET['page_id'];
+		
+		// Make Sure we're trying to edit an actual site
+		if ($page_id) {
+			
+		?>
 	
 		<?php get_pluginchiefmsb_header(); ?>
 	
@@ -72,7 +79,7 @@
 						
 						<div class="preview-site">
 							
-							<?php plchf_msb_phone_preview_site(); ?>
+							<?php echo plchf_msb_phone_preview_site(); ?>
 							
 						</div><!-- Preview -->
 						
@@ -99,6 +106,21 @@
 		</div><!-- End Wrapper -->
 		
 		<?php get_pluginchiefmsb_footer(); ?>
+		
+		<!-- If the Site ID is invalid -->
+		<?php } else { ?>
+			
+			<?php 
+			
+			$output .= '<h2>Uh Oh. The Page You Are Trying to Edit Doesn\'t Exist!</h2>';
+			$output .= '<a href="#" class="button-primary">Create New Site</a> <a href="#" class="button-primary">My Sites</a>';
+			
+			// Display a Warning, that the Site Doesn't Exist
+			echo apply_filters('plchf_msb_page_doesnt_exist_error', $output);
+			
+			?>
+		
+		<?php } ?><!-- End Actual Site Check -->
 		
 	<?	
 	}

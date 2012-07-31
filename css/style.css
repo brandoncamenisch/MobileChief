@@ -43,6 +43,12 @@
 	height: auto;
 }
 
+#pluginchiefmsb-wrapper .preview-site{
+	position: absolute;
+	top: 100px;
+	left: 53px;
+}
+
 #pluginchiefmsb-wrapper .column-last {
 	margin-right: 0!important;
 	clear: right;

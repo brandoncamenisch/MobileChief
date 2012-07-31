@@ -146,12 +146,30 @@
 	
 	function plchf_msb_get_page_title(){
 		
-		return apply_filters('plchf_msb_get_page_title','Page Title');
+		$page_id = $_GET['page_id'];
+		
+		$output .= get_the_title( $page_id );
+		
+		return apply_filters('plchf_msb_get_page_title', $output);
+		
+	}
+	
+/* ----------------------------------------------------------------------------
+	Get the Site Title that we're editing
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_get_site_title(){
+		
+		$site_id = $_GET['site_id'];
+		
+		$output = get_the_title( $site_id );
+		
+		return apply_filters('plchf_msb_get_site_title', $output);
 		
 	}
 
 /* ----------------------------------------------------------------------------
-	Get the Page Title that we're editing
+	Get the Page ID that we're editing
 ---------------------------------------------------------------------------- */
 		
 	function plchf_msb_get_page_id(){
@@ -180,7 +198,7 @@
 		
 		global $pluginchiefmsbdir;
 		
-		return apply_filters('plchf_phone_preview_image',$pluginchiefmsbdir . '/images/iphone.png');	
+		return '<iframe src="https://qrlcs.mobi/m/2353-contact/" width="220" height="345"></iframe>';	
 		
 	}
 
