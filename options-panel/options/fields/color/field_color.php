@@ -1,12 +1,12 @@
 <?php
-class PLUGINCHIEFMSB_Options_color extends PLUGINCHIEFMSB_Options{	
+class PLCHF_MSB__Options_color extends PLCHF_MSB__Options{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
@@ -24,7 +24,7 @@ class PLUGINCHIEFMSB_Options_color extends PLUGINCHIEFMSB_Options{
 	 *
 	 * Takes the vars and outputs the HTML for the field in the settings
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function render(){
 		
@@ -47,13 +47,13 @@ class PLUGINCHIEFMSB_Options_color extends PLUGINCHIEFMSB_Options{
 	 *
 	 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function enqueue(){
 		
 		wp_enqueue_script(
-			'pluginchiefmsb-opts-field-color-js', 
-			PLUGINCHIEFMSB_OPTIONS_URL.'fields/color/field_color.js', 
+			'plchf_msb_opts-field-color-js', 
+			PLCHF_MSB__OPTIONS_URL.'fields/color/field_color.js', 
 			array('jquery', 'farbtastic'),
 			time(),
 			true

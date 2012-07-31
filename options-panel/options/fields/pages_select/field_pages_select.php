@@ -1,12 +1,12 @@
 <?php
-class PLUGINCHIEFMSB_Options_pages_select extends PLUGINCHIEFMSB_Options{	
+class PLCHF_MSB__Options_pages_select extends PLCHF_MSB__Options{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0.1
+	 * @since PLCHF_MSB__Options 1.0.1
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
@@ -24,7 +24,7 @@ class PLUGINCHIEFMSB_Options_pages_select extends PLUGINCHIEFMSB_Options{
 	 *
 	 * Takes the vars and outputs the HTML for the field in the settings
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0.1
+	 * @since PLCHF_MSB__Options 1.0.1
 	*/
 	function render(){
 		
@@ -32,9 +32,9 @@ class PLUGINCHIEFMSB_Options_pages_select extends PLUGINCHIEFMSB_Options{
 		
 		echo '<select id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" '.$class.'rows="6" >';
 		
-		$pluginchiefmsb_args = wp_parse_args($this->field['args'], array());
+		$args = wp_parse_args($this->field['args'], array());
 		
-		$pages = get_pages($pluginchiefmsb_args); 
+		$pages = get_pages($args); 
 		foreach ( $pages as $page ) {
 			echo '<option value="'.$page->ID.'"'.selected($this->value, $page->ID, false).'>'.$page->post_title.'</option>';
 		}

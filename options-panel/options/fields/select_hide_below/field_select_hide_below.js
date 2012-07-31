@@ -1,12 +1,12 @@
 jQuery(document).ready(function(){
 	
-	jQuery('.pluginchiefmsb-opts-select-hide-below').each(function(){
+	jQuery('.plchf_msb_opts-select-hide-below').each(function(){
 		if(jQuery('option:selected',this).attr('data-allow') == 'false'){
 			jQuery(this).closest('tr').next('tr').hide();
 		}
 	});
 	
-	jQuery('.pluginchiefmsb-opts-select-hide-below').change(function(){
+	jQuery('.plchf_msb_opts-select-hide-below').change(function(){
 		var option = jQuery('option:selected', this);
 
 		if(option.attr('data-allow') == 'false'){

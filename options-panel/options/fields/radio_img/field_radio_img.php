@@ -1,12 +1,12 @@
 <?php
-class PLUGINCHIEFMSB_Options_radio_img extends PLUGINCHIEFMSB_Options{	
+class PLCHF_MSB__Options_radio_img extends PLCHF_MSB__Options{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function __construct($field = array(), $value = '', $parent = ''){
 		
@@ -24,7 +24,7 @@ class PLUGINCHIEFMSB_Options_radio_img extends PLUGINCHIEFMSB_Options{
 	 *
 	 * Takes the vars and outputs the HTML for the field in the settings
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function render(){
 		
@@ -34,11 +34,11 @@ class PLUGINCHIEFMSB_Options_radio_img extends PLUGINCHIEFMSB_Options{
 			
 			foreach($this->field['options'] as $k => $v){
 
-				$selected = (checked($this->value, $k, false) != '')?' pluginchiefmsb-radio-img-selected':'';
+				$selected = (checked($this->value, $k, false) != '')?' plchf_msb_radio-img-selected':'';
 
-				echo '<label class="pluginchiefmsb-radio-img'.$selected.' pluginchiefmsb-radio-img-'.$this->field['id'].'" for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
+				echo '<label class="plchf_msb_radio-img'.$selected.' plchf_msb_radio-img-'.$this->field['id'].'" for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
 				echo '<input type="radio" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" '.$class.' value="'.$k.'" '.checked($this->value, $k, false).'/>';
-				echo '<img src="'.$v['img'].'" alt="'.$v['title'].'" onclick="jQuery:pluginchiefmsb_radio_img_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');" />';
+				echo '<img src="'.$v['img'].'" alt="'.$v['title'].'" onclick="jQuery:plchf_msb__radio_img_select(\''.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'\', \''.$this->field['id'].'\');" />';
 				echo '<br/><span>'.$v['title'].'</span>';
 				echo '</label>';
 				
@@ -57,13 +57,13 @@ class PLUGINCHIEFMSB_Options_radio_img extends PLUGINCHIEFMSB_Options{
 	 *
 	 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function enqueue(){
 		
 		wp_enqueue_script(
-			'pluginchiefmsb-opts-field-radio_img-js', 
-			PLUGINCHIEFMSB_OPTIONS_URL.'fields/radio_img/field_radio_img.js', 
+			'plchf_msb_opts-field-radio_img-js', 
+			PLCHF_MSB__OPTIONS_URL.'fields/radio_img/field_radio_img.js', 
 			array('jquery'),
 			time(),
 			true

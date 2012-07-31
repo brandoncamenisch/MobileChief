@@ -1,12 +1,12 @@
 <?php
-class PLUGINCHIEFMSB_Validation_html extends PLUGINCHIEFMSB_Options{	
+class PLCHF_MSB__Validation_html extends PLCHF_MSB__Options{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function __construct($field, $value, $current){
 		
@@ -25,7 +25,7 @@ class PLUGINCHIEFMSB_Validation_html extends PLUGINCHIEFMSB_Options{
 	 *
 	 * Takes the vars and validates them
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function validate(){
 		

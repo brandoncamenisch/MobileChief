@@ -1,12 +1,12 @@
 <?php
-class PLUGINCHIEFMSB_Options_multi_checkbox extends PLUGINCHIEFMSB_Options{	
+class PLCHF_MSB__Options_multi_checkbox extends PLCHF_MSB__Options{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
@@ -24,7 +24,7 @@ class PLUGINCHIEFMSB_Options_multi_checkbox extends PLUGINCHIEFMSB_Options{
 	 *
 	 * Takes the vars and outputs the HTML for the field in the settings
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0
+	 * @since PLCHF_MSB__Options 1.0
 	*/
 	function render(){
 		

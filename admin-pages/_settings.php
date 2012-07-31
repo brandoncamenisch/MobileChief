@@ -10,10 +10,10 @@
 			'Mobile Site Builder', 
 			'Mobile Site Builder', 
 			'add_users', 
-			'pluginchiefmsb.php', 
-			'mobile_site_builder_settings',   
+			'pluginchiefmsb', 
+			'mobile_site_builder_sites',   
 			PLUGINCHIEFMSB . '/images/msb-icon.png', 
-			80
+			90
 		);
 	
 	}
@@ -24,170 +24,123 @@
 /* Create the Menu Page
 /* ---------------------------------------------------------------------------- */
 
-function mobile_site_builder_settings() {
+function mobile_site_builder_sites() {
+
 ?>
 
-	<?php get_pluginchiefmsb_header(); ?>
+		<?php get_pluginchiefmsb_header(); ?>
 	
-	<script type="text/javascript">
+		<div class="pluginchiefmsb-wrapper" id="pluginchiefmsb-wrapper">
 		
-		jQuery(document).ready(function($){
-			
-			function pluginchiefmsb_settings_page_panels(){
+			<div class="pluginchiefmsb-wrap">
 				
-				$('.pluginchiefmsb-options-content-inside').hide();
-				$('.pluginchief_mobile_site_builder').show();
+				<div class="settings-title">
+					
+					<h3 class="section-title floatl">Mobile Sites</h3>
 				
-				$('.pluginchiefmsb-settings-page-anchor').click(function(){
+					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
 					
-					var anchorPage = $(this).attr('data-page');
-					
-					$('.pluginchiefmsb-options-content-inside').fadeOut(300);
-					$('.' + anchorPage + '').delay(300).fadeIn();
-					
-				});
+				</div>
 				
-			}
-			
-			pluginchiefmsb_settings_page_panels();
-			
-		});
-		 
-	
-	</script>
-
-	<div class="pluginchiefmsb-wrapper" id="pluginchiefmsb-wrapper">
-	
-		<div class="pluginchiefmsb-wrap">
-	
-			<form method="post" enctype="multipart/form-data" action="" id="pluginchiefmsb-options" name="pluginchiefmsb-options">
-			
-				<div class="pluginchiefmsb-options-header">
+				<div class="clear"></div><!-- Clear -->
 				
-					<div class="pluginchiefmsb-options-header-inside">
-					
-						<div class="one_half">
-					
-							<h2>Settings</h2>
-						
-						</div>
-						
-						<div class="one_half column-last">
-							
-							<a class="button-primary floatr" href="#" class="pluginchiefmsb-save-options">Save Changes</a>
-							
-						</div>
-						
-						<div class="clear"></div>
-					
-					</div><!-- End Theme Options Header Inside -->
+				<hr>
 				
-				</div><!-- End Theme Options Header -->
-				
-				<div class="pluginchiefmsb-options-body">
+				<div id="sites-list">
 					
-					<div class="pluginchiefmsb-options-menu">
-						
-						<ul>
-							<?php 
-								
-							global $pluginchiefmsb_admin_pages, $pluginchiefmsbdir;
-								
-							?>
-							
-							<?php foreach ($pluginchiefmsb_admin_pages as $pluginchiefmsb_admin_page) { ?>
-							
-							<?php
-								
-								// Set Default Icon for Menu Items
-								if ($pluginchiefmsb_admin_page['menu_icon']) {
-									$icon = $pluginchiefmsb_admin_page['menu_icon'];	
-								} else {
-									$icon = ''.$pluginchiefmsbdir.'/images/pluginchiefmsb-icon.png';
-								}
-							
-							?>
-						
-								<li class="pluginchiefmsb-settings-page-anchor" data-page="<?php echo strtolower(str_replace(' ', '_', $pluginchiefmsb_admin_page['page'])); ?>">
-									<span><img src="<?php echo $icon; ?>" alt="Menu Icon"></span>
-									<a href="#"><?php echo $pluginchiefmsb_admin_page['page']; ?></a>
-								</li>
-						
-							<?php } ?><!-- End Foreach -->
-						
-						</ul>
-						
-					</div><!-- End Options Menu -->
+					<?php
 					
-					<div class="pluginchiefmsb-options-content">
+					$pluginchiefmsb_args = array(
+						'post_type' => 'pluginchiefmsb-sites'
+					);
 					
-						<?php 
+					$sites = get_posts( $pluginchiefmsb_args );
+					
+					foreach ( $sites as $site ) {
 							
-						global $pluginchiefmsb_admin_pages;
+					?>
 							
-						?>
+					<div id="site-name" class="widget">
 						
-						<?php foreach ($pluginchiefmsb_admin_pages as $pluginchiefmsb_admin_page) { ?>
-					
-							<div class="pluginchiefmsb-options-content-inside <?php echo strtolower(str_replace(' ', '_', $pluginchiefmsb_admin_page['page'])); ?>">
+						<div class="widget-top">
+						
+							<div class="widget-title-action">
 							
-								<h2><?php echo $pluginchiefmsb_admin_page['page']; ?></h2>
+								<a class="widget-action hide-if-no-js" href="#"></a>
+							
+							</div><!-- / Widget Title Action -->
+							
+							<div class="widget-title">
+							
+								<h4><?php echo $site->post_title; ?></h4>
+							
+							</div><!-- / Widget Title -->
+						
+						</div><!-- / Widget Top -->
+						
+						<div class="module-inside">
+						
+							<h3 class="section-title floatl">
 								
-								<hr>
+								<?php echo $site->post_title; ?>
+							
+							</h3><!-- End Title -->
+							
+							<a class="button-primary floatr" href="http://builder.com/wp-admin/admin.php?page=pluginchiefmsb/edit-site/&site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+							
+							<div class="clear"></div>
+							
+							<hr>
+							
+							<div class="clear"></div>
+							
+							<div class="one_third">
+							
+								<h4>Site Preview</h4>
 								
-								<!-- Setup the Form Fields for the Options Pages -->
+								QR Code goes here.
 								
-								<?php
+								Google Shortlink Goes Here
 								
-								foreach ($pluginchiefmsb_admin_page['fields'] as $pluginchiefmsb_admin_page_field) {
-									
-									require_once(PLUGINCHIEFMSB_PATH . '/settings-page-elements/elements/'.$pluginchiefmsb_admin_page_field['type'].'.php');
-									
-								}
+							</div>
+							
+							<div class="one_third">
+							
+								<h4>Pages</h4>
 								
-								?>
+								List pages within this site
 								
-								<!-- End Setup the Form Fields for the Options Pages -->
+							
+							</div>
+							
+							<div class="one_third column-last">
+							
+								<h4>Site</h4>
+								
+								List Details for the site
 							
 							</div>
 							
 							<div class="clear"></div>
-					
-						<?php } ?><!-- End Foreach -->
-					
-					</div><!-- End Options Content -->
-				
-				</div><!-- End Options Body -->
-				
-				<div class="pluginchiefmsb-options-footer">
-				
-					<div class="pluginchiefmsb-options-footer-inside">
-					
-						<div class="one_half">
-					
-							<h2>Settings</h2>
 						
-						</div>
-						
-						<div class="one_half column-last">
-							
-							<a class="button-primary floatr" href="#" class="pluginchiefmsb-save-options">Save Changes</a>
-							
-						</div>
-						
-						<div class="clear"></div>
+						</div><!-- / Module Inside -->
 					
-					</div><!-- End Theme Options Footer Inside -->
+					</div><!-- /Widget -->
+					
+					<?php
+					
+					}
+					
+					?>
+					
+					<div class="clear"></div><!-- Clear -->
+					
+				</div>
 				
-				</div><!-- End Theme Options Footer -->
+			</div>
 			
-			</form><!-- End VZMSB Options Form -->
-
 		</div>
 		
-	</div>
-	
-	<?php get_pluginchiefmsb_footer(); ?>
-	
-<?	
-}
+		<?php get_pluginchiefmsb_footer(); ?>
+
+<? }

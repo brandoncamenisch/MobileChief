@@ -1,12 +1,12 @@
 <?php
-class PLUGINCHIEFMSB_Options_menu_select extends PLUGINCHIEFMSB_Options{	
+class PLCHF_MSB__Options_menu_select extends PLCHF_MSB__Options{	
 	
 	/**
 	 * Field Constructor.
 	 *
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0.1
+	 * @since PLCHF_MSB__Options 1.0.1
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
@@ -24,7 +24,7 @@ class PLUGINCHIEFMSB_Options_menu_select extends PLUGINCHIEFMSB_Options{
 	 *
 	 * Takes the vars and outputs the HTML for the field in the settings
 	 *
-	 * @since PLUGINCHIEFMSB_Options 1.0.1
+	 * @since PLCHF_MSB__Options 1.0.1
 	*/
 	function render(){
 		
@@ -33,9 +33,9 @@ class PLUGINCHIEFMSB_Options_menu_select extends PLUGINCHIEFMSB_Options{
 		echo '<select id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" '.$class.' >';
 		
 		if(!isset($this->field['args'])){$this->field['args'] = array();}
-		$pluginchiefmsb_args = wp_parse_args($this->field['args'], array());
+		$args = wp_parse_args($this->field['args'], array());
 			
-		$menus = wp_get_nav_menus($pluginchiefmsb_args);
+		$menus = wp_get_nav_menus($args);
 		if($menus){
 			foreach ( $menus as $menu ) {
 				echo '<option value="'.$menu->term_id.'"'.selected($this->value, $menu->term_id, false).'>'.$menu->name.'</option>';

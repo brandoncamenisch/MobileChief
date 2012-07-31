@@ -12,53 +12,15 @@ function pluginchiefmsb_page_elements_menu() {
 	global $pluginchiefmsb_page_elements;
 	
 	// Start the Menu Output
-	$output .= '<ul class="elementmenu sgray" id="page-element-menu">';
-	
-		$output .= '<li><p>Page Elements:</p></li>';
-	 
-		// Loop through all $pluginchiefmsb_page_elements arrays
-		foreach ($pluginchiefmsb_page_elements as $elements) {
-			
-			foreach ($elements['elements'] as $element) {
-				
-				$type = $element['type'];
-				
-				$output .= '<a href="#" id="text-elements">Text</a>';
-				$output .= '<ul class="form-elements">';
-				
-					if ($type = 'Text') {
-				
-						$output .= '<li><a href="#" data-elementtype="'.$title.'">'.$title.'</a></li>';
-					
-					} 
-					
-				$output .= '</ul>';
-					
-					if ($type = 'Buttons') {
-					
-						$output .= $title.' ';
-					
-					} 
-					
-					if ($type = 'Media') {
-					
-						$output .= $title.' ';
-					
-					} 
-					
-					if ($type = 'Social') {
-					
-						$output .= $title.' ';
-					
-					}
-				
-			}
+	echo '<ul class="elementmenu sgray" id="page-element-menu">';
 		
-		}
+		// Page Elements Title
+		echo '<li><p>Page Elements:</p></li>';
+		
+		// Element Sections Hook
+		do_action('plchf_msb_page_element_sections');
 	
 	// End the Menu Output
-	$output .= '</ul>';
-	
-	echo $output;
+	echo '</ul>';
 	
 }

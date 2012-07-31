@@ -7,11 +7,11 @@
 	function pluginchiefmsb_edit_site_menu_page() {
 		
 		add_submenu_page( 
-			'pluginchiefmsb.php', 
+			'pluginchiefmsb', 
 			'Edit Site', 
 			'Edit Site', 
 			'add_users', 
-			'pluginchiefmsb/edit-site.php', 
+			'pluginchiefmsb/edit-site', 
 			'pluginchiefmsb_edit_site_menu_page_content' 
 		);
 	
@@ -34,7 +34,7 @@
 				
 				<div class="settings-title">
 					
-					<h3 class="section-title floatl">Edit Site</h3>
+					<h3 class="section-title floatl"><?php echo apply_filters('plchf_msb_edit_site_page_title','Edit Site'); ?></h3>
 				
 					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
 					
@@ -44,7 +44,7 @@
 				
 				<hr>
 				
-				<?php pluginchiefmsb_page_elements_menu(); ?>
+				<?php pluginchiefmsb_edit_site_menu(); ?>
 				
 				<div class="clear"></div><!-- Clear -->
 				

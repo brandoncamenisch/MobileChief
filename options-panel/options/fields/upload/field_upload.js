@@ -3,16 +3,16 @@ jQuery(document).ready(function(){
 	
 	/*
 	 *
-	 * PLUGINCHIEFMSB_Options_upload function
+	 * PLCHF_MSB__Options_upload function
 	 * Adds media upload functionality to the page
 	 *
 	 */
 	 
 	 var header_clicked = false;
 	 
-	jQuery("img[src='']").attr("src", pluginchiefmsb_upload.url);
+	jQuery("img[src='']").attr("src", plchf_msb__upload.url);
 	
-	jQuery('.pluginchiefmsb-opts-upload').click(function() {
+	jQuery('.plchf_msb_opts-upload').click(function() {
 		header_clicked = true;
 		formfield = jQuery(this).attr('rel-id');
 		preview = jQuery(this).prev('img');
@@ -40,11 +40,11 @@ jQuery(document).ready(function(){
 		}
 	}
 	
-	jQuery('.pluginchiefmsb-opts-upload-remove').click(function(){
+	jQuery('.plchf_msb_opts-upload-remove').click(function(){
 		$relid = jQuery(this).attr('rel-id');
 		jQuery('#'+$relid).val('');
 		jQuery(this).prev().fadeIn('slow');
-		jQuery(this).prev().prev().fadeOut('slow', function(){jQuery(this).attr("src", pluginchiefmsb_upload.url);});
+		jQuery(this).prev().prev().fadeOut('slow', function(){jQuery(this).attr("src", plchf_msb__upload.url);});
 		jQuery(this).fadeOut('slow');
 	});
 });

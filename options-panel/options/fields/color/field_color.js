@@ -2,7 +2,7 @@ jQuery(document).ready(function(){
 	
 	/*
 	 *
-	 * PLUGINCHIEFMSB_Options_color function
+	 * PLCHF_MSB__Options_color function
 	 * Adds farbtastic to color elements
 	 *
 	 */
