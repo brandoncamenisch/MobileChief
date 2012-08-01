@@ -53,7 +53,13 @@
 					
 					global $plchf_msb_themes;
 					
-					foreach ($plchf_msb_themes as $theme) {
+					foreach ($plchf_msb_themes as $themes) {
+						
+						foreach ($themes['Theme'] as $theme) {
+							
+						
+						
+						}
 						
 						?>
 						
@@ -63,7 +69,7 @@
 							<?php 
 							
 							if ($theme['Screenshot']) {
-								$screenshot = $theme['Screenshot'];
+								$screenshot = $themes['Theme']['Screenshot'];
 							} else {
 								$screenshot = 'screenshot.png';
 							}
@@ -71,14 +77,14 @@
 							?>
 							
 							<!-- Theme Screenshot -->
-							<img src="<?php echo $theme['Theme Root']; ?><?php echo $screenshot; ?>" alt="<?php echo $theme['Theme Name']; ?>"><br/>
+							<img src="<?php echo $themes['Theme']['Theme Root']; ?><?php echo $screenshot; ?>" alt="<?php echo $theme_name; ?>"><br/>
 							
 							<!-- Theme Name -->
-							<h3><?php echo $theme['Theme Name']; ?></h3>
+							<h3><?php echo $theme_name; ?></h3>
 							
 							<!-- Theme Author -->
 							<div class="theme-author">
-								By <a href="<?php echo $theme['Author URL']; ?>" title="Visit Author Home Page"><?php echo $theme['Author Name']; ?></a>
+								By <a href="<?php echo $themes['Theme']['Author URL']; ?>" title="Visit Author Home Page"><?php echo $themes['Theme']['Author Name']; ?></a>
 								</div>
 								
 							<!-- Theme Links -->
@@ -86,7 +92,7 @@
 							
 								<ul>
 								
-									<li class="hide-if-no-js"><a href="#TB_inline?height=200&width=400&inlineId=createsitediv_<?php echo $theme['Slug']; ?>" class="thickbox" title="Create Site">Create Site</a></li>
+									<li class="hide-if-no-js"><a href="#TB_inline?height=200&width=400&inlineId=createsitediv_<?php echo $themes['Theme']['Slug']; ?>" class="thickbox" title="Create Site">Create Site</a></li>
 									
 									<li class="hide-if-no-js"><a href="#" class="theme-detail" tabindex="4">Details</a></li>	
 								
@@ -109,8 +115,8 @@
 								<!-- Theme Version -->
 								<?php 
 								
-								if ($theme['Version']) {
-									$theme_version = $theme['Version'];
+								if ($themes['Theme']['Version']) {
+									$theme_version = $themes['Theme']['Version'];
 								} else {
 									$theme_version = 'Unknown';
 								}
@@ -126,9 +132,9 @@
 								
 								<ul style="list-style:disc;">
 								
-									<li style="margin-left:20px;"><strong>Multiple Pages:</strong> <?php echo $theme['Multiple Pages']; ?></li>
-									<li style="margin-left:20px;"><strong>Page Elements:</strong> <?php echo $theme['Page Elements']; ?></li>
-									<li style="margin-left:20px;"><strong>Settings Panel:</strong> <?php echo $theme['Settings Panel']; ?></li>
+									<li style="margin-left:20px;"><strong>Multiple Pages:</strong> <?php echo $themes['Theme']['Multiple Pages']; ?></li>
+									<li style="margin-left:20px;"><strong>Page Elements:</strong> <?php echo $themes['Theme']['Page Elements']; ?></li>
+									<li style="margin-left:20px;"><strong>Settings Panel:</strong> <?php echo $$themes['Theme']['Settings Panel']; ?></li>
 								
 								</ul>
 								
@@ -138,11 +144,11 @@
 								
 								<p><strong>Theme Description:</strong></p>
 								
-								<p><?php echo $theme['Description']; ?></p>
+								<p><?php echo $themes['Theme']['Description']; ?></p>
 							
 							</div> <!-- End Theme Detail Div -->
 							
-							<div id="createsitediv_<?php echo $theme['Slug']; ?>" style="display:none;">
+							<div id="createsitediv_<?php echo $themes['Theme']['Slug']; ?>" style="display:none;">
 								
 								<!-- Do Action Before Form -->
 								<?php do_action('plchf_msb_before_create_new_site_form'); ?>
@@ -150,15 +156,15 @@
 								<!-- Create Site Form -->
 								<form id="plchf_msb_create_new_site" name="plchf_msb_create_new_site" action="" method="post" style="display:block; margin:0px auto; width:70%;">
 								
-									<img src="<?php echo $theme['Theme Root']; ?><?php echo $screenshot; ?>" alt="<?php echo $theme['Theme Name']; ?>" style="display:block; margin:0px auto;">
+									<img src="<?php echo $themes['Theme']['Theme Root']; ?><?php echo $screenshot; ?>" alt="<?php echo $themes['Theme']['Theme Name']; ?>" style="display:block; margin:0px auto;">
 									
 									<label><?php echo apply_filters('plchf_msb_new_site_name','Site Name'); ?></label><br/>
 									
 									<!-- Create New Site Input -->
 									<input type="text" value="" name="plchf_msb_create_new_site_site_name">
 									
-									<!-- Theme Slug -->
-									<input type="hidden" value="<?php echo $theme['Theme Slug']; ?>" name="plchf_msb_create_new_site_theme">
+									<!-- Slug -->
+									<input type="hidden" value="<?php echo $themes['Theme']['Slug']; ?>" name="plchf_msb_create_new_site_theme">
 									
 									<!-- Form Action -->
 									<?php do_action('plchf_msb_create_new_site_form_fields'); ?>
@@ -178,11 +184,11 @@
 						
 						</div> <!-- End Available Theme -->
 						
-					<?php 
+						<?php 
 					
-					}
+						}
 					
-					?>
+						?>
 				
 					</div><!-- /End AvailableThemes -->
 				

@@ -45,7 +45,7 @@
 					
 					<h3 class="section-title floatl"><?php echo apply_filters('plchf_msb_edit_site_page_title','Edit Site'); ?></h3>
 				
-					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
+					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb">My Sites</a>
 					
 				</div>
 				
@@ -65,8 +65,8 @@
 					
 					<hr>
 						
-					<!-- Mobile Page Generator Form -->
-					<?php plchf_msb_page_generator(); ?>
+					<!-- Mobile Site Settings -->
+					<?php plchf_msb_site_settings(); ?>
 				
 				</div><!-- Two Fifth -->
 				

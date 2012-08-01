@@ -249,6 +249,27 @@
 		do_action('plchf_msb_after_page_generator');
 		
 	}
+
+/* ----------------------------------------------------------------------------
+	Site Settings Panels
+---------------------------------------------------------------------------- */	
+	
+	function plchf_msb_site_settings() {
+		
+		do_action('plchf_msb_before_site_settings');
+		
+		// Page Generator Form
+		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_page_id().'">';
+		
+			// Page Generator Content
+			do_action('plchf_msb_site_settings_content');
+
+		// End Form
+		echo '</form>';
+		
+		do_action('plchf_msb_after_site_settings');	
+		
+	}
 	
 /* ----------------------------------------------------------------------------
 	Add Element to Page
@@ -472,9 +493,9 @@ function plchf_msb_googl_shortlink($url) {
 		
 		// Set Theme, or Set to Default Theme
 		if ($site_theme == '') {
-			$site_theme = 'clean_theme';
+			$site_theme = 'default_theme';
 		} else {
-			$site_theme = 'clean_theme';
+			$site_theme = $site_theme;
 		}
 		
 		// Only Run id Post Type is Plugin Chief MSB Sites
@@ -537,6 +558,9 @@ function plchf_msb_googl_shortlink($url) {
 			// Insert New Site
 			$new_site = wp_insert_post($post);
 			
+			// Set Site Theme
+			update_post_meta($new_site, '_plchf_msb_site_theme', $theme);
+			
 			// After Create Site
 			do_action('plchf_msb_after_create_new_site', $new_site);
 			
@@ -577,95 +601,3 @@ function plchf_msb_googl_shortlink($url) {
 	Register Default Theme(s)
 ---------------------------------------------------------------------------- */
 	
-	function plchf_msb_register_default_theme() {
-		
-		global $plchf_msb_themes;
-		
-		$plchf_msb_themes[] = array(
-			'Theme Name' 	=> 'Clean Theme',
-			'Slug'			=> 'clean_theme',
-			'Version'		=> '1.0',
-			'Author Name'	=> 'Jason Bahl',
-			'Author URL'	=> 'http://visioniz.com',
-			'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/clean-theme/',
-			'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/clean-theme/',
-			'Multiple Pages'=> 'Yes',
-			'Screenshot'	=> 'clean_screenshot.png',
-			'Page Elements'	=> 'Yes',
-			'Settings Panel'=> 'Yes',
-			'Description'	=> 'The clean theme'
-		);
-		
-		$plchf_msb_themes[] = array(
-			'Theme Name' 	=> 'Diamond Theme',
-			'Slug'			=> 'diamond_theme',
-			'Version'		=> '1.0',
-			'Author Name'	=> 'Jason Bahl',
-			'Author URL'	=> 'http://visioniz.com',
-			'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/diamond-theme/',
-			'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/diamond-theme/',
-			'Screenshot'	=> 'diamond_screenshot.png',
-			'Multiple Pages'=> 'Yes',
-			'Page Elements'	=> 'Yes',
-			'Description'	=> 'This is a really cool theme that is amazing and spectacular. It\'s sure to blow your socks right off!'
-		);
-		
-		$plchf_msb_themes[] = array(
-			'Theme Name' 	=> 'Groove Theme',
-			'Slug'			=> 'groove_theme',
-			'Version'		=> '1.0',
-			'Author Name'	=> 'Jason Bahl',
-			'Author URL'	=> 'http://visioniz.com',
-			'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/groove-theme/',
-			'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/groove-theme/',
-			'Screenshot'	=> 'groove_screenshot.png',
-			'Multiple Pages'=> 'Yes',
-			'Page Elements'	=> 'Yes',
-			'Description'	=> 'This is a really cool theme that is amazing and spectacular. It\'s sure to blow your socks right off!'
-		);
-		
-		$plchf_msb_themes[] = array(
-			'Theme Name' 	=> 'Linen Theme',
-			'Slug'			=> 'linen_theme',
-			'Version'		=> '1.0',
-			'Author Name'	=> 'Jason Bahl',
-			'Author URL'	=> 'http://visioniz.com',
-			'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/linen-theme/',
-			'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/linen-theme/',
-			'Screenshot'	=> 'linen_screenshot.png',
-			'Multiple Pages'=> 'Yes',
-			'Page Elements'	=> 'Yes',
-			'Description'	=> 'This is a really cool theme that is amazing and spectacular. It\'s sure to blow your socks right off!'
-		);
-		
-		$plchf_msb_themes[] = array(
-			'Theme Name' 	=> 'Restaurant Theme',
-			'Slug'			=> 'restaurant_theme',
-			'Version'		=> '1.0',
-			'Author Name'	=> 'Jason Bahl',
-			'Author URL'	=> 'http://visioniz.com',
-			'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/restaurant-theme/',
-			'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/restaurant-theme/',
-			'Screenshot'	=> 'restaurant_screenshot.png',
-			'Multiple Pages'=> 'Yes',
-			'Page Elements'	=> 'Yes',
-			'Description'	=> 'This is a really cool theme that is amazing and spectacular. It\'s sure to blow your socks right off!'
-		);
-		
-		$plchf_msb_themes[] = array(
-			'Theme Name' 	=> 'Polaroid Theme',
-			'Slug' 			=> 'polaroid_theme',
-			'Version'		=> '1.0',
-			'Author Name'	=> 'Jason Bahl',
-			'Author URL'	=> 'http://visioniz.com',
-			'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/polaroid-theme/',
-			'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/polaroid-theme/',
-			'Screenshot'	=> 'polaroid_screenshot.png',
-			'Multiple Pages'=> 'Yes',
-			'Page Elements'	=> 'Yes',
-			'Description'	=> 'This is a really cool theme that is amazing and spectacular. It\'s sure to blow your socks right off!'
-		);
-		
-	}
-	
-	add_action('init', 'plchf_msb_register_default_theme',1);

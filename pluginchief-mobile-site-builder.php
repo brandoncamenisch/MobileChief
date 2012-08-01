@@ -39,3 +39,13 @@ License: GPLv2 or later
 	foreach (glob(PLUGINCHIEFMSB_PATH . "/*/*.php") as $files){
 		require_once $files;
 	}
+	
+/* ---------------------------------------------------------------------------- */
+/* Inlcude Built-In Theme Files
+/* ---------------------------------------------------------------------------- */
+	
+	// This includes all top-level files within the plugin sub-directories. 
+	// Any deeper files that need to be included, need to be included from those files.
+	foreach (glob(PLUGINCHIEFMSB_PATH . "/mobile-themes/*/*.php") as $files){
+		require_once $files;
+	}

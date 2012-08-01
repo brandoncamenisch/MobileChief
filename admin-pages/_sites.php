@@ -86,7 +86,7 @@ function mobile_site_builder_sites() {
 							
 							</h3><!-- End Title -->
 							
-							<a class="button-primary floatr" href="http://builder.com/wp-admin/admin.php?page=pluginchiefmsb/edit-site/&site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+							<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb/edit-site&site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
 							
 							<div class="clear"></div>
 							
