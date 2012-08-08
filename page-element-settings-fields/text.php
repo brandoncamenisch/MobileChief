@@ -25,7 +25,7 @@ function plchf_msb_page_element_settings_field_text($fields, $element_type) {
 	</label>';
 	
 	$output .= '
-	<input type="text" name="element['.$element_type.']['.$field_id.'][]" placeholder="'.$placeholder.'" value="'.$value.'"/>
+	<input type="text" name="element[text]['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
 	';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_text_area_filter', $output);

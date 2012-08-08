@@ -342,7 +342,7 @@
 				foreach($_POST['element'] as $k => $v) {
 					
 					$page_elements[] = array(
-						$k => $v,
+						'element' => $v,
 					);
 						
 				}
