@@ -6,7 +6,7 @@
 		
 		$plchf_msb_themes[] = array(
 			'Theme'		=> array(
-				'Theme Name' 	=> 'Clean Theme',
+				'Theme Name' 	=> 'Jarred Theme',
 				'Slug'			=> 'clean_theme',
 				'Version'		=> '1.0',
 				'Author Name'	=> 'Jason Bahl',
@@ -17,7 +17,7 @@
 				'Screenshot'	=> 'clean_screenshot.png',
 				'Page Elements'	=> 'Yes',
 				'Settings Panel'=> 'Yes',
-				'Description'	=> 'The clean theme'
+				'Description'	=> 'Jarred smells'
 			),
 		);
 		
@@ -46,3 +46,20 @@
 	}
 	
 	add_filter('plchf_msb_theme_page_clean_theme','plchf_msb_clean_theme_redirect_page');
+
+/* ----------------------------------------------------------------------------
+	Add Site Settings Panels
+---------------------------------------------------------------------------- */
+	
+	function asdgfasdgsdfgsdfgserg() {
+	
+		$settings = array(
+			'1' => 'One',
+			'2' => 'Two'
+		);
+	
+		plchf_site_settings_settings_panel('Goo', $settings);
+		
+	}
+	
+	add_action('plchf_msb_site_settings_content_clean_theme','asdgfasdgsdfgsdfgserg');

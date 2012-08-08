@@ -7,6 +7,16 @@ Version: 1.0
 Author: Visioniz, Jason Bahl, Brandon Camenisch
 Author URI: http://visioniz.com/
 License: GPLv2 or later
+
+____   ____.__       .__              .__        
+\   \ /   /|__| _____|__| ____   ____ |__|_______
+ \   Y   / |  |/  ___/  |/  _ \ /    \|  \___   /
+  \     /  |  |\___ \|  (  <_> )   |  \  |/    / 
+   \___/   |__/____  >__|\____/|___|  /__/_____ \
+                   \/               \/         \/
+
+* ASCII via http://www.network-science.de/ascii/
+
 */
 
 /* ---------------------------------------------------------------------------- */

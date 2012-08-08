@@ -55,11 +55,7 @@
 					
 					foreach ($plchf_msb_themes as $themes) {
 						
-						foreach ($themes['Theme'] as $theme) {
-							
-						
-						
-						}
+						foreach ($themes['Theme'] as $theme) { }
 						
 						?>
 						
@@ -68,7 +64,7 @@
 							
 							<?php 
 							
-							if ($theme['Screenshot']) {
+							if ($themes['Theme']['Screenshot']) {
 								$screenshot = $themes['Theme']['Screenshot'];
 							} else {
 								$screenshot = 'screenshot.png';

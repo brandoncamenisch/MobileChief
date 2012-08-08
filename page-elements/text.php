@@ -20,10 +20,35 @@ function plchf_page_element_settings_text(){
 	
 	// Define Element Type
 	$element_type 	= 'Text';
-	$settings		= 'Text';
+	
+	// Define Settings Fields
+	$fields[] = array(
+		
+		'field' 	=> array(
+			'type' 			=> 'text',
+			'name' 			=> 'This is the Name',
+			'id' 			=> '_text_',
+			'tooltip' 		=> 'Enter your text to add it to the page',
+			'placeholder' 	=> 'Enter your text to add it to the page',
+		),
+	
+	);
+	
+	// Define Settings Fields
+	$fields[] = array(
+		
+		'field' 	=> array(
+			'type' 			=> 'text',
+			'name' 			=> 'This is the Name',
+			'id' 			=> '_text_2_',
+			'tooltip' 		=> 'Enter your text to add it to the page',
+			'placeholder' 	=> 'Enter your text to add it to the page',
+		),
+	
+	);
 	
 	// Create Element Settings Panel
-	plchf_page_element_settings_panel($element_type, $settings);
+	plchf_page_element_settings_panel($element_type, $fields);
 	
 }
 

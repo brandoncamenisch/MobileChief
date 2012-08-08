@@ -1,6 +1,42 @@
 <?php
 
 /* ----------------------------------------------------------------------------
+	Enqueue Styles & Scripts
+---------------------------------------------------------------------------- */	
+	
+	function my_enqueue() {
+		
+		$screen = get_current_screen();
+		
+		if ( ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') || ($screen->id == 'toplevel_page_pluginchiefmsb') || ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/new-site') || ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') ) {
+        	
+        	// Register Styles
+        	wp_register_style( 'plchf_msb_admin_styles', PLUGINCHIEFMSB . 'css/style.css');
+        	
+        	// Enqueue Styles
+        	wp_enqueue_style('plchf_msb_admin_styles');
+        	wp_enqueue_style('jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css'); 
+        	        	
+        	wp_enqueue_style( 'farbtastic' );
+        	wp_enqueue_script( 'farbtastic' );
+  
+        	// Enqueue JS
+        	add_thickbox();
+        	wp_enqueue_script('jquery-ui-core');
+        	wp_enqueue_script('jquery-ui-sortable');
+        	wp_enqueue_script('jquery-ui-datepicker');
+        	wp_enqueue_script('plchf_msb_tinymce', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
+        	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
+        	wp_enqueue_script('plchf_msb_waypoints_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
+        	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.js');
+        	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
+        
+        }
+    }
+
+    add_action( 'admin_enqueue_scripts', 'my_enqueue' );
+    
+/* ----------------------------------------------------------------------------
 	Setup Settings Pages Template Files
 ---------------------------------------------------------------------------- */
 	
@@ -8,12 +44,6 @@
 	function get_pluginchiefmsb_header(){
 		
 		global $pluginchiefmsbdir; 
-		
-		?>
-		
-		<link rel="stylesheet" href="<?php echo $pluginchiefmsbdir; ?>css/style.css" type="text/css" media="all">
-		
-		<?php 
 		
 		// Pre-Header Hook
 		pluginchiefmsb_admin_pre_header();
@@ -100,9 +130,15 @@
 	
 ---------------------------------------------------------------------------- */
 
-	function plchf_msb_add_page_element_section($title) {
+	function plchf_msb_add_page_element_section($title, $align) {
 		
-		echo '<li>';
+		if ($align == 'right') {
+			$align = ' class="floatr">';
+		} else {
+			$align = '';
+		}
+		
+		echo '<li'.$align.'>';
 			echo '<a href="#" id="'.strtolower(str_replace(" ", "-", $title)).'-elements">'.$title.'</a>';
 			echo '<ul class="form-elements '.strtolower(str_replace(" ", "-", $title)).'-elements">';
 				
@@ -174,7 +210,9 @@
 		
 	function plchf_msb_get_page_id(){
 		
-		return apply_filters('plchf_msb_get_page_id','Page ID');
+		$page_id = $_GET['page_id'];
+		
+		return apply_filters('plchf_msb_get_page_id_filter', $page_id);
 		
 	}
 	
@@ -237,11 +275,36 @@
 		
 		do_action('plchf_msb_before_page_generator');
 		
+		$page_id = plchf_msb_get_page_id();
+
 		// Page Generator Form
-		echo '<form id="page-generator" class="page-generator" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_page_id().'">';
-		
-			// Page Generator Content
-			do_action('plchf_msb_page_generator_content');
+		echo '<form id="page-generator" class="page-generator" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
+			
+						
+			$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
+			
+			if($elements) { 
+							
+				// Loop Through the Post Meta
+				foreach($elements as $key => $page_element) {
+		    		
+		    		do_action('plchf_page_element_settings_'.$element_type.'');
+		    		
+		    		echo '<br/>';
+	    		
+	    		}
+				
+			} else {
+				
+				// Display Message When No Page Elements Exist
+				echo '<div class="element-placeholder">';
+					
+					echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
+				echo '</div>';
+			
+			}
+			
+			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
 
 		// End Form
 		echo '</form>';
@@ -249,6 +312,52 @@
 		do_action('plchf_msb_after_page_generator');
 		
 	}
+	
+//------------------------------------------------------------------------//
+// Save Mobile Page Elements
+//------------------------------------------------------------------------//
+
+	function plchf_msb_save_the_page_elements_ajax() {
+	
+		global $post, $wp_query, $vzclientcenter_pluginroot, $page_elements;
+			
+		$id	= $_POST['post_id'];
+		
+		if ($id != '') {
+			$id = $id;
+		} else {
+			$id = $post_id;
+		}
+		
+		if(get_post_meta(''.$id.'','_plchf_msb_page_elements', true)) {
+			$page_elements = get_post_meta(''.$id.'','_plchf_msb_page_elements', true);
+		} else {
+			$page_elements = false;	
+		}
+		
+		if(isset($_POST['page_elements_nonce_field']) && wp_verify_nonce($_POST['page_elements_nonce_field'], 'page_elements_nonce')) {
+		
+			$page_elements = array();
+										
+				foreach($_POST['element'] as $k => $v) {
+					
+					$page_elements[] = array(
+						$k => $v,
+					);
+						
+				}
+			
+			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_page_elements', $page_elements);
+			
+			print_r($page_elements);
+			
+			die();
+		
+		}
+	
+	}
+	
+	add_action('wp_ajax_plchf_msb_save_the_page_elements_ajax','plchf_msb_save_the_page_elements_ajax');
 
 /* ----------------------------------------------------------------------------
 	Site Settings Panels
@@ -261,16 +370,18 @@
 		// Page Generator Form
 		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_page_id().'">';
 		
+			$theme_slug = plchf_msb_get_theme_slug();
+			
 			// Page Generator Content
-			do_action('plchf_msb_site_settings_content');
-
+			do_action('plchf_msb_site_settings_content_'.$theme_slug.'');
+			
 		// End Form
 		echo '</form>';
 		
 		do_action('plchf_msb_after_site_settings');	
 		
 	}
-	
+
 /* ----------------------------------------------------------------------------
 	Add Element to Page
 ---------------------------------------------------------------------------- */	
@@ -289,24 +400,32 @@
 	add_action( 'wp_ajax_plchf_msb_add_element','plchf_msb_add_element');
 
 /* ----------------------------------------------------------------------------
-	Add Element to Page
+	Create some JS Variables
 ---------------------------------------------------------------------------- */	
-	
-	function my_enqueue() {
-		
-		$screen = get_current_screen();
-		
-		if ( ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') || ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/new-site') ) {
-        	
-        	wp_enqueue_script('jquery-ui-core');
-        	wp_enqueue_script('jquery-ui-sortable');
-        	wp_enqueue_script( 'plchf_msb_custom_js', PLUGINCHIEFMSB . 'js/scripts/custom.js');
-        	add_thickbox();
-        
-        }
-    }
 
-    add_action( 'admin_enqueue_scripts', 'my_enqueue' );
+	function plchf_msb_jquery_theme_directory_variable() {
+		
+		global $stripe_secret, $stripe_publishable;
+		
+		$plugin_dir 	= PLUGINCHIEFMSB;
+		$permalink		= get_permalink();	
+		$siteRoot		= get_bloginfo('url');
+		$ajaxurl		= admin_url('admin-ajax.php');
+		
+		echo '
+		<script type="text/javascript" src="https://js.stripe.com/v1/?ver=1.0"></script>
+		<script type="text/javascript">
+			var pluginDir = "'.$plugin_dir.'";
+			var siteRoot = "'.$siteRoot.'";
+			var ajaxurl = "'.$ajaxurl.'";
+			Stripe.setPublishableKey("'.$stripe_publishable.'");
+		</script>
+		';
+		
+	}
+	
+	add_action('wp_footer','plchf_msb_jquery_theme_directory_variable', 999);
+	add_action('admin_head','plchf_msb_jquery_theme_directory_variable');
 
 /* ----------------------------------------------------------------------------
 	Create Settings Panel for Page Element
@@ -340,10 +459,67 @@
 		    echo  '<div class="content">';
 		    		
 		    	echo  '<h2>'.$element_type.'</h2>';
+		    	
+		    		// Element Type Field
+		    		echo '<input type="hidden" name="element_type[]" value="'.$element_type_formatted.'">';
 		    		
-		    		foreach ($fields as $field) {
+		    		// Loop through the fields that were passed when setting up the page element
+		    		foreach ($fields as $fields) {
 		    		
-		    			do_action('plchf_msb_page_element_settings_field_text_area', $field);
+		    			// Get the Field Type
+		    			$type = $fields['field']['type'];
+			    		
+			    		$element_type = $element_type_formatted;
+			    		
+			    		// Do the Action for the Associated Field Type
+			    		do_action('plchf_msb_page_element_settings_field_'.$type.'', $fields, $element_type);
+			    		
+			    		echo '<br/>';
+		    		
+		    		}
+		    		
+		    		echo '<button class="ajaxsave button-primary">Save</button>';
+		    		
+		    	echo  '</div>';
+		    	
+		    echo  '</div>';
+	    
+    }
+
+/* ----------------------------------------------------------------------------
+	Create Settings Panel for Site Settings
+---------------------------------------------------------------------------- */	
+	    
+    function plchf_site_settings_settings_panel($setting_category, $fields){
+	    
+	    $setting_category_formatted = strtolower(str_replace(" ", "-", $setting_category));
+	    
+	    echo  '<div class="page-element '.$setting_category_formatted.' draggable">';
+	    	
+	    	// Settings Bar
+	    	echo  '<div class="settings-bar">';
+	    		echo  '<div class="inner-settings-bar">';
+	    			echo  '<div class="one_third">';
+	    				echo  '<div class="element-info">';
+	    					echo  $setting_category;
+	    				echo  '</div>';
+	    			echo  '</div>';
+	    			echo  '<div class="two_third column-last">';
+		    			echo  '<div class="controls">';
+		    				echo  '<div class="element-control element-open"></div>';
+		    			echo  '</div>';
+		    		echo  '</div>';
+	    		echo  '</div>';
+	    	echo  '</div>';
+	    	
+	    	// Settings Content
+		    echo  '<div class="content">';
+		    		
+		    	echo  '<h2>'.$setting_category.'</h2>';
+		    		
+		    		foreach ($fields as $k => $v) {
+		    		
+		    			echo $v;
 		    		
 		    		}
 		    		
@@ -352,14 +528,6 @@
 		    echo  '</div>';
 	    
     }
-    
-    function goooo() {
-	    
-	    echo 'goooo';
-	    
-    }
-    
-    add_action('goooo','goooo');
 
 /* ----------------------------------------------------------------------------
 	Get Site ID
@@ -596,8 +764,3 @@ function plchf_msb_googl_shortlink($url) {
 	}
 	
 	add_action('plchf_msb_after_create_new_site','plchf_msb_default_theme_default_pages');
-
-/* ----------------------------------------------------------------------------
-	Register Default Theme(s)
----------------------------------------------------------------------------- */
-	

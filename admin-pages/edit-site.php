@@ -27,11 +27,13 @@
 	?>
 		
 		<?php 
-			
+		
 		$site_id = plchf_msb_get_site_id();
 		
 		// Make Sure we're trying to edit an actual site
-		if ($site_id) {
+		
+		
+		if ( ($site_id) && ( get_post_type( $site_id ) == 'pluginchiefmsb-sites') ) {
 			
 		?>
 		

@@ -22,19 +22,14 @@ function plchf_page_element_settings_text_editor(){
 	// Define Element Type
 	$element_type 	= 'Text Editor';
 	
-	// Define Settings Fields
-	$fields = array(
+	$fields[] = array(
 		
-		array(
-			'Type' => 'text_area'
-		),
-		
-		array(
-			'Type' => 'text_area'
-		),
-		
-		array(
-			'Type' => 'text_area'
+		'field' 	=> array(
+			'type' 			=> 'wysiwyg',
+			'name'			=> 'TinyMCE',
+			'tooltip'		=> 'Enter some text here',
+			'placeholder'	=> 'This is some placeholder text for the text area',
+			'id' 			=> '_tinymce_',
 		),
 	
 	);

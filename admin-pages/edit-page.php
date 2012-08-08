@@ -27,11 +27,11 @@
 	?>
 	
 		<?php 
-			
+
 		$page_id = $_GET['page_id'];
 		
 		// Make Sure we're trying to edit an actual site
-		if ($page_id) {
+		if ( ($page_id) && ( get_post_type( $page_id ) == 'pluginchiefmsb-sites') ) {
 			
 		?>
 	
@@ -43,7 +43,7 @@
 				
 				<div class="settings-title">
 					
-					<h3 class="section-title floatl">Edit Site</h3>
+					<h3 class="section-title floatl">Edit Page</h3>
 					
 					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
 					
@@ -53,7 +53,11 @@
 				
 				<hr>
 				
-				<?php pluginchiefmsb_page_elements_menu(); ?>
+				<?php
+								
+				pluginchiefmsb_page_elements_menu();
+				
+				?>
 				
 				<div class="clear"></div><!-- Clear -->
 				
