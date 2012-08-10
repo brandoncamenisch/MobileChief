@@ -6,7 +6,7 @@
 
 	function plchf_add_button_element_button() {
 	
-		plchf_msb_add_page_element('Button');
+		plchf_msb_add_page_element('Button ');
 		
 	}
 	
