@@ -76,3 +76,15 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_social');
+	
+/* ---------------------------------------------------------------------------- */
+/* Style Section
+/* ---------------------------------------------------------------------------- */
+
+	function plchf_add_element_section_style() {
+		
+		plchf_msb_add_page_element_section('Style');
+		
+	}
+	
+	add_action('plchf_msb_page_element_sections','plchf_add_element_section_style');

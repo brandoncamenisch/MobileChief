@@ -22,9 +22,11 @@
   
         	// Enqueue JS
         	add_thickbox();
+        	wp_enqueue_script('jquery');
         	wp_enqueue_script('jquery-ui-core');
         	wp_enqueue_script('jquery-ui-sortable');
         	wp_enqueue_script('jquery-ui-datepicker');
+        	wp_enqueue_script('jquery-ui-slider');
         	wp_enqueue_script('plchf_msb_tinymce', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
         	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
         	wp_enqueue_script('plchf_msb_waypoints_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
@@ -273,24 +275,34 @@
 	
 	function plchf_msb_page_generator(){
 		
+		// Run action before Page Generator Form
 		do_action('plchf_msb_before_page_generator');
 		
 		$page_id = plchf_msb_get_page_id();
 
 		// Page Generator Form
 		echo '<form id="page-generator" class="page-generator" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
-			
 						
 			$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
 			
 			if($elements) { 
 							
 				// Loop Through the Post Meta
-				foreach($elements as $key => $page_element) {
+				foreach($elements as $element) {
 		    		
-		    		do_action('plchf_page_element_settings_'.$element_type.'');
+		    		foreach ($element as $k => $values) {
+			    		
+			    		// $k is the element type, and element count, we split that into 2 parts
+			    		// so part [0] is the Element Type and part [1] is the element count
+			    		// We then pass that to the element type action
+			    		$element_type_and_count = explode("_", $k);
+			    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
+			    		
+			    		// We run the action for each element
+			    		do_action('plchf_msb_page_element_settings_'.$element_type.'', $element_type_and_count[1], $values);
+			    		
+		    		}
 		    		
-		    		echo '<br/>';
 	    		
 	    		}
 				
@@ -304,15 +316,64 @@
 			
 			}
 			
+			echo '<button class="ajaxsave button-primary">Save</button>';
+			
 			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
 
 		// End Form
 		echo '</form>';
 		
+		// Run Action After Page Generator Form
 		do_action('plchf_msb_after_page_generator');
 		
 	}
-	
+
+/* ----------------------------------------------------------------------------
+	QR Code Page Content
+---------------------------------------------------------------------------- */	
+     
+    function plchf_msb_page_content() {
+	  	
+	  	global $post, $wp_query;
+	  	
+	  	// Get Page ID
+	  	$page_id = $wp_query->post->ID;
+	  	
+	  	// Get Page Elements
+	  	$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
+			
+		if($elements) { 
+						
+			// Loop Through the Post Meta
+			foreach($elements as $element) {
+	    		
+	    		foreach ($element as $k => $values) {
+		    		
+		    		// $k is the element type, and element count, we split that into 2 parts
+		    		// so part [0] is the Element Type and part [1] is the element count
+		    		// We then pass that to the element type action
+		    		$element_type_and_count = explode("_", $k);
+		    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
+		    		
+		    		// We run the action for each element
+		    		do_action('plchf_msb_page_element_output_'.$element_type.'', $values);
+		    		
+	    		}
+	    		
+    		
+    		}
+			
+		} else {
+			
+			// Display Message When No Page Elements Exist
+			echo '<div class="element-placeholder">';
+				echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
+			echo '</div>';
+		
+		}
+	    
+    }
+    	
 //------------------------------------------------------------------------//
 // Save Mobile Page Elements
 //------------------------------------------------------------------------//
@@ -340,12 +401,12 @@
 			$page_elements = array();
 										
 				foreach($_POST['element'] as $k => $v) {
-					
-					$page_elements[] = array(
-						$k => $v,
-					);
-						
-				}
+                                       
+                	$page_elements[] = array(
+                		$k => $v,
+                	);
+                               
+                }
 			
 			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_page_elements', $page_elements);
 			
@@ -388,10 +449,21 @@
 
 	function plchf_msb_add_element(){
 		
-		$element_type = $_POST['elementType'];
-		$element_type = strtolower(str_replace("-", "_", $element_type));
+		$pageid			= $_POST['pageid'];
+		$element_type 	= $_POST['elementType'];
+		$element_type 	= strtolower(str_replace("-", "_", $element_type));
 		
-		do_action('plchf_page_element_settings_'.$element_type.'');
+		// Get Current Page Element Count
+		$meta 	= get_post_custom($pageid);
+		$count	= $meta['_plchf_msb_page_element_count'][0]; 
+		
+		// Increase Page Element Count By 1
+		$count 	= ($count+1);
+		
+		// Update Page Element Count
+		update_post_meta($pageid, '_plchf_msb_page_element_count', $count);
+		
+		do_action('plchf_msb_page_element_settings_'.$element_type.'', $count, $values);
 		
 		die();
 		
@@ -431,7 +503,7 @@
 	Create Settings Panel for Page Element
 ---------------------------------------------------------------------------- */	
 	    
-    function plchf_page_element_settings_panel($element_type, $fields){
+    function plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values){
 	    
 	    $element_type_formatted = strtolower(str_replace(" ", "-", $element_type));
 	    
@@ -460,9 +532,6 @@
 		    		
 		    	echo  '<h2>'.$element_type.'</h2>';
 		    	
-		    		// Element Type Field
-		    		echo '<input type="hidden" name="element_type[]" value="'.$element_type_formatted.'">';
-		    		
 		    		// Loop through the fields that were passed when setting up the page element
 		    		foreach ($fields as $fields) {
 		    		
@@ -472,7 +541,7 @@
 			    		$element_type = $element_type_formatted;
 			    		
 			    		// Do the Action for the Associated Field Type
-			    		do_action('plchf_msb_page_element_settings_field_'.$type.'', $fields, $element_type);
+			    		do_action('plchf_msb_page_element_settings_field_'.$type.'', $fields, $element_type, $count, $values);
 			    		
 			    		echo '<br/>';
 		    		

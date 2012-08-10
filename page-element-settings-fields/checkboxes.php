@@ -1,10 +1,10 @@
 <?php 
 
 /* ---------------------------------------------------------------------------- */
-/* Radio Field
+/* Checkboxes Field
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_page_element_settings_field_radio($fields, $element_type, $count, $values) {
+function plchf_msb_page_element_settings_field_checkboxes($fields, $element_type, $count, $values) {
 	
 	// Get the Element Type
 	$element_type 	= $element_type;
@@ -39,8 +39,8 @@ function plchf_msb_page_element_settings_field_radio($fields, $element_type, $co
 		
 	}
 	
-	echo apply_filters('plchf_msb_page_element_settings_field_radio_filter', $output);
+	echo apply_filters('plchf_msb_page_element_settings_field_checkboxes_filter', $output);
 	
 }
 
-add_action('plchf_msb_page_element_settings_field_radio','plchf_msb_page_element_settings_field_radio', 10, 4);
+add_action('plchf_msb_page_element_settings_field_checkboxes','plchf_msb_page_element_settings_field_checkboxes', 10, 4);

@@ -4,9 +4,11 @@
 /* Colorpicker Field
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_page_element_settings_field_colorpicker($fields, $element_type) {
+function plchf_msb_page_element_settings_field_colorpicker($fields, $element_type, $count, $values) {
 	
+	// Get the Element Type
 	$element_type 	= $element_type;
+	
 	$type 			= $fields['field']['type'];
 	$label 			= $fields['field']['name'];
 	$tooltip	 	= $fields['field']['tooltip'];
@@ -14,10 +16,13 @@ function plchf_msb_page_element_settings_field_colorpicker($fields, $element_typ
 	$field_id		= $fields['field']['id'];
 	$default		= $fields['field']['default'];
 	
-	if ($default) {
-		$default = $default;
+	// Get the saved Value
+	$value			= $values[''.$field_id.''];
+		
+	if ($value) {
+		$value = $value;
 	} else {
-		$default = '#cc3333';
+		$value = '#cc3333';
 	}
 	
 	$output .= '
@@ -28,11 +33,11 @@ function plchf_msb_page_element_settings_field_colorpicker($fields, $element_typ
 	</label>';
 	
 	$output .= '
-	<input type="text" name="'.$field_id.'['.$element_type.'][]" id="colorpicker" value="'.$default.'" /> 
+	<input type="text" name="element['.$element_type.'_'.$count.']['.$field_id.']" id="colorpicker" value="'.$value.'" /> 
 	<div id="plchf_msb_colorpicker"></div>
 	';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_text_area_filter', $output);
 }
 
-add_action('plchf_msb_page_element_settings_field_colorpicker','plchf_msb_page_element_settings_field_colorpicker', 10, 2);
+add_action('plchf_msb_page_element_settings_field_colorpicker','plchf_msb_page_element_settings_field_colorpicker', 10, 4);

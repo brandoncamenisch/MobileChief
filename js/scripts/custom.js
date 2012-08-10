@@ -1,6 +1,28 @@
 jQuery(document).ready(function($){
 
 /* ----------------------------------------------------------------------------
+	jQuery Slider Form Input
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_settings_field_slider() {
+	
+		$( ".plchf_msb_slider_field" ).slider({
+			range: "max",
+			min: 1,
+			max: 10,
+			value: 2,
+			slide: function( event, ui ) {
+				$( ".plchf_msb_slider_amount" ).val( ui.value );
+			}
+		});
+		
+		$( ".plchf_msb_slider_amount" ).val( $( ".plchf_msb_slider_field" ).slider( "value" ) );
+		
+	}
+	
+	plchf_msb_settings_field_slider();
+
+/* ----------------------------------------------------------------------------
 	Toggle Site Info Panels
 ---------------------------------------------------------------------------- */
 
@@ -143,8 +165,9 @@ jQuery(document).ready(function($){
 			  	
 		elementBtn.click(function(){
 			
+			var pageID 		= $('#page-generator').attr('data-postid');
 			var elementType = $(this).attr('data-elementtype');
-			var data 		= "elementType=" + elementType + "&action=plchf_msb_add_element";
+			var data 		= "pageid=" + pageID + "&elementType=" + elementType + "&action=plchf_msb_add_element";
 			var placeHolder = $('#page-generator .element-placeholder');
 			
 			placeHolder.fadeOut();

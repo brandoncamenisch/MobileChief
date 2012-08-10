@@ -17,7 +17,7 @@
 /* Create Settings for the Text Editor Element
 /* ---------------------------------------------------------------------------- */
 
-function plchf_page_element_settings_text_editor(){
+function plchf_msb_page_element_settings_text_editor(){
 	
 	// Define Element Type
 	$element_type 	= 'Text Editor';
@@ -35,11 +35,11 @@ function plchf_page_element_settings_text_editor(){
 	);
 	
 	// Create Element Settings Panel
-	plchf_page_element_settings_panel($element_type, $fields);
+	plchf_msb_page_element_settings_panel($element_type, $fields);
 	
 }
 
-add_action('plchf_page_element_settings_text_editor','plchf_page_element_settings_text_editor');
+add_action('plchf_msb_page_element_settings_text_editor','plchf_msb_page_element_settings_text_editor');
 
 /* ---------------------------------------------------------------------------- */
 /* Display Output for the Text Editor Element

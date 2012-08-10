@@ -15,8 +15,6 @@ ____   ____.__       .__              .__
    \___/   |__/____  >__|\____/|___|  /__/_____ \
                    \/               \/         \/
 
-* ASCII via http://www.network-science.de/ascii/
-
 */
 
 /* ---------------------------------------------------------------------------- */
@@ -36,7 +34,7 @@ ____   ____.__       .__              .__
 
 	// NOTE: PLUGINCHIEFMSB = Plugin Chief Mobile Site Builder
 	define('PLUGINCHIEFMSB', plugin_dir_url(__FILE__));
-	define('PLUGINCHIEFMSB_PATH', WP_PLUGIN_DIR . '/pluginchief-mobile-site-builder');
+	define('PLUGINCHIEFMSB_PATH', plugin_dir_path(__FILE__));
 	$pluginchiefmsbdir = plugin_dir_url(__FILE__);
 	global $pluginchiefmsbdir;
 

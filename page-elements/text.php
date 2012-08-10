@@ -16,45 +16,43 @@
 /* Create Settings for the Text Element
 /* ---------------------------------------------------------------------------- */
 
-function plchf_page_element_settings_text(){
-	
-	// Define Element Type
-	$element_type 	= 'Text';
-	
-	// Define Settings Fields
-	$fields[] = array(
+	function plchf_msb_page_element_settings_text($count, $values){
 		
-		'field' 	=> array(
-			'type' 			=> 'text',
-			'name' 			=> 'This is the Name',
-			'id' 			=> '_text_',
-			'tooltip' 		=> 'Enter your text to add it to the page',
-			'placeholder' 	=> 'Enter your text to add it to the page',
-		),
-	
-	);
-	
-	// Define Settings Fields
-	$fields[] = array(
+		// Define Element Type
+		$element_type 	= 'Text';
 		
-		'field' 	=> array(
-			'type' 			=> 'text',
-			'name' 			=> 'This is the Name',
-			'id' 			=> '_text_2_',
-			'tooltip' 		=> 'Enter your text to add it to the page',
-			'placeholder' 	=> 'Enter your text to add it to the page',
-		),
+		// Define Settings Fields
+		$fields[] = array(
+			
+			'field' 	=> array(
+				'type' 			=> 'text',
+				'name' 			=> 'Enter some text',
+				'id' 			=> '_text_',
+				'tooltip' 		=> 'Enter your text here. Plain Text, No HTML',
+				'placeholder' 	=> 'Enter your text to add it to the page',
+			),
+		
+		);
+		
+		// Create Element Settings Panel
+		plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values);
+		
+	}
 	
-	);
-	
-	// Create Element Settings Panel
-	plchf_page_element_settings_panel($element_type, $fields);
-	
-}
-
-add_action('plchf_page_element_settings_text','plchf_page_element_settings_text');
+	add_action('plchf_msb_page_element_settings_text','plchf_msb_page_element_settings_text', 10, 2);
 
 /* ---------------------------------------------------------------------------- */
 /* Display Output for the Text Element
 /* ---------------------------------------------------------------------------- */
 
+	function plchf_msb_page_element_output_text($values) {
+		
+		// Get the Values
+		$text 	= $values['_text_'];
+		
+		// Output a Paragraph with the Text
+		echo '<p>'.$text.'</p>';
+		
+	}
+	
+	add_action('plchf_msb_page_element_output_text','plchf_msb_page_element_output_text', 10, 1);

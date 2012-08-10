@@ -4,9 +4,11 @@
 /* Select Field
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_page_element_settings_field_select($fields, $element_type) {
+function plchf_msb_page_element_settings_field_select($fields, $element_type, $count, $values) {
 	
+	// Get the Element Type
 	$element_type 	= $element_type;
+	
 	$type 			= $fields['field']['type'];
 	$label 			= $fields['field']['name'];
 	$tooltip	 	= $fields['field']['tooltip'];
@@ -14,6 +16,9 @@ function plchf_msb_page_element_settings_field_select($fields, $element_type) {
 	$field_id		= $fields['field']['id'];
 	$options		= $fields['field']['options'];
 	
+	// Get the saved Value
+	$value			= $values[''.$field_id.''];
+		
 	// Field Label
 	$output .= '
 	<label>'.$label.'
@@ -24,12 +29,19 @@ function plchf_msb_page_element_settings_field_select($fields, $element_type) {
 	';
 	
 	// Select Field
-	$output .= '<select name="'.$field_id.'['.$element_type.'][]">';
+	$output .= '<select name="element['.$element_type.'_'.$count.']['.$field_id.']">';
 		
 		// Loop through the Select Field Options
 		foreach ($options as $option_key => $option_value) {
 			
-			$output .= '<option value="'.$option_key.'">'.$option_value.'</option>';
+			// Set Selected Option
+			if ($value == $option_key) {
+				$selected = ' selected="selected"';
+			} else {
+				$selected = '';
+			}
+			
+			$output .= '<option value="'.$option_key.'"'.$selected.'>'.$option_value.'</option>';
 			
 		}
 	
@@ -40,4 +52,4 @@ function plchf_msb_page_element_settings_field_select($fields, $element_type) {
 	
 }
 
-add_action('plchf_msb_page_element_settings_field_select','plchf_msb_page_element_settings_field_select', 10, 2);
+add_action('plchf_msb_page_element_settings_field_select','plchf_msb_page_element_settings_field_select', 10, 4);

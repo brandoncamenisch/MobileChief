@@ -295,7 +295,6 @@ border: 1px solid  #DFDFDF;
 }
 #confirmBox h1,
 #confirmBox p{
-	background: url('../images/header_bg.jpg') repeat-x left bottom #f5f5f5;
 	padding: 18px 25px;
 	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 	color:#666;
