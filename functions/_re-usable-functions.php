@@ -141,7 +141,7 @@
 	function plchf_msb_add_page_element_section($title, $align) {
 		
 		if ($align == 'right') {
-			$align = ' class="floatr">';
+			$align = ' class="floatr"';
 		} else {
 			$align = '';
 		}
@@ -397,17 +397,6 @@
 			echo '</div>';
 		
 		}
-		
-		// Get IP Address
-		if ( isset($_SERVER["REMOTE_ADDR"]) )    { 
-		    $ip = $_SERVER["REMOTE_ADDR"]; 
-		} else if ( isset($_SERVER["HTTP_X_FORWARDED_FOR"]) )    { 
-		    $ip = $_SERVER["HTTP_X_FORWARDED_FOR"]; 
-		} else if ( isset($_SERVER["HTTP_CLIENT_IP"]) )    { 
-		    $ip = $_SERVER["HTTP_CLIENT_IP"]; 
-		}
-	    
-	    echo '<br/><br/><br/><br/>'.$ip;
 	    
     }
     	
@@ -850,7 +839,7 @@ function plchf_msb_googl_shortlink($url) {
 			
 			// Create the New Site
 			$post = array(
-				'post_author' 	=> apply_filters('',$userid),
+				'post_author' 	=> $userid,
 				'post_content' 	=> 'This is the default content for the site',
 				'post_name' 	=> $name,
 				'post_status' 	=> 'publish',
@@ -882,10 +871,16 @@ function plchf_msb_googl_shortlink($url) {
 	
 	function plchf_msb_default_theme_default_pages($new_site){
 	
+		global $current_user;
+		get_currentuserinfo();
+		
+		// Get Current User ID
+		$userid = $current_user->ID;
+		
 		$home = array(
 			'comment_status'=> 'closed',      			// 'closed' means no comments.
 			'ping_status' 	=> 'closed',      			// 'closed' means pingbacks or trackbacks turned off
-			'post_author' 	=> $user_ID,      			// The user ID number of the author.
+			'post_author' 	=> $userid,
 			'post_name' 	=> ''.$postid.'-home', 		// The name (slug) for your post
 			'post_status' 	=> 'publish',     			// Set the status of the new post. 
 			'post_title' 	=> 'Home', 	      			// The title of your post.

@@ -6,8 +6,8 @@
 		
 		$plchf_msb_themes[] = array(
 			'Theme'		=> array(
-				'Theme Name' 	=> 'Default Theme',
-				'Slug'			=> 'default_theme',
+				'Theme Name' 	=> 'Jarred Theme',
+					'Slug'			=> 'default_theme',
 				'Version'		=> '1.0',
 				'Author Name'	=> 'Jason Bahl',
 				'Author URL'	=> 'http://visioniz.com',
@@ -17,7 +17,7 @@
 				'Screenshot'	=> 'default_screenshot.png',
 				'Page Elements'	=> 'Yes',
 				'Settings Panel'=> 'Yes',
-				'Description'	=> 'The clean theme'
+				'Description'	=> 'Jarred smells'
 			),
 		);
 		

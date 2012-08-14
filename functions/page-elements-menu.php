@@ -88,3 +88,39 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_style');
+	
+/* ---------------------------------------------------------------------------- */
+/* Edit Pages Link
+/* ---------------------------------------------------------------------------- */
+
+	function plchf_add_element_section_edit_pages() {
+		
+		plchf_msb_add_page_element_section('Edit Pages', 'right');
+		
+	}
+	
+	add_action('plchf_msb_page_element_sections','plchf_add_element_section_edit_pages');
+	
+/* ---------------------------------------------------------------------------- */
+/* Delete Page Link
+/* ---------------------------------------------------------------------------- */
+
+	function plchf_add_element_section_delete_page() {
+		
+		plchf_msb_add_page_element_section('Delete Page', 'right');
+		
+	}
+	
+	add_action('plchf_msb_page_element_sections','plchf_add_element_section_delete_page');
+	
+/* ---------------------------------------------------------------------------- */
+/* Site Settings Link
+/* ---------------------------------------------------------------------------- */
+
+	function plchf_add_element_section_site_settings() {
+		
+		plchf_msb_add_page_element_section('Site Settings', 'right');
+		
+	}
+	
+	add_action('plchf_msb_page_element_sections','plchf_add_element_section_site_settings');
