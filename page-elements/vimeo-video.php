@@ -150,6 +150,7 @@
 		$loop		= $values['_loop_'];
 		
 		// Set Defaults
+		if ($url 		== '') { $url 		= 'http://vimeo.com/32802486';}
 		if ($title 		== '') { $videoid 	= '1'; }
 		if ($byline 	== '') { $byline 	= '1'; }
 		if ($portrait 	== '') { $portrait 	= '1'; }
