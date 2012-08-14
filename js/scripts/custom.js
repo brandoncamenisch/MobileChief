@@ -1,22 +1,60 @@
 jQuery(document).ready(function($){
 
 /* ----------------------------------------------------------------------------
+	Dropdowns
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_dropdowns() {
+		
+		$('.dropdown-toggle').dropdown();
+		
+	}
+	
+	plchf_msb_dropdowns();
+
+/* ----------------------------------------------------------------------------
+	DDSlick - Slick Dropdown Selects
+---------------------------------------------------------------------------- */
+	
+	/*
+	
+	function plchf_msb_slick_menus() {
+		
+		$('.slick-dropdown').ddslick({
+			onSelected: function(data){
+				if(data.selectedIndex > 0) {
+	                $(this).nextAll('.slick-dropdown-value').attr('value', data.selectedData.value);
+	            }
+			}
+		});
+	
+	}
+	
+	plchf_msb_slick_menus();
+	
+	*/
+	
+/* ----------------------------------------------------------------------------
 	jQuery Slider Form Input
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_settings_field_slider() {
 	
-		$( ".plchf_msb_slider_field" ).slider({
-			range: "max",
-			min: 1,
-			max: 10,
-			value: 2,
-			slide: function( event, ui ) {
-				$( ".plchf_msb_slider_amount" ).val( ui.value );
-			}
-		});
-		
-		$( ".plchf_msb_slider_amount" ).val( $( ".plchf_msb_slider_field" ).slider( "value" ) );
+		if ($('.plchf_msb_slider_field').length) {
+
+			$( ".plchf_msb_slider_field" ).slider({
+				range: "max",
+				min: 1,
+				max: 10,
+				value: 2,
+				slide: function( event, ui ) {
+					$(".plchf_msb_slider_amount").val( ui.value );
+				}
+			});
+			
+			$( ".plchf_msb_slider_amount" ).val( $( ".plchf_msb_slider_field" ).slider( "value" ) );
+			
+		}
 		
 	}
 	
@@ -121,10 +159,15 @@ jQuery(document).ready(function($){
 
 	function plchf_msb_colorpicker() {
 		
-		if ($('#colorpicker').length) {
+		if ($('.colorpicker').length) {
 
-			$('#plchf_msb_colorpicker').farbtastic("#colorpicker");
+			// $('.plchf_msb_colorpicker').farbtastic(".colorpicker");
 
+			$('.colorpicker').each(function(){
+				id = $(this).attr('data-colorpicker');
+				$('#' + id).farbtastic(this);
+			});
+			
 	    }
 	    
 	}
@@ -135,20 +178,20 @@ jQuery(document).ready(function($){
 	Mobile Page Generator
 ---------------------------------------------------------------------------- */
 	
-	function plchf_msb_add_page_elements() {
-		
-		var elementBtn 	= $('.form-elements li a');
+	function plchf_msb_sortable() {
+	
 		var pageForm	= $('#page-generator');
-		
+	  	
+		// Set the Page Elements to Sortable
 		pageForm.sortable({
-	  		items: '.page-element',
+	  		items: '.sortable',
 	  		opacity: 0.6,
 			cursor: 'move',
 			axis: 'y',
 			placeholder: 'element-placeholder',
 			handle: '.element-move',
 			receive: function(response){
-				// // alert(response);
+				//alert(response);
 			},
 			start: function(e, ui) {
 				$(this).find('.tinymce').each(function(){
@@ -160,8 +203,18 @@ jQuery(document).ready(function($){
 			        tinyMCE.execCommand( 'mceAddControl', true, $(this).attr('id') );
 			        $(this).sortable("refresh");
 			    });
+			    plchf_msb_save_mobile_page_content();
 			}
 	  	});
+	  	
+	}
+	
+	plchf_msb_sortable();	
+	
+	function plchf_msb_add_page_elements() {
+		
+		var elementBtn 	= $('.form-elements li a');
+		var pageForm	= $('#page-generator');
 			  	
 		elementBtn.click(function(){
 			
@@ -185,34 +238,13 @@ jQuery(document).ready(function($){
 			  		plchf_msb_colorpicker();
 			  		plchf_msb_datepicker();
 			  		plchf_msb_tinymce();
-			  		//tinymce();
-			  		//vzcc_save_mobile_page_content();
-			  		//vzcc_click_to_save_mobile_page();
-			  		
-			  		pageForm.sortable({
-			  			items: '.page-element',
-			  			opacity: 0.6,
-						cursor: 'move',
-						axis: 'y',
-						placeholder: 'element-placeholder',
-						handle: '.element-move',
-						receive: function(response){
-							 alert(data);
-						},
-						start: function(e, ui) {
-							$(this).find('.tinymce').each(function(){
-						        tinyMCE.execCommand( 'mceRemoveControl', false, $(this).attr('id') );
-						    });
-						},
-						stop: function(response){
-							// alert(response);
-							//vzcc_save_mobile_page_content();
-							$(this).find('.tinymce').each(function(){
-						        tinyMCE.execCommand( 'mceAddControl', true, $(this).attr('id') );
-						        $(this).sortable("refresh");
-						    });
-						}
-			  		});
+			  		plchf_msb_sortable();
+			  		plchf_msb_dropdowns();
+			  		plchf_msb_save_mobile_page_content();
+			  		// plchf_msb_slick_menus();
+			  		// tinymce();
+			  		// vzcc_save_mobile_page_content();
+			  		// vzcc_click_to_save_mobile_page();
 			  	}
 			});
 			
@@ -223,6 +255,18 @@ jQuery(document).ready(function($){
 	}
 	
 	plchf_msb_add_page_elements();
+
+/* ----------------------------------------------------------------------------
+	Refresh iPhone Preview
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_refresh_iphone_preview() {
+	
+		$('.mobile-preview-loader').fadeIn();
+		$('#preview-frame').attr('src', $('#preview-frame').attr('src'));
+		$('.mobile-preview-loader').delay(300).fadeOut();
+		
+	}
 
 /* ----------------------------------------------------------------------------
 	Sticky Elements (iPhone Preview and Site Details)
@@ -333,7 +377,8 @@ jQuery(document).ready(function($){
 		  	url: ajaxurl,
 		  	data: data,
 		  	success: function(response){
-		  		alert(response);
+		  		// alert(response);
+		  		plchf_msb_refresh_iphone_preview();
 		  		// $('.mobile-preview-loader').fadeIn();
 		  		// $('#preview-frame').attr('src', $('#preview-frame').attr('src'));
 				// $('.mobile-preview-loader').delay(300).fadeOut();
@@ -366,6 +411,7 @@ jQuery(document).ready(function($){
 						'class'	: 'button-primary',
 						'action': function(){
 							item.remove();
+							plchf_msb_save_mobile_page_content();
 						}
 					},
 					'No'	: {

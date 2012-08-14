@@ -11,13 +11,13 @@
 		
 	}
 	
-	add_action('plchf_msb_content_elements','plchf_add_text_element_text_editor');
+	add_action('plchf_msb_content_elements','plchf_add_text_element_text_editor', 2);
 
 /* ---------------------------------------------------------------------------- */
 /* Create Settings for the Text Editor Element
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_page_element_settings_text_editor(){
+function plchf_msb_page_element_settings_text_editor($count, $values){
 	
 	// Define Element Type
 	$element_type 	= 'Text Editor';
@@ -35,12 +35,24 @@ function plchf_msb_page_element_settings_text_editor(){
 	);
 	
 	// Create Element Settings Panel
-	plchf_msb_page_element_settings_panel($element_type, $fields);
+	plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values);
 	
 }
 
-add_action('plchf_msb_page_element_settings_text_editor','plchf_msb_page_element_settings_text_editor');
+add_action('plchf_msb_page_element_settings_text_editor','plchf_msb_page_element_settings_text_editor', 10, 4);
 
 /* ---------------------------------------------------------------------------- */
 /* Display Output for the Text Editor Element
 /* ---------------------------------------------------------------------------- */
+
+	function plchf_msb_page_element_output_text_editor($values) {
+		
+		// Get the Values
+		$text 	= $values['_tinymce_'];
+		
+		// Output TinyMCE Content
+		echo $text;
+		
+	}
+	
+	add_action('plchf_msb_page_element_output_text_editor','plchf_msb_page_element_output_text_editor', 1, 1);

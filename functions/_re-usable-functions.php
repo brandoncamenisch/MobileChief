@@ -4,17 +4,22 @@
 	Enqueue Styles & Scripts
 ---------------------------------------------------------------------------- */	
 	
-	function my_enqueue() {
+	function plchf_msb_enqueue_styles_and_scripts() {
 		
 		$screen = get_current_screen();
+		$screenid = $screen->id;
 		
-		if ( ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') || ($screen->id == 'toplevel_page_pluginchiefmsb') || ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/new-site') || ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') ) {
+		// If pluginchiefmsb is in the Screen ID 
+		// (So ultimately any sub-page of the main Plugin Chief Admin Page)
+		if ( strpos($screenid, 'pluginchiefmsb') ) {
         	
         	// Register Styles
         	wp_register_style( 'plchf_msb_admin_styles', PLUGINCHIEFMSB . 'css/style.css');
+        	wp_register_style( 'plchf_msb_font_awesome_styles', PLUGINCHIEFMSB . 'css/font-awesome/css/font-awesome.css');
         	
         	// Enqueue Styles
         	wp_enqueue_style('plchf_msb_admin_styles');
+        	wp_enqueue_style('plchf_msb_font_awesome_styles');
         	wp_enqueue_style('jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css'); 
         	        	
         	wp_enqueue_style( 'farbtastic' );
@@ -27,16 +32,17 @@
         	wp_enqueue_script('jquery-ui-sortable');
         	wp_enqueue_script('jquery-ui-datepicker');
         	wp_enqueue_script('jquery-ui-slider');
-        	wp_enqueue_script('plchf_msb_tinymce', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
+        	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
         	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
-        	wp_enqueue_script('plchf_msb_waypoints_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
+        	wp_enqueue_script('plchf_msb_dropdowns_js', PLUGINCHIEFMSB . 'js/vendor-scripts/dropdowns.js');
+        	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
         	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.js');
         	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
         
         }
     }
 
-    add_action( 'admin_enqueue_scripts', 'my_enqueue' );
+    add_action( 'admin_enqueue_scripts', 'plchf_msb_enqueue_styles_and_scripts' );
     
 /* ----------------------------------------------------------------------------
 	Setup Settings Pages Template Files
@@ -196,11 +202,25 @@
 	Get the Site Title that we're editing
 ---------------------------------------------------------------------------- */
 	
-	function plchf_msb_get_site_title(){
+	function plchf_msb_get_site_title($id) {
 		
-		$site_id = $_GET['site_id'];
+		// Get the ID Passed to the Function or Get the Site ID if on Site Page
+		if ($id) {
+			$id = $id;
+		} else {
+			$id = $_GET['site_id'];
+		}
 		
-		$output = get_the_title( $site_id );
+		$post = get_post( $id );
+		
+		// Check to see if post has a parent or not. . .if so, the site is the post's parent, if not, this is the site
+		if ( ($post->post_parent == 0) ) {
+			$site_id = $post->ID;
+		} else {
+			$site_id = get_post($post->ID)->post_parent;
+		}
+		
+		$output .= get_the_title( $site_id );
 		
 		return apply_filters('plchf_msb_get_site_title', $output);
 		
@@ -265,7 +285,13 @@
 	    
 	    $url = get_permalink($id);
 		
-		return '<iframe src="'.$url.'" width="230" height="343"></iframe>';	
+		// Iframe Preview
+		$output .= '<iframe id="preview-frame" src="'.$url.'" width="230" height="343"></iframe>';
+		
+		// Loading Gif Div
+		$output .= '<div class="mobile-preview-loader"></div>';
+		
+		return apply_filters('plchf_msb_phone_preview_site_filter',$output);	
 		
 	}
 
@@ -281,7 +307,7 @@
 		$page_id = plchf_msb_get_page_id();
 
 		// Page Generator Form
-		echo '<form id="page-generator" class="page-generator" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
+		echo '<form id="page-generator" class="page-generator connected-sortable" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
 						
 			$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
 			
@@ -329,7 +355,7 @@
 	}
 
 /* ----------------------------------------------------------------------------
-	QR Code Page Content
+	Mobile Page Content
 ---------------------------------------------------------------------------- */	
      
     function plchf_msb_page_content() {
@@ -371,6 +397,17 @@
 			echo '</div>';
 		
 		}
+		
+		// Get IP Address
+		if ( isset($_SERVER["REMOTE_ADDR"]) )    { 
+		    $ip = $_SERVER["REMOTE_ADDR"]; 
+		} else if ( isset($_SERVER["HTTP_X_FORWARDED_FOR"]) )    { 
+		    $ip = $_SERVER["HTTP_X_FORWARDED_FOR"]; 
+		} else if ( isset($_SERVER["HTTP_CLIENT_IP"]) )    { 
+		    $ip = $_SERVER["HTTP_CLIENT_IP"]; 
+		}
+	    
+	    echo '<br/><br/><br/><br/>'.$ip;
 	    
     }
     	
@@ -390,7 +427,7 @@
 			$id = $post_id;
 		}
 		
-		if(get_post_meta(''.$id.'','_plchf_msb_page_elements', true)) {
+		if (get_post_meta(''.$id.'','_plchf_msb_page_elements', true)) {
 			$page_elements = get_post_meta(''.$id.'','_plchf_msb_page_elements', true);
 		} else {
 			$page_elements = false;	
@@ -409,8 +446,6 @@
                 }
 			
 			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_page_elements', $page_elements);
-			
-			print_r($page_elements);
 			
 			die();
 		
@@ -500,6 +535,37 @@
 	add_action('admin_head','plchf_msb_jquery_theme_directory_variable');
 
 /* ----------------------------------------------------------------------------
+	Create Settings Section for Page Elements
+---------------------------------------------------------------------------- */	
+	    
+    function plchf_msb_page_element_settings_section($element_type, $fields, $count, $values){
+	    
+	    $element_type_formatted = strtolower(str_replace(" ", "-", $element_type));
+	    
+	    echo  '<div class="page-section sortable">';
+	    	
+	    	echo '<h2>'.$element_type.'</h2>';
+	    	
+	    	echo  '<div class="controls-wrapper">';
+	    		echo  '<div class="controls">';
+	    			echo  '<div>';
+	    				echo  '<div>';
+	    					echo  '<div class="element-control element-move"></div>';
+	    					echo  '<div class="element-control element-remove"></div>';
+	    				echo  '</div>';
+	    			echo  '</div>';
+	    		echo  '</div>';
+	  		echo  '</div>';
+	  		
+	  		echo '<div class="nested-sortable connected-sortable">';
+	  			
+	  		echo '</div>';
+		    	
+		echo  '</div>';
+	    
+    }
+    
+/* ----------------------------------------------------------------------------
 	Create Settings Panel for Page Element
 ---------------------------------------------------------------------------- */	
 	    
@@ -507,7 +573,7 @@
 	    
 	    $element_type_formatted = strtolower(str_replace(" ", "-", $element_type));
 	    
-	    echo  '<div class="page-element '.$element_type_formatted.' draggable">';
+	    echo  '<div class="page-element '.$element_type_formatted.' sortable">';
 	    	
 	    	// Settings Bar
 	    	echo  '<div class="settings-bar">';

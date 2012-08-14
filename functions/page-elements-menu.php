@@ -47,7 +47,7 @@ function pluginchiefmsb_page_elements_menu() {
 
 	function plchf_add_element_section_content() {
 		
-		plchf_msb_add_page_element_section('Content');
+		plchf_msb_add_page_element_section('Content', 'left');
 		
 	}
 	
@@ -59,7 +59,7 @@ function pluginchiefmsb_page_elements_menu() {
 
 	function plchf_add_element_section_media() {
 		
-		plchf_msb_add_page_element_section('Media');
+		plchf_msb_add_page_element_section('Media', 'left');
 		
 	}
 	
@@ -71,7 +71,7 @@ function pluginchiefmsb_page_elements_menu() {
 
 	function plchf_add_element_section_social() {
 		
-		plchf_msb_add_page_element_section('Social');
+		plchf_msb_add_page_element_section('Social', 'left');
 		
 	}
 	
@@ -83,7 +83,7 @@ function pluginchiefmsb_page_elements_menu() {
 
 	function plchf_add_element_section_style() {
 		
-		plchf_msb_add_page_element_section('Style');
+		plchf_msb_add_page_element_section('Style', 'left');
 		
 	}
 	

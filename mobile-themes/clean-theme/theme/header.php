@@ -19,8 +19,7 @@
     <!-- Le styles -->
     <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/css/docs.css" rel="stylesheet">
-    <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="<?php echo $pluginchiefmsbdir; ?>css/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

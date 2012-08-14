@@ -10,7 +10,7 @@
 		
 	}
 	
-	add_action('plchf_msb_content_elements','plchf_add_text_element_text');
+	add_action('plchf_msb_content_elements','plchf_add_text_element_text', 1);
 
 /* ---------------------------------------------------------------------------- */
 /* Create Settings for the Text Element
@@ -51,8 +51,10 @@
 		$text 	= $values['_text_'];
 		
 		// Output a Paragraph with the Text
-		echo '<p>'.$text.'</p>';
+		$output .= '<p>'.$text.'</p>';
+		
+		echo apply_filters('plchf_msb_page_element_output_text_filter',$output);
 		
 	}
 	
-	add_action('plchf_msb_page_element_output_text','plchf_msb_page_element_output_text', 10, 1);
+	add_action('plchf_msb_page_element_output_text','plchf_msb_page_element_output_text', 1, 1);
