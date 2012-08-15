@@ -120,22 +120,6 @@ jQuery(document).ready(function($){
 	}
 	
 	plchf_msb_tipsy();
-
-/* ----------------------------------------------------------------------------
-	Time Picker
----------------------------------------------------------------------------- */	
-	
-	function plchf_msb_timepicker() {
-		
-		if ($('.timepicker').length) {
-		
-			$('.timepicker').timepicker();
-			
-		}
-	
-	}
-	
-	// plchf_msb_timepicker();
 	
 /* ----------------------------------------------------------------------------
 	Date Picker
@@ -161,11 +145,12 @@ jQuery(document).ready(function($){
 		
 		if ($('.colorpicker').length) {
 
-			// $('.plchf_msb_colorpicker').farbtastic(".colorpicker");
-
 			$('.colorpicker').each(function(){
+				
+				$this = $(this);
 				id = $(this).attr('data-colorpicker');
-				$('#' + id).farbtastic(this);
+				$('#' + id).farbtastic($this);
+			
 			});
 			
 	    }
@@ -235,12 +220,12 @@ jQuery(document).ready(function($){
 			        	tinyMCE.execCommand( 'mceRemoveControl', false, $(this).attr('id') );
 			    	});
 			  		pageForm.prepend(response);
+			  		plchf_msb_save_mobile_page_content();
 			  		plchf_msb_colorpicker();
 			  		plchf_msb_datepicker();
 			  		plchf_msb_tinymce();
 			  		plchf_msb_sortable();
 			  		plchf_msb_dropdowns();
-			  		plchf_msb_save_mobile_page_content();
 			  		// plchf_msb_slick_menus();
 			  		// tinymce();
 			  		// vzcc_save_mobile_page_content();
