@@ -51,7 +51,8 @@ function mobile_site_builder_sites() {
 					<?php
 					
 					$pluginchiefmsb_args = array(
-						'post_type' => 'pluginchiefmsb-sites'
+						'post_type' 	=> 'pluginchiefmsb-sites',
+						'post_parent'	=> 0
 					);
 					
 					$sites = get_posts( $pluginchiefmsb_args );
@@ -86,7 +87,7 @@ function mobile_site_builder_sites() {
 							
 							</h3><!-- End Title -->
 							
-							<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb/edit-site&site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+							<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
 							
 							<div class="clear"></div>
 							

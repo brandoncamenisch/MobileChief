@@ -6,8 +6,8 @@
 		
 		$plchf_msb_themes[] = array(
 			'Theme'		=> array(
-				'Theme Name' 	=> 'Jarred Theme',
-					'Slug'			=> 'default_theme',
+				'Theme Name' 	=> 'Default Theme',
+				'Slug'			=> 'default_theme',
 				'Version'		=> '1.0',
 				'Author Name'	=> 'Jason Bahl',
 				'Author URL'	=> 'http://visioniz.com',

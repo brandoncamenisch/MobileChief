@@ -359,13 +359,10 @@
 		// Loop Through Themes
 		foreach ($plchf_msb_themes as $themes) {
 					
-			
-			
 			$currentthemeslug = $themes['Theme']['Slug'];
 			
 			if ($thememeta == $currentthemeslug) {
 				
-
 				return $themes['Theme']['Page Elements'];
 			
 			}

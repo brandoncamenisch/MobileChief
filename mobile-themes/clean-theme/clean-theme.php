@@ -6,7 +6,7 @@
 		
 		$plchf_msb_themes[] = array(
 			'Theme'		=> array(
-				'Theme Name' 	=> 'Jarred Theme',
+				'Theme Name' 	=> 'Clean Theme',
 				'Slug'			=> 'clean_theme',
 				'Version'		=> '1.0',
 				'Author Name'	=> 'Jason Bahl',

@@ -76,7 +76,7 @@
 							<img src="<?php echo $themes['Theme']['Theme Root']; ?><?php echo $screenshot; ?>" alt="<?php echo $theme_name; ?>"><br/>
 							
 							<!-- Theme Name -->
-							<h3><?php echo $theme_name; ?></h3>
+							<h3><?php echo $themes['Theme']['Theme Name'];; ?></h3>
 							
 							<!-- Theme Author -->
 							<div class="theme-author">

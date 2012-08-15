@@ -37,6 +37,7 @@ ____   ____.__       .__              .__
 	define('PLUGINCHIEFMSB_PATH', plugin_dir_path(__FILE__));
 	$pluginchiefmsbdir = plugin_dir_url(__FILE__);
 	global $pluginchiefmsbdir;
+	$plchf_msb_options = get_option('plugin_chief_msb');
 
 /* ---------------------------------------------------------------------------- */
 /* Inlcude Plugin Files

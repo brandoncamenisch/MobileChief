@@ -6,7 +6,7 @@
 		
 		$plchf_msb_themes[] = array(
 			'Theme'		=> array(
-				'Theme Name' 	=> 'groove Theme',
+				'Theme Name' 	=> 'Groove Theme',
 				'Slug'			=> 'groove_theme',
 				'Version'		=> '1.0',
 				'Author Name'	=> 'Jason Bahl',

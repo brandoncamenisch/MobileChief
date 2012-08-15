@@ -1,45 +1,60 @@
 <?php
 
 /* ----------------------------------------------------------------------------
+	Create a Function to Enqueue Styles & Scripts
+---------------------------------------------------------------------------- */	
+
+	function plchf_msb_enqueue_plugin_scripts_and_styles() {
+
+    	// Register Styles
+    	wp_register_style( 'plchf_msb_admin_styles', PLUGINCHIEFMSB . 'css/style.css');
+    	wp_register_style( 'plchf_msb_font_awesome_styles', PLUGINCHIEFMSB . 'css/font-awesome/css/font-awesome.css');
+    	
+    	// Enqueue Styles
+    	wp_enqueue_style('plchf_msb_admin_styles');
+    	wp_enqueue_style('plchf_msb_font_awesome_styles');
+    	wp_enqueue_style('jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css'); 
+    	        	
+    	wp_enqueue_style( 'farbtastic' );
+    	wp_enqueue_script( 'farbtastic' );
+
+    	// Enqueue JS
+    	add_thickbox();
+    	wp_enqueue_script('jquery');
+    	wp_enqueue_script('jquery-ui-core');
+    	wp_enqueue_script('jquery-ui-sortable');
+    	wp_enqueue_script('jquery-ui-datepicker');
+    	wp_enqueue_script('jquery-ui-slider');
+    	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
+    	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
+    	wp_enqueue_script('plchf_msb_dropdowns_js', PLUGINCHIEFMSB . 'js/vendor-scripts/dropdowns.js');
+    	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
+    	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.js');
+    	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
+    	
+    }
+
+/* ----------------------------------------------------------------------------
 	Enqueue Styles & Scripts
 ---------------------------------------------------------------------------- */	
 	
 	function plchf_msb_enqueue_styles_and_scripts() {
 		
-		$screen = get_current_screen();
-		$screenid = $screen->id;
-		
-		// If pluginchiefmsb is in the Screen ID 
-		// (So ultimately any sub-page of the main Plugin Chief Admin Page)
-		if ( strpos($screenid, 'pluginchiefmsb') ) {
-        	
-        	// Register Styles
-        	wp_register_style( 'plchf_msb_admin_styles', PLUGINCHIEFMSB . 'css/style.css');
-        	wp_register_style( 'plchf_msb_font_awesome_styles', PLUGINCHIEFMSB . 'css/font-awesome/css/font-awesome.css');
-        	
-        	// Enqueue Styles
-        	wp_enqueue_style('plchf_msb_admin_styles');
-        	wp_enqueue_style('plchf_msb_font_awesome_styles');
-        	wp_enqueue_style('jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css'); 
-        	        	
-        	wp_enqueue_style( 'farbtastic' );
-        	wp_enqueue_script( 'farbtastic' );
-  
-        	// Enqueue JS
-        	add_thickbox();
-        	wp_enqueue_script('jquery');
-        	wp_enqueue_script('jquery-ui-core');
-        	wp_enqueue_script('jquery-ui-sortable');
-        	wp_enqueue_script('jquery-ui-datepicker');
-        	wp_enqueue_script('jquery-ui-slider');
-        	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
-        	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
-        	wp_enqueue_script('plchf_msb_dropdowns_js', PLUGINCHIEFMSB . 'js/vendor-scripts/dropdowns.js');
-        	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
-        	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.js');
-        	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
+		if (is_admin()) {
+
+			$screen = get_current_screen();
+			$screenid = $screen->id;
+			
+			// If pluginchiefmsb is in the Screen ID 
+			// (So ultimately any sub-page of the main Plugin Chief Admin Page)
+			if ( strpos($screenid, 'pluginchiefmsb') ) {
+	        	
+				plchf_msb_enqueue_plugin_scripts_and_styles();
+	        
+	        }
         
         }
+        
     }
 
     add_action( 'admin_enqueue_scripts', 'plchf_msb_enqueue_styles_and_scripts' );
@@ -190,7 +205,7 @@
 	
 	function plchf_msb_get_page_title(){
 		
-		$page_id = $_GET['page_id'];
+		$page_id = $_GET['mobilesite_page_id'];
 		
 		$output .= get_the_title( $page_id );
 		
@@ -208,7 +223,7 @@
 		if ($id) {
 			$id = $id;
 		} else {
-			$id = $_GET['site_id'];
+			$id = $_GET['mobilesite_site_id'];
 		}
 		
 		$post = get_post( $id );
@@ -232,7 +247,7 @@
 		
 	function plchf_msb_get_page_id(){
 		
-		$page_id = $_GET['page_id'];
+		$page_id = $_GET['mobilesite_page_id'];
 		
 		return apply_filters('plchf_msb_get_page_id_filter', $page_id);
 		
@@ -258,30 +273,57 @@
 		
 		global $pluginchiefmsbdir;
 		
-		$screen = get_current_screen();
-		
-		// Get Screen ID on Edit Page, page
-		if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
+		if (is_admin()) { 
 			
-			// Get the Page We're Editing
-		    $id = $_GET['page_id'];
+			$screen = get_current_screen();
+		
+			// Get Screen ID on Edit Page, page
+			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
+			
+				// Get the Page We're Editing
+				$id = $_GET['mobilesite_page_id'];
 		  
-		// Get the Site ID on the Edit Site Page 
-	    } elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
+			// Get the Site ID on the Edit Site Page 
+			} elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
 	    	
-	    	// Get the Home Page
-	    	$id = $_GET['site_id'];
+				// Get the Home Page
+				$id = $_GET['mobilesite_site_id'];
 	    	
-	    	// Get Site Home Page
-	    	$posts = get_posts('post_parent='.$id.'&posts_per_page=1');
+				// Get Site Home Page
+				$posts = get_posts('post_parent='.$id.'&posts_per_page=1');
 	    	
-	    	foreach ($posts as $post) {
-		    	$id = $post->ID;
-	    	}
+				foreach ($posts as $post) {
+		    		$id = $post->ID;
+		    	}
 	    	
-	    	$id = $id;
+		    	$id = $id;
 	    	 	
-	    }
+		    }
+		    
+		} else {
+			
+			//Globals
+			global $post, $wp_query;
+		
+			// Get the Post ID
+			$postid = $wp_query->post->ID;
+			
+			// Check if Page is one of the Pages selected in the Plugin Settings Panel
+			if ( ($postid == $edit_page_id) ) {
+
+				// Get the Page We're Editing
+				$page_id = $_GET['mobilesite_page_id'];
+		    
+				// Get the Page Parent, which is the Site
+				$site_id = get_post($page_id)->post_parent;
+							
+			} else if ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
+				
+				$site_id = $_GET['mobilesite_site_id'];
+				
+			}
+			
+		}
 	    
 	    $url = get_permalink($id);
 		
@@ -659,25 +701,53 @@
    
     function plchf_msb_get_site_id() {
 	    
-	    $screen = get_current_screen();
-		
-		// Get Screen ID on Edit Page, page
-		if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
+	    if (is_admin()) {
+
+		    $screen = get_current_screen();
 			
-			// Get the Page We're Editing
-		    $page_id = $_GET['page_id'];
-		    
-		    // Get the Page Parent, which is the Site
-		    $site_id = get_post($page_id)->post_parent;
-		  
-		// Get the Site ID on the Edit Site Page 
-	    } elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
-		 
-			$site_id = $_GET['site_id'];	 
+			// Get Screen ID on Edit Page, page
+			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
+				
+				// Get the Page We're Editing
+			    $page_id = $_GET['mobilesite_page_id'];
 			    
-	    }
+			    // Get the Page Parent, which is the Site
+			    $site_id = get_post($page_id)->post_parent;
+			  
+			// Get the Site ID on the Edit Site Page 
+		    } elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
+			 
+				$site_id = $_GET['mobilesite_site_id'];	 
+				    
+		    } 
+		
+		// If Front End
+		} else {
+			
+			//Globals
+			global $post, $wp_query;
+		
+			// Get the Post ID
+			$postid = $wp_query->post->ID;
+		
+			// Check if Page is one of the Pages selected in the Plugin Settings Panel
+			if ( ($postid == $edit_page_id) ) {
+
+				// Get the Page We're Editing
+				$page_id = $_GET['mobilesite_page_id'];
+		    
+				// Get the Page Parent, which is the Site
+				$site_id = get_post($page_id)->post_parent;
+							
+			} else if ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
+				
+				$site_id = $_GET['mobilesite_site_id'];
+				
+			}
+			
+		}
 	    
-	    return $site_id;
+	    return apply_filters('plchf_msb_get_site_id',$site_id);
 	    
     }
 
