@@ -10,6 +10,10 @@
 		
 	}
 	
+	// To add an element to a section, change the action to reference that section
+	//
+	// ex: plchf_msb_content_elements adds to the content section, and plchf_msb_media_elements adds to the media section
+	//
 	add_action('plchf_msb_content_elements','plchf_add_address_button_element_address_button');
 
 /* ---------------------------------------------------------------------------- */

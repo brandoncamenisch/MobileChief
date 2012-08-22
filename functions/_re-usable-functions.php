@@ -412,6 +412,43 @@
 	}
 
 /* ----------------------------------------------------------------------------
+	Site Settings Panels
+---------------------------------------------------------------------------- */	
+	
+	function plchf_msb_site_settings() {
+		
+		do_action('plchf_msb_before_site_settings');
+		
+		// Page Generator Form
+		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_page_id().'">';
+		
+			$theme_slug = plchf_msb_get_theme_slug();
+			
+			// Page Generator Content
+			do_action('plchf_msb_site_settings_content_'.$theme_slug.'');
+			
+		// End Form
+		echo '</form>';
+		
+		do_action('plchf_msb_after_site_settings');	
+		
+	}
+
+/* ----------------------------------------------------------------------------
+	Site Settings Title
+---------------------------------------------------------------------------- */	
+
+	function plchf_msb_add_title_above_site_settngs_panels(){
+		
+		$output .= '<h3>Site Settings</h3>';
+		
+		echo apply_filters('plchf_msb_site_settings_panel_title', $output);
+		
+	}
+	
+	add_action('plchf_msb_before_site_settings','plchf_msb_add_title_above_site_settngs_panels');
+	
+/* ----------------------------------------------------------------------------
 	Mobile Page Content
 ---------------------------------------------------------------------------- */	
      
@@ -493,6 +530,8 @@
 			
 			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_page_elements', $page_elements);
 			
+			print_r($page_elements);
+			
 			die();
 		
 		}
@@ -500,29 +539,6 @@
 	}
 	
 	add_action('wp_ajax_plchf_msb_save_the_page_elements_ajax','plchf_msb_save_the_page_elements_ajax');
-
-/* ----------------------------------------------------------------------------
-	Site Settings Panels
----------------------------------------------------------------------------- */	
-	
-	function plchf_msb_site_settings() {
-		
-		do_action('plchf_msb_before_site_settings');
-		
-		// Page Generator Form
-		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_page_id().'">';
-		
-			$theme_slug = plchf_msb_get_theme_slug();
-			
-			// Page Generator Content
-			do_action('plchf_msb_site_settings_content_'.$theme_slug.'');
-			
-		// End Form
-		echo '</form>';
-		
-		do_action('plchf_msb_after_site_settings');	
-		
-	}
 
 /* ----------------------------------------------------------------------------
 	Add Element to Page
@@ -671,43 +687,56 @@
 	Create Settings Panel for Site Settings
 ---------------------------------------------------------------------------- */	
 	    
-    function plchf_site_settings_settings_panel($setting_category, $fields){
-	    
-	    $setting_category_formatted = strtolower(str_replace(" ", "-", $setting_category));
-	    
-	    echo  '<div class="page-element '.$setting_category_formatted.' draggable">';
-	    	
-	    	// Settings Bar
-	    	echo  '<div class="settings-bar">';
-	    		echo  '<div class="inner-settings-bar">';
-	    			echo  '<div class="one_third">';
-	    				echo  '<div class="element-info">';
-	    					echo  $setting_category;
-	    				echo  '</div>';
-	    			echo  '</div>';
-	    			echo  '<div class="two_third column-last">';
-		    			echo  '<div class="controls">';
-		    				echo  '<div class="element-control element-open"></div>';
+    function plchf_site_settings_settings_panel($panels){
+    
+    	foreach ($panels as $panel) {
+    	
+    		$panel_name = $panel['panel_name'];
+    		
+		    $panel_name_formatted = strtolower(str_replace(" ", "-", $panel_name));
+		    
+		    echo  '<div class="page-element '.$panel_name_formatted.' draggable">';
+		    	
+		    	// Settings Bar
+		    	echo  '<div class="settings-bar">';
+		    		echo  '<div class="inner-settings-bar">';
+		    			echo  '<div class="one_third">';
+		    				echo  '<div class="element-info">';
+		    					echo  $panel_name;
+		    				echo  '</div>';
 		    			echo  '</div>';
+		    			echo  '<div class="two_third column-last">';
+			    			echo  '<div class="controls">';
+			    				echo  '<div class="element-control element-open"></div>';
+			    			echo  '</div>';
+			    		echo  '</div>';
 		    		echo  '</div>';
-	    		echo  '</div>';
-	    	echo  '</div>';
-	    	
-	    	// Settings Content
-		    echo  '<div class="content">';
-		    		
-		    	echo  '<h2>'.$setting_category.'</h2>';
-		    		
-		    		foreach ($fields as $k => $v) {
-		    		
-		    			echo $v;
-		    		
-		    		}
-		    		
 		    	echo  '</div>';
 		    	
-		    echo  '</div>';
-	    
+		    	// Settings Content
+			    echo  '<div class="content">';
+			    		
+			    	echo  '<h2>'.$panel_name.'</h2>';
+			    		
+		    		// Loop through the fields that were passed when setting up the page element
+		    		foreach ($panel['fields'] as $fields) {
+		    		
+		    			// Get the Field Type
+		    			$type = $fields['type'];
+			    		
+			    		// Do the Action for the Associated Field Type
+			    		do_action('plchf_msb_site_settings_field_'.$type.'', $fields, $type, $values);
+			    		
+			    		echo '<br/>';
+		    		
+		    		}
+			    		
+			    echo  '</div>';
+			   	
+			echo  '</div>';
+	
+	    } // End Panels loop
+   
     }
 
 /* ----------------------------------------------------------------------------
