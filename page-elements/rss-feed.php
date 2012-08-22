@@ -57,29 +57,43 @@
 
 	function plchf_msb_page_element_output_rss_feed($values) {
 		
-    $rss = file_get_contents($values['_rss_feed_']);  
-    
-    $x = new SimpleXmlElement($rss);  
-    $i=0;
-
-    echo "<div><i class='icon-rss'>&nbsp;RSS FEED</i><hr>";  
-      
-    foreach($x->channel->item as $entry) {  
-        echo "<p><a href='$entry->link' title='$entry->title'>" . $entry->title . "</a></p><hr>";  
-        $i++;
+		// Get Values
+		$feed 			= $values['_rss_feed_'];
+		$result_count 	= $values['_rss_results_'];
+		
+		// Get RSS Feed Contents
+	    $rss = file_get_contents($feed);  
 	    
-		    if ( $i == (empty($values['_rss_results_']))){
-			    break;
-		    }
-	    
-		    elseif( $i == $values['_rss_results_']) { 
-
-        	break;
-        }
-    }  
-    echo "</div>";  
-
-		echo apply_filters('plchf_msb_page_element_output_rss_feed_filter',$output);
+	    // Create Simple XML Element
+	    $x = new SimpleXmlElement($rss);  
+	    $i=0;
+	
+	    // Make Sure RSS Feed is filled out, otherwise don't display it
+	    if ($feed) { 
+	
+		    // Output RSS Feed Icon & Title
+		    $output .= "<div><i class='icon-rss'>&nbsp;RSS FEED</i><hr>";  
+		     
+		    // Loop through the RSS Feed 
+		    foreach($x->channel->item as $entry) {  
+		        
+		        $output .=  "<p><a href='$entry->link' title='$entry->title'>" . $entry->title . "</a></p><hr>";  
+		        $i++;
+			    
+				    if ( $i == (empty($result_count))){
+					    break;
+				    }
+			    
+				    elseif( $i == $result_count) { 
+		
+		        	break;
+		        }
+		    }  
+		    
+		    $output .=  "</div>"; 
+		} 
+	
+		echo apply_filters('plchf_msb_page_element_output_rss_feed_filter', $output);
 		
 	}
 	
