@@ -1013,3 +1013,14 @@ function plchf_msb_googl_shortlink($url) {
 	}
 	
 	add_action('plchf_msb_after_create_new_site','plchf_msb_default_theme_default_pages');
+	
+	
+	
+	function plchf_flush_permalinks(){	
+			
+		global $wp_rewrite;
+		
+		$wp_rewrite->flush_rules();
+	
+	}
+	add_action('admin_init','plchf_flush_permalinks');
