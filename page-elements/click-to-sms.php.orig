@@ -1,40 +1,36 @@
 <?php
 
 /* ---------------------------------------------------------------------------- */
-/* Add Address Button Element to the Page Elements Menu
+/* Add Click To Call Element to the Page Elements Menu
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_add_address_button_element_address_button() {
+	function plchf_add_click_to_sms_element_click_to_sms() {
 	
-		plchf_msb_add_page_element('Address Button');
+		plchf_msb_add_page_element('Click To SMS');
 		
 	}
 	
-	// To add an element to a section, change the action to reference that section
-	//
-	// ex: plchf_msb_content_elements adds to the content section, and plchf_msb_media_elements adds to the media section
-	//
-	add_action('plchf_msb_content_elements','plchf_add_address_button_element_address_button');
+	add_action('plchf_msb_content_elements','plchf_add_click_to_sms_element_click_to_sms');
 
 /* ---------------------------------------------------------------------------- */
-/* Create Settings for the Address Button Element
+/* Create Settings for the Click To Call Element
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_msb_page_element_settings_address_button($count, $values){
+	function plchf_msb_page_element_settings_click_to_sms($count, $values){
 		
 		// Define Element Type
-		$element_type 	= 'Address Button';
+		$element_type 	= 'Click To SMS';
 		
 		// Define Settings Fields
 		$fields[] = array(
 			
 			'field' 	=> array(
 				'type' 			=> 'html',
-				'content' 		=> '<p>The Address Button is a styled button that links to a Google Map</p>',
+				'content' 		=> '<p>The Click To Call is a styled button that links to a phone #</p>',
 			),
 		
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
 			
@@ -53,30 +49,14 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'text',
-				'name' 			=> 'Address',
-				'id' 			=> '_button_address_',
-				'tooltip' 		=> 'Enter the Address to open in Google Maps',
-				'placeholder' 	=> '123 PluginChief Road, Denver, CO 80213',
+				'name' 			=> 'Button Phone Number',
+				'id' 			=> '_button_number_',
+				'tooltip' 		=> 'Enter the Phone #',
+				'placeholder' 	=> 'Enter Your Phone # ec. 345-293-2083',
 			),
 		
 		);
-		
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
-				'type' 			=> 'select',
-				'name' 			=> 'Button Target',
-				'id' 			=> '_button_target_',
-				'tooltip' 		=> 'Open the link in the same window or a new window?',
-				'options' 		=> array(
-					'_self'		=> 'Open in Same Window',
-					'_blank'	=> 'Open in New Window',
-				)
-			),
-		
-		);
-		
+				
 		// Define Settings Fields
 		$fields[] = array(
 			
@@ -176,17 +156,16 @@
 		
 	}
 	
-	add_action('plchf_msb_page_element_settings_address_button','plchf_msb_page_element_settings_address_button', 10, 2);
+	add_action('plchf_msb_page_element_settings_click_to_sms','plchf_msb_page_element_settings_click_to_sms', 10, 2);
 
 /* ---------------------------------------------------------------------------- */
-/* Display Output for the Address Button Element
+/* Display Output for the Click To Call Element
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_msb_page_element_output_address_button($values) {
+	function plchf_msb_page_element_output_click_to_sms($values) {
 		
 		$text		= $values['_button_text_'];
-		$address	= $values['_button_address_'];
-		$target		= $values['_button_target_'];
+		$number		= $values['_button_number_'];
 		$size 		= ' '.$values['_button_size_'];
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];
@@ -213,14 +192,54 @@
 		
 		}
 		
-		// Output a Paragraph with the Address Button
+<<<<<<< HEAD
+		// If iOS
+		if ($plchf_msb_device_detect->isiOS()) {
+		
+			// Output a Paragraph with the Click To Call
+			$output .= '
+			<p>
+				<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+				<div class="clearfix"></div>
+			</p>
+			';
+		
+		// If iOS
+		} elseif ($plchf_msb_device_detect->isAndroidOS()) {
+			
+			// Output a Paragraph with the Click To Call
+			$output .= '
+			<p>
+				<a href="smsto://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+				<div class="clearfix"></div>
+			</p>
+			';			
+			
+		} else {
+
+			// Output a Paragraph with the Click To Call
+			$output .= '
+			<p>
+				<a href="smsto://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+				<div class="clearfix"></div>
+			</p>
+			';				
+			
+		}
+		
+		// Output the Button with a Filter
+		echo apply_filters('plchf_msb_page_element_output_click_to_sms_filter',$output);
+=======
+		// Output a Paragraph with the Click To Call
 		echo '
 		<p>
-			<a href="href="http://maps.google.com/?q='.$address.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+			<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
 		';
+>>>>>>> d18a57b65429f667a0949bebdd2d0ce2a1b76d42
 		
 	}
 	
-	add_action('plchf_msb_page_element_output_address_button','plchf_msb_page_element_output_address_button', 10, 1);
+	add_action('plchf_msb_page_element_output_click_to_sms','plchf_msb_page_element_output_click_to_sms', 10, 1);
+	

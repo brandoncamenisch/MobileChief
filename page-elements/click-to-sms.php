@@ -165,8 +165,7 @@
 	function plchf_msb_page_element_output_click_to_sms($values) {
 		
 		$text		= $values['_button_text_'];
-		$url		= $values['_button_number_'];
-
+		$number		= $values['_button_number_'];
 		$size 		= ' '.$values['_button_size_'];
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];
@@ -193,14 +192,49 @@
 		
 		}
 		
+		// If iOS
+		if ($plchf_msb_device_detect->isiOS()) {
 		// Output a Paragraph with the Click To Call
 		echo '
 		<p>
-			<a href="tel:'.$url.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+			<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
-	sms:<phone_number>[,<phone-number>]*[?body=<message_body>]
 		';
+		
+			// Output a Paragraph with the Click To Call
+			$output .= '
+			<p>
+				<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+				<div class="clearfix"></div>
+			</p>
+			';
+		
+		// If iOS
+		} elseif ($plchf_msb_device_detect->isAndroidOS()) {
+			
+			// Output a Paragraph with the Click To Call
+			$output .= '
+			<p>
+				<a href="smsto://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+				<div class="clearfix"></div>
+			</p>
+			';			
+			
+		} else {
+
+			// Output a Paragraph with the Click To Call
+			$output .= '
+			<p>
+				<a href="smsto://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+				<div class="clearfix"></div>
+			</p>
+			';				
+			
+		}
+		
+		// Output the Button with a Filter
+		echo apply_filters('plchf_msb_page_element_output_click_to_sms_filter',$output);
 		
 	}
 	
