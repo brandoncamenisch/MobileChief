@@ -51,15 +51,31 @@
 	Add Site Settings Panels
 ---------------------------------------------------------------------------- */
 	
-	function asdgfasdgsdfgsdfgserg() {
+	function plchf_msb_clean_theme_settings_panels() {
 	
-		$settings = array(
-			'1' => 'One',
-			'2' => 'Two'
+		$panels[] = array(
+			'panel_name'=> 'Panel Name',			
+			'fields' 	=> array(
+				array(
+					'type' 			=> 'colorpicker',
+					'name' 			=> 'Background Color',
+					'id' 			=> '_bg_color_',
+					'tooltip' 		=> 'Choose the Background Color',
+					'placeholder' 	=> 'Select a Color',
+				),
+				array(
+					'type' 			=> 'text',
+					'name' 			=> 'Background Color',
+					'id' 			=> '_bg_color_',
+					'tooltip' 		=> 'Choose the Background Color',
+					'placeholder' 	=> 'Select a Color',
+				),
+			),
+		
 		);
-	
-		plchf_site_settings_settings_panel('Goo', $settings);
+		
+		plchf_site_settings_settings_panel($panels);
 		
 	}
 	
-	add_action('plchf_msb_site_settings_content_clean_theme','asdgfasdgsdfgsdfgserg');
+	add_action('plchf_msb_site_settings_content_clean_theme','plchf_msb_clean_theme_settings_panels');

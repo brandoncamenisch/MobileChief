@@ -362,11 +362,13 @@ jQuery(document).ready(function($){
 		  	url: ajaxurl,
 		  	data: data,
 		  	success: function(response){
+		  		
+		  		// Display AJAX Response
 		  		// alert(response);
+		  		
+		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
-		  		// $('.mobile-preview-loader').fadeIn();
-		  		// $('#preview-frame').attr('src', $('#preview-frame').attr('src'));
-				// $('.mobile-preview-loader').delay(300).fadeOut();
+		  		
 				return false;
 				die();
 		  		
