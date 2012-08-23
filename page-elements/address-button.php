@@ -53,7 +53,7 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'text',
-				'name' 			=> 'Button Address',
+				'name' 			=> 'Address',
 				'id' 			=> '_button_address_',
 				'tooltip' 		=> 'Enter the Address to open in Google Maps',
 				'placeholder' 	=> '123 PluginChief Road, Denver, CO 80213',
@@ -185,7 +185,7 @@
 	function plchf_msb_page_element_output_address_button($values) {
 		
 		$text		= $values['_button_text_'];
-		$url		= $values['_button_url_'];
+		$address	= $values['_button_address_'];
 		$target		= $values['_button_target_'];
 		$size 		= ' '.$values['_button_size_'];
 		$style 		= ' '.$values['_button_style_'];
@@ -216,7 +216,7 @@
 		// Output a Paragraph with the Address Button
 		echo '
 		<p>
-			<a href="'.$url.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+			<a href="href="http://maps.google.com/?q='.$address.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
 		';
