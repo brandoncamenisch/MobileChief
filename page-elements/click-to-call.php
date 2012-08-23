@@ -166,7 +166,6 @@
 		
 		$text		= $values['_button_text_'];
 		$url		= $values['_button_number_'];
-
 		$size 		= ' '.$values['_button_size_'];
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];

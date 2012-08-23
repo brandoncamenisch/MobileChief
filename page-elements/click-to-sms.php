@@ -194,6 +194,13 @@
 		
 		// If iOS
 		if ($plchf_msb_device_detect->isiOS()) {
+		// Output a Paragraph with the Click To Call
+		echo '
+		<p>
+			<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+			<div class="clearfix"></div>
+		</p>
+		';
 		
 			// Output a Paragraph with the Click To Call
 			$output .= '

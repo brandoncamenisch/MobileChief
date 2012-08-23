@@ -530,7 +530,8 @@
 			
 			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_page_elements', $page_elements);
 			
-			print_r($page_elements);
+			// Print the Data on return to AJAX
+			// print_r($page_elements);
 			
 			die();
 		
