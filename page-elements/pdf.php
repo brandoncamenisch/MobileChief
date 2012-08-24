@@ -6,7 +6,7 @@
 
 	function plchf_add_pdf_element_pdf() {
 	
-		plchf_msb_add_page_element('Pdf');
+		plchf_msb_add_page_element('PDF Link');
 		
 	}
 	
@@ -16,20 +16,20 @@
 /* Create Settings for the Pdf Element
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_msb_page_element_settings_pdf($count, $values){
+	function plchf_msb_page_element_settings_pdf_link($count, $values){
 		
 		// Define Element Type
-		$element_type 	= 'Pdf';
+		$element_type 	= 'PDF Link';
 		
 		// Define Settings Fields
 		$fields[] = array(
 			
 			'field' 	=> array(
 				'type' 			=> 'text',
-				'name' 			=> 'Pdf Button Text',
+				'name' 			=> 'PDF Button Text',
 				'id' 			=> '_pdf_text_',
 				'tooltip' 		=> 'Enter Some Text Here',
-				'placeholder' 	=> 'Pdf Text',
+				'placeholder' 	=> 'PDF Text',
 			),
 		
 		);
@@ -39,9 +39,9 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'text',
-				'name' 			=> 'Pdf URL',
+				'name' 			=> 'PDF URL',
 				'id' 			=> '_pdf_url_',
-				'tooltip' 		=> 'Enter the Pdf URL Here',
+				'tooltip' 		=> 'Enter the PDF URL Here',
 				'placeholder' 	=> 'http://pluginchief.com',
 			),
 		
@@ -52,7 +52,7 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'select',
-				'name' 			=> 'Pdf Button Target',
+				'name' 			=> 'PDF Button Target',
 				'id' 			=> '_pdf_target_',
 				'tooltip' 		=> 'Open the link in the same window or a new window?',
 				'options' 		=> array(
@@ -85,7 +85,7 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'select',
-				'name' 			=> 'Pdf Button Style',
+				'name' 			=> 'PDF Button Style',
 				'id' 			=> '_pdf_style_',
 				'tooltip' 		=> 'Choose the style of the pdf Button',
 				'options' 		=> array(
@@ -105,7 +105,7 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'select',
-				'name' 			=> 'Pdf Allignment',
+				'name' 			=> 'PDF Allignment',
 				'id' 			=> '_pdf_align_',
 				'tooltip' 		=> 'Choose the alignment of the pdf Button',
 				'options' 		=> array(
@@ -113,18 +113,6 @@
 					'floatc'		=> 'Center',
 					'floatr'		=> 'Right',
 				)
-			),
-		
-		);
-		
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
-				'type' 			=> 'colorpicker',
-				'name' 			=> 'Pdf Icon Color',
-				'id' 			=> '_pdf_icon_color_',
-				'tooltip' 		=> 'Choose the color of the pdf icon',
 			),
 		
 		);
@@ -149,8 +137,6 @@
 		$style 		= ' '.$values['_pdf_style_'];
 		$align		= ' '.$values['_pdf_align_'];
 		$state		= ' '.$values['_pdf_state_'];
-		$icon		= $values['_pdf_icon_'];
-		$iconcolor	= ' '.$values['_pdf_icon_color_'];
 		
 		// Check to see if Icon was set
 		if ($icon != 'no-icon') {
