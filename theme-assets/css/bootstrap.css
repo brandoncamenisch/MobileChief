@@ -4412,9 +4412,3 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
-
-.coupon {
-	padding: 1em;
-	text-align: center;
-	border: 3px dashed #ccc; 
-}
