@@ -17,7 +17,7 @@
 				'Screenshot'	=> 'clean_screenshot.png',
 				'Page Elements'	=> 'Yes',
 				'Settings Panel'=> 'Yes',
-				'Description'	=> 'Jarred smells'
+				'Description'	=> 'This is the theme description.'
 			),
 		);
 		
