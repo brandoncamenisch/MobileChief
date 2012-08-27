@@ -30,7 +30,9 @@
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/bootstrap-carousel.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/bootstrap-typeahead.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>mobile-themes/clean-theme/theme/js/custom.js"></script>
+    <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/jquery.neosmart.fb.wall.js"></script>
+    <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/jquery.tweet.js"></script>
 
-
+    <?php msb_footer_after(); ?>
   </body>
 </html>

@@ -18,6 +18,7 @@
 
     <!-- Le styles -->
     <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/css/app.css" rel="stylesheet">
     <link href="<?php echo $pluginchiefmsbdir; ?>theme-assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="<?php echo $pluginchiefmsbdir; ?>css/font-awesome/css/font-awesome.css" rel="stylesheet">
 

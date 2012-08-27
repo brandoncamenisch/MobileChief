@@ -1025,3 +1025,5 @@ function plchf_msb_googl_shortlink($url) {
 	
 	}
 	add_action('admin_init','plchf_flush_permalinks');
+
+function msb_footer_after() { do_action('msb_footer_after'); }
