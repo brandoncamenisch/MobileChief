@@ -192,15 +192,9 @@
 		
 		}
 		
+<<<<<<< HEAD
 		// If iOS
 		if ($plchf_msb_device_detect->isiOS()) {
-		// Output a Paragraph with the Click To Call
-		echo '
-		<p>
-			<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
-			<div class="clearfix"></div>
-		</p>
-		';
 		
 			// Output a Paragraph with the Click To Call
 			$output .= '
@@ -235,6 +229,15 @@
 		
 		// Output the Button with a Filter
 		echo apply_filters('plchf_msb_page_element_output_click_to_sms_filter',$output);
+=======
+		// Output a Paragraph with the Click To Call
+		echo '
+		<p>
+			<a href="sms://'.$number.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+			<div class="clearfix"></div>
+		</p>
+		';
+>>>>>>> d18a57b65429f667a0949bebdd2d0ce2a1b76d42
 		
 	}
 	

@@ -7,7 +7,7 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-
+html {zoom:.8;}
 article,
 aside,
 details,
@@ -4411,4 +4411,10 @@ a.badge:hover {
 
 .invisible {
   visibility: hidden;
+}
+
+.coupon {
+	padding: 1em;
+	text-align: center;
+	border: 3px dashed #ccc; 
 }
