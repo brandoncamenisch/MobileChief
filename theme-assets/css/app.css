@@ -1,3 +1,16 @@
+/* General class for 2 column support with bootstrap */
+@media all and (max-width: 480px)  {
+    .ns {
+        float: left !important;
+        width: 50% !important;
+
+    }
+}
+
+/* Google Maps */
+.gmnoprint, #gmap_canvas > div > div > a > div > img{display:none;}
+
+
 /* COUPON */
 .coupon {
 	padding: 1em;
@@ -5,7 +18,8 @@
 	border: 3px dashed #ccc; 
 }
 
-
+/* FACEBOOK LIKE BOX */
+#fbcomments, .fb_iframe_widget, .fb_iframe_widget[style], .fb_iframe_widget iframe[style], #fbcomments iframe[style],#fb-like-box > span {width: 100% !important;}
 
 /* FACEBOOK WALL */
 	.fb-wall{

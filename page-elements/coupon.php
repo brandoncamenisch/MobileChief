@@ -64,8 +64,6 @@
 		// Get the Values
 		$title 		= $values['_coupon_title_'];
 		$content 	= $values['_coupon_content_'];
-		$style		= ' '.$values['_coupon_style_'];
-		$dismiss	= $values['_coupon_dismiss_'];
 		
 		// Output a Paragraph with the Coupon
 		$output .= '<div class="coupon">';
