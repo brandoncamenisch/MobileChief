@@ -17,7 +17,7 @@
 	
 	}
 	
-	// add_action('admin_menu', 'pluginchiefmsb_edit_page_menu_page');
+	add_action('admin_menu', 'pluginchiefmsb_edit_page_menu_page');
 	
 /* ---------------------------------------------------------------------------- */
 /* Create the Menu Page Content
