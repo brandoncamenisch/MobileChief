@@ -61,72 +61,81 @@ function mobile_site_builder_sites() {
 							
 					?>
 							
-					<div id="site-name" class="widget">
-						
-						<div class="widget-top">
-						
-							<div class="widget-title-action">
+						<div id="site-name" class="widget" data-siteid="<?php echo $site->ID; ?>">
 							
-								<a class="widget-action hide-if-no-js" href="#"></a>
+							<div class="widget-top">
 							
-							</div><!-- / Widget Title Action -->
-							
-							<div class="widget-title">
-							
-								<h4><?php echo $site->post_title; ?></h4>
-							
-							</div><!-- / Widget Title -->
-						
-						</div><!-- / Widget Top -->
-						
-						<div class="module-inside">
-						
-							<h3 class="section-title floatl">
+								<div class="widget-title-action">
 								
-								<?php echo $site->post_title; ?>
-							
-							</h3><!-- End Title -->
-							
-							<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
-							
-							<div class="clear"></div>
-							
-							<hr>
-							
-							<div class="clear"></div>
-							
-							<div class="one_third">
-							
-								<h4>Site Preview</h4>
+									<a class="widget-action hide-if-no-js" href="#"></a>
 								
-								QR Code goes here.
+								</div><!-- / Widget Title Action -->
 								
-								Google Shortlink Goes Here
+								<div class="widget-title">
 								
-							</div>
-							
-							<div class="one_third">
-							
-								<h4>Pages</h4>
+									<h4><?php echo $site->post_title; ?></h4>
 								
-								List pages within this site
+								</div><!-- / Widget Title -->
+							
+							</div><!-- / Widget Top -->
+							
+							<div class="module-inside">
+							
+								<h3 class="section-title floatl">
+									
+									<?php echo $site->post_title; ?>
 								
-							
-							</div>
-							
-							<div class="one_third column-last">
-							
-								<h4>Site</h4>
+								</h3><!-- End Title -->
 								
-								List Details for the site
-							
-							</div>
-							
-							<div class="clear"></div>
-						
-						</div><!-- / Module Inside -->
+								<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+								
+								<div class="clear"></div>
+								
+								<hr>
+								
+								<div class="clear"></div>
+								
+								<?php do_action('plchf_msb_sites_page_above_site_info'); ?>
+								
+								<div class="clear"></div>
+								
+								<div class="one_fourth">
+								
+									<h4>Site Preview</h4>
+									
+									<?php plchf_msb_qrcode_preview($site->ID); ?>
 					
-					</div><!-- /Widget -->
+									<?php plchf_msb_site_shortlink($site->ID); ?>
+									
+								</div>
+								
+								<div class="three_fourth column-last">
+								
+									<div class="one_half">
+									
+										<h4>Pages</h4>
+										
+										List pages within this site
+									
+									</div>
+									
+									<div class="one_half column-last">
+									
+										<h4>Site</h4>
+										
+										List Details for the site
+									
+									</div>
+								
+								</div>
+								
+								<div class="clear"></div>
+								
+								<?php do_action('plchf_msb_sites_page_below_site_info'); ?>
+							
+							</div><!-- / Module Inside -->
+						
+						</div><!-- /Widget -->
 					
 					<?php
 					

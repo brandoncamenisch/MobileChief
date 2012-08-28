@@ -17,7 +17,7 @@
 	
 	}
 	
-	add_action('admin_menu', 'pluginchiefmsb_edit_site_menu_page');
+	// add_action('admin_menu', 'pluginchiefmsb_edit_site_menu_page');
 	
 /* ---------------------------------------------------------------------------- */
 /* Create the Menu Page Content
@@ -97,9 +97,9 @@
 					
 					<hr>
 						
-					<?php plchf_msb_qrcode_preview(); ?>
+					<?php plchf_msb_qrcode_preview($site_id); ?>
 					
-					<?php plchf_msb_site_shortlink(); ?>
+					<?php plchf_msb_site_shortlink($site_id); ?>
 				
 				</div><!-- One Fifth -->
 				

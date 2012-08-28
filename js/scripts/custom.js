@@ -247,6 +247,9 @@ jQuery(document).ready(function($){
 
 	function plchf_msb_refresh_iphone_preview() {
 	
+		var mainContent 		= $('#pluginchiefmsb-wrapper').html();
+		var pageElementContent 	= $(this).html();
+	
 		$('.mobile-preview-loader').fadeIn();
 		$('#preview-frame').attr('src', $('#preview-frame').attr('src'));
 		$('.mobile-preview-loader').delay(300).fadeOut();
@@ -274,6 +277,30 @@ jQuery(document).ready(function($){
 	}
 	
 	plchf_msb_iphone_preview_sticky();
+
+/* ----------------------------------------------------------------------------
+	Upload Media with Thickbox Image Uploader
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_upload_media_from_page_element_field(){
+		
+		$('.upload_image_button').live("click", function(event){
+			formfield = $(this).prev('.upload_image');
+			tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+			return false;
+		});
+		 
+		window.send_to_editor = function(html) {
+			
+			imgurl = $('img',html).attr('src');
+			formfield.val(imgurl);
+			tb_remove();
+		
+		}	
+		
+	}
+	
+	plchf_msb_upload_media_from_page_element_field();
 		
 /* ----------------------------------------------------------------------------
 	Toggle Mobile Site Builder Settings Panels
@@ -378,6 +405,16 @@ jQuery(document).ready(function($){
 	
 	}
 	
+/* ----------------------------------------------------------------------------
+	Delete Site
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_delete_site() {
+		
+		
+		
+	}
+
 /* ----------------------------------------------------------------------------
 	Remove Page Elements
 ---------------------------------------------------------------------------- */

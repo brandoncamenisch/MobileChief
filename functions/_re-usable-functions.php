@@ -16,7 +16,6 @@
     	wp_enqueue_style('plchf_msb_font_awesome_styles');
     	wp_enqueue_style('plchf_msb_admin_styles');
 
-
     	// Enqueue JS
     	add_thickbox();
     	wp_enqueue_script('jquery');
@@ -248,7 +247,24 @@
 		
 	function plchf_msb_get_page_id(){
 		
-		$page_id = $_GET['mobilesite_page_id'];
+		if (is_admin())  {
+		
+			$screen = get_current_screen();
+		
+			// Get Screen ID on Edit Page, page
+			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
+
+				$page_id = $_GET['mobilesite_page_id'];
+		
+			}
+		
+		} else {
+			
+			global $post, $wp_query;
+			
+			$page_id = $wp_query->post->ID;
+			
+		}
 		
 		return apply_filters('plchf_msb_get_page_id_filter', $page_id);
 		
@@ -265,7 +281,68 @@
 		return apply_filters('plchf_phone_preview_image',$pluginchiefmsbdir . 'images/iphone.png');	
 		
 	}
+
+/* ----------------------------------------------------------------------------
+	Multiple Image Uploads in WordPress Front End
+---------------------------------------------------------------------------- */
+
+	function insert_attachment($file_handler,$post_id,$setthumb='false') {
 	
+		// check to make sure its a successful upload
+		if ($_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK) __return_false();
+		
+		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+		require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+		require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+		
+		$attach_id = media_handle_upload( $file_handler, $post_id );
+		
+		if ($setthumb) update_post_meta($post_id,'_thumbnail_id',$attach_id);
+		return $attach_id;
+	
+	}	
+
+/*-----------------------------------------------------------------------------------*/
+/* Upload Images
+/*-----------------------------------------------------------------------------------*/
+
+function plchf_msb_upload_images () {
+	
+	if(isset($_POST['page_elements_nonce']) && wp_verify_nonce($_POST['page_elements_nonce_field'], 'page_elements_nonce')) {
+
+		$redirect	= $_POST['redirect'];
+		$post_id 	= $_POST['post_id'];
+		
+		if ( $_FILES ) {
+			$files = $_FILES['upload_attachment'];
+				foreach ($files['name'] as $key => $value) {
+					if ($files['name'][$key]) {
+						$file = array(
+							'name' 		=> $files['name'][$key],
+							'type' 		=> $files['type'][$key],
+							'tmp_name' 	=> $files['tmp_name'][$key],
+							'error' 	=> $files['error'][$key],
+							'size' 		=> $files['size'][$key]
+						);
+		
+					$_FILES = array("upload_attachment" => $file);
+		
+					foreach ($_FILES as $file => $array) {
+						$newupload = insert_attachment($file, $post_id);
+					}
+				}
+			}
+		}
+		
+		//wp_redirect(''.$redirect.'');
+		//exit;
+	
+	}
+
+}
+
+add_action('init', 'plchf_msb_upload_images');
+
 /* ----------------------------------------------------------------------------
 	Set the Mobile Phone Preview Content
 ---------------------------------------------------------------------------- */
@@ -408,6 +485,47 @@
 		
 		// Run Action After Page Generator Form
 		do_action('plchf_msb_after_page_generator');
+		
+	}
+
+/* ----------------------------------------------------------------------------
+	Function to Get the Values of the Page Elements
+---------------------------------------------------------------------------- */	
+
+	function plchf_msb_get_page_element_field( $element_field ){
+		
+		// Get the Page ID
+		$page_id = plchf_msb_get_page_id();
+		
+		// Get teh Page Elements
+		$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
+		
+		if ($elements) {
+			
+			// Loop Throught Elements Array
+			foreach ($elements as $element) {
+			
+				// Loop through the elements
+				foreach ($element as $element_type) {
+
+					// Loop through all element fields within the element
+					foreach ($element_type as $key => $value) {
+				    	
+				    	// The it's the element field we're looking for
+				    	if ($element_field == $key) {
+				    		
+				    		// Return The Value
+				    		return $value;
+				    	
+				    	}
+				    	
+			    	}
+				
+				}
+				
+			}
+			
+		}
 		
 	}
 
@@ -764,7 +882,7 @@
 			 
 				$site_id = $_GET['mobilesite_site_id'];	 
 				    
-		    } 
+		    }
 		
 		// If Front End
 		} else {
@@ -805,10 +923,16 @@
 	QR Code Site Preview
 ---------------------------------------------------------------------------- */	
    
-    function plchf_msb_qrcode_preview() {
+    function plchf_msb_qrcode_preview($id) {
 	    
 	    // Get Site ID
 	    $site_id = plchf_msb_get_site_id();
+	    
+	    if ($id) {
+		    $site_id = $id;
+	    } else if ($site_id) {
+		    $site_id = $site_id;
+	    }
 	    
 	    // Get Permalink for the Site ID
 	    $permalink = get_permalink($site_id);
@@ -861,10 +985,16 @@ function plchf_msb_googl_shortlink($url) {
 	Mobile Site Shortlink
 ---------------------------------------------------------------------------- */	
       
-    function plchf_msb_site_shortlink() {
+    function plchf_msb_site_shortlink($id) {
 	    
 	    // Get Site ID
 	    $site_id = plchf_msb_get_site_id();
+	    
+	    if ($id) {
+		    $site_id = $id;
+	    } else if ($site_id) {
+		    $site_id = $site_id;
+	    }
 	    
 	    // Get Permalink for the Site ID
 	    $permalink = get_permalink($site_id);
@@ -873,7 +1003,7 @@ function plchf_msb_googl_shortlink($url) {
 	    
 	    $output .= '<hr>';
 	    
-	    $output .= '<h2>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</h2>';
+	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</strong> ';
 	    
 	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'">'.plchf_msb_googl_shortlink($permalink).'</a>';
 	    
@@ -977,7 +1107,7 @@ function plchf_msb_googl_shortlink($url) {
 			do_action('plchf_msb_after_create_new_site', $new_site);
 			
 			// Redirect to Edit Site Page
-			wp_redirect(apply_filters('plchf_msb_redirect_after_create_site','admin.php?page=pluginchiefmsb/edit-site&site_id='.$new_site.''));
+			wp_redirect(apply_filters('plchf_msb_redirect_after_create_site','admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$new_site.''));
 			
 		}
 		

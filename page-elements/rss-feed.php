@@ -61,6 +61,13 @@
 		$feed 			= $values['_rss_feed_'];
 		$result_count 	= $values['_rss_results_'];
 		
+		// Set Default Feed Value to make sure it doesn't throw an error
+		if ($feed) {
+			$feed = $feed;
+		} else {
+			$feed = 'http://www.nytimes.com/services/xml/rss/nyt/World.xml';
+		}
+		
 		// Get RSS Feed Contents
 	    $rss = file_get_contents($feed);  
 	    
@@ -92,7 +99,8 @@
 		    
 		    $output .=  "</div>"; 
 		} 
-	
+		
+		// Output the Content
 		echo apply_filters('plchf_msb_page_element_output_rss_feed_filter', $output);
 		
 	}

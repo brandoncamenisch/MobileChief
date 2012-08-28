@@ -44,27 +44,30 @@
 /* ---------------------------------------------------------------------------- */
 /* Display Output for the Text Element
 /* ---------------------------------------------------------------------------- */
-	function plchf_msb_page_output_facebook_wall($count, $values) {
-
-		$url = $values['_facebook_wall_'];
+	
+	function plchf_msb_page_output_element_facebook_wall() {
+		
+		$url = plchf_msb_get_page_element_field('_facebook_wall_');
 		
 	    echo "<script>
     		$(function(){
 	    		$('#fbwall').fbWall({ id:'".$url."',accessToken:'350020295079226|dbDly3sP75_C74zEUAbwQLIlOl4'});
-	    		});
+	    	});
 	    </script>";
 
 		
 	}
 	
-	add_action('msb_footer_after','plchf_msb_page_output_facebook_wall', 10, 2);
+	add_action('plchf_msb_theme_footer','plchf_msb_page_output_element_facebook_wall', 10);
 
 
 
 	function plchf_msb_page_element_output_facebook_wall($values) {
+		
 		$url = $values['_facebook_wall_'];
+		
 		// Get the Values
-   	$output .= '<div id="fbwall">'.$url.'</div>';
+		$output .= '<div id="fbwall">'.$url.'</div>';
 		
 		echo apply_filters('plchf_msb_page_element_output_facebook_wall_filter',$output);
 		

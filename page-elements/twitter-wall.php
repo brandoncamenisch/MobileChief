@@ -69,43 +69,60 @@
 /* ---------------------------------------------------------------------------- */
 /* Display Output for the Twitter Element
 /* ---------------------------------------------------------------------------- */
+	
+	// Output the jQuery for the Twitter Script
 	function plchf_msb_page_element_output_twitter_wall_script() {
 
-		$url = $values['_twitter_wall_'];
+		// Get the Value of the Page Element Field
+		$handle = plchf_msb_get_page_element_field('_twitter_wall_');
+		$count = plchf_msb_get_page_element_field('_twitter_count_');
 		
-	    echo '<script type="text/javascript">
-	    		jQuery(function($){
-        $(".tweet").tweet({
-            username: "visioniz",
-            join_text: "auto",
-            avatar_size: 32,
-            count: 3,
-            auto_join_text_default: "we said,", 
-            auto_join_text_ed: "we",
-            auto_join_text_ing: "we were",
-            auto_join_text_reply: "we replied to",
-            auto_join_text_url: "we were checking out",
-            loading_text: "loading tweets..."
-        });
-        });
+		if ($handle) {
+			$handle = $handle;
+		} else {
+			$handle = 'visioniz';
+		}
+		
+		if ($count) {
+			$count = $count;
+		} else {
+			$count = 3;
+		}
+		
+	    $output .= '
+	    <script type="text/javascript">
+		    jQuery(function($){
+		        $(".tweet").tweet({
+		            username: "'.$handle.'",
+		            join_text: "auto",
+		            avatar_size: 32,
+		            count: '.$count.',
+		            auto_join_text_default: "we said, ", 
+		            auto_join_text_ed: "we ",
+		            auto_join_text_ing: "we were ",
+		            auto_join_text_reply: "we replied to ",
+		            auto_join_text_url: "we were checking out ",
+		            loading_text: "loading tweets..."
+		        });
+	        });
         </script>
         ';
-
-		
+        
+        echo apply_filters('plchf_msb_page_element_output_twitter_wall_script_filter', $output);
+        
 	}
-	add_action('msb_footer_after','plchf_msb_page_element_output_twitter_wall_script', 10, 1);
-
-
+	
+	add_action('plchf_msb_theme_footer','plchf_msb_page_element_output_twitter_wall_script', 10);
+	
 
 	function plchf_msb_page_element_output_twitter_wall($values) {
 
 		// Get the Values
+		$output .= '<div class="tweet"></div>';
 
-   	$output .= ('<div class="tweet"></div>');
-
-		
+		// Output with a Filter
 		echo apply_filters('plchf_msb_page_element_output_twitter_wall_filter',$output);
 		
 	}
 	
-	add_action('plchf_msb_page_element_output_twitter_wall','plchf_msb_page_element_output_twitter_wall', 1, 1);
+	add_action('plchf_msb_page_element_output_twitter_wall','plchf_msb_page_element_output_twitter_wall', 10, 1);

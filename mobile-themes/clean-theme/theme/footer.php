@@ -33,6 +33,7 @@
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/jquery.neosmart.fb.wall.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/jquery.tweet.js"></script>
 
-    <?php msb_footer_after(); ?>
+    <?php plchf_msb_theme_footer(); ?>
+  
   </body>
 </html>

@@ -135,22 +135,6 @@
 		$fields[] = array(
 			
 			'field' 	=> array(
-				'type' 			=> 'select',
-				'name' 			=> 'Button State',
-				'id' 			=> '_button_state_',
-				'tooltip' 		=> 'Choose the state of the button',
-				'options' 		=> array(
-					'enabled'		=> 'Enabled',
-					'disabled'		=> 'Disabled',
-				)
-			),
-		
-		);
-		
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
 				'type' 			=> 'icon_select',
 				'name' 			=> 'Button Icon',
 				'id' 			=> '_button_icon_',
@@ -190,7 +174,6 @@
 		$size 		= ' '.$values['_button_size_'];
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];
-		$state		= ' '.$values['_button_state_'];
 		$icon		= $values['_button_icon_'];
 		$iconcolor	= ' '.$values['_button_icon_color_'];
 		
@@ -216,7 +199,7 @@
 		// Output a Paragraph with the Address Button
 		echo '
 		<p>
-			<a href="href="http://maps.google.com/?q='.$address.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
+			<a href="href="http://maps.google.com/?q='.$address.'" class="btn'.$align.$style.$size.'" target="'.$target.'">'.$icon.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
 		';

@@ -136,7 +136,6 @@
 		$size 		= ' '.$values['_pdf_size_'];
 		$style 		= ' '.$values['_pdf_style_'];
 		$align		= ' '.$values['_pdf_align_'];
-		$state		= ' '.$values['_pdf_state_'];
 		
 		// Check to see if Icon was set
 		if ($icon != 'no-icon') {
@@ -160,7 +159,7 @@
 		// Output a Paragraph with the Pdf
 		echo '
 		<p>
-			<a href="'.$url.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'"><img src="'.PLUGINCHIEFMSB.'/theme-assets/img/pdf.png" alt="pdf" width="25px" height="auto" />&nbsp;'.$text.'</a>
+			<a href="'.$url.'" class="btn'.$align.$style.$size.'" target="'.$target.'"><img src="'.PLUGINCHIEFMSB.'/theme-assets/img/pdf.png" alt="pdf" width="25px" height="auto" />&nbsp;'.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
 		';

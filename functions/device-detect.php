@@ -1,22 +1,22 @@
 <?php
 /**
  * Mobile Detect
- * $Id: Mobile_Detect.php 51 2012-08-03 02:16:06Z serbanghita@gmail.com $
+ * $Id: PlchfMSB_Mobile_Detect.php 51 2012-08-03 02:16:06Z serbanghita@gmail.com $
  *
- * @author      Mobile_Detect v.1.0 Victor Stanciu <vic.stanciu@gmail.com>
- *              Mobile_Detect v.2.x Serban Ghita <serban.ghita@gmail.com>
+ * @author      PlchfMSB_Mobile_Detect v.1.0 Victor Stanciu <vic.stanciu@gmail.com>
+ *              PlchfMSB_Mobile_Detect v.2.x Serban Ghita <serban.ghita@gmail.com>
  * 
- * @usage      require_once 'Mobile_Detect.php';
- *             $detect = new Mobile_Detect();
+ * @usage      require_once 'PlchfMSB_Mobile_Detect.php';
+ *             $detect = new PlchfMSB_Mobile_Detect();
  *             $detect->isMobile() or $detect->isTablet()
  * 
  *             For more specific usage see the documentation navigate to:
- *             http://code.google.com/p/php-mobile-detect/wiki/Mobile_Detect
+ *             http://code.google.com/p/php-mobile-detect/wiki/PlchfMSB_Mobile_Detect
  * 
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
-class Mobile_Detect {
+class PlchfMSB_Mobile_Detect {
 
     // External info.
     protected $userAgent = null;
@@ -315,4 +315,4 @@ class Mobile_Detect {
     
 }
 
-$plchf_msb_device_detect = new Mobile_Detect();
+$plchf_msb_device_detect = new PlchfMSB_Mobile_Detect();

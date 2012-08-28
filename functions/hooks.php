@@ -52,3 +52,17 @@
     	do_action('pluginchiefmsb_admin_settings');
     
     }
+    
+    // Theme Header
+    function plchf_msb_theme_header() {
+	    
+	    do_action('plchf_msb_theme_header');
+	    
+    }
+    
+    // Theme Footer
+    function plchf_msb_theme_footer() {
+	    
+	    do_action('plchf_msb_theme_footer');
+	    
+    }
