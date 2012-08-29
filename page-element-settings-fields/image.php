@@ -22,7 +22,7 @@ function plchf_msb_page_element_settings_field_image($fields, $element_type, $co
 	$output .= '<p>'.$tooltip.'</p>';
 	
 	$output .= '
-	<input class="upload_image" type="text" size="36" name="element['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'" />
+	<input class="upload_image" type="text" size="36" name="field['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'" />
 	<input class="upload_image_button button-primary" type="button" value="Upload Image" />
 	';
 	

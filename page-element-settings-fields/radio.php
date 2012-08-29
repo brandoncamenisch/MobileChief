@@ -35,7 +35,7 @@ function plchf_msb_page_element_settings_field_radio($fields, $element_type, $co
 			$checked = ' checked="checked"';
 		}
 			
-		$output .= '<input type="radio" name="element['.$element_type.'_'.$count.']['.$field_id.']" value="'.$option_key.'"'.$checked.'> '.$option_value.'<br/>';
+		$output .= '<input type="radio" name="field['.$element_type.'_'.$count.']['.$field_id.']" value="'.$option_key.'"'.$checked.'> '.$option_value.'<br/>';
 		
 	}
 	

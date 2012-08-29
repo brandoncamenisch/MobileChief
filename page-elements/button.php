@@ -161,7 +161,7 @@
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];
 		$icon		= $values['_button_icon_'];
-		$iconcolor	= ' '.$values['_button_icon_color_'];
+		$iconcolor	= ' '.$values['_button_icon_color_'][0];
 		
 		// Check to see if Icon was set
 		if ($icon != 'no-icon') {

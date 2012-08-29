@@ -64,11 +64,11 @@
 					'placeholder' 	=> 'Select a Color',
 				),
 				array(
-					'type' 			=> 'text',
-					'name' 			=> 'Background Color',
-					'id' 			=> '_bg_color_',
-					'tooltip' 		=> 'Choose the Background Color',
-					'placeholder' 	=> 'Select a Color',
+					'type' 			=> 'image',
+					'name' 			=> 'Site Logo',
+					'id' 			=> '_logo_',
+					'tooltip' 		=> 'Upload a Site Logo',
+					'placeholder' 	=> 'Logo should be .jpg or .png',
 				),
 			),
 		

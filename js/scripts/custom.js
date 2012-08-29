@@ -11,28 +11,6 @@ jQuery(document).ready(function($){
 	}
 	
 	plchf_msb_dropdowns();
-
-/* ----------------------------------------------------------------------------
-	DDSlick - Slick Dropdown Selects
----------------------------------------------------------------------------- */
-	
-	/*
-	
-	function plchf_msb_slick_menus() {
-		
-		$('.slick-dropdown').ddslick({
-			onSelected: function(data){
-				if(data.selectedIndex > 0) {
-	                $(this).nextAll('.slick-dropdown-value').attr('value', data.selectedData.value);
-	            }
-			}
-		});
-	
-	}
-	
-	plchf_msb_slick_menus();
-	
-	*/
 	
 /* ----------------------------------------------------------------------------
 	jQuery Slider Form Input
@@ -369,16 +347,13 @@ jQuery(document).ready(function($){
 	
 	plchf_msb_ajax_save_page_elements_on_click();
 	
+	
 /* ----------------------------------------------------------------------------
 	Save Mobile Page Content
 ---------------------------------------------------------------------------- */
 			
 	function plchf_msb_save_mobile_page_content() {
-	
-		// $('form').bind('form-pre-serialize', function(e) {
-		//    tinyMCE.triggerSave();
-		// });
-	
+
 		var elementForm = $('#page-generator').serialize();
 		var postID 		= $('.page-generator').attr('data-postid');
 		
@@ -405,6 +380,67 @@ jQuery(document).ready(function($){
 	
 	}
 	
+/* ----------------------------------------------------------------------------
+	AJAX - Save Site Options On Click
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_ajax_save_site_options_on_click() {
+		
+		var ajaxsave = $('.site-options-ajaxsave');
+		
+		ajaxsave.live('click', function(event){
+			
+			// Prevent Default Button Action
+			event.preventDefault();
+			
+			// Submit Form to be Saved
+			plchf_msb_save_mobile_site_options();
+			
+			
+		});
+		
+	}
+	
+	plchf_msb_ajax_save_site_options_on_click();
+	
+	
+/* ----------------------------------------------------------------------------
+	Save Mobile Site Options
+---------------------------------------------------------------------------- */
+			
+	function plchf_msb_save_mobile_site_options() {
+		
+		// Serialize the Form
+		var optionsForm = $('#site-settings').serialize();
+		
+		// Get the Site ID
+		var siteID 		= $('.site-settings').attr('data-postid');
+		
+		// Get the Data in a String
+		var data = '' + optionsForm + '&site_id=' + siteID + '&action=plchf_msb_save_site_options_ajax';
+	
+		// Submit the data with AJAX
+		$.ajax({
+			type: 'POST',
+		  	url: ajaxurl,
+		  	data: data,
+		  	success: function(response){
+		  		
+		  		// Display AJAX Response
+		  		// alert(response);
+		  		
+		  		// Refresh the iPhone Preview
+		  		plchf_msb_refresh_iphone_preview();
+		  		
+				return false;
+				die();
+		  		
+		  		}
+			  		
+			});
+	
+	}
+
 /* ----------------------------------------------------------------------------
 	Delete Site
 ---------------------------------------------------------------------------- */

@@ -26,7 +26,7 @@ function plchf_msb_page_element_settings_field_timepicker($fields, $element_type
 	</label>';
 	
 	$output .= '
-	<input type="text" name="element['.$element_type.'_'.$count.']['.$field_id.']" class="timepicker" value="'.$value.'" >
+	<input type="text" name="field['.$element_type.'_'.$count.']['.$field_id.']" class="timepicker" value="'.$value.'" >
 	';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_text_area_filter', $output);

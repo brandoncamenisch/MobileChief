@@ -27,7 +27,7 @@ function plchf_msb_page_element_settings_field_password($fields, $element_type, 
 	</label>';
 	
 	$output .= '
-	<input type="password" name="element['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
+	<input type="password" name="field['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
 	';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_password_area_filter', $output);

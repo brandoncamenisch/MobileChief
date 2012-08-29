@@ -1,7 +1,15 @@
 <?php
 
 /* ----------------------------------------------------------------------------
+	
 	Create a Function to Enqueue Styles & Scripts
+	
+	Usage: Call this function within a wp_enqueue_scripts function to enqueue the scripts
+	
+	NOTE: 
+	This was abstracted to an individual function so we can call it 
+	in multiple places, such as the Front-End Add-On
+	
 ---------------------------------------------------------------------------- */	
 
 	function plchf_msb_enqueue_plugin_scripts_and_styles() {
@@ -35,7 +43,32 @@
     }
 
 /* ----------------------------------------------------------------------------
+	
+	Hide Submenu Pages
+
+	This enqueues a js that we need on ALL admin pages, such as the JS that 
+	hides the edit-site and edit-page pages from the admin sub-menus. 
+	
+	We use jQuery because remove_submenu_page breaks the page functionality. 
+	(Perhaps there's a more elegant way around this?)
+	
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_all_admin_js() {
+		
+		wp_enqueue_script('plchf_msb_all_admin', 	PLUGINCHIEFMSB . 'js/scripts/admin.js');
+		
+	}
+	
+	add_action('admin_enqueue_scripts','plchf_msb_all_admin_js');
+
+/* ----------------------------------------------------------------------------
+	
 	Enqueue Styles & Scripts
+	
+	This enqueues the scripts and styles on any of the 
+	PluginChief Mobile Site Builder Admin Pages
+	
 ---------------------------------------------------------------------------- */	
 	
 	function plchf_msb_enqueue_styles_and_scripts() {
@@ -60,7 +93,12 @@
     add_action( 'admin_enqueue_scripts', 'plchf_msb_enqueue_styles_and_scripts' );
     
 /* ----------------------------------------------------------------------------
+	
 	Setup Settings Pages Template Files
+
+	Here we set up some hooks that we can use in any admin pages for the Mobile Site Builder. 
+	These allow us to hook into certain parts of the templates. 
+
 ---------------------------------------------------------------------------- */
 	
 	// Get the Header for Admin Pages
@@ -94,7 +132,11 @@
 	}
 
 /* ----------------------------------------------------------------------------
+	
 	Check What PLUGINCHIEFMSB Page We're On
+
+	This checks to see if we're on a Pluginchief MSB page
+	
 ---------------------------------------------------------------------------- */
 
 	function is_pluginchiefmsb_page(){
@@ -115,7 +157,7 @@
 	
 	Get What PLUGINCHIEFMSB Page We're On, so we can do checks when necessary
 
-	Usage: if (get_pluginchiefmsb_page()) {
+	Example: if (get_pluginchiefmsb_page()) { // Do Something } else { // Do something else }
 
 ---------------------------------------------------------------------------- */
 
@@ -141,7 +183,7 @@
 	
 	Add Page Element Section to the Page Element menu on the "Edit Mobile Page" page
 	
-	usage: 
+	Example: 
 	
 	function add_new_element_section() {
 	
@@ -200,7 +242,12 @@
 	}
 
 /* ----------------------------------------------------------------------------
+	
 	Get the Page Title that we're editing
+	
+	This function gets the Page Title based on the Page ID, 
+	for use on the edit page page
+
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_get_page_title(){
@@ -214,7 +261,12 @@
 	}
 	
 /* ----------------------------------------------------------------------------
+	
 	Get the Site Title that we're editing
+
+	This function gets the Site Title based on the Site ID, 
+	for use on the edit page page
+	
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_get_site_title($id) {
@@ -242,7 +294,9 @@
 	}
 
 /* ----------------------------------------------------------------------------
-	Get the Page ID that we're editing
+	
+	Get the Page ID, whether we're on the edit page screen or on the Non-Admin side
+	
 ---------------------------------------------------------------------------- */
 		
 	function plchf_msb_get_page_id(){
@@ -271,7 +325,12 @@
 	}
 	
 /* ----------------------------------------------------------------------------
+	
 	Set the Mobile Phone Preview Image
+	
+	This allows us to filter the image, so if we wanted to show an Android rather than an iPhone, for example, we could. . .
+	or perhaps we offer users to preview their site on a White iPhone instead of Black! haha!
+	
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_phone_preview_image(){
@@ -283,68 +342,11 @@
 	}
 
 /* ----------------------------------------------------------------------------
-	Multiple Image Uploads in WordPress Front End
----------------------------------------------------------------------------- */
-
-	function insert_attachment($file_handler,$post_id,$setthumb='false') {
 	
-		// check to make sure its a successful upload
-		if ($_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK) __return_false();
-		
-		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-		require_once(ABSPATH . "wp-admin" . '/includes/file.php');
-		require_once(ABSPATH . "wp-admin" . '/includes/media.php');
-		
-		$attach_id = media_handle_upload( $file_handler, $post_id );
-		
-		if ($setthumb) update_post_meta($post_id,'_thumbnail_id',$attach_id);
-		return $attach_id;
-	
-	}	
-
-/*-----------------------------------------------------------------------------------*/
-/* Upload Images
-/*-----------------------------------------------------------------------------------*/
-
-function plchf_msb_upload_images () {
-	
-	if(isset($_POST['page_elements_nonce']) && wp_verify_nonce($_POST['page_elements_nonce_field'], 'page_elements_nonce')) {
-
-		$redirect	= $_POST['redirect'];
-		$post_id 	= $_POST['post_id'];
-		
-		if ( $_FILES ) {
-			$files = $_FILES['upload_attachment'];
-				foreach ($files['name'] as $key => $value) {
-					if ($files['name'][$key]) {
-						$file = array(
-							'name' 		=> $files['name'][$key],
-							'type' 		=> $files['type'][$key],
-							'tmp_name' 	=> $files['tmp_name'][$key],
-							'error' 	=> $files['error'][$key],
-							'size' 		=> $files['size'][$key]
-						);
-		
-					$_FILES = array("upload_attachment" => $file);
-		
-					foreach ($_FILES as $file => $array) {
-						$newupload = insert_attachment($file, $post_id);
-					}
-				}
-			}
-		}
-		
-		//wp_redirect(''.$redirect.'');
-		//exit;
-	
-	}
-
-}
-
-add_action('init', 'plchf_msb_upload_images');
-
-/* ----------------------------------------------------------------------------
 	Set the Mobile Phone Preview Content
+	
+	This sets the iFrame content for the live site preview.
+	
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_phone_preview_site(){
@@ -367,14 +369,8 @@ add_action('init', 'plchf_msb_upload_images');
 				// Get the Home Page
 				$id = $_GET['mobilesite_site_id'];
 	    	
-				// Get Site Home Page
-				$posts = get_posts('post_parent='.$id.'&posts_per_page=1');
-	    	
-				foreach ($posts as $post) {
-		    		$id = $post->ID;
-		    	}
-	    	
-		    	$id = $id;
+				// ID of the Home Page we generated on Site Completion
+				$id = get_post_meta($id, '_homepage_', true);
 	    	 	
 		    }
 		 
@@ -399,17 +395,9 @@ add_action('init', 'plchf_msb_upload_images');
 				$id = $_GET['mobilesite_page_id'];
 							
 			} else if ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
-				
+					
+				// Site ID
 				$id = $_GET['mobilesite_site_id'];
-	    	
-				// Get Site Home Page
-				$posts = get_posts('post_parent='.$id.'&posts_per_page=1');
-	    	
-				foreach ($posts as $post) {
-		    		$id = $post->ID;
-		    	}
-	    	
-		    	$id = $id;
 				
 			}
 			
@@ -430,7 +418,23 @@ add_action('init', 'plchf_msb_upload_images');
 	}
 
 /* ----------------------------------------------------------------------------
+	
 	Mobile Page Generator
+
+	This is the form where page elements are added, then submitted to be saved. 
+	
+	There is a hook before the form (so no data is saved from those hooks). . .
+	we can show things like warnings and alerts here or whatever
+	
+	There is a hook at the top of the form (so we can hook in and add settings that will be saved)
+	
+	There is a hook at the bottom of the form (so we can hook in and add settings that will be saved)
+	
+	There is a hook after the form (so no data is saved from those hooks). . .
+	we can show things like warnings and alerts here or whatever
+	
+	
+	
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_page_generator(){
@@ -442,6 +446,9 @@ add_action('init', 'plchf_msb_upload_images');
 
 		// Page Generator Form
 		echo '<form id="page-generator" class="page-generator connected-sortable" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
+		
+			// Run Action at the Top of the Page Generator form
+			do_action('plchf_msb_top_page_generator');
 						
 			$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
 			
@@ -469,14 +476,18 @@ add_action('init', 'plchf_msb_upload_images');
 			} else {
 				
 				// Display Message When No Page Elements Exist
-				echo '<div class="element-placeholder">';
+				echo '<div class="element-placeholder"><br/>';
 					
 					echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
+				
 				echo '</div>';
 			
 			}
 			
-			echo '<button class="ajaxsave button-primary">Save</button>';
+			// Run Action at the Bottom of the Page Generator
+			do_action('plchf_msb_bottom_page_generator');
+			
+			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave button-primary">Save</button>');
 			
 			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
 
@@ -489,7 +500,19 @@ add_action('init', 'plchf_msb_upload_images');
 	}
 
 /* ----------------------------------------------------------------------------
+	
 	Function to Get the Values of the Page Elements
+	
+	This function lets us specify an element field that we want to get a value for
+	
+	An example of usage is the Facebook wall. . .
+	We need to get the value from the page element in order to add JS to the footer of the template
+	
+	NOTE:
+	
+	There's a good chance this MAY need to be re-worked somehow to allow for getting values of fields 
+	for elements when there are multiple instances of the same element on the page.
+	
 ---------------------------------------------------------------------------- */	
 
 	function plchf_msb_get_page_element_field( $element_field ){
@@ -530,6 +553,36 @@ add_action('init', 'plchf_msb_upload_images');
 	}
 
 /* ----------------------------------------------------------------------------
+	
+	Get Site Option
+	
+	This allows us to specify an option from the Site Options array and get the value
+
+---------------------------------------------------------------------------- */	
+
+	function plchf_msb_get_site_option($type, $id) {
+		
+		global $post, $wp_query;
+		
+		$site_id = plchf_msb_get_site_id();
+		
+		$settings = get_post_meta($site_id, '_plchf_msb_site_options', true);
+		
+		if ($settings) {
+		
+			foreach ($settings as $setting) {
+				
+				$output .= $setting[''.$type.$id.''][''.$id.''];
+				
+			} 
+		
+		}
+		
+		return $output;
+		
+	}
+
+/* ----------------------------------------------------------------------------
 	Site Settings Panels
 ---------------------------------------------------------------------------- */	
 	
@@ -538,12 +591,22 @@ add_action('init', 'plchf_msb_upload_images');
 		do_action('plchf_msb_before_site_settings');
 		
 		// Page Generator Form
-		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_page_id().'">';
-		
+		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_site_id().'">';
+			
+			// Run Action at the Top of the Form
+			do_action('plchf_msb_top_site_settings'); 
+			
 			$theme_slug = plchf_msb_get_theme_slug();
 			
 			// Page Generator Content
 			do_action('plchf_msb_site_settings_content_'.$theme_slug.'');
+			
+			// Run Action at the Bottom of the Form
+			do_action('plchf_msb_bottom_site_settings');
+			
+			wp_nonce_field('site_options_nonce', 'site_options_nonce_field');
+			
+			echo apply_filters('plchf_msb_site_settings_save_button','<button class="site-options-ajaxsave button-primary">Save</button>');	
 			
 		// End Form
 		echo '</form>';
@@ -607,6 +670,8 @@ add_action('init', 'plchf_msb_upload_images');
 			echo '<div class="element-placeholder">';
 				echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
 			echo '</div>';
+			
+			echo plchf_msb_get_site_option('colorpicker', '_bg_color_');
 		
 		}
 	    
@@ -618,15 +683,9 @@ add_action('init', 'plchf_msb_upload_images');
 
 	function plchf_msb_save_the_page_elements_ajax() {
 	
-		global $post, $wp_query, $vzclientcenter_pluginroot, $page_elements;
+		global $post, $wp_query;
 			
 		$id	= $_POST['post_id'];
-		
-		if ($id != '') {
-			$id = $id;
-		} else {
-			$id = $post_id;
-		}
 		
 		if (get_post_meta(''.$id.'','_plchf_msb_page_elements', true)) {
 			$page_elements = get_post_meta(''.$id.'','_plchf_msb_page_elements', true);
@@ -638,7 +697,7 @@ add_action('init', 'plchf_msb_upload_images');
 		
 			$page_elements = array();
 										
-				foreach($_POST['element'] as $k => $v) {
+				foreach($_POST['field'] as $k => $v) {
                                        
                 	$page_elements[] = array(
                 		$k => $v,
@@ -659,6 +718,51 @@ add_action('init', 'plchf_msb_upload_images');
 	
 	add_action('wp_ajax_plchf_msb_save_the_page_elements_ajax','plchf_msb_save_the_page_elements_ajax');
 
+/* ----------------------------------------------------------------------------
+	
+	Save Site Options
+	
+	This saves the Site Options using AJAX
+
+---------------------------------------------------------------------------- */	
+
+	function plchf_msb_save_site_options_ajax() {
+		
+		global $post, $wp_query;
+		
+		$id	= $_POST['site_id'];
+		
+		if (get_post_meta(''.$id.'','_plchf_msb_page_elements', true)) {
+			$site_options = get_post_meta(''.$id.'','_plchf_msb_site_options', true);
+		} else {
+			$site_options = false;	
+		}
+		
+		if(isset($_POST['site_options_nonce_field']) && wp_verify_nonce($_POST['site_options_nonce_field'], 'site_options_nonce')) {
+		
+			$site_options = array();
+										
+				foreach($_POST['field'] as $key => $value) {
+                                       
+                	$site_options[] = array(
+                		$key => $value,
+                	);
+                               
+                }
+			
+			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_site_options', $site_options);
+			
+			// Print the Data on return to AJAX
+			// print_r($page_elements);
+			
+			die();
+		
+		}
+	
+	}
+	
+	add_action('wp_ajax_plchf_msb_save_site_options_ajax', 'plchf_msb_save_site_options_ajax');
+	
 /* ----------------------------------------------------------------------------
 	Add Element to Page
 ---------------------------------------------------------------------------- */	
@@ -788,7 +892,7 @@ add_action('init', 'plchf_msb_upload_images');
 			    		$element_type = $element_type_formatted;
 			    		
 			    		// Do the Action for the Associated Field Type
-			    		do_action('plchf_msb_page_element_settings_field_'.$type.'', $fields, $element_type, $count, $values);
+			    		do_action('plchf_msb_page_element_settings_field_'.$type, $fields, $element_type, $count, $values);
 			    		
 			    		echo '<br/>';
 		    		
@@ -844,11 +948,13 @@ add_action('init', 'plchf_msb_upload_images');
 		    			$type = $fields['type'];
 			    		
 			    		// Do the Action for the Associated Field Type
-			    		do_action('plchf_msb_site_settings_field_'.$type.'', $fields, $type, $values);
+			    		do_action('plchf_msb_site_settings_field_'.$type.'', $fields, $type);
 			    		
 			    		echo '<br/>';
 		    		
 		    		}
+		    		
+		    		echo '<button class="site-options-ajaxsave button-primary">Save</button>';
 			    		
 			    echo  '</div>';
 			   	
@@ -910,6 +1016,11 @@ add_action('init', 'plchf_msb_upload_images');
 			} else if ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
 				
 				$site_id = $_GET['mobilesite_site_id'];
+			
+			// If we're on one of the Mobile Site Pages	
+			} else {
+				
+				$site_id = get_post($postid)->post_parent;
 				
 			}
 			
@@ -1059,7 +1170,7 @@ function plchf_msb_googl_shortlink($url) {
  
 	function plchf_msb_load_tb_fix() {
 		
-		echo "\n" . '<script type="text/javascript">tb_pathToImage = "' . get_option('siteurl') . '/wp-includes/js/thickbox/loadingAnimation.gif";tb_closeImage = "' . get_option('siteurl') . '/wp-includes/js/thickbox/tb-close.png";</script>'. "\n";
+		echo '<script type="text/javascript">tb_pathToImage = "' . get_option('siteurl') . '/wp-includes/js/thickbox/loadingAnimation.gif";tb_closeImage = "' . get_option('siteurl') . '/wp-includes/js/thickbox/tb-close.png";</script>';
 		
 	}
 
@@ -1139,21 +1250,78 @@ function plchf_msb_googl_shortlink($url) {
 		);
 		
 		// Insert Default Page for new Sites
-		apply_filters('plchf_msb_insert_default_home_page', wp_insert_post( $home ));
+		$home = apply_filters('plchf_msb_insert_default_home_page', wp_insert_post( $home ));
+		
+		// Update Site Home Meta
+		$homepage = update_post_meta($new_site, '_homepage_', $home);
 		
 	}
 	
 	add_action('plchf_msb_after_create_new_site','plchf_msb_default_theme_default_pages');
 	
+/* ----------------------------------------------------------------------------
+	Flush Permalinks 
+---------------------------------------------------------------------------- */	
 	
-	
-	function plchf_flush_permalinks(){	
+	function plchf_msb_flush_permalinks(){	
 			
 		global $wp_rewrite;
 		
 		$wp_rewrite->flush_rules();
 	
 	}
-	add_action('admin_init','plchf_flush_permalinks');
+	
+	add_action('admin_init','plchf_msb_flush_permalinks');
 
-function msb_footer_after() { do_action('msb_footer_after'); }
+/* ----------------------------------------------------------------------------
+	Load Defaul Theme Header Meta 
+---------------------------------------------------------------------------- */		
+	
+	function plchf_msb_load_default_theme_header(){
+		
+		global $post, $wp_query;
+		
+		// Get Post ID
+		$post_id = $wp_query->post->ID;
+		
+		$output .= '
+		<meta charset="utf-8">
+		<title>'.get_the_title($post_id).'</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+	    ';
+	    
+	    // Echo the Headers
+	    echo apply_filters('plchf_msb_load_default_theme_header_filter', $output);
+    
+	}
+	
+	add_action('plchf_msb_theme_header','plchf_msb_load_default_theme_header', 1);
+	
+/* ----------------------------------------------------------------------------
+	Load BootStrap Styles in Theme Header 
+---------------------------------------------------------------------------- */	
+	
+	function plchf_msb_load_bootstrap_styles() {
+	
+		global $pluginchiefmsbdir;
+		
+		$output .= '
+		<!-- Le styles -->
+		<link href="'.$pluginchiefmsbdir.'theme-assets/css/bootstrap.css" rel="stylesheet">
+		<link href="'.$pluginchiefmsbdir.'theme-assets/css/app.css" rel="stylesheet">
+		<link href="'.$pluginchiefmsbdir.'theme-assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="'.$pluginchiefmsbdir.'css/font-awesome/css/font-awesome.css" rel="stylesheet">
+		
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		';
+		
+		echo apply_filters('plchf_msb_load_bootstrap_styles_filter', $output);
+    
+    }
+    
+    add_action('plchf_msb_theme_header','plchf_msb_load_bootstrap_styles', 2);

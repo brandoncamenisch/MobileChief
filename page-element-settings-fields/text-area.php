@@ -27,7 +27,7 @@ function plchf_msb_page_element_settings_field_text_area($fields, $element_type,
 	</label>
 	';
 	
-	$output .= '<textarea name="element['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" >'.$value.'</textarea>';
+	$output .= '<textarea name="field['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" >'.$value.'</textarea>';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_text_area_filter', $output);
 	

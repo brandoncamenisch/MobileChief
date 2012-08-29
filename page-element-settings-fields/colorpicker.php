@@ -17,12 +17,12 @@ function plchf_msb_page_element_settings_field_colorpicker($fields, $element_typ
 	$default		= $fields['field']['default'];
 	
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			= $values[''.$field_id.''][0];
 		
 	if ($value) {
 		$value = $value;
 	} else {
-		$value = '#cc3333';
+		$value = '';
 	}
 	
 	$output .= '
@@ -33,7 +33,7 @@ function plchf_msb_page_element_settings_field_colorpicker($fields, $element_typ
 	</label>';
 	
 	$output .= '
-	<input type="text" class="colorpicker" data-colorpicker="colorpicker_'.$count.'" name="element['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'" />';
+	<input type="text" class="colorpicker" data-colorpicker="colorpicker_'.$count.'" name="field['.$element_type.'_'.$count.']['.$field_id.'][]" value="'.$value.'" />';
 	
 	$output .= '
 	<div id="colorpicker_'.$count.'"></div>

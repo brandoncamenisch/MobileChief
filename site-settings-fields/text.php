@@ -4,7 +4,7 @@
 /* Text Field
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_site_settings_field_text($fields, $count, $values) {
+function plchf_msb_site_settings_field_text($fields, $count) {
 	
 	// Get the Field Definitions
 	$type 			= $fields['type'];
@@ -14,7 +14,7 @@ function plchf_msb_site_settings_field_text($fields, $count, $values) {
 	$field_id		= $fields['id'];
 	
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			= plchf_msb_get_site_option($type, $field_id);
 	
 	$output .= '
 	<label>'.$label.'
@@ -24,10 +24,12 @@ function plchf_msb_site_settings_field_text($fields, $count, $values) {
 	</label>';
 	
 	$output .= '
-	<input type="text" name="element['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
+	<input type="text" name="field['.$type.$field_id.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
 	';
 	
-	echo apply_filters('plchf_msb_page_element_settings_field_text_area_filter', $output);
+	$output .= $value;
+	
+	echo apply_filters('plchf_msb_site_settings_field_text_filter', $output);
 }
 
 add_action('plchf_msb_site_settings_field_text','plchf_msb_site_settings_field_text', 10, 4);

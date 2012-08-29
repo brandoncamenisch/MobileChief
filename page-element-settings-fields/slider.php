@@ -28,7 +28,7 @@ function plchf_msb_page_element_settings_field_slider($fields, $element_type, $c
 	';
 	
 	$output .= '<div class="plchf_msb_slider_field"></div>';
-	$output .= '<input type="hidden" class="plchf_msb_slider_amount" name="element['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'">';
+	$output .= '<input type="hidden" class="plchf_msb_slider_amount" name="field['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'">';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_slider_area_filter', $output);
 }

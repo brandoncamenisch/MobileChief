@@ -22,7 +22,7 @@ function plchf_msb_page_element_settings_field_hidden($fields, $element_type, $c
 	$output .= '<p>'.$tooltip.'</p>';
 	
 	$output .= '
-	<input type="hidden" name="element['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
+	<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>
 	';
 	
 	echo apply_filters('plchf_msb_page_element_settings_field_hidden_area_filter', $output);

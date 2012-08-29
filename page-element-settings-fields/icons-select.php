@@ -29,7 +29,7 @@ function plchf_msb_page_element_settings_field_icon_select($fields, $element_typ
 	';
 	
 	// Select Field
-	$output .= '<select class="slick-dropdown" name="element['.$element_type.'_'.$count.']['.$field_id.']">';
+	$output .= '<select class="slick-dropdown" name="field['.$element_type.'_'.$count.']['.$field_id.']">';
 		
 		$output .=' <option value="no-icon">No Icon</option>';
 		

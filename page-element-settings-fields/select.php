@@ -29,7 +29,7 @@ function plchf_msb_page_element_settings_field_select($fields, $element_type, $c
 	';
 	
 	// Select Field
-	$output .= '<select name="element['.$element_type.'_'.$count.']['.$field_id.']">';
+	$output .= '<select name="field['.$element_type.'_'.$count.']['.$field_id.']">';
 		
 		// Loop through the Select Field Options
 		foreach ($options as $option_key => $option_value) {

@@ -115,12 +115,12 @@
 		<?php } else { ?>
 			
 			<?php 
+
+			// Redirect to Mobile Sites Admin Page
+			$admin_url = admin_url();
+			$url = apply_filters('plchf_msb_mobile_site_page_redirect', $admin_url . 'admin.php?page=pluginchiefmsb');
 			
-			$output .= '<h2>Uh Oh. The Page You Are Trying to Edit Doesn\'t Exist!</h2>';
-			$output .= '<a href="#" class="button-primary">Create New Site</a> <a href="#" class="button-primary">My Sites</a>';
-			
-			// Display a Warning, that the Site Doesn't Exist
-			echo apply_filters('plchf_msb_page_doesnt_exist_error', $output);
+			wp_redirect( $url );
 			
 			?>
 		
