@@ -9,7 +9,7 @@
 	add_action('plchf_msb_style_elements','plchf_add_end_element_end_section');
 
 /* ---------------------------------------------------------------------------- */
-/* Create Settings for the End Well Element
+/* Create Settings for the End Section Element
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_msb_page_element_settings_end_section($count, $values){
@@ -24,7 +24,7 @@
 				'type' 			=> 'hidden',
 				'name' 			=> 'Enter some text',
 				'id' 			=> '_text_',
-				'tooltip' 		=> 'Ends the Well section',
+				'tooltip' 		=> 'Ends a section',
 				'placeholder' 	=> 'Enter your text to add it to the page',
 			),
 		
@@ -38,12 +38,12 @@
 	add_action('plchf_msb_page_element_settings_end_section','plchf_msb_page_element_settings_end_section', 10, 2);
 
 /* ---------------------------------------------------------------------------- */
-/* Display Output for the Well Div Element
+/* Display Output for the Section Div Element
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_msb_page_element_output_end_section($values) {
 		
-		// Output a Paragraph with the Well
+
 		echo '</div>';
 		
 	}
