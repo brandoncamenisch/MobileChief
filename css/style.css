@@ -1,3 +1,5 @@
+
+
 #pluginchiefmsb-wrapper{
 	float: left;
 	width:100%;	
@@ -2455,3 +2457,14 @@ Icons
 .icon-fullscreen {
   background-position: -456px -144px;
 }
+
+.end-section > .settings-bar > .inner-settings-bar
+	{
+	background-color: red;
+	background: -webkit-linear-gradient(top, #E0E0E0, red)!important;
+	background: -moz-linear-gradient(top, #E0E0E0, red)!important;;
+	background: -o-linear-gradient(top, #E0E0E0, red)!important;;
+	background: -ms-linear-gradient(top, #E0E0E0, red)!important;;
+	background: linear-gradient(top, #E0E0E0, red)!important;;
+}
+

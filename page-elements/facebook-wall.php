@@ -61,13 +61,12 @@
 	add_action('plchf_msb_theme_footer','plchf_msb_page_output_element_facebook_wall', 10);
 
 
-
 	function plchf_msb_page_element_output_facebook_wall($values) {
 		
 		$url = $values['_facebook_wall_'];
 		
 		// Get the Values
-		$output .= '<div id="fbwall">'.$url.'</div>';
+		$output .= '<div id="fbwall"></div>';
 		
 		echo apply_filters('plchf_msb_page_element_output_facebook_wall_filter',$output);
 		
