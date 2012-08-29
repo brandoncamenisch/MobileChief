@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 /* ---------------------------------------------------------------------------- */
 /* Add Text Element to the Page Elements Menu
@@ -42,7 +42,8 @@
 
 
 	function plchf_msb_page_element_output_google_map($values) {
-		$url		 = $values['_google_map_'];
+			
+			$url = $values['_google_map_'];
 
 			require_once(PLUGINCHIEFMSB_PATH . "functions/simpleGMapAPI.php");
 			require_once(PLUGINCHIEFMSB_PATH . "functions/simpleGMapGeocoder.php");
