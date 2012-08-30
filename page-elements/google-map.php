@@ -26,10 +26,10 @@
 			
 			'field' 	=> array(
 				'type' 			=> 'text',
-				'name' 			=> 'Enter our google Handle',
+				'name' 			=> 'Enter the Location Address',
 				'id' 			=> '_google_map_',
-				'tooltip' 		=> 'Enter your text here. Plain Text, No HTML',
-				'placeholder' 	=> 'Enter your text to add it to the page',
+				'tooltip' 		=> 'Put the full address, including zip code for best accuracy',
+				'placeholder' 	=> '123 4th St. PluginChief, CO 80123',
 			),
 		);
 
