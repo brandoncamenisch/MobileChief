@@ -11,7 +11,7 @@
 			'Mobile Site Builder', 
 			'add_users', 
 			'pluginchiefmsb', 
-			'mobile_site_builder_sites',   
+			'pluginchiefmsb_msb_my_sites_page_content',   
 			PLUGINCHIEFMSB . '/images/msb-icon.png', 
 			90
 		);
@@ -24,11 +24,15 @@
 /* Create the Menu Page
 /* ---------------------------------------------------------------------------- */
 
-function mobile_site_builder_sites() {
+function pluginchiefmsb_msb_my_sites_page_content() {
 
 ?>
 
-		<?php get_pluginchiefmsb_header(); ?>
+		<?php 
+		
+		get_pluginchiefmsb_header(); 
+			
+		?>
 	
 		<div class="pluginchiefmsb-wrapper" id="pluginchiefmsb-wrapper">
 		
@@ -87,7 +91,7 @@ function mobile_site_builder_sites() {
 								
 								</h3><!-- End Title -->
 								
-								<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+								<a class="button-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
 								
 								<div class="clear"></div>
 								

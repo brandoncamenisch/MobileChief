@@ -22,7 +22,7 @@ function plchf_msb_page_element_settings_field_colorpicker($fields, $element_typ
 	if ($value) {
 		$value = $value;
 	} else {
-		$value = '';
+		$value = '#cc3333';
 	}
 	
 	$output .= '

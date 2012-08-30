@@ -33,11 +33,20 @@ ____   ____.__       .__              .__
 /* ---------------------------------------------------------------------------- */
 
 	// NOTE: PLUGINCHIEFMSB = Plugin Chief Mobile Site Builder
+	
+	// Url to plugin Folder
 	define('PLUGINCHIEFMSB', plugin_dir_url(__FILE__));
+	
+	// Path to Plugin Folder
 	define('PLUGINCHIEFMSB_PATH', plugin_dir_path(__FILE__));
+	
+	// URL to Plugin Folder
 	$pluginchiefmsbdir = plugin_dir_url(__FILE__);
 	global $pluginchiefmsbdir;
+	
+	// Gets options from the plugin options table
 	$plchf_msb_options = get_option('plugin_chief_msb');
+	global $plchf_msb_options;	
 
 /* ---------------------------------------------------------------------------- */
 /* Inlcude Plugin Files

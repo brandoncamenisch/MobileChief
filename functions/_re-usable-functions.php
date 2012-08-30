@@ -240,6 +240,22 @@
 		echo '<li>';
 		
 	}
+	
+/* ----------------------------------------------------------------------------
+	
+	Add menu item to the Edit Page menu, to create a Page section
+		
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_add_page_section($section_type){
+		
+		echo '<li>';
+			echo '<a href="#" data-sectiontype="'.strtolower(str_replace(" ", "-", $section_type)).'">';
+				echo $section_type;
+			echo '</a>';
+		echo '<li>';
+		
+	}
 
 /* ----------------------------------------------------------------------------
 	
@@ -446,7 +462,7 @@
 
 		// Page Generator Form
 		echo '<form id="page-generator" class="page-generator connected-sortable" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
-		
+						
 			// Run Action at the Top of the Page Generator form
 			do_action('plchf_msb_top_page_generator');
 						
@@ -465,30 +481,55 @@
 			    		$element_type_and_count = explode("_", $k);
 			    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
 			    		
+			    		// Check if the Element Type is 
+			    		if ($element_type == 'section_start') {
+			    			
+			    			echo 'Start Section';
+			    		
+			    		}  elseif ($element_type == 'section_end') {
+				    		
+				    		echo 'End Section';
+				    		
+			    		}
+			    		
 			    		// We run the action for each element
 			    		do_action('plchf_msb_page_element_settings_'.$element_type.'', $element_type_and_count[1], $values);
 			    		
-		    		}
-		    		
+		    		}	
 	    		
 	    		}
 				
 			} else {
 				
 				// Display Message When No Page Elements Exist
-				echo '<div class="element-placeholder"><br/>';
-					
-					echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
 				
-				echo '</div>';
+				echo '<div class="page-generator-section">';
+				
+					echo '<div class="section-element-move"><h3>Section Name</h3></div>';
+				
+					echo '<input type="hidden" name="field[section-start_2][section_start]" value="section_start">';
+						
+					echo '<div class="section-sortable">';
+		
+						echo '<div class="element-placeholder"><br/>';
+					
+							echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
+				
+						echo '</div>';
+						
+					echo '</div>';
+		
+				echo '<input type="hidden" name="field[section-end_2][section_end]" value="section_end">';
+		
+			echo '</div>';
 			
 			}
 			
 			// Run Action at the Bottom of the Page Generator
 			do_action('plchf_msb_bottom_page_generator');
-			
+	
 			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave button-primary">Save</button>');
-			
+	
 			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
 
 		// End Form
@@ -656,8 +697,10 @@
 		    		$element_type_and_count = explode("_", $k);
 		    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
 		    		
+		    		$tidy = new Tidy();
+
 		    		// We run the action for each element
-		    		do_action('plchf_msb_page_element_output_'.$element_type.'', $values);
+		    		echo do_action('plchf_msb_page_element_output_'.$element_type.'', $values);
 		    		
 	    		}
 	    		
@@ -670,8 +713,6 @@
 			echo '<div class="element-placeholder">';
 				echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
 			echo '</div>';
-			
-			echo plchf_msb_get_site_option('colorpicker', '_bg_color_');
 		
 		}
 	    
@@ -708,7 +749,7 @@
 			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_page_elements', $page_elements);
 			
 			// Print the Data on return to AJAX
-			// print_r($page_elements);
+			print_r($page_elements);
 			
 			die();
 		
@@ -792,6 +833,70 @@
 	add_action( 'wp_ajax_plchf_msb_add_element','plchf_msb_add_element');
 
 /* ----------------------------------------------------------------------------
+	Add Page Section to Page
+---------------------------------------------------------------------------- */	
+	
+	function plchf_msb_add_section() {
+
+		$pageid			= $_POST['pageid'];
+		$section_type 	= $_POST['sectionType'];
+		$section_type 	= strtolower(str_replace("-", "_", $section_type));
+		
+		// Get Current Page Element Count
+		$meta 	= get_post_custom($pageid);
+		$count	= $meta['_plchf_msb_page_element_count'][0]; 
+		
+		// Increase Page Element Count By 1
+		$count 	= ($count+1);
+		
+		// Update Page Element Count
+		update_post_meta($pageid, '_plchf_msb_page_element_count', $count);
+		
+		do_action('plchf_msb_page_element_settings_'.$section_type.'', $count, $values);
+		
+		die();
+				
+	}
+	
+	add_action( 'wp_ajax_plchf_msb_add_section','plchf_msb_add_section');
+
+/* ----------------------------------------------------------------------------
+	Create some JS Variables
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_page_section_start($section_type, $fields, $count, $values) {
+		
+		$formatted_section_type = strtolower(str_replace(" ", "_", $section_type));
+		
+		$output .= '<div class="page-generator-section">';
+		
+			$output .= '<div class="section-element-move">';
+			
+				$output .= '<h3>'.$section_type.'</h3>'; 
+				
+			$output .= '</div>';
+				
+			$output .= '<input type="hidden" name="field[section-start_'.$count.'][section_type]" value="'.$formatted_section_type.'">';
+				
+			$output .= '<div class="section-sortable"></div>';
+		
+		echo $output;
+		
+	}
+	
+	function plchf_msb_page_section_end($section_type, $fields, $count, $values) {
+		
+		$formatted_section_type = strtolower(str_replace(" ", "_", $section_type));
+		
+		$output .= '<input type="hidden" name="field[section-end_'.$count.'][section_type]" value="'.$formatted_section_type.'">';
+				
+			$output .= '</div>';
+		
+		echo $output;
+		
+	}
+
+/* ----------------------------------------------------------------------------
 	Create some JS Variables
 ---------------------------------------------------------------------------- */	
 
@@ -803,12 +908,14 @@
 		$permalink		= get_permalink();	
 		$siteRoot		= get_bloginfo('url');
 		$ajaxurl		= admin_url('admin-ajax.php');
+		$adminRoot		= admin_url();
 		
 		echo '
 		<script type="text/javascript" src="https://js.stripe.com/v1/?ver=1.0"></script>
 		<script type="text/javascript">
 			var pluginDir = "'.$plugin_dir.'";
 			var siteRoot = "'.$siteRoot.'";
+			var adminRoot = "'.$adminRoot.'";
 			var ajaxurl = "'.$ajaxurl.'";
 			Stripe.setPublishableKey("'.$stripe_publishable.'");
 		</script>
@@ -816,7 +923,7 @@
 		
 	}
 	
-	add_action('wp_footer','plchf_msb_jquery_theme_directory_variable', 999);
+	add_action('wp_head','plchf_msb_jquery_theme_directory_variable', 999);
 	add_action('admin_head','plchf_msb_jquery_theme_directory_variable');
 
 /* ----------------------------------------------------------------------------
@@ -1026,7 +1133,7 @@
 			
 		}
 	    
-	    return apply_filters('plchf_msb_get_site_id',$site_id);
+	    return apply_filters('plchf_msb_get_site_id', $site_id);
 	    
     }
 
