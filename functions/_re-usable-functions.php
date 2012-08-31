@@ -1371,14 +1371,14 @@ function plchf_msb_googl_shortlink($url) {
 	Create Default Home Page Upon Site Creation 
 ---------------------------------------------------------------------------- */
 
-	function plchf_msb_site_pages_links($site_id) {
+	function plchf_msb_site_pages_links($siteid) {
 		
 		global $post;
 		
 		// Args
 		$args = array(
 			'post_type' => 'pluginchiefmsb-sites',
-			'post_parent' => $site_id
+			'post_parent' => $siteid
 		);
 		
 		$posts = get_posts( $args );
@@ -1396,6 +1396,37 @@ function plchf_msb_googl_shortlink($url) {
 		echo apply_filters('plchf_msb_site_pages_links',$output);
 		
 	}
+	
+	add_action('plchf_msb_sites_center_column','plchf_msb_site_pages_links',10,1);
+
+/* ----------------------------------------------------------------------------
+	Show some Site Links on the My Sites Page on the Right Column
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_my_sites_site_details($siteid) {
+	
+		do_action('plchf_msb_sites_before_right_column_site_details');
+		
+		$output .= '<ul class="mobile-site-pages">';
+		
+			do_action('plchf_msb_sites_before_right_column_site_details_links');
+		
+			$output .= apply_filters('plchf_msb_sites_edit_site','<li><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'">Edit Site</a></li>');
+			
+			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#">Preview Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#">Delete Site</a></li>');
+			
+			do_action('plchf_msb_sites_after_right_column_site_details_links');
+		
+		$output .= '</ul>';
+		
+		do_action('plchf_msb_sites_after_right_column_site_details');
+		
+		echo apply_filters('plchf_msb_sites_right_column_filter', $output);
+		
+	}
+	
+	add_action('plchf_msb_sites_right_column','plchf_msb_my_sites_site_details',10,1);
 
 /* ----------------------------------------------------------------------------
 	Create Default Home Page Upon Site Creation 

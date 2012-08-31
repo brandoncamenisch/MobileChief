@@ -38,6 +38,10 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 		
 			<div class="pluginchiefmsb-wrap">
 				
+				<?php do_action('plchf_msb_my_sites_above_page_title'); ?>
+					
+				<div class="clear"></div><!-- Clear -->
+					
 				<div class="settings-title">
 					
 					<h3 class="section-title floatl">Mobile Sites</h3>
@@ -47,6 +51,8 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 				</div>
 				
 				<div class="clear"></div><!-- Clear -->
+				
+				<?php do_action('plchf_msb_my_sites_below_page_title'); ?>
 				
 				<hr>
 				
@@ -65,6 +71,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 						
 					$home_id = get_post_meta($site->ID, '_homepage_', true);
 					
+					$siteid = $site->ID;
 							
 					?>
 							
@@ -87,6 +94,10 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 							</div><!-- / Widget Top -->
 							
 							<div class="module-inside">
+				
+								<?php do_action('plchf_msb_my_sites_above_site_title'); ?>
+								
+								<div class="clear"></div><!-- Clear -->
 							
 								<h3 class="section-title floatl">
 									
@@ -97,6 +108,10 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 								<a class="button-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
 								
 								<div class="clear"></div>
+								
+								<?php do_action('plchf_msb_my_sites_below_site_title'); ?>
+								
+								<div class="clear"></div><!-- Clear -->
 								
 								<hr>
 								
@@ -126,7 +141,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 										
 										<hr>
 										
-										<?php plchf_msb_site_pages_links($site->ID); ?>
+										<?php do_action('plchf_msb_sites_center_column', $siteid); ?>
 									
 									</div>
 									
@@ -136,7 +151,8 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 										
 										<hr>
 										
-										<?php do_action('plchf_msb_site_details'); ?>
+										<?php do_action('plchf_msb_sites_right_column', $siteid); ?>
+										
 									
 									</div>
 								
@@ -144,7 +160,9 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 								
 								<div class="clear"></div>
 								
-								<?php do_action('plchf_msb_sites_page_below_site_info'); ?>
+								<hr>
+								
+								<?php do_action('plchf_msb_sites_page_below_site_info', $siteid); ?>
 							
 							</div><!-- / Module Inside -->
 						
