@@ -90,16 +90,58 @@ function pluginchiefmsb_page_elements_menu() {
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_style');
 	
 /* ---------------------------------------------------------------------------- */
-/* Edit Pages Link
+/* Add Delete Site Item to the Menu
 /* ---------------------------------------------------------------------------- */
-
-	function plchf_add_element_section_edit_pages() {
+	
+	function plchf_msb_edit_page_menu_edit_pages_menu_items() {
 		
-		plchf_msb_add_page_element_section('Edit Pages', 'right');
+		$site_id = plchf_msb_get_site_id();									
+									
+		echo '<li class="floatr">';
+			
+			echo '<a href="#" class="deletesite">';	
+			
+				echo '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
+				
+				echo apply_filters('plchf_msb_edit_site_page_edit_pages_menu_item','Edit Pages');
+				
+			echo '</a>';
+				
+				$args = array(
+					'post_type' 	=> 'pluginchiefmsb-sites',
+					'post_parent' 	=> $site_id,
+					'posts_per_page'=> '-1'
+				);
+					
+				$posts = get_posts( $args );
+					
+				if ($posts) {
+				
+				echo '<ul>';
+					
+					foreach ($posts as $post) {
+				
+						echo '<li>';
+						
+							echo '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+								
+								echo $post->post_title; 
+								
+							echo'</a>';
+							
+						echo '</li>';
+						
+					}
+					
+				echo '</ul>';
+				
+				}
+			
+		echo '</li>';
 		
 	}
 	
-	add_action('plchf_msb_page_element_sections','plchf_add_element_section_edit_pages');
+	add_action('plchf_msb_page_element_sections','plchf_msb_edit_page_menu_edit_pages_menu_items');
 	
 /* ---------------------------------------------------------------------------- */
 /* Delete Page Link

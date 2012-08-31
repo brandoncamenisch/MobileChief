@@ -26,8 +26,7 @@
 	function pluginchiefmsb_edit_page_menu_page_content() {
 	?>
 	
-		<?php 
-		
+		<?php
 		$page_id 	= $_GET['mobilesite_page_id'];
 		
 		// Make Sure we're trying to edit an actual site
@@ -45,8 +44,9 @@
 					
 					<h3 class="section-title floatl">Edit Page</h3>
 					
-					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
+					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb">My Sites</a>
 					
+					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>				
 				</div>
 				
 				<div class="clear"></div><!-- Clear -->

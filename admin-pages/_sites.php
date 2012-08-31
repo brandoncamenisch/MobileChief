@@ -42,7 +42,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 					
 					<h3 class="section-title floatl">Mobile Sites</h3>
 				
-					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
+					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>
 					
 				</div>
 				
@@ -62,6 +62,9 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 					$sites = get_posts( $pluginchiefmsb_args );
 					
 					foreach ( $sites as $site ) {
+						
+					$home_id = get_post_meta($site->ID, '_homepage_', true);
+					
 							
 					?>
 							
@@ -107,9 +110,11 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 								
 									<h4>Site Preview</h4>
 									
-									<?php plchf_msb_qrcode_preview($site->ID); ?>
+									<hr>
+									
+									<?php plchf_msb_qrcode_preview($home_id); ?>
 					
-									<?php plchf_msb_site_shortlink($site->ID); ?>
+									<?php plchf_msb_site_shortlink($home_id); ?>
 									
 								</div>
 								
@@ -119,7 +124,9 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 									
 										<h4>Pages</h4>
 										
-										List pages within this site
+										<hr>
+										
+										<?php plchf_msb_site_pages_links($site->ID); ?>
 									
 									</div>
 									
@@ -127,7 +134,9 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 									
 										<h4>Site</h4>
 										
-										List Details for the site
+										<hr>
+										
+										<?php do_action('plchf_msb_site_details'); ?>
 									
 									</div>
 								

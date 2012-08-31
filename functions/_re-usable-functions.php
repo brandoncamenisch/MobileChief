@@ -20,6 +20,7 @@
     	
     	// Enqueue Styles
     	wp_enqueue_style('jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css');
+    	wp_enqueue_style('colors-fresh', admin_url( 'css/colors-fresh.css' ));
     	wp_enqueue_style('farbtastic');
     	wp_enqueue_style('plchf_msb_font_awesome_styles');
     	wp_enqueue_style('plchf_msb_admin_styles');
@@ -28,6 +29,8 @@
     	add_thickbox();
     	wp_enqueue_script('jquery');
     	wp_enqueue_script('jquery-ui-core');
+    	wp_enqueue_script('jquery-ui-sortable');
+    	wp_enqueue_script('jquery-ui-draggable');
     	wp_enqueue_script('jquery-ui-sortable');
     	wp_enqueue_script('jquery-ui-datepicker');
     	wp_enqueue_script('jquery-ui-slider');
@@ -317,8 +320,15 @@
 		
 	function plchf_msb_get_page_id(){
 		
-		if (is_admin())  {
+		if (!is_admin())  {
 		
+			global $post, $wp_query;
+			
+			$page_id = $wp_query->post->ID;
+		
+		
+		} else {
+			
 			$screen = get_current_screen();
 		
 			// Get Screen ID on Edit Page, page
@@ -327,12 +337,6 @@
 				$page_id = $_GET['mobilesite_page_id'];
 		
 			}
-		
-		} else {
-			
-			global $post, $wp_query;
-			
-			$page_id = $wp_query->post->ID;
 			
 		}
 		
@@ -410,14 +414,15 @@
 				// Get the Page We're Editing
 				$id = $_GET['mobilesite_page_id'];
 							
-			} else if ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
+			} elseif ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
 					
 				// Site ID
 				$id = $_GET['mobilesite_site_id'];
 				
+				// ID of the Home Page we generated on Site Completion
+				$id = get_post_meta($id, '_homepage_', true);
+				
 			}
-			
-			$id = $id;
 			
 		}
 	    
@@ -480,15 +485,17 @@
 			    		// We then pass that to the element type action
 			    		$element_type_and_count = explode("_", $k);
 			    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
+			    		$count	= $element_type_and_count[1];
 			    		
 			    		// Check if the Element Type is 
 			    		if ($element_type == 'section_start') {
 			    			
-			    			echo 'Start Section';
+			    			echo plchf_msb_page_section_start('Start Section','',$count,'');
 			    		
 			    		}  elseif ($element_type == 'section_end') {
 				    		
-				    		echo 'End Section';
+				    		
+				    		echo plchf_msb_page_section_end('End Section','',$count,'');
 				    		
 			    		}
 			    		
@@ -503,25 +510,11 @@
 				
 				// Display Message When No Page Elements Exist
 				
-				echo '<div class="page-generator-section">';
-				
-					echo '<div class="section-element-move"><h3>Section Name</h3></div>';
-				
-					echo '<input type="hidden" name="field[section-start_2][section_start]" value="section_start">';
-						
-					echo '<div class="section-sortable">';
-		
-						echo '<div class="element-placeholder"><br/>';
+				echo '<div class="element-placeholder"><br/>';
 					
-							echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
+					echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
 				
-						echo '</div>';
-						
-					echo '</div>';
-		
-				echo '<input type="hidden" name="field[section-end_2][section_end]" value="section_end">';
-		
-			echo '</div>';
+				echo '</div>';
 			
 			}
 			
@@ -864,7 +857,7 @@
 	Create some JS Variables
 ---------------------------------------------------------------------------- */
 	
-	function plchf_msb_page_section_start($section_type, $fields, $count, $values) {
+	function plchf_msb_page_section_start_1($section_type, $fields, $count, $values) {
 		
 		$formatted_section_type = strtolower(str_replace(" ", "_", $section_type));
 		
@@ -878,19 +871,55 @@
 				
 			$output .= '<input type="hidden" name="field[section-start_'.$count.'][section_type]" value="'.$formatted_section_type.'">';
 				
-			$output .= '<div class="section-sortable"></div>';
+			$output .= '<div class="section-sortable connected-sortable"></div>';
 		
 		echo $output;
+		
+	}
+	
+	function plchf_msb_page_section_start($section_type, $fields, $count, $values) {
+	
+		$formatted_section_type = strtolower(str_replace(" ", "_", $section_type));
+		
+	    echo  '<div class="page-section element-'.$formatted_section_type.' sortable">';
+	    	
+	    	// Settings Bar
+	    	echo  '<div class="settings-bar">';
+	    		echo  '<div class="inner-settings-bar">';
+	    			echo  '<div class="one_third">';
+	    				echo  '<div class="element-info">';
+	    					echo  $section_type;
+	    				echo  '</div>';
+	    			echo  '</div>';
+	    			echo  '<div class="two_third column-last">';
+		    			echo  '<div class="controls">';
+		    				echo  '<div class="element-control element-move"></div>';
+		    				echo  '<div class="element-control element-open"></div>';
+		    				echo  '<div class="element-control element-remove"></div>';
+		    			echo  '</div>';
+		    		echo  '</div>';
+	    		echo  '</div>';
+	    	echo  '</div>';
+	    	
+	    	// Settings Content
+		    echo  '<div class="content">';
+			    echo '<input type="hidden" name="field[section-start_'.$count.'][section_type]" value="'.$formatted_section_type.'">';
+			    echo '<div class="section-sortable connected-sortable">';
 		
 	}
 	
 	function plchf_msb_page_section_end($section_type, $fields, $count, $values) {
 		
 		$formatted_section_type = strtolower(str_replace(" ", "_", $section_type));
-		
-		$output .= '<input type="hidden" name="field[section-end_'.$count.'][section_type]" value="'.$formatted_section_type.'">';
+			
 				
+				$output .= '</div>';			
+			
+			$output .= '<input type="hidden" name="field[section-end_'.$count.'][section_type]" value="'.$formatted_section_type.'">';
+			
 			$output .= '</div>';
+			
+		$output .= '</div>';
 		
 		echo $output;
 		
@@ -965,7 +994,7 @@
 	    
 	    $element_type_formatted = strtolower(str_replace(" ", "-", $element_type));
 	    
-	    echo  '<div class="page-element '.$element_type_formatted.' sortable">';
+	    echo  '<div class="page-element element-'.$element_type_formatted.' sortable">';
 	    	
 	    	// Settings Bar
 	    	echo  '<div class="settings-bar">';
@@ -1223,7 +1252,7 @@ function plchf_msb_googl_shortlink($url) {
 	    
 	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</strong> ';
 	    
-	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'">'.plchf_msb_googl_shortlink($permalink).'</a>';
+	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
 	    
 	    echo apply_filters('plchf_msb_googl_site_shortlink', $output);
 	    
@@ -1324,14 +1353,49 @@ function plchf_msb_googl_shortlink($url) {
 			// After Create Site
 			do_action('plchf_msb_after_create_new_site', $new_site);
 			
+			// Redirect URL 
+			$redirect_url = apply_filters('plchf_msb_redirect_after_create_site', 'admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$new_site.'', $new_site);
+			
 			// Redirect to Edit Site Page
-			wp_redirect(apply_filters('plchf_msb_redirect_after_create_site','admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$new_site.''));
+			wp_redirect($redirect_url);
+			exit;
 			
 		}
 		
 	}
 	
 	add_action('init','plchf_msb_create_new_site');
+
+
+/* ----------------------------------------------------------------------------
+	Create Default Home Page Upon Site Creation 
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_site_pages_links($site_id) {
+		
+		global $post;
+		
+		// Args
+		$args = array(
+			'post_type' => 'pluginchiefmsb-sites',
+			'post_parent' => $site_id
+		);
+		
+		$posts = get_posts( $args );
+		
+		$output .= '<ul class="mobile-site-pages">';
+		
+		foreach ($posts as $post) {
+			
+			$output .= '<li><a href="'.apply_filters('plchf_msb_edit_page_link','admin.php?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'').'">'.$post->post_title.'</a></li>';
+			
+		}
+		
+		$output .= '</ul>';
+		
+		echo apply_filters('plchf_msb_site_pages_links',$output);
+		
+	}
 
 /* ----------------------------------------------------------------------------
 	Create Default Home Page Upon Site Creation 
@@ -1345,19 +1409,50 @@ function plchf_msb_googl_shortlink($url) {
 		// Get Current User ID
 		$userid = $current_user->ID;
 		
+		// Create a Default Home Page
 		$home = array(
 			'comment_status'=> 'closed',      			// 'closed' means no comments.
 			'ping_status' 	=> 'closed',      			// 'closed' means pingbacks or trackbacks turned off
 			'post_author' 	=> $userid,
-			'post_name' 	=> ''.$postid.'-home', 		// The name (slug) for your post
+			'post_name' 	=> 'home', 					// The name (slug) for your post
 			'post_status' 	=> 'publish',     			// Set the status of the new post. 
 			'post_title' 	=> 'Home', 	      			// The title of your post.
 			'post_parent'   => $new_site,				// Post Parent
 			'post_type' 	=> 'pluginchiefmsb-sites'	// Post Type
 		);
+
+		// Create a Default About Page
+		$about = array(
+			'comment_status'=> 'closed',      			// 'closed' means no comments.
+			'ping_status' 	=> 'closed',      			// 'closed' means pingbacks or trackbacks turned off
+			'post_author' 	=> $userid,
+			'post_name' 	=> 'about', 				// The name (slug) for your post
+			'post_status' 	=> 'publish',     			// Set the status of the new post. 
+			'post_title' 	=> 'About', 	      		// The title of your post.
+			'post_parent'   => $new_site,				// Post Parent
+			'post_type' 	=> 'pluginchiefmsb-sites'	// Post Type
+		);
+		
+		// Create a Default Contact Page
+		$contact = array(
+			'comment_status'=> 'closed',      			// 'closed' means no comments.
+			'ping_status' 	=> 'closed',      			// 'closed' means pingbacks or trackbacks turned off
+			'post_author' 	=> $userid,
+			'post_name' 	=> 'contact', 				// The name (slug) for your post
+			'post_status' 	=> 'publish',     			// Set the status of the new post. 
+			'post_title' 	=> 'Contact', 	      		// The title of your post.
+			'post_parent'   => $new_site,				// Post Parent
+			'post_type' 	=> 'pluginchiefmsb-sites'	// Post Type
+		);
 		
 		// Insert Default Page for new Sites
-		$home = apply_filters('plchf_msb_insert_default_home_page', wp_insert_post( $home ));
+		$home = apply_filters('plchf_msb_insert_default_page1', wp_insert_post( $home ));
+		
+		// Insert Default About Page for new Sites
+		$about = apply_filters('plchf_msb_insert_default_page2', wp_insert_post( $about ));
+		
+		// Insert Default Page for new Sites
+		$contact = apply_filters('plchf_msb_insert_default_page3', wp_insert_post( $contact ));
 		
 		// Update Site Home Meta
 		$homepage = update_post_meta($new_site, '_homepage_', $home);
@@ -1432,3 +1527,19 @@ function plchf_msb_googl_shortlink($url) {
     }
     
     add_action('plchf_msb_theme_header','plchf_msb_load_bootstrap_styles', 2);
+    
+/* ----------------------------------------------------------------------------
+	Site Details on the My Sites Page
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_delete_site_button() {
+	
+		global $post;
+		
+		$parent = get_post($post->ID)->post_parent;
+		
+		echo get_post($parent)->ID;
+		
+	}
+	
+	add_action('plchf_msb_site_details', 'plchf_msb_delete_site_button');

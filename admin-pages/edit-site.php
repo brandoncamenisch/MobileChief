@@ -28,11 +28,12 @@
 		
 		<?php 
 		
-		$site_id = plchf_msb_get_site_id();
+		$site_id 	= plchf_msb_get_site_id();
+		
+		// ID of the Home Page we generated on Site Completion
+		$home_id = get_post_meta($site_id, '_homepage_', true);
 		
 		// Make Sure we're trying to edit an actual site
-		
-		
 		if ( ($site_id) && ( get_post_type( $site_id ) == 'pluginchiefmsb-sites') ) {
 			
 		?>
@@ -48,6 +49,8 @@
 					<h3 class="section-title floatl"><?php echo apply_filters('plchf_msb_edit_site_page_title','Edit Site'); ?></h3>
 				
 					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=pluginchiefmsb">My Sites</a>
+					
+					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>
 					
 				</div>
 				
@@ -97,9 +100,9 @@
 					
 					<hr>
 						
-					<?php plchf_msb_qrcode_preview($site_id); ?>
+					<?php plchf_msb_qrcode_preview($home_id); ?>
 					
-					<?php plchf_msb_site_shortlink($site_id); ?>
+					<?php plchf_msb_site_shortlink($home_id); ?>
 				
 				</div><!-- One Fifth -->
 				

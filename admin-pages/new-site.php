@@ -37,7 +37,7 @@
 					
 					<h3 class="section-title floatl">Create New Site</h3>
 				
-					<a class="button-primary floatr" href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=mobile-sites">Get More Themes</a>
+					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_my_sites_link','admin.php?page=pluginchiefmsb'); ?>"><?php echo apply_filters('plchf_msb_more_themes_text','My Sites'); ?></a>
 					
 				</div>
 				
@@ -88,7 +88,7 @@
 							
 								<ul>
 								
-									<li class="hide-if-no-js"><a href="#TB_inline?height=200&width=400&inlineId=createsitediv_<?php echo $themes['Theme']['Slug']; ?>" class="thickbox" title="Create Site">Create Site</a></li>
+									<li class="hide-if-no-js"><a href="#TB_inline?height=400&width=400&inlineId=createsitediv_<?php echo $themes['Theme']['Slug']; ?>" class="thickbox" title="Create Site">Create Site</a></li>
 									
 									<li class="hide-if-no-js"><a href="#" class="theme-detail" tabindex="4">Details</a></li>	
 								
