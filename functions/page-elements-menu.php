@@ -90,7 +90,7 @@ function pluginchiefmsb_page_elements_menu() {
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_style');
 	
 /* ---------------------------------------------------------------------------- */
-/* Add Delete Site Item to the Menu
+/* Add Edit Page Items to the Menu
 /* ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_edit_page_menu_edit_pages_menu_items() {
@@ -123,7 +123,7 @@ function pluginchiefmsb_page_elements_menu() {
 				
 						echo '<li>';
 						
-							echo '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+							echo '<a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
 								echo $post->post_title; 
 								

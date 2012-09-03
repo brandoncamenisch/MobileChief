@@ -458,12 +458,71 @@ jQuery(document).ready(function($){
 	}
 
 /* ----------------------------------------------------------------------------
-	Delete Site
+	Delete Site on Click
 ---------------------------------------------------------------------------- */
 
-	function plchf_msb_delete_site() {
+	function plchf_msb_delete_site_on_click() {
 		
+		var deleteSiteBtn 	= $('.deletesite');
 		
+		deleteSiteBtn.live('click', function(event){
+			
+			// Prevent Default Link Action
+			event.preventDefault();
+			
+			// Get the Site ID we need to Delete
+			var siteID = $(this).data('siteid');
+			
+			// Launch the Confirm Dialogue
+			$.confirm({
+				'title'		: 'Delete Confirmation',
+				'message'	: 'Are You Sure You Want to Delete this site? <br />All data will be lost. Continue?',
+				'buttons'	: {
+						'Yes'	: {
+							'class'	: 'button-primary',
+							'action': function(){
+								plchf_msb_delete_site(siteID);
+							}
+						},
+						'No'	: {
+							'class'	: 'button-primary',
+							'action': function(){}	// Nothing to do in this case. You can as well omit the action property.
+						}
+					}
+				}
+			);
+		});
+		
+	}
+	
+	plchf_msb_delete_site_on_click();
+
+/* ----------------------------------------------------------------------------
+	Delete Site on Click
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_delete_site(siteID){
+		
+		// Get the Data in a String
+		var data = 'site_id=' + siteID + '&action=plchf_msb_delete_site_ajax';
+		
+		// Site to Remove
+		var siteToRemove 		= $('[data-widgetid="'+siteID+'"]');
+		var redirectAfterDelete = $(siteToRemove).attr('data-redirectafterdelete');
+		
+		// Submit the data with AJAX
+		$.ajax({
+			type: 'POST',
+		  	url: ajaxurl,
+		  	data: data,
+		  	success: function(response){
+		  		siteToRemove.fadeOut();
+		  		window.location.replace(redirectAfterDelete);
+				return false;
+				die();
+		  	}
+			  		
+		});	
 		
 	}
 

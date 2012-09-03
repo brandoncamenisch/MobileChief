@@ -37,7 +37,7 @@
 					
 					<h3 class="section-title floatl">Create New Site</h3>
 				
-					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_my_sites_link','admin.php?page=pluginchiefmsb'); ?>"><?php echo apply_filters('plchf_msb_more_themes_text','My Sites'); ?></a>
+					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_my_sites_link', '/wp-admin/admin.php?page=pluginchiefmsb'); ?>">My Sites</a>
 					
 				</div>
 				

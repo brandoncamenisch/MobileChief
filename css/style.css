@@ -127,8 +127,21 @@
 	border-left: 0px;
 }
 
-#sites-list{
+#pluginchiefmsb-wrapper #sites-list{
 	margin-top: 20px;
+}
+
+#pluginchiefmsb-wrapper .no-sites{
+	padding: 5%;
+	width: 89%;
+	background: white url(../images/bottom-gradient.jpg) bottom center repeat-x;
+	color: #444;
+	text-align: center;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #pluginchiefmsb-wrapper .section-title{

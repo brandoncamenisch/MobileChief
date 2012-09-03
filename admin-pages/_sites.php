@@ -67,109 +67,140 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 					
 					$sites = get_posts( $pluginchiefmsb_args );
 					
-					foreach ( $sites as $site ) {
-						
-					$home_id = get_post_meta($site->ID, '_homepage_', true);
+					if ($sites) {
 					
-					$siteid = $site->ID;
+						foreach ( $sites as $site ) {
 							
-					?>
-							
-						<div id="site-name" class="widget" data-siteid="<?php echo $site->ID; ?>">
-							
-							<div class="widget-top">
-							
-								<div class="widget-title-action">
+						$home_id 	= get_post_meta($site->ID, '_homepage_', true);
+						$site_theme = get_post_meta($site->ID, '_plchf_msb_site_theme', true);
+						$site_theme = ucwords(str_ireplace('_',' ', $site_theme));
+						
+						$siteid = $site->ID;
 								
-									<a class="widget-action hide-if-no-js" href="#"></a>
+						?>
 								
-								</div><!-- / Widget Title Action -->
+							<div id="site-name" class="widget" data-redirectafterdelete="<?php echo apply_filters('plchf_msb_my_sites_link', '/wp-admin/admin.php?page=pluginchiefmsb'); ?>" data-widgetid="<?php echo $site->ID; ?>" data-siteid="<?php echo $site->ID; ?>">
 								
-								<div class="widget-title">
+								<div class="widget-top">
 								
-									<h4><?php echo $site->post_title; ?></h4>
-								
-								</div><!-- / Widget Title -->
-							
-							</div><!-- / Widget Top -->
-							
-							<div class="module-inside">
-				
-								<?php do_action('plchf_msb_my_sites_above_site_title'); ?>
-								
-								<div class="clear"></div><!-- Clear -->
-							
-								<h3 class="section-title floatl">
+									<div class="widget-title-action">
 									
-									<?php echo $site->post_title; ?>
+										<a class="widget-action hide-if-no-js" href="#"></a>
+									
+									</div><!-- / Widget Title Action -->
+									
+									<div class="widget-title">
+									
+										<h4><?php echo $site->post_title; ?></h4>
+									
+									</div><!-- / Widget Title -->
 								
-								</h3><!-- End Title -->
+								</div><!-- / Widget Top -->
 								
-								<a class="button-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+								<div class="module-inside">
+					
+									<?php do_action('plchf_msb_my_sites_above_site_title'); ?>
+									
+									<div class="clear"></div><!-- Clear -->
 								
-								<div class="clear"></div>
-								
-								<?php do_action('plchf_msb_my_sites_below_site_title'); ?>
-								
-								<div class="clear"></div><!-- Clear -->
-								
-								<hr>
-								
-								<div class="clear"></div>
-								
-								<?php do_action('plchf_msb_sites_page_above_site_info'); ?>
-								
-								<div class="clear"></div>
-								
-								<div class="one_fourth">
-								
-									<h4>Site Preview</h4>
+									<h3 class="section-title floatl">
+										
+										<?php echo $site->post_title; ?>
+									
+									</h3><!-- End Title -->
+									
+									<a class="button-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+									
+									<a class="button-primary floatr deletesite" data-siteid="<?php echo $site->ID; ?>" href="#">Delete Site</a>
+									
+									<div class="clear"></div>
+									
+									<?php do_action('plchf_msb_my_sites_below_site_title'); ?>
+									
+									<div class="clear"></div><!-- Clear -->
 									
 									<hr>
 									
-									<?php plchf_msb_qrcode_preview($home_id); ?>
-					
-									<?php plchf_msb_site_shortlink($home_id); ?>
+									<div class="clear"></div>
 									
-								</div>
-								
-								<div class="three_fourth column-last">
-								
-									<div class="one_half">
+									<?php do_action('plchf_msb_sites_page_above_site_info'); ?>
 									
-										<h4>Pages</h4>
+									<div class="clear"></div>
+									
+									<div class="one_fourth">
+									
+										<h4>Site Preview</h4>
 										
 										<hr>
 										
-										<?php do_action('plchf_msb_sites_center_column', $siteid); ?>
-									
-									</div>
-									
-									<div class="one_half column-last">
-									
-										<h4>Site</h4>
-										
-										<hr>
-										
-										<?php do_action('plchf_msb_sites_right_column', $siteid); ?>
-										
-									
-									</div>
-								
-								</div>
-								
-								<div class="clear"></div>
-								
-								<hr>
-								
-								<?php do_action('plchf_msb_sites_page_below_site_info', $siteid); ?>
-							
-							</div><!-- / Module Inside -->
+										<?php plchf_msb_qrcode_preview($home_id); ?>
 						
-						</div><!-- /Widget -->
+										<?php plchf_msb_site_shortlink($home_id); ?>
+										
+									</div>
+									
+									<div class="three_fourth column-last">
+									
+										<div class="one_half">
+										
+											<h4>Pages</h4>
+											
+											<hr>
+											
+											<?php do_action('plchf_msb_sites_center_column', $siteid); ?>
+										
+										</div>
+										
+										<div class="one_half column-last">
+										
+											<h4>Site</h4>
+											
+											<hr>
+											
+											<?php do_action('plchf_msb_sites_right_column', $siteid); ?>
+											
+										
+										</div>
+									
+									</div>
+									
+									<div class="clear"></div>
+									
+									<hr>
+									
+									<?php do_action('plchf_msb_sites_page_below_site_info', $siteid); ?>
+								
+								</div><!-- / Module Inside -->
+							
+							</div><!-- /Widget -->
+						
+						<?php
+						
+						}
+						
+					} else {
+					
+					?>
+					
+					<!-- If No Sites Exist -->
+						
+						<div class="no-sites">
+						
+							<?php 
+								
+								$output .= '<h1>Oh No! You Don\'t Have any Mobile Sites!';
+								$output .= '<h3>Go Ahead and Create One. It\'s Easy!</h3>';
+								
+								$output .= '<a class="button-primary floatc" href="'. apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'. apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>';
+								
+								echo apply_filters('plchf_msb_no_sites_message', $output);
+							
+							?>
+						
+						</div>
 					
 					<?php
-					
+						
 					}
 					
 					?>

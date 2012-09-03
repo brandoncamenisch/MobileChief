@@ -1301,6 +1301,59 @@ function plchf_msb_googl_shortlink($url) {
 	add_filter( "single_template", "plchf_msb_template_redirect", 1);
 
 /* ----------------------------------------------------------------------------
+	Delete Site with Ajax 
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_delete_site_ajax() {
+		
+		// Get the Site ID to delete
+		$siteid = $_POST['site_id'];
+		
+		$args = array( 
+		    'post_parent' => $siteid,
+		    'post_type' => 'pluginchiefmsb-sites'
+		);
+		
+		$posts = apply_filters('plchf_msb_delete_site_args', get_posts( $args ));
+		
+		if (is_array($posts) && count($posts) > 0) {
+
+			// Delete all the Children of the Parent Page (Site)
+			foreach($posts as $post){
+				
+				// Do Action While We Delete the Site Pages
+				do_action('plchf_msb_before_delete_site_pages', $post->ID);
+				
+				wp_delete_post($post->ID, true);
+				
+				// Do Action While We Delete the Site Pages
+				do_action('plchf_msb_after_delete_site_page', $post->ID);
+
+			}
+
+		}
+		
+		// Run Action After We Delete the Site
+		do_action('plchf_msb_before_delete_site', $siteid);
+		
+		// Delete the Parent Page (Site)
+		wp_delete_post($siteid, true);
+		
+		// Run Action After We Delete the Site
+		do_action('plchf_msb_after_delete_site', $siteid);
+		
+		// Redirect after Delete Site
+		$url = apply_filters('plchf_msb_my_sites_link', '/wp-admin/admin.php?page=pluginchiefmsb');
+		
+		echo $url;
+		
+		die();
+				
+	}
+	
+	add_action('wp_ajax_plchf_msb_delete_site_ajax','plchf_msb_delete_site_ajax');
+	
+/* ----------------------------------------------------------------------------
 	Correct image path issue in thickbox
 ---------------------------------------------------------------------------- */
  
@@ -1387,13 +1440,17 @@ function plchf_msb_googl_shortlink($url) {
 		
 		foreach ($posts as $post) {
 			
-			$output .= '<li><a href="'.apply_filters('plchf_msb_edit_page_link','admin.php?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'').'">'.$post->post_title.'</a></li>';
+			$output .= '<li><a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+								
+				$output .= $post->post_title; 
+								
+			$output .= '</a></li>';
 			
 		}
 		
 		$output .= '</ul>';
 		
-		echo apply_filters('plchf_msb_site_pages_links',$output);
+		echo apply_filters('plchf_msb_site_pages_links', $output);
 		
 	}
 	
@@ -1407,14 +1464,24 @@ function plchf_msb_googl_shortlink($url) {
 	
 		do_action('plchf_msb_sites_before_right_column_site_details');
 		
+		$site_theme = get_post_meta($siteid,'_plchf_msb_site_theme',true);
+		$homepage 	= get_post_meta($siteid,'_homepage_',true);
+		$homepage 	= get_permalink($homepage);
+		$site_theme = ucwords(str_ireplace('_',' ', $site_theme));
+		
+		$url = get_permalink($siteid);
+		
 		$output .= '<ul class="mobile-site-pages">';
 		
 			do_action('plchf_msb_sites_before_right_column_site_details_links');
 		
 			$output .= apply_filters('plchf_msb_sites_edit_site','<li><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'">Edit Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#">Preview Site</a></li>');
-			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#">Delete Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="'.plchf_msb_googl_shortlink($homepage).'">Preview Site</a></li>');
+			
+			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#" class="deletesite" data-siteid="'.$siteid.'">Delete Site</a></li>');
+			
+			$output .= apply_filters('plchf_msb_sites_current_theme','<li><a href="#">Change Themes: '.$site_theme.'</a></li>');
 			
 			do_action('plchf_msb_sites_after_right_column_site_details_links');
 		
