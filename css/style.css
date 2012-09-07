@@ -1882,6 +1882,36 @@ Form Styles
   padding-left: 160px;
 }
 
+#pluginchiefmsb-wrapper .filelist {
+    width: 60%;
+}
+#pluginchiefmsb-wrapper .filelist .file {
+    padding: 5px;
+    background: #ececec;
+    border: solid 1px #ccc;
+    margin-bottom: 4px;
+}
+#pluginchiefmsb-wrapper .filelist .fileprogress {
+    width: 0%;
+    background: #B7C53D;
+    height: 5px;
+}
+#pluginchiefmsb-wrapper .plupload-thumbs {
+ 
+}
+#pluginchiefmsb-wrapper .plupload-thumbs .thumb {
+    width: 50px;
+    padding-right: 5px;
+    float: left;
+}
+#pluginchiefmsb-wrapper .plupload-thumbs .thumb img {
+    width: 50px;
+    height: 50px;
+}
+#pluginchiefmsb-wrapper .ui-sortable  .thumb img {
+    cursor: pointer;
+}
+
 /* -----------------------------------------------------------------------
 Time Picker
 ----------------------------------------------------------------------- */

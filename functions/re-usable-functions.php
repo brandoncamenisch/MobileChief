@@ -25,9 +25,11 @@
     	wp_enqueue_style('plchf_msb_font_awesome_styles');
     	wp_enqueue_style('plchf_msb_admin_styles');
 
+		
     	// Enqueue JS
     	add_thickbox();
     	wp_enqueue_script('jquery');
+    	wp_enqueue_script('plupload-all');
     	wp_enqueue_script('jquery-ui-core');
     	wp_enqueue_script('jquery-ui-sortable');
     	wp_enqueue_script('jquery-ui-draggable');
@@ -35,6 +37,7 @@
     	wp_enqueue_script('jquery-ui-datepicker');
     	wp_enqueue_script('jquery-ui-slider');
     	wp_enqueue_script('jquery-touch-punch');
+    	wp_enqueue_script('plchf_msb_plupload', 	PLUGINCHIEFMSB . 'js/scripts/plupload.js');
     	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.js');
     	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
     	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
@@ -1641,3 +1644,68 @@ function plchf_msb_googl_shortlink($url) {
 	}
 	
 	add_action('plchf_msb_site_details', 'plchf_msb_delete_site_button');
+	
+
+/* ----------------------------------------------------------------------------
+	plupload for uploading multiple images
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_plupload_admin_head() {
+		
+		// place js config array for plupload
+	    $plupload_init = array(
+	        'runtimes' => 'html5, silverlight, flash, html4',
+	        'browse_button' => 'plupload-browse-button', // will be adjusted per uploader
+	        'container' => 'plupload-upload-ui', // will be adjusted per uploader
+	        'drop_element' => 'drag-drop-area', // will be adjusted per uploader
+	        'file_data_name' => 'async-upload', // will be adjusted per uploader
+	        'multiple_queues' => true,
+	        'url' => admin_url('admin-ajax.php'),
+	        'flash_swf_url' => includes_url('js/plupload/plupload.flash.swf'),
+	        'silverlight_xap_url' => includes_url('js/plupload/plupload.silverlight.xap'),
+	        'filters' => array(
+	        	array(
+	        		'title' => __('Allowed Files'), 
+	        		'extensions' => '*')
+	        	),
+	        'multipart' => true,
+	        'urlstream_upload' => true,
+	        'multi_selection' => false, // will be added per uploader
+	         // additional post data to send to our ajax hook
+	        'multipart_params' => array(
+	            '_ajax_nonce' => "", // will be added per uploader
+	            'action' => 'plupload_action', // the ajax action name
+	            'imgid' => 0 // will be added per uploader
+	        )
+	    );
+	
+	
+	    echo '
+	    <script type="text/javascript">
+	    var base_plupload_config='. json_encode($plupload_init) .'
+	    </script>
+	    ';
+	
+	}
+	
+	add_action('admin_head', 'plchf_msb_plupload_admin_head');
+
+/* ----------------------------------------------------------------------------
+	Upload Images with AJAX
+---------------------------------------------------------------------------- */
+	
+	function plchf_msb_plupload_action() {
+ 
+		// check ajax noonce
+		$imgid = $_POST["imgid"];
+		check_ajax_referer($imgid . 'pluploadan');
+		
+		// handle file upload
+		$status = wp_handle_upload($_FILES[$imgid . 'async-upload'], array('test_form' => true, 'action' => 'plupload_action'));
+		
+		// send the uploaded file url in response
+		echo $status['url'];
+		exit;
+		}
+	
+	add_action('wp_ajax_plupload_action', "plchf_msb_plupload_action");
