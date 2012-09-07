@@ -46,7 +46,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 					
 					<h3 class="section-title floatl">Mobile Sites</h3>
 				
-					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>
+					<a class="button-primary button btn btn-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>
 					
 				</div>
 				
@@ -79,7 +79,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 								
 						?>
 								
-							<div id="site-name" class="widget" data-redirectafterdelete="<?php echo apply_filters('plchf_msb_my_sites_link', '/wp-admin/admin.php?page=pluginchiefmsb'); ?>" data-widgetid="<?php echo $site->ID; ?>" data-siteid="<?php echo $site->ID; ?>">
+							<div id="site-name" class="widget" data-redirectafterdelete="<?php echo apply_filters('plchf_msb_my_sites_link', get_bloginfo('url') . '/wp-admin/admin.php?page=pluginchiefmsb'); ?>" data-widgetid="<?php echo $site->ID; ?>" data-siteid="<?php echo $site->ID; ?>">
 								
 								<div class="widget-top">
 								
@@ -109,9 +109,9 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 									
 									</h3><!-- End Title -->
 									
-									<a class="button-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+									<a class="button-primary button btn btn-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
 									
-									<a class="button-primary floatr deletesite" data-siteid="<?php echo $site->ID; ?>" href="#">Delete Site</a>
+									<a class="button-primary button btn btn-primary floatr deletesite" data-siteid="<?php echo $site->ID; ?>" href="#">Delete Site</a>
 									
 									<div class="clear"></div>
 									
@@ -191,7 +191,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 								$output .= '<h1>Oh No! You Don\'t Have any Mobile Sites!';
 								$output .= '<h3>Go Ahead and Create One. It\'s Easy!</h3>';
 								
-								$output .= '<a class="button-primary floatc" href="'. apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'. apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>';
+								$output .= '<a class="button-primary button btn btn-primary floatc" href="'. apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'. apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>';
 								
 								echo apply_filters('plchf_msb_no_sites_message', $output);
 							

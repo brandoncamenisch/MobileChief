@@ -64,7 +64,7 @@
 		
 		$output .= '<br/>';
 		
-		$output .= '<input id="'.$id.'plupload-browse-button" type="button" class="button-primary" value="Select Files" class="button" />';
+		$output .= '<input id="'.$id.'plupload-browse-button" type="button" class="button-primary button btn btn-primary" value="Select Files" class="button" />';
 		
 		$output .= '<div class="clear"></div>';
 		

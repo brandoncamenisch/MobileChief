@@ -37,7 +37,7 @@
 					
 					<h3 class="section-title floatl">Create New Site</h3>
 				
-					<a class="button-primary floatr" href="<?php echo apply_filters('plchf_msb_my_sites_link', '/wp-admin/admin.php?page=pluginchiefmsb'); ?>">My Sites</a>
+					<a class="button-primary button btn btn-primary floatr" href="<?php echo apply_filters('plchf_msb_my_sites_link', get_bloginfo('url') . '/wp-admin/admin.php?page=pluginchiefmsb'); ?>">My Sites</a>
 					
 				</div>
 				
@@ -169,7 +169,7 @@
 									<?php wp_nonce_field('plchf_msb_create_new_site', 'plchf_msb_create_new_site_field'); ?>
 									
 									<!-- Submit -->
-									<button class="button-primary floatl">Create Site</button>
+									<button class="button-primary button btn btn-primary floatl">Create Site</button>
 								
 								</form> <!-- End Form -->
 								

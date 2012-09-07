@@ -479,13 +479,13 @@ jQuery(document).ready(function($){
 				'message'	: 'Are You Sure You Want to Delete this site? <br />All data will be lost. Continue?',
 				'buttons'	: {
 						'Yes'	: {
-							'class'	: 'button-primary',
+							'class'	: 'button-primary button btn btn-primary',
 							'action': function(){
 								plchf_msb_delete_site(siteID);
 							}
 						},
 						'No'	: {
-							'class'	: 'button-primary',
+							'class'	: 'button-primary button btn btn-primary',
 							'action': function(){}	// Nothing to do in this case. You can as well omit the action property.
 						}
 					}
@@ -543,14 +543,14 @@ jQuery(document).ready(function($){
 				'message'	: 'Are You Sure You Want to Remove This Element? <br />All data will be lost. Continue?',
 				'buttons'	: {
 					'Yes'	: {
-						'class'	: 'button-primary',
+						'class'	: 'button-primary button btn btn-primary',
 						'action': function(){
 							item.remove();
 							plchf_msb_save_mobile_page_content();
 						}
 					},
 					'No'	: {
-						'class'	: 'button-primary',
+						'class'	: 'button-primary button btn btn-primary',
 						'action': function(){}	// Nothing to do in this case. You can as well omit the action property.
 					}
 				}

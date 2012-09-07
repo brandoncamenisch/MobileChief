@@ -21,7 +21,7 @@ function plchf_msb_site_settings_field_image($fields, $count) {
 	
 	$output .= '
 	<input class="upload_image" type="text" size="36" name="field['.$type.$field_id.']['.$field_id.']" value="'.$value.'" />
-	<input class="upload_image_button button-primary" type="button" value="Upload Image" />
+	<input class="upload_image_button button-primary button btn btn-primary" type="button" value="Upload Image" />
 	';
 	
 	if ($value) {

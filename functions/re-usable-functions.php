@@ -20,7 +20,6 @@
     	
     	// Enqueue Styles
     	wp_enqueue_style('jquery-ui-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css');
-    	wp_enqueue_style('colors-fresh', admin_url( 'css/colors-fresh.css' ));
     	wp_enqueue_style('farbtastic');
     	wp_enqueue_style('plchf_msb_font_awesome_styles');
     	wp_enqueue_style('plchf_msb_admin_styles');
@@ -524,7 +523,7 @@
 			// Run Action at the Bottom of the Page Generator
 			do_action('plchf_msb_bottom_page_generator');
 	
-			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave button-primary">Save</button>');
+			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave button-primary button btn btn-primary">Save</button>');
 	
 			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
 
@@ -643,7 +642,7 @@
 			
 			wp_nonce_field('site_options_nonce', 'site_options_nonce_field');
 			
-			echo apply_filters('plchf_msb_site_settings_save_button','<button class="site-options-ajaxsave button-primary">Save</button>');	
+			echo apply_filters('plchf_msb_site_settings_save_button','<button class="site-options-ajaxsave button-primary button btn btn-primary">Save</button>');	
 			
 		// End Form
 		echo '</form>';
@@ -1037,7 +1036,7 @@
 		    		
 		    		}
 		    		
-		    		echo '<button class="ajaxsave button-primary">Save</button>';
+		    		echo '<button class="ajaxsave button-primary button btn btn-primary">Save</button>';
 		    		
 		    	echo  '</div>';
 		    	
@@ -1093,7 +1092,7 @@
 		    		
 		    		}
 		    		
-		    		echo '<button class="site-options-ajaxsave button-primary">Save</button>';
+		    		echo '<button class="site-options-ajaxsave button-primary button btn btn-primary">Save</button>';
 			    		
 			    echo  '</div>';
 			   	
@@ -1346,7 +1345,7 @@ function plchf_msb_googl_shortlink($url) {
 		do_action('plchf_msb_after_delete_site', $siteid);
 		
 		// Redirect after Delete Site
-		$url = apply_filters('plchf_msb_my_sites_link', '/wp-admin/admin.php?page=pluginchiefmsb');
+		$url = apply_filters('plchf_msb_my_sites_link', get_bloginfo('url') . '/wp-admin/admin.php?page=pluginchiefmsb');
 		
 		echo $url;
 		
