@@ -3016,6 +3016,52 @@ Icons
 
 
 /* -----------------------------------------------------------------------
+My Sites Widget Box Styles
+----------------------------------------------------------------------- */
+
+#pluginchiefmsb-wrapper .widget-top{
+	border-bottom-color: #DFDFDF;
+	text-shadow: white 0 1px 0;
+	-moz-box-shadow: 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 white;
+	box-shadow: 0 1px 0 white;
+	height: auto;
+	cursor: default;
+	color: #222;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #F1F1F1;
+	background-image: -ms-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: -moz-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: -o-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#F9F9F9),to(#ECECEC));
+	background-image: -webkit-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: linear-gradient(top,#F9F9F9,#ECECEC);
+}
+
+#pluginchiefmsb-wrapper .widget-top .widget-title-action{
+	float: right;
+	text-shadow: white 0 1px 0;
+	cursor: default;
+	color: #222;
+}
+
+#pluginchiefmsb-wrapper .widget-top a.widget-action {
+	background: transparent url(../images/arrows.png) no-repeat 4px 6px;
+	display: block;
+	width: 24px;
+	height: 26px;
+}
+
+#pluginchiefmsb-wrapper .widget-top h4{
+	line-height: 1.1;
+	padding: 7px 2px 7px 9px;
+	font-size: 18px;
+	margin: 0px 0px 0px;
+}
+
+
+/* -----------------------------------------------------------------------
 Progress Bars
 ----------------------------------------------------------------------- */
 
