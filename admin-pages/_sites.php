@@ -109,7 +109,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 									
 									</h3><!-- End Title -->
 									
-									<a class="button-primary button btn btn-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site Settings</a>
+									<a class="button-primary button btn btn-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site</a>
 									
 									<a class="button-primary button btn btn-primary floatr deletesite" data-siteid="<?php echo $site->ID; ?>" href="#">Delete Site</a>
 									

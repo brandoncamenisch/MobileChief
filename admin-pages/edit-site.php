@@ -103,6 +103,8 @@
 					<?php plchf_msb_qrcode_preview($home_id); ?>
 					
 					<?php plchf_msb_site_shortlink($home_id); ?>
+					
+					<?php do_action('plchf_msb_below_googl_shortlink', $site_id); ?>
 				
 				</div><!-- One Fifth -->
 				

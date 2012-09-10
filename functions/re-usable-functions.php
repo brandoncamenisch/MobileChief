@@ -1248,7 +1248,7 @@ function plchf_msb_googl_shortlink($url) {
 	    // Get Permalink for the Site ID
 	    $permalink = get_permalink($site_id);
 	    
-	    do_action('plchf_msb_above_googl_shortlink');
+	    $output .= do_action('plchf_msb_above_googl_shortlink', $site_id);
 	    
 	    $output .= '<hr>';
 	    
@@ -1257,8 +1257,6 @@ function plchf_msb_googl_shortlink($url) {
 	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
 	    
 	    echo apply_filters('plchf_msb_googl_site_shortlink', $output);
-	    
-	    do_action('plchf_msb_below_googl_shortlink');
 	    
     }
     
@@ -1371,7 +1369,7 @@ function plchf_msb_googl_shortlink($url) {
 	Create Site Function
 ---------------------------------------------------------------------------- */
 
-	function plchf_msb_create_new_site() {
+	function plchf_msb_create_new_site_from_ajax() {
 		
 		global $current_user;
 		get_currentuserinfo();
@@ -1389,25 +1387,8 @@ function plchf_msb_googl_shortlink($url) {
 			// Allows us to hook in and get more post data, if needed
 			do_action('plchf_msb_create_new_site_post_data');
 			
-			// Create the New Site
-			$post = array(
-				'post_author' 	=> $userid,
-				'post_content' 	=> 'This is the default content for the site',
-				'post_name' 	=> $name,
-				'post_status' 	=> 'publish',
-				'post_title' 	=> $name,
-				'post_type' 	=> 'pluginchiefmsb-sites',
-			); 
-			
-			// Insert New Site
-			$new_site = wp_insert_post($post);
-			
-			// Set Site Theme
-			update_post_meta($new_site, '_plchf_msb_site_theme', $theme);
-			
-			// After Create Site
-			do_action('plchf_msb_after_create_new_site', $new_site);
-			
+			plchf_msb_create_new_mobile_site($userid, $name, $theme);
+				
 			// Redirect URL 
 			$redirect_url = apply_filters('plchf_msb_redirect_after_create_site', 'admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$new_site.'', $new_site);
 			
@@ -1419,8 +1400,34 @@ function plchf_msb_googl_shortlink($url) {
 		
 	}
 	
-	add_action('init','plchf_msb_create_new_site');
+	add_action('init','plchf_msb_create_new_site_from_ajax');
 
+
+	function plchf_msb_create_new_mobile_site($userid, $name, $theme) {			
+
+		// Create the New Site
+		$post = array(
+			'post_author' 	=> $userid,
+			'post_content' 	=> 'This is the default content for the site',
+			'post_name' 	=> $name,
+			'post_status' 	=> 'publish',
+			'post_title' 	=> $name,
+			'post_type' 	=> 'pluginchiefmsb-sites',
+		); 
+		
+		// Insert New Site
+		$new_site = wp_insert_post($post);
+		
+		// Set Site Theme
+		update_post_meta($new_site, '_plchf_msb_site_theme', $theme);
+		
+		// After Create Site
+		do_action('plchf_msb_after_create_new_site', $new_site);
+		
+		return $new_site;
+	
+	}
+			
 
 /* ----------------------------------------------------------------------------
 	Create Default Home Page Upon Site Creation 
@@ -1705,6 +1712,21 @@ function plchf_msb_googl_shortlink($url) {
 		// send the uploaded file url in response
 		echo $status['url'];
 		exit;
-		}
+	
+	}
 	
 	add_action('wp_ajax_plupload_action', "plchf_msb_plupload_action");
+	
+/* ---------------------------------------------------------------------------- */
+/* Run this Action Once a Day at 2:00 AM
+/* ---------------------------------------------------------------------------- */
+ 
+	if (!wp_next_scheduled('plchf_msb_front_end_daily_wp_cron')) {
+		wp_schedule_event( 7200, 'daily', 'plchf_msb_front_end_daily_wp_cron' );
+	}
+	
+	register_deactivation_hook(__FILE__, 'plchf_msb_front_end_deactivation');
+	
+	function plchf_msb_front_end_deactivation() {
+		wp_clear_scheduled_hook('plchf_msb_front_end_daily_wp_cron');
+	}
