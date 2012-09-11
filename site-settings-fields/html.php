@@ -4,7 +4,7 @@
 /* HTML Field
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_site_settings_field_html($fields, $element_type, $count, $values) {
+function plchf_msb_site_settings_field_html($fields, $count) {
 
 	// Get the Element Type
 	$element_type 	= $element_type;
