@@ -691,8 +691,6 @@
 		    		// We then pass that to the element type action
 		    		$element_type_and_count = explode("_", $k);
 		    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
-		    		
-		    		$tidy = new Tidy();
 
 		    		// We run the action for each element
 		    		echo do_action('plchf_msb_page_element_output_'.$element_type.'', $values);
