@@ -1,0 +1,31 @@
+ON SITE CREATION:
+
+		Warning: Cannot modify header information - headers already sent by (output started at /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php:951) in /Users/brandoncamenisch/Sites/wp/wp-includes/pluggable.php on line 884
+
+
+
+
+ON MOBILE SITES PAGE ADMIN SIDE:
+
+		Notice: Undefined variable: site_id in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1165 Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1191
+
+		Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1446
+
+		Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1481
+
+
+EDITING THE REAL ESTATE PAGE:
+
+Site: Notice: Undefined variable: id in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/admin-pages/edit-site.php on line 69 Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 311 Real Estate Theme
+
+Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 660
+
+Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1600 Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1628
+
+
+Notice: Undefined index: _edit_page_page_ in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1139 Notice: Undefined index: _edit_site_page_ in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1140 Notice: Undefined index: _my_sites_page_ in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1141 Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 617
+
+
+Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1191
+
+Notice: Undefined variable: output in /Users/brandoncamenisch/Sites/wp/wp-content/plugins/pluginchief-mobile-site-builder/functions/re-usable-functions.php on line 1249
