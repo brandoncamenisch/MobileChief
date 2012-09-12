@@ -1488,8 +1488,6 @@ function plchf_msb_googl_shortlink($url) {
 			
 			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#" class="deletesite" data-siteid="'.$siteid.'">Delete Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_current_theme','<li><a href="#">Change Themes: '.$site_theme.'</a></li>');
-			
 			do_action('plchf_msb_sites_after_right_column_site_details_links');
 		
 		$output .= '</ul>';
