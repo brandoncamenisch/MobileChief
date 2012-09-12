@@ -1288,7 +1288,22 @@ function plchf_msb_googl_shortlink($url) {
 		// Only Run id Post Type is Plugin Chief MSB Sites
 	    if ($post->post_type == 'pluginchiefmsb-sites') {
 	    	
+	    	// This gets the Site Root and the Site Page (Both are set when registering a theme, using the 
+	    	// plchf_msb_theme_root_theme_slug and plchf_msb_theme_page_theme_slug functions
 	    	$single_template = apply_filters('plchf_msb_theme_root_'.$site_theme.'', 'goo').apply_filters('plchf_msb_theme_page_'.$site_theme.'','goo');
+	    	
+	    	// Fallback Theme Root (Default Theme if No Theme Exists)
+	    	$fallback_theme_root = apply_filters('plchf_msb_fallback_theme_root', PLUGINCHIEFMSB_PATH . '/mobile-themes/default-theme/theme/');
+	    	
+	    	// Fallback Theme Page (Default Page if No Page Exists)
+	    	$fallback_theme_page = apply_filters('plchf_msb_fallback_theme_page','standard.php');
+	    	
+	    	// Make Sure the Theme Exists, Otherwis
+	    	if (file_exists($single_template)) {
+		    	$single_template = $single_template;
+	    	} else {
+		    	$single_template = $fallback_theme_root.$fallback_theme_page;
+	    	}
 	    
 	    }
 	     
