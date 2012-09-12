@@ -142,12 +142,16 @@ jQuery(document).ready(function($){
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_sortable_page_sections(){
-	
+		
+		if ( $('#page-generator, .section-sortable').length ) {
+		
 		$( "#page-generator, .section-sortable" ).sortable({
 			connectWith: ".connected-sortable",
 			placeholder: "element-placeholder", 
 			items: ".page-element, .page-section"
 		});
+		
+		}
 		
 	}
 	
