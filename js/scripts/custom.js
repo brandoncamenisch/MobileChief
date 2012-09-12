@@ -565,9 +565,143 @@ jQuery(document).ready(function($){
   	}
   	
   	plchf_msb_remove_page_element();
+ 
+/* ----------------------------------------------------------------------------
+	Create New Mobile Pages
+---------------------------------------------------------------------------- */
+ 	
+	function plchf_msb_mobile_create_new_pages() {
+	
+		var submitBtn = $('input.create-new-page');
+		
+		submitBtn.live('click', function(event){
+		
+		event.preventDefault();
+		
+		var title 				= $('input[name="_new_page_title"]').val();
+		var site_id 			= $('input[name="site_id"]').val();
+		var sitePages			= $('.menu-builder .menu-container');
+		var create_page_field 	= $('input[name=plchf_msb_create_page_field]');
+		
+		var data = 'plchf_msb_create_page_field' + create_page_field + '&site_id=' + site_id + '&_new_page_title=' + title + '&action=plchf_msb_create_new_page_with_ajax';	
+		
+			
+			$.ajax({
+				type: 'POST',
+			  	url: ajaxurl,
+			  	data: data,
+			  	success: function(response){
+			  		sitePages.prepend(response);
+			  		plchf_msb_save_mobile_page_content();
+			  		$('._new_page_title').val('');
+					return false;
+					die();
+			  	}	
+	
+			});	
+		
+		});
+	
+	}	
+	
+	plchf_msb_mobile_create_new_pages();
+	
+/* ----------------------------------------------------------------------------
+	Delete Mobile Page
+---------------------------------------------------------------------------- */
+ 	
+	function plchf_msb_delete_page(){
+	
+		var deletePageBtn = $('.menuitem-close');
+		
+		deletePageBtn.live('click', function(event){
+			
+			event.preventDefault();
+			
+			var pageID		= $(this).parent().parent().attr('data-id');
+			var data 		= 'page_id=' + pageID + '&action=plchf_msb_delete_mobile_site_page';
+			var parentItem 	= $(this).parent().parent();
+
+			$.confirm({
+				'title'		: 'Delete Confirmation',
+				'message'	: 'Are You Sure You Want to Delete This Page? <br />All data will be lost. Continue?',
+				'buttons'	: {
+					'Yes'	: {
+						'class'	: 'button-primary button btn btn-primary',
+						'action': function(){
+							$.ajax({
+								type: 'POST',
+							  	url: ajaxurl,
+							  	data: data,
+							  	success:function(response){
+								  	parentItem.slideUp(500);
+								  	plchf_msb_save_mobile_page_content();
+									return false;
+									die();
+							  	}	
+					
+							});
+						}
+					},
+					'No'	: {
+						'class'	: 'button-primary button btn btn-primary',
+						'action': function(){}	// Nothing to do in this case. You can as well omit the action property.
+					}
+				}
+			});
+			
+		});
+	
+	}
+	
+	plchf_msb_delete_page();
 
 /* ----------------------------------------------------------------------------
-	And jQuery Document Ready
+	Save Order of Mobile Menu Pages
 ---------------------------------------------------------------------------- */
+	
+	function plchf_msb_mobile_page_order(){
+	
+		var PageList = $('.menu-container');
+	 
+		PageList.sortable({
+			
+			update: function(event, ui) {
+				
+				//$('#loading-animation').show(); // Show the animate loading gif while waiting
+	 
+				opts = {
+					url: ajaxurl, // ajaxurl is defined by WordPress and points to /wp-admin/admin-ajax.php
+					type: 'POST',
+					async: true,
+					cache: false,
+					dataType: 'json',
+					data:{
+						action: 'plchf_msb_pages_sort', 	// Tell WordPress how to handle this ajax request
+						order: PageList.sortable('toArray').toString() // Passes ID's of list items in	1,3,2 format
+					},
+					success: function(response) {
+						// $('#loading-animation').hide(); // Hide the loading animation
+						plchf_msb_save_mobile_page_content();
+						return; 
+					},
+					error: function(xhr,textStatus,e) {  // This can be expanded to provide more information
+						alert('There was an error saving the updates');
+						// $('#loading-animation').hide(); // Hide the loading animation
+						return; 
+					}
+				};
+				
+				$.ajax(opts);
+			}
+		});
+	
+	}
+	
+	plchf_msb_mobile_page_order();
+
+/* ----------------------------------------------------------------------------
+	End jQuery Document Ready
+---------------------------------------------------------------------------- */
+
 });
- 
