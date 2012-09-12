@@ -676,6 +676,65 @@ border: 1px solid  #DFDFDF;
 }
 
 /* ---------------------------------------------------------------------------------- */
+/* Menu Manager
+/* ---------------------------------------------------------------------------------- */
+
+#pluginchiefmsb-wrapper .menu-items .menu-builder .menu-container li{
+	background-color: #F1F1F1;
+	background-image: -ms-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: -moz-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: -o-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#F9F9F9),to(#ECECEC));
+	background-image: -webkit-linear-gradient(top,#F9F9F9,#ECECEC);
+	background-image: linear-gradient(top,#F9F9F9,#ECECEC);
+	color: black;
+	padding: 15px 20px;
+	border: 1px solid #DFDFDF;
+	text-shadow: white 0 1px 0;
+	margin: 5px auto;
+	list-style: none;
+}
+
+#pluginchiefmsb-wrapper .menu-items .menu-builder .menu-container li .menuitem-options{
+	display: block;
+	float: right;
+}
+
+#pluginchiefmsb-wrapper .menu-items .menu-builder .menu-container li .menuitem-options .menuitem-move{
+	float: left;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	cursor: move;
+	background: url(../images/element-icons/element-move.png) center center no-repeat;
+	margin-right: 10px;
+	background-size: 100%;
+	display: block;
+}
+#pluginchiefmsb-wrapper .menu-items .menu-builder .menu-container li .menuitem-options .menuitem-edit{
+	float: left;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	cursor: move;
+	background: url(../images/element-icons/element-tools.png) center center no-repeat;
+	margin-right: 10px;
+	background-size: 100%;
+	display: block;
+}
+#pluginchiefmsb-wrapper .menu-items .menu-builder .menu-container li .menuitem-options .menuitem-close{
+	float: left;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	cursor: move;
+	background: url(../images/element-icons/element-cross.png) center center no-repeat;
+	margin-right: 10px;
+	background-size: 100%;
+	display: block;
+}
+
+/* ---------------------------------------------------------------------------------- */
 
 #pluginchiefmsb-wrapper .well {
 	min-height: 20px;

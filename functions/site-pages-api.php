@@ -16,7 +16,7 @@
 			$my_post = array(
 			 'post_title' => $title,
 			 'post_status' => 'publish',
-			 'post_type' => 'mobile-sites',omf
+			 'post_type' => 'pluginchiefmsb-sites',
 			 'post_parent' => $site_id,
 			 'post_name' => ''.$site_id.'-'.$title.''
 			);
@@ -29,7 +29,7 @@
 			$posttitle = get_the_title($postid);
 		
 			$output .= '<li id="' . $postid . '" data-id="' . $postid . '" class="list_item menuitem ui-draggable">';
-				$output .= '<p>' . $posttitle . '</p>';
+				$output .= $posttitle;
 				$output .= '<div class="menuitem-options">';
 					$output .='<div class="menuitem-move">Move</div>';
 					$output .='<a href="'.$root.'/edit-mobile-page/?mobile_page_id='. $postid .'" class="menuitem-edit">Edit</a>';
