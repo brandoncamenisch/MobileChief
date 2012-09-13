@@ -6,15 +6,12 @@
 
 function plchf_msb_site_settings_field_select($fields, $element_type, $count, $values) {
 
-	// Get the Element Type
-	$element_type 	= $element_type;
-
-	$type 				= $fields['type'];
-	$label 				= $fields['name'];
-	$tooltip		 	= $fields['tooltip'];
+	$type 			= $fields['type'];
+	$label 			= $fields['name'];
+	$tooltip		= $fields['tooltip'];
 	$placeholder	= $fields['placeholder'];
-	$field_id			= $fields['id'];
-	$options			= $fields['options'];
+	$field_id		= $fields['id'];
+	$options		= $fields['options'];
 
 	// Get the saved Value
 	$value			= $values[''.$field_id.''];

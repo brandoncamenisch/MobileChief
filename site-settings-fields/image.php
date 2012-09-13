@@ -6,16 +6,13 @@
 
 function plchf_msb_site_settings_field_image($fields, $count) {
 
-	// Get the Element Type
-	$element_type 	= $element_type;
-
 	// Get the Field Definitions
-	$type 				= $fields['type'];
-	$label 				= $fields['name'];
-	$tooltip		 	= $fields['tooltip'];
+	$type 			= $fields['type'];
+	$label 			= $fields['name'];
+	$tooltip		= $fields['tooltip'];
 	$placeholder	= $fields['placeholder'];
-	$field_id			= $fields['id'];
-	$value				= plchf_msb_get_site_option($type, $field_id);
+	$field_id		= $fields['id'];
+	$value			= plchf_msb_get_site_option($type, $field_id);
 
 	$output .= '<p>'.$tooltip.'</p>';
 

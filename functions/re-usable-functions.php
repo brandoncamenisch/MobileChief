@@ -293,22 +293,22 @@
 	function plchf_msb_get_site_title($id) {
 		
 		// Get the ID Passed to the Function or Get the Site ID if on Site Page
-		if ($id) {
-			$id = $id;
-		} else {
+		if ($_GET['mobilesite_site_id'] != '') {
 			$id = $_GET['mobilesite_site_id'];
+		} else {
+			$id = $id;
 		}
 		
 		$post = get_post( $id );
 		
 		// Check to see if post has a parent or not. . .if so, the site is the post's parent, if not, this is the site
 		if ( ($post->post_parent == 0) ) {
-			$site_id = $post->ID;
+			$site_id = $id;
 		} else {
 			$site_id = get_post($post->ID)->post_parent;
 		}
 		
-		$output .= get_the_title( $site_id );
+		$output = get_the_title( $site_id );
 		
 		return apply_filters('plchf_msb_get_site_title', $output);
 		
@@ -431,7 +431,7 @@
 	    $url = get_permalink($id);
 		
 		// Iframe Preview
-		$output .= '<iframe id="preview-frame" src="'.$url.'" data-siteid="'.$id.'" data-id="'.$postid.'" width="230" height="343"></iframe>';
+		$output = '<iframe id="preview-frame" src="'.$url.'" data-siteid="'.$id.'" data-id="'.$postid.'" width="230" height="343"></iframe>';
 		
 		// Loading Gif Div
 		$output .= '<div class="mobile-preview-loader"></div>';
@@ -608,7 +608,13 @@
 		
 			foreach ($settings as $setting) {
 				
-				$output .= $setting[''.$type.$id.''][''.$id.''];
+				$output = $setting[''.$type.$id.''][''.$id.''];
+				
+				if ($output != '') {
+					$output = $output;
+				} else {
+					$output = '';
+				}
 				
 			} 
 		
@@ -626,7 +632,7 @@
 		
 		do_action('plchf_msb_before_site_settings');
 		
-		// Page Generator Form
+		// Site Settings Form
 		echo '<form id="site-settings" class="site-settings" enctype="multipart/form-data" action="" method="post" data-postid="'.plchf_msb_get_site_id().'">';
 			
 			// Run Action at the Top of the Form
@@ -634,7 +640,7 @@
 			
 			$theme_slug = plchf_msb_get_theme_slug();
 			
-			// Page Generator Content
+			// Site Settings Content
 			do_action('plchf_msb_site_settings_content_'.$theme_slug.'');
 			
 			// Run Action at the Bottom of the Form
@@ -657,7 +663,7 @@
 
 	function plchf_msb_add_title_above_site_settngs_panels(){
 		
-		$output .= '<h3>Site Settings</h3>';
+		$output = '<h3>Site Settings</h3>';
 		
 		echo apply_filters('plchf_msb_site_settings_panel_title', $output);
 		
@@ -1184,7 +1190,7 @@
 	    // Get Permalink for the Site ID
 	    $permalink = get_permalink($site_id);
 	    
-	    $output .= '
+	    $output = '
 	    <div style="display:block; margin:0px auto; width:80%;">
 	    	<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.$permalink.'&choe=UTF-8&chld=|0" width="100%" height="auto">
 	    </div>
@@ -1246,12 +1252,9 @@ function plchf_msb_googl_shortlink($url) {
 	    // Get Permalink for the Site ID
 	    $permalink = get_permalink($site_id);
 	    
-	    $output .= do_action('plchf_msb_above_googl_shortlink', $site_id);
-	    
+	    $output = do_action('plchf_msb_above_googl_shortlink', $site_id);
 	    $output .= '<hr>';
-	    
 	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</strong> ';
-	    
 	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
 	    
 	    echo apply_filters('plchf_msb_googl_site_shortlink', $output);
@@ -1604,7 +1607,7 @@ function plchf_msb_googl_shortlink($url) {
 		// Get Post ID
 		$post_id = $wp_query->post->ID;
 		
-		$output .= '
+		$output = '
 		<meta charset="utf-8">
 		<title>'.get_the_title($post_id).'</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -1627,7 +1630,7 @@ function plchf_msb_googl_shortlink($url) {
 	
 		global $pluginchiefmsbdir;
 		
-		$output .= '
+		$output = '
 		<!-- Le styles -->
 		<link href="'.$pluginchiefmsbdir.'theme-assets/css/bootstrap.css" rel="stylesheet">
 		<link href="'.$pluginchiefmsbdir.'theme-assets/css/app.css" rel="stylesheet">

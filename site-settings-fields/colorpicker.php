@@ -9,7 +9,7 @@ function plchf_msb_site_settings_field_colorpicker($fields, $count) {
 	$type 				= $fields['type'];
 	$label 				= $fields['name'];
 	$tooltip		 	= $fields['tooltip'];
-	$placeholder	= $fields['placeholder'];
+	$placeholder		= $fields['placeholder'];
 	$field_id			= $fields['id'];
 	$default			= $fields['default'];
 

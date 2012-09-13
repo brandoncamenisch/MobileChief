@@ -578,14 +578,16 @@ jQuery(document).ready(function($){
 		
 		event.preventDefault();
 		
-		var title 				= $('input[name="_new_page_title"]').val();
-		var site_id 			= $('input[name="site_id"]').val();
-		var sitePages			= $('.menu-builder .menu-container');
-		var create_page_field 	= $('input[name=plchf_msb_create_page_field]');
+		// Serialize the Menu Manager Form
+		var createSiteForm = $('#menu-manager').serialize();
 		
-		var data = 'plchf_msb_create_page_field' + create_page_field + '&site_id=' + site_id + '&_new_page_title=' + title + '&action=plchf_msb_create_new_page_with_ajax';	
+		// Get the Div we need to prepend the new page to
+		var sitePages = $('.menu-builder .menu-container');
 		
+		// Put the data together from the form and submit to the correct AJAX action
+		var data = createSiteForm + '&action=plchf_msb_create_new_page_with_ajax';	
 			
+			// Submit the Data with AJAX, prepend the response and save the content		
 			$.ajax({
 				type: 'POST',
 			  	url: ajaxurl,
@@ -657,7 +659,7 @@ jQuery(document).ready(function($){
 	plchf_msb_delete_page();
 
 /* ----------------------------------------------------------------------------
-	Save Order of Mobile Menu Pages
+	Make Menu Manager Sortable
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_mobile_page_order(){
@@ -682,7 +684,8 @@ jQuery(document).ready(function($){
 					},
 					success: function(response) {
 						// $('#loading-animation').hide(); // Hide the loading animation
-						plchf_msb_save_mobile_page_content();
+						// plchf_msb_save_mobile_page_content();
+						plchf_msb_refresh_iphone_preview();
 						return; 
 					},
 					error: function(xhr,textStatus,e) {  // This can be expanded to provide more information

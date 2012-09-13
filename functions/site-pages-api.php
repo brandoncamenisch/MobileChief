@@ -7,28 +7,29 @@
 -------------------------------------------------------------------------*/
 
 	function plchf_msb_create_new_page_with_ajax() {
+		
+		// Verify Nonce Before Processing	
+		if(isset($_POST['plchf_msb_create_page_field']) && wp_verify_nonce($_POST['plchf_msb_create_page_field'], 'plchf_msb_create_page_field')) {	
 			
-			
+			// Get the Post Data
 			$title 		= $_POST['_new_page_title'];
 			$site_id	= $_POST['site_id'];
 			
-			// Create post object
+			// Create Page, with Site as Parent
 			$my_post = array(
-			 'post_title' => $title,
-			 'post_status' => 'publish',
-			 'post_type' => 'pluginchiefmsb-sites',
-			 'post_parent' => $site_id,
-			 'post_name' => ''.$site_id.'-'.$title.''
+			 'post_title' 	=> $title,
+			 'post_status'	=> 'publish',
+			 'post_type' 	=> 'pluginchiefmsb-sites',
+			 'post_parent' 	=> $site_id,
+			 'post_name' 	=> ''.$site_id.'-'.$title.''
 			);
 			
 			// Insert the post into the database
 			$postid = wp_insert_post( $my_post );
 			
-			$root = get_bloginfo('url');
-			
 			$posttitle = get_the_title($postid);
 		
-			$output .= '<li id="' . $postid . '" data-id="' . $postid . '" class="list_item menuitem ui-draggable">';
+			$output = '<li id="' . $postid . '" data-id="' . $postid . '" class="list_item menuitem ui-draggable">';
 				$output .= $posttitle;
 				$output .= '<div class="menuitem-options">';
 					$output .='<div class="menuitem-move">Move</div>';
@@ -40,7 +41,8 @@
 			echo $output;
 			
 			die();
-	
+			
+		}
 	}
 	
 	add_action('wp_ajax_plchf_msb_create_new_page_with_ajax','plchf_msb_create_new_page_with_ajax');

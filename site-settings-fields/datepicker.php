@@ -6,14 +6,11 @@
 
 function plchf_msb_site_settings_field_datepicker($fields, $count) {
 
-	// Get the Element Type
-	$element_type 	= $element_type;
-
-	$type 					= $fields['type'];
-	$label 					= $fields['name'];
-	$tooltip	 			= $fields['tooltip'];
-	$placeholder		= $fields['placeholder'];
-	$field_id				= $fields['id'];
+	$type 			= $fields['type'];
+	$label 			= $fields['name'];
+	$tooltip	 	= $fields['tooltip'];
+	$placeholder	= $fields['placeholder'];
+	$field_id		= $fields['id'];
 
 	// Get the saved Value
 	$value			= $values[''.$field_id.''];

@@ -6,12 +6,9 @@
 
 function plchf_msb_site_settings_field_html($fields, $count) {
 
-	// Get the Element Type
-	$element_type 	= $element_type;
-
 	// Get the Field Definitions
-	$type 			= $fields['type'];
-	$content 		= $fields['content'];
+	$type 		= $fields['type'];
+	$content 	= $fields['content'];
 
 	$output .= $content;
 

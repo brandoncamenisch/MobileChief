@@ -66,7 +66,7 @@
 				<div class="two_fifth column">
 					
 					<!-- Page Title -->
-					<h2><?php echo apply_filters('plchf_msb_site_label', 'Site:'); ?> <?php echo plchf_msb_get_site_title($id); ?></h2>
+					<h2><?php echo apply_filters('plchf_msb_site_label', 'Site:'); ?> <?php echo plchf_msb_get_site_title($site_id); ?></h2>
 					
 					<hr>
 						

@@ -7,11 +7,11 @@
 function plchf_msb_site_settings_field_text($fields, $count) {
 
 	// Get the Field Definitions
-	$type 				= $fields['type'];
-	$label 				= $fields['name'];
-	$tooltip	 		= $fields['tooltip'];
+	$type 			= $fields['type'];
+	$label 			= $fields['name'];
+	$tooltip	 	= $fields['tooltip'];
 	$placeholder	= $fields['placeholder'];
-	$field_id			= $fields['id'];
+	$field_id		= $fields['id'];
 
 	// Get the saved Value
 	$value			= plchf_msb_get_site_option($type, $field_id);

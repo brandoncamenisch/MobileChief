@@ -65,7 +65,9 @@
 				$args = array(
 					'post_type' 	=> 'pluginchiefmsb-sites',
 					'post_parent' 	=> $site_id,
-					'posts_per_page'=> '-1'
+					'posts_per_page'=> '-1',
+					'orderby' 		=> 'menu_order',
+					'order' 		=> 'ASC'
 				);
 					
 				$posts = get_posts( $args );

@@ -10,11 +10,11 @@ function plchf_msb_site_settings_field_text_area($fields, $count) {
 	$element_type 	= $element_type;
 
 	// Get the Field Definitions
-	$type 				= $fields['type'];
-	$label 				= $fields['name'];
-	$tooltip		 	= $fields['tooltip'];
+	$type 			= $fields['type'];
+	$label 			= $fields['name'];
+	$tooltip		= $fields['tooltip'];
 	$placeholder	= $fields['placeholder'];
-	$field_id			= $fields['id'];
+	$field_id		= $fields['id'];
 
 	// Get the saved Value
 	$value			= $values[''.$field_id.''];
