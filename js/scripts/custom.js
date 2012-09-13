@@ -386,7 +386,7 @@ jQuery(document).ready(function($){
 		  	success: function(response){
 		  		
 		  		// Display AJAX Response
-		  		alert(response);
+		  		// alert(response);
 		  		
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();

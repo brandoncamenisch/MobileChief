@@ -13,9 +13,6 @@
 		$placeholder	= $fields['placeholder'];
 		$field_id		= $fields['id'];
 	
-		// Get the saved Value
-		$value			= $values[''.$field_id.''];
-	
 		global $post, $wp_query;
 		
 		// Site ID
@@ -28,7 +25,6 @@
 		$title = str_replace( " ", "-", $title);
 		$title = strtolower($title);
 		
-		$selection = get_post_meta($post->ID, $field['id'], true);
 		
 		// Begin Output
 		$output = '<div class="menu-items">';
@@ -36,7 +32,7 @@
 			$output .='<form id="menu-manager" action="" method="POST">';
 
 				$output .='<label for="_new_page_title">Create New Page</label>';
-				$output .='<input type="text" name="_new_page_title" class="_new_page_title"/>';
+				$output .='<input type="text" name="_new_page_title" placeholder="Enter Page Title" class="_new_page_title"/>';
 				$output .='<input type="hidden" name="site_id" value="'.$site_id.'"/>';
 				$output .= wp_nonce_field('plchf_msb_create_page_field', 'plchf_msb_create_page_field');
 				$output .='<input type="submit" class="create-new-page btn btn-standard button button-standard" value="Add New Page">';

@@ -16,7 +16,7 @@ function plchf_msb_site_settings_field_hidden($fields, $count) {
 	// Get the saved Value
 	$value			= $values[''.$field_id.''];
 
-	$output .= '<p>'.$tooltip.'</p>';
+	$output = '<p>'.$tooltip.'</p>';
 
 	$output .= '
 	<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>

@@ -14,7 +14,7 @@ function plchf_msb_site_settings_field_image($fields, $count) {
 	$field_id		= $fields['id'];
 	$value			= plchf_msb_get_site_option($type, $field_id);
 
-	$output .= '<p>'.$tooltip.'</p>';
+	$output = '<p>'.$tooltip.'</p>';
 
 	$output .= '
 	<input class="upload_image" type="text" size="36" name="field['.$type.$field_id.']['.$field_id.']" value="'.$value.'" />

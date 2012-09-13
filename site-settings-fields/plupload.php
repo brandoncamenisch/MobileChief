@@ -17,12 +17,12 @@
 		$value			= $values[''.$field_id.''];
 
 		// adjust values here
-		$id 				= $count;
+		$id 		= $count;
 		$multiple 	= true; 	// allow multiple files upload
-		$width 			= null; 	// If you want to automatically resize all uploaded images then provide width here (in pixels)
-		$height 		= null; 	// If you want to automatically resize all uploaded images then provide height here (in pixels)
+		$width 		= null; 	// If you want to automatically resize all uploaded images then provide width here (in pixels)
+		$height 	= null; 	// If you want to automatically resize all uploaded images then provide height here (in pixels)
 
-		$output .= '<label>Upload Images</label>';
+		$output = '<label>Upload Images</label>';
 		$output .= '<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
 		$output .= '<div class="plupload-upload-uic hide-if-no-js ';
 

@@ -10,7 +10,7 @@ function plchf_msb_site_settings_field_html($fields, $count) {
 	$type 		= $fields['type'];
 	$content 	= $fields['content'];
 
-	$output .= $content;
+	$output = $content;
 
 	echo apply_filters('plchf_msb_site_settings_field_html_filter', $output);
 }

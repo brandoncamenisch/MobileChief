@@ -17,7 +17,7 @@ function plchf_msb_site_settings_field_select($fields, $element_type, $count, $v
 	$value			= $values[''.$field_id.''];
 
 	// Field Label
-	$output .= '
+	$output = '
 	<label>'.$label.'
 		<a href="#" class="tipsy-se floatr" original-title="'.$tooltip.'">
 			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">

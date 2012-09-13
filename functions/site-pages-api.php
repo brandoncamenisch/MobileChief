@@ -146,3 +146,62 @@
 	}
 	
 	add_action('wp_ajax_plchf_msb_pages_sort', 'plchf_msb_pages_sort');
+	
+/*-------------------------------------------------------------------------
+
+	CREATE THE OUTPUT FOR THE PAGE MENUS
+
+-------------------------------------------------------------------------*/
+
+	function plchf_msb_site_menu($navType) {
+		
+		global $post; 
+		
+		// Get the Site ID
+		$site_id = plchf_msb_get_site_id();
+		
+		// Set Default Nav Type
+		if ($navType != '') {
+			$navType = ' '.$navType;
+		} else {
+			$navType = ' nav-tabs nav-stacked';
+		}
+		
+		// Setup the Query Args
+		$args = array(
+			'post_parent' 	=> $site_id,
+			'post_type' 	=> 'pluginchiefmsb-sites',
+			'orderby' 		=> 'menu_order',
+			'order' 		=> 'ASC'
+		);
+		
+		// Get the Posts
+		$posts = get_posts($args);
+			
+			// Check if there are any posts		
+			if ($posts) {
+					
+				// Generate the Menu
+				$output = '<ul class="nav'.$navType.'">';
+					
+				// Loop Through the Pages
+				foreach ($posts as $post) {
+				
+					$output .= '<li>';
+						$output .= '<a href="'.get_permalink($post->ID).'">';
+							$output .= '<div class="container">'.$post->post_title.'';
+								$output .= '<i class="icon-arrow-right pull-right"></i>';
+							$output .= '</div>';
+						$output .= '</a>';
+					$output .= '</li>';
+					
+				} // End Foreach
+				
+				$output .= '</ul>';
+				
+			} // End If
+			
+		// Output the Menu through a filter, with $site_id as a variable passed to the filter
+		echo apply_filters('plchf_msb_site_menu_filter', $output, $site_id);
+		
+	}

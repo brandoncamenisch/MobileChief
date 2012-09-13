@@ -475,6 +475,9 @@
 						
 			$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
 			
+			// Run the Elements through a filter, send Page ID as a variable
+			$elements = apply_filters('plchf_msb_page_generator_elements', $elements, $page_id);
+			
 			if($elements) { 
 							
 				// Loop Through the Post Meta
@@ -605,18 +608,16 @@
 		$settings = get_post_meta($site_id, '_plchf_msb_site_options', true);
 		
 		if ($settings) {
-		
+				
 			foreach ($settings as $setting) {
-				
-				$output = $setting[''.$type.$id.''][''.$id.''];
-				
-				if ($output != '') {
-					$output = $output;
-				} else {
-					$output = '';
+			
+				if (isset($setting[$type.$id][$id])) {
+					
+					$output = $setting[''.$type.''.$id.''][''.$id.''];
+					
 				}
-				
-			} 
+			
+			}
 		
 		}
 		
@@ -646,7 +647,7 @@
 			// Run Action at the Bottom of the Form
 			do_action('plchf_msb_bottom_site_settings');
 			
-			wp_nonce_field('site_options_nonce', 'site_options_nonce_field');
+			wp_nonce_field('site_options_nonce_field', 'site_options_nonce_field');
 			
 			echo apply_filters('plchf_msb_site_settings_save_button','<button class="site-options-ajaxsave button-primary button btn btn-primary">Save</button>');	
 			
@@ -669,7 +670,7 @@
 		
 	}
 	
-	add_action('plchf_msb_before_site_settings','plchf_msb_add_title_above_site_settngs_panels');
+	add_action('plchf_msb_before_site_settings','plchf_msb_add_title_above_site_settngs_panels', 1);
 	
 /* ----------------------------------------------------------------------------
 	Mobile Page Content
@@ -778,7 +779,7 @@
 			$site_options = false;	
 		}
 		
-		if(isset($_POST['site_options_nonce_field']) && wp_verify_nonce($_POST['site_options_nonce_field'], 'site_options_nonce')) {
+		if(isset($_POST['site_options_nonce_field']) && wp_verify_nonce($_POST['site_options_nonce_field'], 'site_options_nonce_field')) {
 		
 			$site_options = array();
 										
@@ -793,7 +794,7 @@
 			$updated_meta = update_post_meta(''.$id.'', '_plchf_msb_site_options', $site_options);
 			
 			// Print the Data on return to AJAX
-			// print_r($page_elements);
+			print_r($site_options);
 			
 			die();
 		
