@@ -76,9 +76,9 @@
 		
 		$plchf_msb_menu = get_post_meta($post_id, '_plchf_msb_site_menu', true);
 		
-		$list = $plchf_msb_menu;
-		$new_order = $_POST['list_items'];
-		$new_list = array();
+		$list 		= $plchf_msb_menu;
+		$new_order 	= $_POST['list_items'];
+		$new_list 	= array();
 		
 		// update order
 		foreach($new_order as $v) {
