@@ -18,6 +18,7 @@
 	plchf_msb_get_theme_info('Screenshot'); 	- Returns Screenshot File Name, Not full path to file
 	plchf_msb_get_theme_info('Page Elements'); 	- Returns Yes / No
 	plchf_msb_get_theme_info('Settings Panel'); - Returns Yes / No
+	plchf_msb_get_theme_info('Page Templates'); - Returns Array of Page Templates
 	plchf_msb_get_theme_info('Description'); 	- Returns Theme Description
 	
 ---------------------------------------------------------------------------- */	
@@ -84,8 +85,6 @@
 		
 	}
 	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme');
-
 /* ----------------------------------------------------------------------------
 	Get Theme Slug
 ---------------------------------------------------------------------------- */	
@@ -121,8 +120,6 @@
 		
 	}
 	
-	// // add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_slug');
-	
 /* ----------------------------------------------------------------------------
 	Get Theme Version
 ---------------------------------------------------------------------------- */	
@@ -156,8 +153,6 @@
 		}
 		
 	}
-	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_version');
 	
 /* ----------------------------------------------------------------------------
 	Get Theme Author Name
@@ -193,8 +188,6 @@
 		
 	}
 	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_author_name');
-	
 /* ----------------------------------------------------------------------------
 	Get Theme Author URL
 ---------------------------------------------------------------------------- */	
@@ -228,8 +221,6 @@
 		}
 		
 	}
-	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_author_url');
 	
 /* ----------------------------------------------------------------------------
 	Get Theme Path
@@ -265,8 +256,6 @@
 		
 	}
 	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_path');
-	
 /* ----------------------------------------------------------------------------
 	Get Theme Root
 ---------------------------------------------------------------------------- */	
@@ -301,8 +290,6 @@
 		}
 		
 	}
-	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_root');
 	
 /* ----------------------------------------------------------------------------
 	Get Theme Supports Multiple Pages
@@ -371,8 +358,6 @@
 		
 	}
 	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_theme_supports_page_elements');
-	
 /* ----------------------------------------------------------------------------
 	Get Theme Supports Settings Panel
 ---------------------------------------------------------------------------- */	
@@ -407,9 +392,7 @@
 		}
 		
 	}
-	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_theme_supports_settings_panel');
-	
+
 /* ----------------------------------------------------------------------------
 	Get Theme Screenshot
 ---------------------------------------------------------------------------- */	
@@ -429,9 +412,7 @@
 		
 		// Loop Through Themes
 		foreach ($plchf_msb_themes as $themes) {
-					
-			
-			
+
 			$currentthemeslug = $themes['Theme']['Slug'];
 			
 			if ($thememeta == $currentthemeslug) {
@@ -445,8 +426,6 @@
 		
 	}
 	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_get_theme_screenshot');
-
 /* ----------------------------------------------------------------------------
 	Get Theme Description
 ---------------------------------------------------------------------------- */	
@@ -467,8 +446,6 @@
 		// Loop Through Themes
 		foreach ($plchf_msb_themes as $themes) {
 					
-			
-			
 			$currentthemeslug = $themes['Theme']['Slug'];
 			
 			if ($thememeta == $currentthemeslug) {
@@ -482,4 +459,37 @@
 		
 	}
 	
-	// add_action('pluginchiefmsb_admin_post_header', 'plchf_msb_theme_description');
+/* ----------------------------------------------------------------------------
+	Get Theme Description
+---------------------------------------------------------------------------- */	
+
+	function plchf_msb_get_theme_page_templates() {
+				
+		// Get Site ID
+		$site_id = plchf_msb_get_site_id();
+		
+		// Get Post Meta
+		$meta = get_post_custom( $site_id );
+		
+		// Get Site Theme
+		$thememeta = $meta['_plchf_msb_site_theme'][0];
+		
+		global $plchf_msb_themes;
+		
+		// Loop Through Themes
+		foreach ($plchf_msb_themes as $themes) {
+					
+			
+			
+			$currentthemeslug = $themes['Theme']['Slug'];
+			
+			if ($thememeta == $currentthemeslug) {
+				
+
+				return $themes['Theme']['Page Templates'];
+			
+			}
+			
+		}
+		
+	}

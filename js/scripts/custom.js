@@ -594,8 +594,7 @@ jQuery(document).ready(function($){
 			  	data: data,
 			  	success: function(response){
 			  		sitePages.prepend(response);
-			  		plchf_msb_save_mobile_page_content();
-			  		$('._new_page_title').val('');
+			  		plchf_msb_save_mobile_page_order();
 					return false;
 					die();
 			  	}	
@@ -631,18 +630,8 @@ jQuery(document).ready(function($){
 					'Yes'	: {
 						'class'	: 'btn btn-primary',
 						'action': function(){
-							$.ajax({
-								type: 'POST',
-							  	url: ajaxurl,
-							  	data: data,
-							  	success:function(response){
-								  	parentItem.slideUp(500);
-								  	plchf_msb_save_mobile_page_content();
-									return false;
-									die();
-							  	}	
-					
-							});
+							parentItem.remove();
+							plchf_msb_save_mobile_page_order();			
 						}
 					},
 					'No'	: {
@@ -662,46 +651,56 @@ jQuery(document).ready(function($){
 	Make Menu Manager Sortable
 ---------------------------------------------------------------------------- */
 	
-	function plchf_msb_mobile_page_order(){
+	function plchf_msb_sortable_pages(){
 	
 		var PageList = $('.menu-container');
 	 
 		PageList.sortable({
-			
+			handle: '.menuitem-move',
 			update: function(event, ui) {
 				
-				//$('#loading-animation').show(); // Show the animate loading gif while waiting
-	 
-				opts = {
-					url: ajaxurl, // ajaxurl is defined by WordPress and points to /wp-admin/admin-ajax.php
-					type: 'POST',
-					async: true,
-					cache: false,
-					dataType: 'json',
-					data:{
-						action: 'plchf_msb_pages_sort', 	// Tell WordPress how to handle this ajax request
-						order: PageList.sortable('toArray').toString() // Passes ID's of list items in	1,3,2 format
-					},
-					success: function(response) {
-						// $('#loading-animation').hide(); // Hide the loading animation
-						// plchf_msb_save_mobile_page_content();
-						plchf_msb_refresh_iphone_preview();
-						return; 
-					},
-					error: function(xhr,textStatus,e) {  // This can be expanded to provide more information
-						alert('There was an error saving the updates');
-						// $('#loading-animation').hide(); // Hide the loading animation
-						return; 
-					}
-				};
-				
-				$.ajax(opts);
+				plchf_msb_save_mobile_page_order();
 			}
 		});
 	
 	}
 	
-	plchf_msb_mobile_page_order();
+	plchf_msb_sortable_pages();
+
+/* ----------------------------------------------------------------------------
+	Save Pages Order
+---------------------------------------------------------------------------- */	
+	
+	function plchf_msb_save_mobile_page_order() {
+		
+		var PageList = $('.menu-container');
+		
+		opts = {
+			url: ajaxurl, // ajaxurl is defined by WordPress and points to /wp-admin/admin-ajax.php
+			type: 'POST',
+			async: true,
+			cache: false,
+			dataType: 'json',
+			data:{
+				action: 'plchf_msb_pages_sort', 	// Tell WordPress how to handle this ajax request
+				order: PageList.sortable('toArray').toString() // Passes ID's of list items in	1,3,2 format
+			},
+			success: function(response) {
+				// $('#loading-animation').hide(); // Hide the loading animation
+				// plchf_msb_save_mobile_page_content();
+				plchf_msb_refresh_iphone_preview();
+				return; 
+			},
+			error: function(xhr,textStatus,e) {  // This can be expanded to provide more information
+				alert('There was an error saving the updates');
+				// $('#loading-animation').hide(); // Hide the loading animation
+				return; 
+			}
+		};
+		
+		$.ajax(opts);
+		
+	}
 
 /* ----------------------------------------------------------------------------
 	End jQuery Document Ready
