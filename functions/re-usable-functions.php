@@ -1342,7 +1342,7 @@ function plchf_msb_googl_shortlink($url) {
 				wp_delete_post($post->ID, true);
 				
 				// Do Action While We Delete the Site Pages
-				do_action('plchf_msb_after_delete_site_page', $post->ID);
+				do_action('plchf_msb_after_delete_site', $post->ID);
 
 			}
 

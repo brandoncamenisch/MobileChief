@@ -101,25 +101,25 @@
 	DELETE MOBILE SITE PAGE
 
 -------------------------------------------------------------------------*/
-
-	function plchf_msb_delete_mobile_site_page(){
+	
+	function plchf_msb_delete_mobile_site_page() {
 		
-		if (isset($_GET['deletepage'])) {
-			
-			$id		= $_GET['site_id'];
-			$page 	= $_GET['deletepage'];
-			$bloginfo = get_bloginfo('url');
-			
-			wp_delete_post($page, true);
-			
-			wp_redirect($bloginfo . '/edit-mobile-site/?site_id='.$id.'');
-			exit;
-			
-		}
-	
+		$pageid = $_POST['page_id'];
+		
+		// Run Action After We Delete the Site
+		do_action('plchf_msb_before_delete_page', $siteid);
+		
+		// Delete the Parent Page (Site)
+		wp_delete_post($pageid, true);
+		
+		// Run Action After We Delete the Site
+		do_action('plchf_msb_after_delete_page', $siteid);
+		
+		die();
+		
 	}
-	
-	add_action('init','plchf_msb_delete_mobile_site_page');
+
+	add_action('wp_ajax_plchf_msb_delete_mobile_site_page','plchf_msb_delete_mobile_site_page');
 
 /*-------------------------------------------------------------------------
 

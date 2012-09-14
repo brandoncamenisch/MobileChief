@@ -23,3 +23,10 @@
 	}
 	
 	add_action('pluginchiefmsb_admin_header','plchf_msb_predefined_page_element_panel_styles');
+	
+/* ----------------------------------------------------------------------------
+	Hide the Move / Remove options in Page Elements if 
+	Theme Doesn't Support Page Elements
+---------------------------------------------------------------------------- */	
+
+	
