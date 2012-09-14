@@ -39,8 +39,7 @@
     	wp_enqueue_script('plchf_msb_plupload', 	PLUGINCHIEFMSB . 'js/scripts/plupload.js');
     	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.js');
     	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
-    	wp_enqueue_script('plchf_msb_tooltip_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/tipsy.js');
-    	wp_enqueue_script('plchf_msb_dropdowns_js', PLUGINCHIEFMSB . 'js/vendor-scripts/dropdowns.js');
+    	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'js/vendor-scripts/bootstrap.js');
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.js');
     	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
@@ -1502,7 +1501,7 @@ function plchf_msb_googl_shortlink($url) {
 		
 			$output .= apply_filters('plchf_msb_sites_edit_site','<li><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'">Edit Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="'.plchf_msb_googl_shortlink($homepage).'">Preview Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_preview_site','<li><a href="'.plchf_msb_googl_shortlink($homepage).'" rel="tooltip" data-placement="top" data-original-title="Preview Site in Another Window">Preview Site</a></li>');
 			
 			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#" class="deletesite" data-siteid="'.$siteid.'">Delete Site</a></li>');
 			

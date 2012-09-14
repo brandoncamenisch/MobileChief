@@ -85,19 +85,18 @@ jQuery(document).ready(function($){
 	plchf_msb_tinymce();
 	
 /* ----------------------------------------------------------------------------
-	Tipsy Tooltips
+	Tooltips
 ---------------------------------------------------------------------------- */	
 	
-	function plchf_msb_tipsy() {
+	function plchf_msb_tooltips() {
 	
-		$('a.tipsy-se').tipsy({
-			live: true,
-			gravity: 'se'
-		});
+		if ($("[rel=tooltip]").length) {
+			$("[rel=tooltip]").tooltip();
+		}
 	
 	}
 	
-	plchf_msb_tipsy();
+	plchf_msb_tooltips();
 	
 /* ----------------------------------------------------------------------------
 	Date Picker

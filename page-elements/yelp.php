@@ -50,7 +50,7 @@
 		// Get the Values
 		$text 	= $values['_yelp_'];
 		
-		require_once(PLUGINCHIEFMSB_PATH . 'functions/simple_html_dom.php');
+		require_once(PLUGINCHIEFMSB_PATH . '_external_php_libs/simple_html_dom.php');
 		
 		$html = file_get_html($text);
 

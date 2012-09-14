@@ -45,8 +45,8 @@
 			
 			$url = $values['_google_map_'];
 
-			require_once(PLUGINCHIEFMSB_PATH . "functions/simpleGMapAPI.php");
-			require_once(PLUGINCHIEFMSB_PATH . "functions/simpleGMapGeocoder.php");
+			require_once(PLUGINCHIEFMSB_PATH . "_external_php_libs/simpleGMapAPI.php");
+			require_once(PLUGINCHIEFMSB_PATH . "_external_php_libs/simpleGMapGeocoder.php");
 			
 			$map = new simpleGMapAPI();
 			$geo = new simpleGMapGeocoder();
