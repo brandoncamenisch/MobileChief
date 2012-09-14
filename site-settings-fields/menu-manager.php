@@ -31,7 +31,13 @@
 						
 			$output .='<form id="menu-manager" action="" method="POST">';
 
-				$output .='<label for="_new_page_title">Create New Page</label>';
+				$output .= '
+				<label>'.$label.'
+					<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
+						<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
+					</a>
+				</label>';
+
 				$output .='<input type="text" name="_new_page_title" placeholder="Enter Page Title" class="_new_page_title"/>';
 				$output .='<input type="hidden" name="site_id" value="'.$site_id.'"/>';
 				$output .= wp_nonce_field('plchf_msb_create_page_field', 'plchf_msb_create_page_field');

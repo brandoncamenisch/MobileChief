@@ -20,13 +20,12 @@ function plchf_msb_site_settings_field_icon_select($fields, $count) {
 	$value			= $values[''.$field_id.''];
 
 	// Field Label
-	$output = '
+	$output .= '
 	<label>'.$label.'
-		<a href="#" class="tipsy-se floatr" original-title="'.$tooltip.'">
+		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
 			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
 		</a>
-	</label>
-	';
+	</label>';
 
 	// Select Field
 $output .= '<select class="slick-dropdown" name="field['.$element_type.'_'.$count.']['.$field_id.']">';

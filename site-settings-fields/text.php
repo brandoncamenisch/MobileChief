@@ -16,9 +16,9 @@ function plchf_msb_site_settings_field_text($fields, $count) {
 	// Get the saved Value
 	$value			= plchf_msb_get_site_option($type, $field_id);
 
-	$output = '
+	$output .= '
 	<label>'.$label.'
-		<a href="#" class="tipsy-se floatr" original-title="'.$tooltip.'">
+		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
 			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
 		</a>
 	</label>';

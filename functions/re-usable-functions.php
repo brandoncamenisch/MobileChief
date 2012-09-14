@@ -1464,7 +1464,7 @@ function plchf_msb_googl_shortlink($url) {
 		
 		foreach ($posts as $post) {
 			
-			$output .= '<li><a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+			$output .= '<li rel="tooltip" data-placement="top" data-original-title="Edit Page: '.$post->post_title.'"><a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
 				$output .= $post->post_title; 
 								
@@ -1499,11 +1499,11 @@ function plchf_msb_googl_shortlink($url) {
 		
 			do_action('plchf_msb_sites_before_right_column_site_details_links');
 		
-			$output .= apply_filters('plchf_msb_sites_edit_site','<li><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'">Edit Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_edit_site','<li rel="tooltip" data-placement="top" data-original-title="Edit the Site & Site Settings"><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'">Edit Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_preview_site','<li><a href="'.plchf_msb_googl_shortlink($homepage).'" rel="tooltip" data-placement="top" data-original-title="Preview Site in Another Window">Preview Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_preview_site','<li rel="tooltip" data-placement="top" data-original-title="Preview Site in Another Window"><a href="'.plchf_msb_googl_shortlink($homepage).'">Preview Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_delete_site','<li><a href="#" class="deletesite" data-siteid="'.$siteid.'">Delete Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_delete_site','<li rel="tooltip" data-placement="top" data-original-title="Delete the Site and All Site Content	"><a href="#" class="deletesite" data-siteid="'.$siteid.'">Delete Site</a></li>');
 			
 			do_action('plchf_msb_sites_after_right_column_site_details_links');
 		

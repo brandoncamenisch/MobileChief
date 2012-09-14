@@ -14,7 +14,12 @@ function plchf_msb_site_settings_field_image($fields, $count) {
 	$field_id		= $fields['id'];
 	$value			= plchf_msb_get_site_option($type, $field_id);
 
-	$output = '<p>'.$tooltip.'</p>';
+	$output .= '
+	<label>'.$label.'
+		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
+			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
+		</a>
+	</label>';
 
 	$output .= '
 	<input class="upload_image" type="text" size="36" name="field['.$type.$field_id.']['.$field_id.']" value="'.$value.'" />

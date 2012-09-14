@@ -21,8 +21,14 @@
 		$multiple 	= true; 	// allow multiple files upload
 		$width 		= null; 	// If you want to automatically resize all uploaded images then provide width here (in pixels)
 		$height 	= null; 	// If you want to automatically resize all uploaded images then provide height here (in pixels)
-
-		$output = '<label>Upload Images</label>';
+	
+		$output .= '
+		<label>'.$label.'
+			<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
+				<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
+			</a>
+		</label>';
+	
 		$output .= '<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
 		$output .= '<div class="plupload-upload-uic hide-if-no-js ';
 

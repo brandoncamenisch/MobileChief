@@ -21,11 +21,10 @@ function plchf_msb_page_element_settings_field_slider($fields, $element_type, $c
 
 	$output .= '
 	<label>'.$label.'
-		<a href="#" class="tipsy-se floatr" original-title="'.$tooltip.'">
+		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
 			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
 		</a>
-	</label>
-	';
+	</label>';
 	
 	$output .= '<div class="plchf_msb_slider_field"></div>';
 	$output .= '<input type="hidden" class="plchf_msb_slider_amount" name="field['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'">';

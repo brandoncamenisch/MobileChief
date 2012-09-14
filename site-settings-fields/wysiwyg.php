@@ -15,13 +15,12 @@ function plchf_msb_site_settings_field_wysiwyg($fields, $count) {
 	// Get the saved Value
 	$value			= $values[''.$field_id.''];
 
-	$output = '
+	$output .= '
 	<label>'.$label.'
-		<a href="#" class="tipsy-se floatr" original-title="'.$tooltip.'">
+		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
 			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
 		</a>
-	</label>
-	';
+	</label>';
 
 	$output .= '<input type="hidden" name="'.$field_id.'['.$element_type.'][]">';
 
