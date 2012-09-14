@@ -977,8 +977,8 @@
 	    		echo  '<div class="controls">';
 	    			echo  '<div>';
 	    				echo  '<div>';
-	    					echo  '<div class="element-control element-move"></div>';
-	    					echo  '<div class="element-control element-remove"></div>';
+	    					echo  '<div class="element-control element-move" rel="tooltip" data-placement="top" data-original-title="Drag & Drop to re-position this '.$element_type.' Page 	Section"></div>';
+	    					echo  '<div class="element-control element-remove" rel="tooltip" data-placement="top" data-original-title="Remove this '.$element_type.' Page Section"></div>';
 	    				echo  '</div>';
 	    			echo  '</div>';
 	    		echo  '</div>';
@@ -1013,9 +1013,9 @@
 	    			echo  '<div class="two_third column-last">';
 		    			echo  '<div class="controls">';
 		    				
-		    				echo  '<div class="element-control element-move"></div>';
-		    				echo  '<div class="element-control element-open"></div>';
-		    				echo  '<div class="element-control element-remove"></div>';
+		    				echo  '<div class="element-control element-move" rel="tooltip" data-placement="top" data-original-title="Drag & Drop to re-position this '.$element_type.' Element"></div>';
+		    				echo  '<div class="element-control element-open" rel="tooltip" data-placement="top" data-original-title="Edit this '.$element_type.' Element"></div>';
+		    				echo  '<div class="element-control element-remove" rel="tooltip" data-placement="top" data-original-title="Remove this '.$element_type.' Element"></div>';
 		    			
 		    				
 		    			echo  '</div>';
@@ -1075,7 +1075,7 @@
 		    			echo  '</div>';
 		    			echo  '<div class="two_third column-last">';
 			    			echo  '<div class="controls">';
-			    				echo  '<div class="element-control element-open"></div>';
+			    				echo  '<div class="element-control element-open" rel="tooltip" data-placement="top" data-original-title="Edit the '.$panel_name.' Settings"></div>';
 			    			echo  '</div>';
 			    		echo  '</div>';
 		    		echo  '</div>';
