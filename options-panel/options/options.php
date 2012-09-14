@@ -748,7 +748,7 @@ class PLCHF_MSB__Options{
 							
 							
 							
-							echo '<p id="plchf_msb_opts-import-action"><input type="submit" id="plchf_msb_opts-import" name="'.$this->args['opt_name'].'[import]" class="button-primary button btn btn-primary" value="'.__('Import', 'plchf_msb_opts').'"> <span>'.apply_filters('plchf_msb_opts-import-warning', __('WARNING! This will overwrite any existing options, please proceed with caution!', 'plchf_msb_opts')).'</span></p>';
+							echo '<p id="plchf_msb_opts-import-action"><input type="submit" id="plchf_msb_opts-import" name="'.$this->args['opt_name'].'[import]" class="btn btn-primary" value="'.__('Import', 'plchf_msb_opts').'"> <span>'.apply_filters('plchf_msb_opts-import-warning', __('WARNING! This will overwrite any existing options, please proceed with caution!', 'plchf_msb_opts')).'</span></p>';
 							echo '<div id="import_divide"></div>';
 							
 							echo '<h4>'.__('Export Options', 'plchf_msb_opts').'</h4>';
@@ -756,7 +756,7 @@ class PLCHF_MSB__Options{
 								echo '<p class="description">'.apply_filters('plchf_msb_opts-backup-description', __('Here you can copy/download your themes current option settings. Keep this safe as you can use it as a backup should anything go wrong. Or you can use it to restore your settings on this site (or any other site). You also have the handy option to copy the link to yours sites settings. Which you can then use to duplicate on another site', 'plchf_msb_opts')).'</p>';
 							echo '</div>';
 							
-								echo '<p><a href="javascript:void(0);" id="plchf_msb_opts-export-code-copy" class="button-secondary">Copy</a> <a href="'.add_query_arg(array('feed' => 'plchf_msb_opts-'.$this->args['opt_name'], 'action' => 'download_options', 'secret' => md5(AUTH_KEY.SECURE_AUTH_KEY)), site_url()).'" id="plchf_msb_opts-export-code-dl" class="button-primary button btn btn-primary">Download</a> <a href="javascript:void(0);" id="plchf_msb_opts-export-link" class="button-secondary">Copy Link</a></p>';
+								echo '<p><a href="javascript:void(0);" id="plchf_msb_opts-export-code-copy" class="button-secondary">Copy</a> <a href="'.add_query_arg(array('feed' => 'plchf_msb_opts-'.$this->args['opt_name'], 'action' => 'download_options', 'secret' => md5(AUTH_KEY.SECURE_AUTH_KEY)), site_url()).'" id="plchf_msb_opts-export-code-dl" class="btn btn-primary">Download</a> <a href="javascript:void(0);" id="plchf_msb_opts-export-link" class="button-secondary">Copy Link</a></p>';
 								$backup_options = $this->options;
 								$backup_options['plchf_msb_opts-backup'] = '1';
 								$encoded_options = '###'.serialize($backup_options).'###';

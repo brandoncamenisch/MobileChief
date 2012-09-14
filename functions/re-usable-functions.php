@@ -525,7 +525,7 @@
 			// Run Action at the Bottom of the Page Generator
 			do_action('plchf_msb_bottom_page_generator');
 	
-			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave button-primary button btn btn-primary">Save</button>');
+			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave btn btn-primary">Save</button>');
 	
 			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
 
@@ -648,7 +648,7 @@
 			
 			wp_nonce_field('site_options_nonce_field', 'site_options_nonce_field');
 			
-			echo apply_filters('plchf_msb_site_settings_save_button','<button class="site-options-ajaxsave button-primary button btn btn-primary">Save</button>');	
+			echo apply_filters('plchf_msb_site_settings_save_button','<button class="site-options-ajaxsave btn btn-primary">Save</button>');	
 			
 		// End Form
 		echo '</form>';
@@ -1043,7 +1043,7 @@
 		    		
 		    		}
 		    		
-		    		echo '<button class="ajaxsave button-primary button btn btn-primary">Save</button>';
+		    		echo '<button class="ajaxsave btn btn-primary">Save</button>';
 		    		
 		    	echo  '</div>';
 		    	
@@ -1099,7 +1099,7 @@
 		    		
 		    		}
 		    		
-		    		echo '<button class="site-options-ajaxsave button-primary button btn btn-primary">Save</button>';
+		    		echo '<button class="site-options-ajaxsave btn btn-primary">Save</button>';
 			    		
 			    echo  '</div>';
 			   	
@@ -1465,7 +1465,8 @@ function plchf_msb_googl_shortlink($url) {
 		foreach ($posts as $post) {
 			
 			$output .= '<li rel="tooltip" data-placement="top" data-original-title="Edit Page: '.$post->post_title.'"><a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
-								
+				
+				$output .= '<i class="icon-file"></i>';			
 				$output .= $post->post_title; 
 								
 			$output .= '</a></li>';
@@ -1499,11 +1500,11 @@ function plchf_msb_googl_shortlink($url) {
 		
 			do_action('plchf_msb_sites_before_right_column_site_details_links');
 		
-			$output .= apply_filters('plchf_msb_sites_edit_site','<li rel="tooltip" data-placement="top" data-original-title="Edit the Site & Site Settings"><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'">Edit Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_edit_site','<li rel="tooltip" data-placement="top" data-original-title="Edit the Site & Site Settings"><a href="'.apply_filters( "plchf_msb_edit_sites_page", get_bloginfo("url") . "/wp-admin/admin.php" ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'"><i class="icon-edit"></i>Edit Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_preview_site','<li rel="tooltip" data-placement="top" data-original-title="Preview Site in Another Window"><a href="'.plchf_msb_googl_shortlink($homepage).'">Preview Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_preview_site','<li rel="tooltip" data-placement="top" data-original-title="Preview Site in Another Window"><a href="'.plchf_msb_googl_shortlink($homepage).'" target="_blank"><i class="icon-external-link"></i>Preview Site</a></li>');
 			
-			$output .= apply_filters('plchf_msb_sites_delete_site','<li rel="tooltip" data-placement="top" data-original-title="Delete the Site and All Site Content	"><a href="#" class="deletesite" data-siteid="'.$siteid.'">Delete Site</a></li>');
+			$output .= apply_filters('plchf_msb_sites_delete_site','<li rel="tooltip" data-placement="top" data-original-title="Delete the Site and All Site Content	"><a href="#" class="deletesite" data-siteid="'.$siteid.'"><i class="icon-trash"></i>Delete Site</a></li>');
 			
 			do_action('plchf_msb_sites_after_right_column_site_details_links');
 		

@@ -30,7 +30,7 @@ function plchf_msb_page_element_settings_field_image($fields, $element_type, $co
 
 	$output .= '
 	<input class="upload_image" type="text" size="36" name="field['.$element_type.'_'.$count.']['.$field_id.']" value="'.$value.'" />
-	<input class="upload_image_button button-primary button btn btn-primary" type="button" value="Upload Image" />
+	<input class="upload_image_button btn btn-primary" type="button" value="Upload Image" />
 	';
 
 	if ($value) {
