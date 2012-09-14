@@ -23,7 +23,7 @@ class PluginUpdateChecker {
 	public $metadataUrl = ''; //The URL of the plugin's metadata file.
 	public $pluginFile = '';  //Plugin filename relative to the plugins directory.
 	public $slug = '';        //Plugin slug.
-	public $checkPeriod = 12; //How often to check for updates (in hours).
+	public $checkPeriod = 1; //How often to check for updates (in hours).
 	public $optionName = '';  //Where to store the update info.
 
 	private $cronHook = null;
@@ -37,7 +37,7 @@ class PluginUpdateChecker {
 	 * @param integer $checkPeriod How often to check for updates (in hours). Defaults to checking every 12 hours. Set to 0 to disable automatic update checks.
 	 * @param string $optionName Where to store book-keeping info about update checks. Defaults to 'external_updates-$slug'.
 	 */
-	function __construct($metadataUrl, $pluginFile, $slug = '', $checkPeriod = 12, $optionName = ''){
+	function __construct($metadataUrl, $pluginFile, $slug = '', $checkPeriod = 1, $optionName = ''){
 		$this->metadataUrl = $metadataUrl;
 		$this->pluginFile = plugin_basename($pluginFile);
 		$this->checkPeriod = $checkPeriod;
@@ -105,7 +105,7 @@ class PluginUpdateChecker {
 		if ( $this->checkPeriod && ($this->checkPeriod > 0) ){
 			$scheduleName = 'every' . $this->checkPeriod . 'hours';
 			$schedules[$scheduleName] = array(
-				'interval' => $this->checkPeriod * 3600,
+				'interval' => $this->checkPeriod,
 				'display' => sprintf('Every %d hours', $this->checkPeriod),
 			);
 		}
