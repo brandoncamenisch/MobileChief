@@ -1013,9 +1013,12 @@
 	    			echo  '</div>';
 	    			echo  '<div class="two_third column-last">';
 		    			echo  '<div class="controls">';
+		    				
 		    				echo  '<div class="element-control element-move"></div>';
 		    				echo  '<div class="element-control element-open"></div>';
 		    				echo  '<div class="element-control element-remove"></div>';
+		    			
+		    				
 		    			echo  '</div>';
 		    		echo  '</div>';
 	    		echo  '</div>';
@@ -1284,29 +1287,25 @@ function plchf_msb_googl_shortlink($url) {
 		
 		// Set Theme, or Set to Default Theme
 		if ($site_theme == '') {
+			update_post_meta($parent_id, '_plchf_msb_site_theme', 'default_theme');
 			$site_theme = 'default_theme';
 		} else {
 			$site_theme = $site_theme;
 		}
 		
-		// Only Run id Post Type is Plugin Chief MSB Sites
+		// Only Run if Post Type is Plugin Chief MSB Sites
 	    if ($post->post_type == 'pluginchiefmsb-sites') {
 	    	
 	    	// This gets the Site Root and the Site Page (Both are set when registering a theme, using the 
 	    	// plchf_msb_theme_root_theme_slug and plchf_msb_theme_page_theme_slug functions
 	    	$single_template = apply_filters('plchf_msb_theme_root_'.$site_theme.'', 'goo').apply_filters('plchf_msb_theme_page_'.$site_theme.'','goo');
 	    	
-	    	// Fallback Theme Root (Default Theme if No Theme Exists)
-	    	$fallback_theme_root = apply_filters('plchf_msb_fallback_theme_root', PLUGINCHIEFMSB_PATH . '/mobile-themes/default-theme/theme/');
-	    	
-	    	// Fallback Theme Page (Default Page if No Page Exists)
-	    	$fallback_theme_page = apply_filters('plchf_msb_fallback_theme_page','standard.php');
-	    	
-	    	// Make Sure the Theme Exists, Otherwis
+	    	// Make Sure the Theme Exists, Otherwise set to Default Theme
 	    	if (file_exists($single_template)) {
 		    	$single_template = $single_template;
 	    	} else {
-		    	$single_template = $fallback_theme_root.$fallback_theme_page;
+	    		update_post_meta($parent_id, '_plchf_msb_site_theme', 'default_theme');
+		    	$single_template = apply_filters('plchf_msb_theme_root_default_theme', 'goo').apply_filters('plchf_msb_theme_page_default_theme', 'goo');
 	    	}
 	    
 	    }

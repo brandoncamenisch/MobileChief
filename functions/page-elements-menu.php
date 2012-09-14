@@ -14,7 +14,7 @@ function pluginchiefmsb_page_elements_menu() {
 	// Start the Menu Output
 	echo '<ul class="elementmenu sgray" id="page-element-menu">';
 		
-		$support = plchf_msb_theme_supports_page_elements();
+		$support = plchf_msb_get_theme_info('Page Elements');
 		
 		// If Theme Supports Page Elements
 		if ($support == 'Yes') {
@@ -144,6 +144,7 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_msb_edit_page_menu_edit_pages_menu_items');
+	add_action('plchf_msb_page_element_menu_no_support','plchf_msb_edit_page_menu_edit_pages_menu_items');
 	
 /* ---------------------------------------------------------------------------- */
 /* Delete Page Link
@@ -156,6 +157,7 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_delete_page');
+	add_action('plchf_msb_page_element_menu_no_support','plchf_add_element_section_delete_page');
 	
 /* ---------------------------------------------------------------------------- */
 /* Site Settings Link
@@ -168,3 +170,4 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_site_settings');
+	add_action('plchf_msb_page_element_menu_no_support','plchf_add_element_section_site_settings');

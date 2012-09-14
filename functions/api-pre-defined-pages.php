@@ -1,25 +1,25 @@
 <?php
+
+/* ----------------------------------------------------------------------------
+	Hide the Move / Remove options in Page Elements if 
+	Theme Doesn't Support Page Elements
+---------------------------------------------------------------------------- */	
 	
-	// Set Up the Pre-Defined Fields for the 
-	function plchf_msb_predefined_page_elements_aqropolis_general_theme() {
+	function plchf_msb_predefined_page_element_panel_styles() {
 		
-		// If Theme & If Page Template
-		// Only apply these page elements to the specific theme and page template we're trying to add it to
-		// if () {
+		$support = plchf_msb_get_theme_info('Page Elements');
 		
-			// Create the Elements We Want to Send to the Page
-			$elements = array(
-				array(
-					'alert' => array(),
-					'coupon' => array(),
-					'divider' => array(),
-				),
-			);
+		if ($support != 'Yes') {
 			
-			return $elements;
+			$output = '<style type="text/css">';
+				$output .= '.element-move{display:none;}';
+				$output .= '.element-remove{display:none;}';
+			$output .= '</style>';
 			
-		// } // End Theme & Page Template Check
+		}
+		
+		echo $output;
 		
 	}
 	
-	add_action('plchf_msb_page_generator_elements','plchf_msb_predefined_page_elements_aqropolis_general_theme');
+	add_action('pluginchiefmsb_admin_header','plchf_msb_predefined_page_element_panel_styles');

@@ -148,7 +148,8 @@ jQuery(document).ready(function($){
 		$( "#page-generator, .section-sortable" ).sortable({
 			connectWith: ".connected-sortable",
 			placeholder: "element-placeholder", 
-			items: ".page-element, .page-section"
+			items: ".page-element, .page-section",
+			handle: ".element-move"
 		});
 		
 		}
