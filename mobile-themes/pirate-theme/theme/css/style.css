@@ -1,0 +1,51 @@
+body{
+	background: url(../images/wood.png) repeat repeat;
+	padding-top: 90px;
+}
+.navbar-inner {
+	min-height: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: #2C2C2C;
+	background-image: -moz-linear-gradient(top, #f47615 0%, #c9681f 0%);
+	background-image: -ms-linear-gradient(top, #f47615, #c9681f);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f47615), to(#c9681f));
+	background-image: -webkit-linear-gradient(top, #f47615, #c9681f);
+	background-image: -o-linear-gradient(top, #f47615, #c9681f);
+	background-image: linear-gradient(top, #f47615, #c9681f);
+	background-repeat: repeat-x;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#cc3333', endColorstr='#cc3333', GradientType=0);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar .brand {
+	padding-right: 10px;
+	padding-left: 10px;
+	margin: 0 0 0 -5px;
+	color: #000;
+}
+.nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
+	color: #fff;
+}
+
+@media (max-width: 979px) {
+	
+	body{
+		padding-top: 0px;
+	}
+	
+}
+
+@media (max-width: 767px) {
+	
+	body{
+		padding-top: 0px;
+	}
+	
+}
+
