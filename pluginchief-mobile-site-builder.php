@@ -72,12 +72,12 @@ ____   ____.__       .__              .__
 /* Updater
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_msb_stats_add_on_plugin_updater() {
+	function plchf_msb_plugin_updater() {
 
-		$PluginChief_MSB_Stats_AddOn = new PluginUpdateChecker( 'http://pluginchief.com/plugin-updates/downloads/mobilechief/msb.json', __FILE__);
+		$PluginChief_MSB_Stats_AddOn = new PluginUpdateChecker( 'http://pluginchief.com/plugin-updates/downloads/mobilechief/pluginchief-mobile-site-builder.json', __FILE__);
 
 	}
-	add_action('plugins_loaded','plchf_msb_stats_add_on_plugin_updater');
+	add_action('plugins_loaded','plchf_msb_plugin_updater');
 
 
 ?>
