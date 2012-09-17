@@ -47,10 +47,12 @@
 				<div class="settings-title">
 					
 					<h3 class="section-title floatl"><?php echo apply_filters('plchf_msb_edit_site_page_title','Edit Site'); ?></h3>
-				
-					<a class="btn btn-primary floatr" href="<?php echo apply_filters('plchf_msb_my_sites_link', get_bloginfo('url') . '/wp-admin/admin.php?page=pluginchiefmsb'); ?>">My Sites</a>
 					
-					<a class="btn btn-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>
+					<!-- My Sites Button -->
+					<?php echo apply_filters('plchf_msb_create_my_sites_button', '<a class="btn btn-primary floatr" href="'.apply_filters('plchf_msb_my_sites_link', get_bloginfo('url') . '/wp-admin/admin.php?page=pluginchiefmsb').'">My Sites</a>'); ?>
+					
+					<!-- Create Site Button -->
+					<?php echo apply_filters('plchf_msb_create_new_site_button', '<a class="btn btn-primary floatr" href="'.apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'.apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>'); ?>
 					
 				</div>
 				

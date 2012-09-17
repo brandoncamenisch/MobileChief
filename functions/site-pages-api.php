@@ -60,6 +60,8 @@
 		wp_delete_post( $postid, true );
 		
 		echo $post_id;
+		
+		die();
 	
 	}
 	
@@ -107,13 +109,15 @@
 		$pageid = $_POST['page_id'];
 		
 		// Run Action After We Delete the Site
-		do_action('plchf_msb_before_delete_page', $siteid);
+		//do_action('plchf_msb_before_delete_page', $siteid);
 		
 		// Delete the Parent Page (Site)
 		wp_delete_post($pageid, true);
 		
 		// Run Action After We Delete the Site
-		do_action('plchf_msb_after_delete_page', $siteid);
+		// do_action('plchf_msb_after_delete_page', $siteid);
+		
+		echo $pageid;
 		
 		die();
 		

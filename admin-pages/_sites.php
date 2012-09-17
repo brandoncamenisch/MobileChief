@@ -46,7 +46,8 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 					<h3 class="section-title floatl">Mobile Sites</h3>
 
-					<a class="btn btn-primary floatr" href="<?php echo apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ); ?>"><?php echo apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site'); ?></a>
+					<!-- Create Site Button -->
+					<?php echo apply_filters('plchf_msb_create_new_site_button', '<a class="btn btn-primary floatr" href="'.apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'.apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>'); ?>
 
 				</div>
 
@@ -187,11 +188,13 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 						<div class="no-sites">
 
 							<?php
+								
+								$no_site_message  = '<h1>Oh No! You Don\'t Have any Mobile Sites!';
+								$no_site_message .= '<h3>Go Ahead and Create One. It\'s Easy!</h3>';
+								
+								$output  = apply_filters('plchf_no_site_message', $no_site_message);
 
-								$output  = '<h1>Oh No! You Don\'t Have any Mobile Sites!';
-								$output .= '<h3>Go Ahead and Create One. It\'s Easy!</h3>';
-
-								$output .= '<a class="btn btn-primary floatc" href="'. apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'. apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>';
+								$output .= apply_filters('plchf_msb_create_new_site_button', '<a class="btn btn-primary floatr" href="'.apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'.apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>');
 
 								echo apply_filters('plchf_msb_no_sites_message', $output);
 

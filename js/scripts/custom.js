@@ -629,9 +629,20 @@ jQuery(document).ready(function($){
 				'buttons'	: {
 					'Yes'	: {
 						'class'	: 'btn btn-primary',
-						'action': function(){
-							parentItem.remove();
-							plchf_msb_save_mobile_page_order();			
+						'action': function(response){
+							$.ajax({
+								type: 'POST',
+							  	url: ajaxurl,
+							  	data: data,
+							  	success: function(response){
+							  		parentItem.remove();
+							  		alert(response);
+							  		plchf_msb_save_mobile_page_order();
+									return false;
+									die();
+							  	}	
+					
+							});		
 						}
 					},
 					'No'	: {
