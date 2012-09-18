@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /* ---------------------------------------------------------------------------- */
 /* Loop Through Global Page Elements and Create the Menu That Adds them
@@ -11,8 +11,10 @@ function pluginchiefmsb_page_elements_menu() {
 	
 	global $pluginchiefmsb_page_elements;
 	
+	$pageid = plchf_msb_get_page_id();
+	
 	// Start the Menu Output
-	echo '<ul class="elementmenu sgray" id="page-element-menu">';
+	echo '<ul class="elementmenu sgray" id="page-element-menu" data-id="'.$pageid.'">';
 		
 		$support = plchf_msb_get_theme_info('Page Elements');
 		
@@ -152,7 +154,7 @@ function pluginchiefmsb_page_elements_menu() {
 
 	function plchf_add_element_section_delete_page() {
 		
-		plchf_msb_add_page_element_section('Delete Page', 'right');
+		plchf_msb_add_page_element_link('Delete Page', 'right', 'deletepageself', '#');
 		
 	}
 	
@@ -165,7 +167,13 @@ function pluginchiefmsb_page_elements_menu() {
 
 	function plchf_add_element_section_site_settings() {
 		
-		plchf_msb_add_page_element_section('Site Settings', 'right');
+		// Get the Site ID
+		$siteid = plchf_msb_get_site_id();
+		
+		// Add Link to the Edit Site Page
+		$link = apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo("url").'/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'';
+		
+		plchf_msb_add_page_element_link('Site Settings', 'right', 'editpage', $link);
 		
 	}
 	

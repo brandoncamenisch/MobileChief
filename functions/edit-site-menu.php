@@ -34,7 +34,7 @@
 	function plchf_msb_edit_page_menu_delete_site_menu_item() {
 		
 		echo '<li class="floatr">';
-			echo '<a href="" class="deletesite">';	
+			echo '<a href="" class="deletepage">';	
 				echo '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
 				echo apply_filters('plchf_msb_edit_site_page_delete_menu_item','Delete Site');
 			echo '</a>';
@@ -54,7 +54,7 @@
 									
 		echo '<li class="floatr">';
 			
-			echo '<a href="#" class="deletesite">';	
+			echo '<a href="#">';	
 			
 				echo '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
 				

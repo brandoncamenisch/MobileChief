@@ -137,25 +137,29 @@ jQuery(document).ready(function($){
 	plchf_msb_colorpicker();
 	
 /* ----------------------------------------------------------------------------
-	Mobile Page Generator
+	Make Page Elements Sortable, and Nestable in Page Sections
 ---------------------------------------------------------------------------- */
 	
 	function plchf_msb_sortable_page_sections(){
 		
 		if ( $('#page-generator, .section-sortable').length ) {
 		
-		$( "#page-generator, .section-sortable" ).sortable({
-			connectWith: ".connected-sortable",
-			placeholder: "element-placeholder", 
-			items: ".page-element, .page-section",
-			handle: ".element-move"
-		});
+			$( "#page-generator, .section-sortable" ).sortable({
+				connectWith: ".connected-sortable",
+				placeholder: "element-placeholder", 
+				items: ".page-element, .page-section",
+				handle: ".element-move"
+			});
 		
 		}
 		
 	}
 	
 	plchf_msb_sortable_page_sections();
+
+/* ----------------------------------------------------------------------------
+	Add Page Sections
+---------------------------------------------------------------------------- */
 	
 	function plchf_msb_add_page_sections() {
 		
@@ -197,7 +201,11 @@ jQuery(document).ready(function($){
 	}	
 	
 	plchf_msb_add_page_sections();
-	
+
+/* ----------------------------------------------------------------------------
+	Add Page Elements
+---------------------------------------------------------------------------- */	
+
 	function plchf_msb_add_page_elements() {
 		
 		var elementBtn 	= $('.form-elements li a');
@@ -611,9 +619,59 @@ jQuery(document).ready(function($){
 	Delete Mobile Page
 ---------------------------------------------------------------------------- */
  	
+	function plchf_msb_delete_page_self(){
+	
+		var deletePageBtn = $('.deletepageself');
+		
+		deletePageBtn.live('click', function(event){
+			
+			event.preventDefault();
+			
+			var pageID		= $(this).parent().parent().attr('data-id');
+			var data 		= 'page_id=' + pageID + '&action=plchf_msb_delete_mobile_site_page_self';
+			var parentItem 	= $(this).parent().parent();
+
+			$.confirm({
+				'title'		: 'Delete Confirmation',
+				'message'	: 'Are You Sure You Want to Delete This Page? <br />All data will be lost. Continue?',
+				'buttons'	: {
+					'Yes'	: {
+						'class'	: 'btn btn-primary',
+						'action': function(response){
+							$.ajax({
+								type: 'POST',
+							  	url: ajaxurl,
+							  	data: data,
+							  	success: function(data){
+							  		// alert(data);
+							  		window.location.replace(data);
+							  		return false;
+									die();
+							  	}	
+					
+							});		
+						}
+					},
+					'No'	: {
+						'class'	: 'btn btn-primary',
+						'action': function(){}	// Nothing to do in this case. You can as well omit the action property.
+					}
+				}
+			});
+			
+		});			
+	
+	}
+	
+	plchf_msb_delete_page_self();
+	
+/* ----------------------------------------------------------------------------
+	Delete Mobile Page
+---------------------------------------------------------------------------- */
+ 	
 	function plchf_msb_delete_page(){
 	
-		var deletePageBtn = $('.menuitem-close');
+		var deletePageBtn = $('.deletepage');
 		
 		deletePageBtn.live('click', function(event){
 			
@@ -636,9 +694,9 @@ jQuery(document).ready(function($){
 							  	data: data,
 							  	success: function(response){
 							  		parentItem.remove();
-							  		alert(response);
 							  		plchf_msb_save_mobile_page_order();
-									return false;
+							  		// alert(response);
+							  		return false;
 									die();
 							  	}	
 					
@@ -669,7 +727,6 @@ jQuery(document).ready(function($){
 		PageList.sortable({
 			handle: '.menuitem-move',
 			update: function(event, ui) {
-				
 				plchf_msb_save_mobile_page_order();
 			}
 		});
@@ -703,7 +760,8 @@ jQuery(document).ready(function($){
 				return; 
 			},
 			error: function(xhr,textStatus,e) {  // This can be expanded to provide more information
-				alert('There was an error saving the updates');
+				// alert('There was an error saving the updates');
+				plchf_msb_refresh_iphone_preview();
 				// $('#loading-animation').hide(); // Hide the loading animation
 				return; 
 			}

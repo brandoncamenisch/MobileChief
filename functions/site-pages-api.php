@@ -32,9 +32,9 @@
 			$output = '<li id="' . $postid . '" data-id="' . $postid . '" class="list_item menuitem ui-draggable">';
 				$output .= $posttitle;
 				$output .= '<div class="menuitem-options">';
-					$output .='<div class="menuitem-move">Move</div>';
-					$output .='<a href="'.$root.'/edit-mobile-page/?mobile_page_id='. $postid .'" class="menuitem-edit">Edit</a>';
-					$output .='<div class="menuitem-close">Close</div>';
+					$output .='<div class="menuitem-move" rel="tooltip" data-placement="top" data-original-title="Drag & Drop to Re-Order the Pages">Move</div>';
+					$output .='<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$postid.'" class="menuitem-edit" rel="tooltip" data-placement="top" data-original-title="Edit the '.$title.' Page">Edit</a>';
+					$output .='<div class="menuitem-close" rel="tooltip" data-placement="top" data-original-title="Delete the '.$title.' Page">Close</div>';
 				$output .= '</div><br/>';
 			$output .= '</li>';
 			

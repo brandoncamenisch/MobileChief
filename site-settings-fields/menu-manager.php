@@ -41,7 +41,7 @@
 				$output .='<input type="text" name="_new_page_title" placeholder="Enter Page Title" class="_new_page_title"/>';
 				$output .='<input type="hidden" name="site_id" value="'.$site_id.'"/>';
 				$output .= wp_nonce_field('plchf_msb_create_page_field', 'plchf_msb_create_page_field');
-				$output .='<input type="submit" class="create-new-page btn btn-standard button button-standard" value="Add New Page">';
+				$output .='<input type="submit" class="create-new-page btn btn-primary" value="Add New Page">';
 
 			$output .='</form>';
 			
@@ -67,12 +67,19 @@
 						foreach ($posts as $post) {
 							
 							$output .= '<li id="'. $post->ID .'" data-id="'. $post->ID . '" class="list_item menuitem">';
+								
 								$output .= ''. $post->post_title .'';
+								
 								$output .= '<div class="menuitem-options">';
+										
 										$output .='<div class="menuitem-move" rel="tooltip" data-placement="top" data-original-title="Drag & Drop to Re-Order the Pages">Move</div>';
-										$output .='<a href="'.$root.'/edit-mobile-page/?mobile_page_id='. $post->ID .'" class="menuitem-edit" rel="tooltip" data-placement="top" data-original-title="Edit the '.$post->post_title.' Page">Edit</a>';
-										$output .='<div class="menuitem-close" rel="tooltip" data-placement="top" data-original-title="Delete the '.$post->post_title.' Page">Close</div>';
+										
+										$output .='<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'" class="menuitem-edit" rel="tooltip" data-placement="top" data-original-title="Edit the '.$post->post_title.' Page">Edit</a>';
+										
+										$output .='<div class="menuitem-close deletepage" rel="tooltip" data-placement="top" data-original-title="Delete the '.$post->post_title.' Page">Close</div>';
+									
 									$output .= '</div><br/>';
+						
 							$output .= '</li>';
 							
 						} // End Foreach

@@ -36,13 +36,13 @@
     	wp_enqueue_script('jquery-ui-datepicker');
     	wp_enqueue_script('jquery-ui-slider');
     	wp_enqueue_script('jquery-touch-punch');
-    	wp_enqueue_script('plchf_msb_plupload', 	PLUGINCHIEFMSB . 'js/scripts/plupload.js');
-    	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.js');
-    	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.js');
-    	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'js/vendor-scripts/bootstrap.js');
-    	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.js');
-    	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.js');
-    	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
+    	wp_enqueue_script('plchf_msb_plupload', 	PLUGINCHIEFMSB . 'js/scripts/plupload.min.js');
+    	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.min.js');
+    	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.min.js');
+    	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'js/vendor-scripts/bootstrap.min.js');
+    	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.min.js');
+    	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
+    	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.min.js');
     	
     }
 
@@ -60,7 +60,7 @@
 
 	function plchf_msb_all_admin_js() {
 		
-		wp_enqueue_script('plchf_msb_all_admin', 	PLUGINCHIEFMSB . 'js/scripts/admin.js');
+		wp_enqueue_script('plchf_msb_all_admin', 	PLUGINCHIEFMSB . 'js/scripts/admin.min.js');
 		
 	}
 	
@@ -215,6 +215,48 @@
 				do_action('plchf_msb_'.strtolower(str_replace(" ", "_", $title)).'_elements');
 				
 			echo '</ul>';
+		echo '</li>';
+		
+	}
+
+/* ----------------------------------------------------------------------------
+	
+	Add Page Element Link to the top level menu of the "Edit Mobile Page" page
+	
+	Example: 
+	
+	function add_new_element_link() {
+	
+		plchf_msb_add_page_element_link('Content', 'right', 'deletepage', '#');
+		
+	}
+	
+	add_action('plchf_msb_page_element_section','add_new_element_link');
+	
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_add_page_element_link($title, $align, $class, $link) {
+		
+		if ($align == 'right') {
+			$align = ' class="floatr"';
+		} else {
+			$align = '';
+		}
+		
+		if ($link) {
+			$link = $link;
+		} else {
+			$link = '#';
+		}
+		
+		if ($class) {
+			$class = ' class="'.$class.'" ';
+		} else {
+			$class = '';
+		}
+		
+		echo '<li'.$align.'>';
+			echo '<a href="'.$link.'"'.$class.'id="'.strtolower(str_replace(" ", "-", $title)).'-elements">'.$title.'</a>';
 		echo '</li>';
 		
 	}
@@ -1454,8 +1496,10 @@ function plchf_msb_googl_shortlink($url) {
 		
 		// Args
 		$args = array(
-			'post_type' => 'pluginchiefmsb-sites',
-			'post_parent' => $siteid
+			'post_type' 	=> 'pluginchiefmsb-sites',
+			'orderby' 		=> 'menu_order',
+			'order' 		=> 'ASC',
+			'post_parent' 	=> $siteid
 		);
 		
 		$posts = get_posts( $args );
@@ -1649,6 +1693,36 @@ function plchf_msb_googl_shortlink($url) {
     
     add_action('plchf_msb_theme_header','plchf_msb_load_bootstrap_styles', 2);
     
+/*-------------------------------------------------------------------------
+
+	DELETE MOBILE SITE PAGE SELF
+
+-------------------------------------------------------------------------*/
+	
+	function plchf_msb_delete_mobile_site_page_self() {
+		
+		$pageid = $_POST['page_id'];
+		
+		// Run Action After We Delete the Site
+		//do_action('plchf_msb_before_delete_page', $siteid);
+		
+		// Delete the Parent Page (Site)
+		wp_delete_post($pageid, true);
+		
+		// Run Action After We Delete the Site
+		// do_action('plchf_msb_after_delete_page', $siteid);
+		
+		// Redirect after Delete Site
+		$url = apply_filters('plchf_msb_my_sites_link', get_bloginfo('url') . '/wp-admin/admin.php?page=pluginchiefmsb');
+		
+		echo $url;
+		
+		die();
+		
+	}
+
+	add_action('wp_ajax_plchf_msb_delete_mobile_site_page_self','plchf_msb_delete_mobile_site_page_self');
+	
 /* ----------------------------------------------------------------------------
 	Site Details on the My Sites Page
 ---------------------------------------------------------------------------- */
