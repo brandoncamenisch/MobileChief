@@ -1336,17 +1336,27 @@ function plchf_msb_googl_shortlink($url) {
 		
 		// Only Run if Post Type is Plugin Chief MSB Sites
 	    if ($post->post_type == 'pluginchiefmsb-sites') {
+	    
+	    	// Get the Page Template
+	    	$page_template = get_post_meta($post->ID, '_plchf_msb_page_template', true);
+	    	
+	    	// Set the Page Template, with index as the fallback
+	    	if ($page_template) {
+		    	$page_template = $page_template;
+	    	} else {
+		    	$page_template = 'index';
+	    	}
 	    	
 	    	// This gets the Site Root and the Site Page (Both are set when registering a theme, using the 
 	    	// plchf_msb_theme_root_theme_slug and plchf_msb_theme_page_theme_slug functions
-	    	$single_template = apply_filters('plchf_msb_theme_root_'.$site_theme.'', 'goo').apply_filters('plchf_msb_theme_page_'.$site_theme.'','goo');
+	    	$single_template = apply_filters('plchf_msb_theme_root_'.$site_theme.'', 'goo').apply_filters('plchf_msb_theme_page_'.$site_theme.'',$page_template);
 	    	
 	    	// Make Sure the Theme Exists, Otherwise set to Default Theme
 	    	if (file_exists($single_template)) {
 		    	$single_template = $single_template;
 	    	} else {
 	    		update_post_meta($parent_id, '_plchf_msb_site_theme', 'default_theme');
-		    	$single_template = apply_filters('plchf_msb_theme_root_default_theme', 'goo').apply_filters('plchf_msb_theme_page_default_theme', 'goo');
+		    	$single_template = apply_filters('plchf_msb_theme_root_default_theme', 'goo').apply_filters('plchf_msb_theme_page_default_theme_page', 'goo');
 	    	}
 	    
 	    }
@@ -1611,16 +1621,20 @@ function plchf_msb_googl_shortlink($url) {
 		);
 		
 		// Insert Default Page for new Sites
-		$home = apply_filters('plchf_msb_insert_default_page1', wp_insert_post( $home ));
+		$home = apply_filters('plchf_msb_insert_default_page1', wp_insert_post( $home ), $new_site);
 		
 		// Insert Default About Page for new Sites
-		$about = apply_filters('plchf_msb_insert_default_page2', wp_insert_post( $about ));
+		$about = apply_filters('plchf_msb_insert_default_page2', wp_insert_post( $about ), $new_site);
 		
 		// Insert Default Page for new Sites
-		$contact = apply_filters('plchf_msb_insert_default_page3', wp_insert_post( $contact ));
+		$contact = apply_filters('plchf_msb_insert_default_page3', wp_insert_post( $contact ), $new_site);
 		
 		// Update Site Home Meta
-		$homepage = update_post_meta($new_site, '_homepage_', $home);
+		$homepage 		= update_post_meta($new_site, '_homepage_', $home);
+		$aboutpage 		= update_post_meta($new_site, '_aboutpage_', $about);
+		$contactpage 	= update_post_meta($new_site, '_contactpage_', $contact);
+		
+		do_action('plchf_msb_after_create_default_pages', $new_site);
 		
 	}
 	
