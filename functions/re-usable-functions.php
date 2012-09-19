@@ -1287,29 +1287,17 @@ function plchf_msb_googl_shortlink($url) {
 	Mobile Site Shortlink
 ---------------------------------------------------------------------------- */	
       
-    function plchf_msb_site_shortlink($id) {
-	    
-	    // Get Site ID
-	    $site_id = plchf_msb_get_site_id();
-	    
-	    if ($id) {
-		    $site_id = $id;
-	    } else if ($site_id) {
-		    $site_id = $site_id;
-	    }
+    function plchf_msb_site_shortlink($home_id) {
 	    
 	    // Get Permalink for the Site ID
-	    $permalink = get_permalink($site_id);
+	    $permalink = get_permalink($home_id);
 	    
-	    $output = do_action('plchf_msb_above_googl_shortlink', $site_id);
+	    $output = do_action('plchf_msb_above_googl_shortlink', $home_id);
 	    $output .= '<hr>';
-	    
-	    $output .= $site_id;
-	    
 	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</strong> ';
 	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
 	    
-	    echo apply_filters('plchf_msb_googl_site_shortlink', $output, $site_id);
+	    echo apply_filters('plchf_msb_googl_site_shortlink', $output, $home_id);
 	    
     }
     
