@@ -63,7 +63,8 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 					$pluginchiefmsb_args = array(
 						'post_type' 	=> 'pluginchiefmsb-sites',
-						'post_parent'	=> 0
+						'post_parent'	=> 0, 
+						'posts_per_page'=> -1,
 					);
 					
 					// Run Args through a filter
