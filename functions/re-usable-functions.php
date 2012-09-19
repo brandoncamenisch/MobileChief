@@ -714,6 +714,48 @@
 	add_action('plchf_msb_before_site_settings','plchf_msb_add_title_above_site_settngs_panels', 1);
 	
 /* ----------------------------------------------------------------------------
+	Get Page Element Value
+---------------------------------------------------------------------------- */	
+     
+    function plchf_msb_get_page_element() {
+	  	
+	  	global $post, $wp_query;
+	  	
+	  	// Get Page ID
+	  	$page_id = $wp_query->post->ID;
+	  	
+	  	// Get Page Elements
+	  	$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
+			
+		if($elements) { 
+						
+			// Loop Through the Post Meta
+			foreach($elements as $element) {
+	    		
+	    		foreach ($element as $k => $values) {
+		    		
+		    		// $k is the element type, and element count, we split that into 2 parts
+		    		// so part [0] is the Element Type and part [1] is the element count
+		    		// We then pass that to the element type action
+		    		$element_type_and_count = explode("_", $k);
+		    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
+
+		    		// We run the action for each element
+		    		$output .= do_action('plchf_msb_page_element_output_'.$element_type.'', $values);
+		    		
+		    		print_r($output);
+		    		
+	    		}
+	    		
+    		
+    		}
+			
+		}
+		
+	}
+	
+	
+/* ----------------------------------------------------------------------------
 	Mobile Page Content
 ---------------------------------------------------------------------------- */	
      

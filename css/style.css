@@ -639,6 +639,8 @@ border: 1px solid  #DFDFDF;
 	float: left;
 	padding: 15px 0px 15px 10px;
 	color: black;
+	font-size: 13px;
+	line-height: 20px;
 }
 
 #pluginchiefmsb-wrapper .page-element .settings-bar .inner-settings-bar .controls, #pluginchiefmsb-wrapper .page-section .page-element .settings-bar .inner-settings-bar .controls{
