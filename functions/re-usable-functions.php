@@ -1303,6 +1303,9 @@ function plchf_msb_googl_shortlink($url) {
 	    
 	    $output = do_action('plchf_msb_above_googl_shortlink', $site_id);
 	    $output .= '<hr>';
+	    
+	    $output .= $site_id;
+	    
 	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</strong> ';
 	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
 	    
