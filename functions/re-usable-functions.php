@@ -799,6 +799,7 @@
 	}
 	
 	add_action('wp_ajax_plchf_msb_save_the_page_elements_ajax','plchf_msb_save_the_page_elements_ajax');
+	add_action('wp_ajax_nopriv_plchf_msb_save_the_page_elements_ajax','plchf_msb_save_the_page_elements_ajax');
 
 /* ----------------------------------------------------------------------------
 	
@@ -844,6 +845,7 @@
 	}
 	
 	add_action('wp_ajax_plchf_msb_save_site_options_ajax', 'plchf_msb_save_site_options_ajax');
+	add_action('wp_ajax_nopriv_plchf_msb_save_site_options_ajax', 'plchf_msb_save_site_options_ajax');
 	
 /* ----------------------------------------------------------------------------
 	Add Element to Page
@@ -872,6 +874,7 @@
 	}
 	
 	add_action( 'wp_ajax_plchf_msb_add_element','plchf_msb_add_element');
+	add_action( 'wp_ajax_nopriv_plchf_msb_add_element','plchf_msb_add_element');
 
 /* ----------------------------------------------------------------------------
 	Add Page Section to Page
@@ -900,6 +903,7 @@
 	}
 	
 	add_action( 'wp_ajax_plchf_msb_add_section','plchf_msb_add_section');
+	add_action( 'wp_ajax_nopriv_plchf_msb_add_section','plchf_msb_add_section');
 
 /* ----------------------------------------------------------------------------
 	Create some JS Variables
@@ -1419,6 +1423,7 @@ function plchf_msb_googl_shortlink($url) {
 	}
 	
 	add_action('wp_ajax_plchf_msb_delete_site_ajax','plchf_msb_delete_site_ajax');
+	add_action('wp_ajax_nopriv_plchf_msb_delete_site_ajax','plchf_msb_delete_site_ajax');
 	
 /* ----------------------------------------------------------------------------
 	Correct image path issue in thickbox
@@ -1469,6 +1474,9 @@ function plchf_msb_googl_shortlink($url) {
 	
 	add_action('init','plchf_msb_create_new_site_from_ajax');
 
+/* ----------------------------------------------------------------------------
+	Create New Site Function
+---------------------------------------------------------------------------- */
 
 	function plchf_msb_create_new_mobile_site($userid, $name, $theme) {			
 
@@ -1736,6 +1744,7 @@ function plchf_msb_googl_shortlink($url) {
 	}
 
 	add_action('wp_ajax_plchf_msb_delete_mobile_site_page_self','plchf_msb_delete_mobile_site_page_self');
+	add_action('wp_ajax_nopriv_plchf_msb_delete_mobile_site_page_self','plchf_msb_delete_mobile_site_page_self');
 	
 /* ----------------------------------------------------------------------------
 	Site Details on the My Sites Page
@@ -1818,6 +1827,7 @@ function plchf_msb_googl_shortlink($url) {
 	}
 	
 	add_action('wp_ajax_plupload_action', "plchf_msb_plupload_action");
+	add_action('wp_ajax_nopriv_plupload_action', "plchf_msb_plupload_action");
 	
 /* ---------------------------------------------------------------------------- */
 /* Run this Action Once a Day at 2:00 AM
