@@ -96,7 +96,7 @@
 			
 		$output .= '</li>';
 		
-		echo apply_filters('plcf_msb_edit_pages_menu_item_filter',$output);
+		echo apply_filters('plcf_msb_edit_pages_menu_item_filter', $output);
 		
 	}
 	
