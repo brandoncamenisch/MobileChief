@@ -52,15 +52,15 @@
 		
 		$site_id = plchf_msb_get_site_id();									
 									
-		echo '<li class="floatr">';
+		$output = '<li class="floatr">';
 			
-			echo '<a href="#">';	
+			$output .= '<a href="#">';	
 			
-				echo '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
+				$output .= '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
 				
 				echo apply_filters('plchf_msb_edit_site_page_edit_pages_menu_item','Edit Pages');
 				
-			echo '</a>';
+			$output .= '</a>';
 				
 				$args = array(
 					'post_type' 	=> 'pluginchiefmsb-sites',
@@ -74,27 +74,29 @@
 					
 				if ($posts) {
 				
-				echo '<ul>';
+				$output .= '<ul>';
 					
 					foreach ($posts as $post) {
 				
-						echo '<li>';
+						$output .= '<li>';
 						
-							echo '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+							$output .= '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
 								echo $post->post_title; 
 								
 							echo'</a>';
 							
-						echo '</li>';
+						$output .= '</li>';
 						
 					}
 					
-				echo '</ul>';
+				$output .= '</ul>';
 				
 				}
 			
-		echo '</li>';
+		$output .= '</li>';
+		
+		echo apply_filters('plcf_msb_edit_pages_menu_item_filter',$output);
 		
 	}
 	
