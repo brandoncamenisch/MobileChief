@@ -1529,7 +1529,7 @@ function plchf_msb_googl_shortlink($url) {
 		
 		$output .= '</ul>';
 		
-		echo apply_filters('plchf_msb_site_pages_links', $output);
+		echo apply_filters('plchf_msb_site_pages_links', $output, $siteid);
 		
 	}
 	
