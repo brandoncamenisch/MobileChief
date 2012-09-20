@@ -58,7 +58,7 @@
 			
 				$output .= '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
 				
-				echo apply_filters('plchf_msb_edit_site_page_edit_pages_menu_item','Edit Pages');
+				$output .= apply_filters('plchf_msb_edit_site_page_edit_pages_menu_item','Edit Pages');
 				
 			$output .= '</a>';
 				
@@ -82,9 +82,9 @@
 						
 							$output .= '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
-								echo $post->post_title; 
+								$output .= $post->post_title; 
 								
-							echo'</a>';
+							$output .= '</a>';
 							
 						$output .= '</li>';
 						
