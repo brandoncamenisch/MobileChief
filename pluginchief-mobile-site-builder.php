@@ -74,11 +74,8 @@ ____   ____.__       .__              .__
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_msb_plugin_updater() {
-
+		if (class_exists('PluginUpdateChecker')) {
 		$PluginChief_MSB_Stats_AddOn = new PluginUpdateChecker( 'http://pluginchief.com/plugin-updates/downloads/mobilechief/pluginchief-mobile-site-builder.json', __FILE__);
-
+		}
 	}
 	add_action('plugins_loaded','plchf_msb_plugin_updater');
-
-
-?>
