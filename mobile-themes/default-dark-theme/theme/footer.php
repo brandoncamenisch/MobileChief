@@ -1,8 +1,13 @@
+	
+	</div><!-- Container -->
+	
+	<br/>
+	
 	<!-- Footer
 	================================================== -->
 	<footer class="footer">
-		
-		<p><?php echo htmlentities('© 2012 - Visioniz'); ?></p>
+		<br/>
+		<p><?php echo 'Â© 2012 - Visioniz'; ?></p>
 		
 	</footer>
 

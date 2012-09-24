@@ -2,7 +2,7 @@
 	================================================== -->
 	<footer class="footer">
 		
-		<p><?php echo htmlentities('© 2012 - Visioniz'); ?></p>
+		<p><?php echo 'Â© 2012 - Visioniz'; ?></p>
 		
 	</footer>
 

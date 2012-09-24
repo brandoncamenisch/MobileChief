@@ -15,8 +15,8 @@
   	<?php plchf_msb_theme_header(); ?>
   	
   	<!-- Include the Theme Stylesheet -->
-  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/style.min.css" rel="stylesheet">
-  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/style-responsive.min.css" rel="stylesheet">
+  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-dark-theme/theme/css/style.min.css" rel="stylesheet">
+  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-dark-theme/theme/css/style-responsive.min.css" rel="stylesheet">
 
   </head>
 
@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
           </button>
       
-          <a class="brand" href="<?php echo get_permalink(); ?>"><?php echo str_ireplace('_',' ', $sitetheme); ?></a>
+          <a class="brand" href="<?php echo get_permalink(); ?>">Site Title</a>
       
           <div class="nav-collapse collapse">
       
@@ -81,5 +81,3 @@
     </div>
 
     <div class="container">
-    
-    	<h1><?php echo $site_id; ?></h1>
