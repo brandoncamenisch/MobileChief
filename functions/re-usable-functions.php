@@ -1518,7 +1518,7 @@ function plchf_msb_googl_shortlink($url) {
 		
 		foreach ($posts as $post) {
 			
-			$output .= '<li rel="tooltip" data-placement="top" data-original-title="Edit Page: '.$post->post_title.'"><a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+			$output .= '<li rel="tooltip" data-placement="top" data-original-title="Edit Page: '.$post->post_title.'"><a href="'.apply_filters('plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 				
 				$output .= '<i class="icon-file"></i>';			
 				$output .= $post->post_title; 
