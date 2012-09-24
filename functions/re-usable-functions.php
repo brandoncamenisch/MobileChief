@@ -1452,13 +1452,6 @@ function plchf_msb_googl_shortlink($url) {
 			do_action('plchf_msb_create_new_site_post_data');
 			
 			plchf_msb_create_new_mobile_site($userid, $name, $theme);
-				
-			// Redirect URL 
-			$redirect_url = apply_filters('plchf_msb_redirect_after_create_site', 'admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$new_site.'', $new_site);
-			
-			// Redirect to Edit Site Page
-			wp_redirect($redirect_url);
-			exit;
 			
 		}
 		
@@ -1491,9 +1484,17 @@ function plchf_msb_googl_shortlink($url) {
 		// After Create Site
 		do_action('plchf_msb_after_create_new_site', $new_site);
 		
+		// Redirect URL 
+		$redirect_url = apply_filters('plchf_msb_redirect_after_create_site', 'admin.php?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$new_site.'', $new_site);
+			
+		// Redirect to Edit Site Page
+		wp_redirect($redirect_url);
+		exit;
+		
 		return $new_site;
 	
 	}
+	
 			
 
 /* ----------------------------------------------------------------------------
