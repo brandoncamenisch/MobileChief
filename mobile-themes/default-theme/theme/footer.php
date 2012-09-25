@@ -31,6 +31,7 @@
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/bootstrap-typeahead.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>mobile-themes/clean-theme/theme/js/custom.js"></script>
 
+    <?php plchf_msb_theme_footer(); ?>
 
   </body>
 </html>

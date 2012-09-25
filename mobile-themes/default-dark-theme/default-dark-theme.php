@@ -46,3 +46,41 @@
 	}
 	
 	add_filter('plchf_msb_theme_page_default_dark_theme','plchf_msb_default_dark_theme_redirect_page');
+	
+/* ----------------------------------------------------------------------------
+	Set the Current Page
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_dark_theme_menu_manager() {
+		
+		// Get the Site Theme Slug
+		$theme = plchf_msb_get_theme_info('Slug');
+		
+		// Only Add to the Default Dark Theme
+		if ($theme == 'default_dark_theme') {
+		
+			$panels[] = array(
+				'panel_name'=> 'Pages',			
+				'fields' 	=> array(
+					array(
+						'type' 			=> 'menu_manager',
+						'name' 			=> 'Pages',
+						'id' 			=> '_pages_',
+						'tooltip' 		=> 'Add New / Re-Order Pages',
+					),
+				),
+			);
+			
+			// Create the Panel
+			plchf_site_settings_settings_panel($panels);
+		
+		}
+		
+	}
+	
+	// Add the Panel ABOVE the Site Settings Form
+	add_action('plchf_msb_before_site_settings','plchf_msb_dark_theme_menu_manager');
+
+/* ----------------------------------------------------------------------------
+	Set the Current Page
+---------------------------------------------------------------------------- */

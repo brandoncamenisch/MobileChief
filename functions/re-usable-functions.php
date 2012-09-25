@@ -111,27 +111,29 @@
 		global $pluginchiefmsbdir; 
 		
 		// Pre-Header Hook
-		pluginchiefmsb_admin_pre_header();
+		do_action('pluginchiefmsb_admin_pre_header');
 		
 		// Header Hook
-		pluginchiefmsb_admin_header();
+		do_action('pluginchiefmsb_admin_header');
 	
 		// Post Header Hook
-		pluginchiefmsb_admin_post_header();
+		do_action('pluginchiefmsb_admin_post_header');
 		
 	}
 	
 	// Get the Footer for Admin Pages
 	function get_pluginchiefmsb_footer(){
 		
+		global $pluginchiefmsbdir; 
+		
 		// Pre Footer Hook
-		pluginchiefmsb_admin_pre_footer();
+		do_action('pluginchiefmsb_admin_pre_footer');
 	
 		// Footer Hook
-		pluginchiefmsb_admin_footer();
+		do_action('pluginchiefmsb_admin_footer');
 	
 		// Post Footer Hook
-		pluginchiefmsb_admin_post_footer();
+		do_action('pluginchiefmsb_admin_post_footer');
 		
 	}
 
