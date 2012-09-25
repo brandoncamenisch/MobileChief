@@ -68,6 +68,8 @@
 	            
 	            }    
 	            
+	            wp_reset_query();
+	            
                 ?>
       
             </ul>

@@ -2,7 +2,7 @@
 <?php require_once('header.php'); ?>
 
 	
-	<h4><?php echo $post->post_title; ?></h4>
+	<h4><?php the_title(); ?></h4>
 	<hr/>
 	
 	<!-- Gets the Content -->
