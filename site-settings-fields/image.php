@@ -12,6 +12,7 @@ function plchf_msb_site_settings_field_image($fields, $count) {
 	$tooltip		= $fields['tooltip'];
 	$placeholder	= $fields['placeholder'];
 	$field_id		= $fields['id'];
+	
 	$value			= plchf_msb_get_site_option($type, $field_id);
 
 	$output .= '

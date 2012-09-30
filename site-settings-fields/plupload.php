@@ -14,7 +14,8 @@
 		$field_id		= $fields['id'];
 
 		// Get the saved Value
-		$value			= $values[''.$field_id.''];
+		$value			= plchf_msb_get_site_option($type, $field_id);
+		
 
 		// adjust values here
 		$id 		= $count;
@@ -29,7 +30,7 @@
 			</a>
 		</label>';
 	
-		$output .= '<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
+		$output .= '<input type="hidden" name="field['.$type.$field_id.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
 		$output .= '<div class="plupload-upload-uic hide-if-no-js ';
 
 			if ($multiple) {

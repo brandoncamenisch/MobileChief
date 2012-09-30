@@ -17,7 +17,7 @@ function plchf_msb_site_settings_field_icon_select($fields, $count) {
 	$options		= $fields['options'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			= plchf_msb_get_site_option($type, $field_id);
 
 	// Field Label
 	$output .= '
