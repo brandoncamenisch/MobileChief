@@ -1823,6 +1823,18 @@ function plchf_msb_googl_shortlink($url) {
 	
 	add_action('wp_ajax_plupload_action', "plchf_msb_plupload_action");
 	add_action('wp_ajax_nopriv_plupload_action', "plchf_msb_plupload_action");
+
+/* ---------------------------------------------------------------------------- */
+/* Filter Insert to Post Text on the Media Uploader button
+/* ---------------------------------------------------------------------------- */
+
+	function plchf_msb_filter_insert_to_post_text($safe_text, $text) {
+		
+	    return str_replace(__('Insert into Post'), __('Use this image'), $text);
+	
+	}
+	
+	add_filter("attribute_escape", "plchf_msb_filter_insert_to_post_text", 10, 2);
 	
 /* ---------------------------------------------------------------------------- */
 /* Run this Action Once a Day at 2:00 AM

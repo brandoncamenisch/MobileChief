@@ -11,6 +11,7 @@
 		$label 			= $fields['name'];
 		$tooltip		= $fields['tooltip'];
 		$placeholder	= $fields['placeholder'];
+		$multiple		= $fields['multiple'];
 		$field_id		= $fields['id'];
 
 		// Get the saved Value
@@ -19,7 +20,14 @@
 
 		// adjust values here
 		$id 		= $count;
-		$multiple 	= true; 	// allow multiple files upload
+		
+		if ($multiple) {
+			$multiple = $multiple;
+		} else {
+			$multiple = true;
+		}
+		
+		$multiple 	= $multiple; 	// allow multiple files upload
 		$width 		= null; 	// If you want to automatically resize all uploaded images then provide width here (in pixels)
 		$height 	= null; 	// If you want to automatically resize all uploaded images then provide height here (in pixels)
 	
