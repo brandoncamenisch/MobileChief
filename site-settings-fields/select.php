@@ -14,7 +14,7 @@ function plchf_msb_site_settings_field_select($fields, $element_type, $count, $v
 	$options		= $fields['options'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			= plchf_msb_get_site_option($type, $field_id);
 
 	// Field Label
 	$output .= '

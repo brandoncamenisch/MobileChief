@@ -14,7 +14,7 @@ function plchf_msb_site_settings_field_hidden($fields, $count) {
 	$field_id		= $fields['id'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			= plchf_msb_get_site_option($type, $field_id);
 
 	$output = '<p>'.$tooltip.'</p>';
 

@@ -11,14 +11,23 @@
 		$label 			= $fields['name'];
 		$tooltip		= $fields['tooltip'];
 		$placeholder	= $fields['placeholder'];
+		$multiple		= $fields['multiple'];
 		$field_id		= $fields['id'];
 
 		// Get the saved Value
-		$value			= $values[''.$field_id.''];
+		$value			= plchf_msb_get_site_option($type, $field_id);
+		
 
 		// adjust values here
 		$id 		= $count;
-		$multiple 	= true; 	// allow multiple files upload
+		
+		if ($multiple) {
+			$multiple = $multiple;
+		} else {
+			$multiple = true;
+		}
+		
+		$multiple 	= $multiple; 	// allow multiple files upload
 		$width 		= null; 	// If you want to automatically resize all uploaded images then provide width here (in pixels)
 		$height 	= null; 	// If you want to automatically resize all uploaded images then provide height here (in pixels)
 	
@@ -29,7 +38,7 @@
 			</a>
 		</label>';
 	
-		$output .= '<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
+		$output .= '<input type="hidden" name="field['.$type.$field_id.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
 		$output .= '<div class="plupload-upload-uic hide-if-no-js ';
 
 			if ($multiple) {
