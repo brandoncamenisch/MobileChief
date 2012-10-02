@@ -11,6 +11,15 @@
   	$sitetheme 	= $meta['_plchf_msb_site_theme'][0];
   	?>
   	
+  	<?php
+	$site_name = plchf_msb_get_site_option('text','_site_name_');
+	if ($site_name != '') {
+		$site_name = $site_name;
+	} else {
+		$site_name = 'Site Title';
+	}
+	?>
+  	
   	<!-- Theme Header Hook -->
   	<?php plchf_msb_theme_header(); ?>
   	
@@ -36,7 +45,7 @@
             <span class="icon-bar"></span>
           </button>
       
-          <a class="brand" href="<?php echo get_permalink(); ?>">Site Title</a>
+          <a class="brand" href="<?php echo get_permalink(); ?>"><?php echo $site_name; ?></a>
       
           <div class="nav-collapse collapse">
       

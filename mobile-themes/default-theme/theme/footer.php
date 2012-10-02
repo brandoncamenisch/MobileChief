@@ -1,8 +1,23 @@
+	
+	</div><!-- Container -->
+	
+	<br/>
+	
 	<!-- Footer
 	================================================== -->
 	<footer class="footer">
 		
-		<p><?php echo '© 2012 - Visioniz'; ?></p>
+		<?php
+		$footer_text = plchf_msb_get_site_option('text','_footer_text_');
+		if ($footer_text != '') {
+			$footer_text = $footer_text;
+		} else {
+			$footer_text = '©2012 PluginChief.com';
+		}
+		?>
+		
+		<br/>
+		<p><?php echo $footer_text; ?></p>
 		
 	</footer>
 
@@ -29,8 +44,8 @@
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/bootstrap-collapse.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/bootstrap-carousel.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/bootstrap-typeahead.js"></script>
-    <script src="<?php echo $pluginchiefmsbdir; ?>mobile-themes/clean-theme/theme/js/custom.js"></script>
-
+    <script src="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/js/custom.js"></script>
+    
     <?php plchf_msb_theme_footer(); ?>
 
   </body>
