@@ -1,6 +1,6 @@
 #pluginchiefmsb-wrapper{
 	float: left;
-	width:100%;	
+	width:100%;
 	min-height: 800px;
 }
 
@@ -397,7 +397,7 @@
 #pluginchiefmsb-wrapper .column img{
 	max-width: 100%;
 	height: auto;
-	display: block;	
+	display: block;
 }
 
 #pluginchiefmsb-wrapper .iphone-preview{
@@ -563,7 +563,7 @@ border: 1px solid  #DFDFDF;
 }
 
 #pluginchiefmsb-wrapper .page-generator-section .section-element-move h3{
-	padding: 0px 10px 0px 10px; 
+	padding: 0px 10px 0px 10px;
 	color: #fff;
 	line-height: 14px;
 	font-size: 14px;
@@ -583,7 +583,7 @@ border: 1px solid  #DFDFDF;
 	width: 99%;
 }
 
-#pluginchiefmsb-wrapper .page-element .settings-bar, #pluginchiefmsb-wrapper .page-section .page-element .settings-bar{	
+#pluginchiefmsb-wrapper .page-element .settings-bar, #pluginchiefmsb-wrapper .page-section .page-element .settings-bar{
 	float: left;
 	background: #C8C8C8;
 	height: 49px;
@@ -762,14 +762,14 @@ border: 1px solid  #DFDFDF;
   -o-transition: background-position 0.1s linear;
   transition: background-position 0.1s linear;
 }
-#pluginchiefmsb-wrapper .btn:focus, 
+#pluginchiefmsb-wrapper .btn:focus,
 #confirmBox .btn:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 #pluginchiefmsb-wrapper .btn.active,
-#pluginchiefmsb-wrapper .btn:active, 
+#pluginchiefmsb-wrapper .btn:active,
 #confirmBox .btn.active,
 #confirmBox .btn:active {
   background-color: #e6e6e6;
@@ -1392,7 +1392,7 @@ border: 1px solid  #DFDFDF;
 	width: 99%;
 }
 
-#pluginchiefmsb-wrapper .page-section .settings-bar{	
+#pluginchiefmsb-wrapper .page-section .settings-bar{
 	float: left;
 	background: #C8C8C8;
 	height: 49px;
@@ -1631,7 +1631,7 @@ border: 1px solid  #DFDFDF;
 	border:none;
 	line-height: 32px;
 }
-#confirmBox .button:last-child{	
+#confirmBox .button:last-child{
 	margin-right:0;
 }
 #confirmBox .button-primary button btn btn-primary{
@@ -1646,9 +1646,9 @@ border: 1px solid  #DFDFDF;
 	clear: both;
 	height: auto;
 	background: #F1F1F1;
-	box-shadow: 0 1px 0 
+	box-shadow: 0 1px 0
 	rgba(255, 255, 255, 0.8) inset;
-	-webkit-box-shadow: 0 1px 0 
+	-webkit-box-shadow: 0 1px 0
 	rgba(255, 255, 255, 0.8) inset;
 	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
 	border: 1px solid #E3E3E3;
@@ -1688,7 +1688,7 @@ border: 1px solid  #DFDFDF;
 	border-top: 0px;
 	min-height: 30px;
 	width: 100%;
-	float: left;	
+	float: left;
 }
 
 #pluginchiefmsb-wrapper .pluginchiefmsb-options-menu{
@@ -1760,9 +1760,9 @@ border: 1px solid  #DFDFDF;
 	clear: both;
 	height: auto;
 	background: #F1F1F1;
-	box-shadow: 0 1px 0 
+	box-shadow: 0 1px 0
 	rgba(255, 255, 255, 0.8) inset;
-	-webkit-box-shadow: 0 1px 0 
+	-webkit-box-shadow: 0 1px 0
 	rgba(255, 255, 255, 0.8) inset;
 	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
 	border: 1px solid #E3E3E3;
@@ -1816,10 +1816,10 @@ border: 1px solid  #DFDFDF;
 #pluginchiefmsb-wrapper .elementmenu > li.floatr > ul ul {left:-125px;}
 #pluginchiefmsb-wrapper .elementmenu li:hover > ul {display:block;}
 /* mega elementmenu ----------------------------- */
-#pluginchiefmsb-wrapper .elementmenu .cols1, 
-#pluginchiefmsb-wrapper .elementmenu .cols2, 
-#pluginchiefmsb-wrapper .elementmenu .cols3, 
-#pluginchiefmsb-wrapper .elementmenu .cols4, 
+#pluginchiefmsb-wrapper .elementmenu .cols1,
+#pluginchiefmsb-wrapper .elementmenu .cols2,
+#pluginchiefmsb-wrapper .elementmenu .cols3,
+#pluginchiefmsb-wrapper .elementmenu .cols4,
 #pluginchiefmsb-wrapper .elementmenu .cols5 {
 	position:absolute;
 	display:none;
@@ -1840,14 +1840,14 @@ border: 1px solid  #DFDFDF;
 	font-family:Arial, Helvetica, sans-serif;
 	float: left;
 	width: 100%;
-	
+
 	background-color:#d4d4d4;
 	background-image:-webkit-linear-gradient(top, #e0e0e0, #c8c8c8);
 	background-image:-moz-linear-gradient(top, #e0e0e0, #c8c8c8);
 	background-image:-o-linear-gradient(top, #e0e0e0, #c8c8c8);
 	background-image:-ms-linear-gradient(top, #e0e0e0, #c8c8c8);
 	background-image:linear-gradient(top, #e0e0e0, #c8c8c8);
-	
+
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 	border-radius:3px;
@@ -1885,11 +1885,11 @@ border: 1px solid  #DFDFDF;
 	background-image:-o-linear-gradient(top, #f5f5f5, #fff);
 	background-image:-ms-linear-gradient(top, #f5f5f5, #fff);
 	background-image:linear-gradient(top, #f5f5f5, #fff);
-	
+
 	-webkit-box-shadow:inset 0 3px #eee;
 	-moz-box-shadow:inset 0 3px #eee;
 	box-shadow:inset 0 3px #eee;
-	
+
 	border-left:none;
 	padding-left:13px;
 }
@@ -1924,7 +1924,7 @@ border: 1px solid  #DFDFDF;
 	color:#fff;
 	background-color:#df0a0a;
 	text-shadow:0 1px #9d0707;
-	
+
 	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .4), 0 1px #f1f1f1;
 	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .4), 0 1px #f1f1f1;
 	box-shadow:inset 0 1px 1px rgba(0, 0, 0, .4), 0 1px #f1f1f1;
@@ -1933,7 +1933,7 @@ border: 1px solid  #DFDFDF;
 	color:#fff;
 	background-color:#737373;
 	text-shadow:0 1px #505050;
-	
+
 	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .4), 0 1px #f1f1f1;
 	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .4), 0 1px #f1f1f1;
 	box-shadow:inset 0 1px 1px rgba(0, 0, 0, .4), 0 1px #f1f1f1;
@@ -1969,18 +1969,18 @@ border: 1px solid  #DFDFDF;
 	top:-8px;
 	text-shadow:none;
 	border:1px solid #a00000;
-	
+
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 	border-radius:3px;
-	
+
 	background-color: #df0a0a;
 	background-image: -webkit-linear-gradient(top, #f26870, #ec0e23);
 	background-image: -moz-linear-gradient(top, #f26870, #ec0e23);
 	background-image: -o-linear-gradient(top, #f26870, #ec0e23);
 	background-image: -ms-linear-gradient(top, #f26870, #ec0e23);
 	background-image: linear-gradient(top, #f26870, #ec0e23);
-	
+
 	-webkit-box-shadow:inset 0 1px #ffa7a7;
 	-moz-box-shadow:inset 0 1px #ffa7a7;
 	box-shadow:inset 0 1px #ffa7a7;
@@ -2969,7 +2969,7 @@ Form Styles
     height: 5px;
 }
 #pluginchiefmsb-wrapper .plupload-thumbs {
- 
+
 }
 #pluginchiefmsb-wrapper .plupload-thumbs .thumb {
     width: 50px;
@@ -2988,26 +2988,26 @@ Form Styles
 Time Picker
 ----------------------------------------------------------------------- */
 
-#pluginchiefmsb-wrapper .ui-timepicker-div .ui-widget-header { 
-	margin-bottom: 8px; 
+#pluginchiefmsb-wrapper .ui-timepicker-div .ui-widget-header {
+	margin-bottom: 8px;
 }
-#pluginchiefmsb-wrapper .ui-timepicker-div dl { 
-	text-align: left; 
+#pluginchiefmsb-wrapper .ui-timepicker-div dl {
+	text-align: left;
 }
-#pluginchiefmsb-wrapper .ui-timepicker-div dl dt { 
-	height: 25px; margin-bottom: -25px; 
+#pluginchiefmsb-wrapper .ui-timepicker-div dl dt {
+	height: 25px; margin-bottom: -25px;
 }
-#pluginchiefmsb-wrapper .ui-timepicker-div dl dd { 
-	margin: 0 10px 10px 65px; 
+#pluginchiefmsb-wrapper .ui-timepicker-div dl dd {
+	margin: 0 10px 10px 65px;
 }
-#pluginchiefmsb-wrapper .ui-timepicker-div td { 
-	font-size: 90%; 
+#pluginchiefmsb-wrapper .ui-timepicker-div td {
+	font-size: 90%;
 }
-#pluginchiefmsb-wrapper .ui-tpicker-grid-label { 
-	background: none; 
-	border: none; 
-	margin: 0; 
-	padding: 0; 
+#pluginchiefmsb-wrapper .ui-tpicker-grid-label {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
 }
 
 /* -----------------------------------------------------------------------
@@ -4545,7 +4545,7 @@ Progress Bars
 	border-right:5px solid transparent;
 	border-top:5px solid #000
 }
-.tooltip.left .tooltip-arrow{	
+.tooltip.left .tooltip-arrow{
 	top:50%;
 	right:0;
 	margin-top:-5px;
