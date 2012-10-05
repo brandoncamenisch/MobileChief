@@ -24,7 +24,7 @@ function plchf_msb_site_settings_field_wysiwyg($fields, $count) {
 
 	$output .= '<input type="hidden" name="'.$field_id.'['.$element_type.'][]">';
 
-	$output .= '<textarea name="field['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" class="tinymce" style="width:100%; height: 154px; float:left; margin-bottom:20px;">'.$value.'</textarea>';
+	$output .= '<textarea name="field['.$type.$field_id.']['.$field_id.']" placeholder="'.$placeholder.'" class="tinymce" style="width:100%; height: 154px; float:left; margin-bottom:20px;">'.$value.'</textarea>';
 
 	echo apply_filters('plchf_msb_site_settings_field_wysiwyg_filter', $output);
 

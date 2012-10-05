@@ -17,14 +17,10 @@
 		// Get the saved Value
 		$value			= plchf_msb_get_site_option($type, $field_id);
 		
-
-		// adjust values here
-		$id 		= $count;
-		
-		if ($multiple) {
-			$multiple = $multiple;
-		} else {
+		if ($multiple == 'true') {
 			$multiple = true;
+		} else {
+			$multiple = false;
 		}
 		
 		$multiple 	= $multiple; 	// allow multiple files upload
@@ -38,16 +34,16 @@
 			</a>
 		</label>';
 	
-		$output .= '<input type="hidden" name="field['.$type.$field_id.']['.$field_id.']" id="'.$id.'" value="'.$value.'" />';
+		$output .= '<input type="hidden" name="field['.$type.$field_id.']['.$field_id.']" id="'.$field_id.'" value="'.$value.'" />';
 		$output .= '<div class="plupload-upload-uic hide-if-no-js ';
 
 			if ($multiple) {
 				$output .= 'plupload-upload-uic-multiple';
 			}
 
-		$output .= '" id="'.$id.'plupload-upload-ui">';
+		$output .= '" id="'.$field_id.'plupload-upload-ui">';
 
-		    $output .= '<span class="ajaxnonceplu" id="ajaxnonceplu'. wp_create_nonce($id . "pluploadan") .'"></span>';
+		    $output .= '<span class="ajaxnonceplu" id="ajaxnonceplu'. wp_create_nonce($field_id . "pluploadan") .'"></span>';
 
 		    if ($width && $height) {
 		    	$output .= '<span class="plupload-resize"></span><span class="plupload-width" id="plupload-width'.$width.'"></span>';
@@ -64,7 +60,7 @@
 				$output .= 'plupload-thumbs-multiple';
 			}
 
-			$output .= '" id="'. $id .'plupload-thumbs">';
+			$output .= '" id="'. $field_id .'plupload-thumbs">';
 
 		$output .= '</div>';
 
@@ -76,7 +72,7 @@
 
 		$output .= '<br/>';
 
-		$output .= '<input id="'.$id.'plupload-browse-button" type="button" class="btn btn-primary" value="Select Files" class="button" />';
+		$output .= '<input id="'.$field_id.'plupload-browse-button" type="button" class="btn btn-primary" value="Select Files" class="button" />';
 
 		$output .= '<div class="clear"></div>';
 
