@@ -25,7 +25,7 @@ function plchf_msb_site_settings_field_select($fields, $element_type, $count, $v
 	</label>';
 
 	// Select Field
-	$output .= '<select name="field['.$element_type.'_'.$count.']['.$field_id.']">';
+	$output .= '<select name="field['.$type.$field_id.']['.$field_id.']">';
 
 		// Loop through the Select Field Options
 		foreach ($options as $option_key => $option_value) {
