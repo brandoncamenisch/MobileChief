@@ -63,10 +63,10 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 					$pluginchiefmsb_args = array(
 						'post_type' 	=> 'pluginchiefmsb-sites',
-						'post_parent'	=> 0, 
+						'post_parent'	=> 0,
 						'posts_per_page'=> -1,
 					);
-					
+
 					// Run Args through a filter
 					$pluginchiefmsb_args = apply_filters('plchf_msb_sites_page_args', $pluginchiefmsb_args);
 
@@ -192,10 +192,10 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 						<div class="no-sites">
 
 							<?php
-								
+
 								$no_site_message  = '<h1>Oh No! You Don\'t Have any Mobile Sites!';
 								$no_site_message .= '<h3>Go Ahead and Create One. It\'s Easy!</h3>';
-								
+
 								$output  = apply_filters('plchf_no_site_message', $no_site_message);
 
 								$output .= apply_filters('plchf_msb_create_new_site_button', '<a class="btn btn-primary floatr" href="'.apply_filters('plchf_msb_new_sites_page', 'admin.php?page=pluginchiefmsb/new-site' ).'">'.apply_filters('plchf_msb_create_new_site_link_text', 'Create New Site').'</a>');
