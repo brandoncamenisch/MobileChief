@@ -28,7 +28,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/jquery.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/fitvid.js"></script>
     <script src="<?php echo $pluginchiefmsbdir; ?>theme-assets/js/google-code-prettify/prettify.js"></script>

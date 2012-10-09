@@ -56,7 +56,7 @@ function getGeoCoords($address)
     $address = utf8_encode($address);
     
     // call geoencoding api with param json for output
-    $geoCodeURL = "http://maps.google.com/maps/api/geocode/json?address=".
+    $geoCodeURL = "https://maps.google.com/maps/api/geocode/json?address=".
                   urlencode($address)."&sensor=false";
     
     $result = json_decode(file_get_contents($geoCodeURL), true);
@@ -82,7 +82,7 @@ function reverseGeoCode($lat,$lng)
     $address = array();
     
     // call geoencoding api with param json for output
-    $geoCodeURL = "http://maps.google.com/maps/api/geocode/json?address=$lat,$lng&sensor=false";
+    $geoCodeURL = "https://maps.google.com/maps/api/geocode/json?address=$lat,$lng&sensor=false";
     
     $result = json_decode(file_get_contents($geoCodeURL), true);
                 
@@ -109,7 +109,7 @@ function getOSMGeoCoords($address)
     // call OSM geoencoding api
     // limit to one result (limit=1) without address details (addressdetails=0)
     // output in JSON
-    $geoCodeURL = "http://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=0&q=".
+    $geoCodeURL = "https://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=0&q=".
                   urlencode($address);
     
     $result = json_decode(file_get_contents($geoCodeURL), true);

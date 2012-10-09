@@ -39,7 +39,7 @@ class PLCHF_MSB__Options_google_webfonts extends PLCHF_MSB__Options{
 
 		$class = (isset($this->field['class']))?'class="'.$this->field['class'].'" ':'';
 		
-		echo '<p class="description" style="color:red;">'.__('The fonts provided below are free to use custom fonts from the <a href="http://www.google.com/webfonts" target="_blank">Google Web Fonts directory</a>.<br/>Please <a href="http://www.google.com/webfonts" target="_blank">browse the directory</a> to preview a font, then select your choice below.', 'plchf_msb_opts').'</p>';
+		echo '<p class="description" style="color:red;">'.__('The fonts provided below are free to use custom fonts from the <a href="https://www.google.com/webfonts" target="_blank">Google Web Fonts directory</a>.<br/>Please <a href="https://www.google.com/webfonts" target="_blank">browse the directory</a> to preview a font, then select your choice below.', 'plchf_msb_opts').'</p>';
 		
 		echo '<select id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" '.$class.'rows="6" >';
 		
