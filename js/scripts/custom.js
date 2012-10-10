@@ -122,13 +122,7 @@ jQuery(document).ready(function($){
 		
 		if ($('.colorpicker').length) {
 
-			$('.colorpicker').each(function(){
-				
-				$this = $(this);
-				id = $(this).attr('data-colorpicker');
-				$('#' + id).farbtastic($this);
-			
-			});
+			$('.colorpicker').miniColors();
 			
 	    }
 	    
