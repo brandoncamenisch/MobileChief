@@ -43,7 +43,7 @@
     	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'js/vendor-scripts/bootstrap.min.js');
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.min.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
-    	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.min.js');
+    	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
 
     }
 
@@ -137,6 +137,29 @@
 		do_action('pluginchiefmsb_admin_post_footer');
 
 	}
+
+/* ----------------------------------------------------------------------------
+
+	Zoom the Contents of the iPhone Preview iFrame
+
+---------------------------------------------------------------------------- */
+
+	function plchf_msb_iframe_zoom() {
+		
+		global $pluginchiefmsbdir;
+		
+		echo '
+		<script type="text/javascript" src="'.$pluginchiefmsbdir.'/js/vendor-scripts/jquery.squeezeframe.js"></script>
+		<script type="text/javascript">
+			myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
+			myMax=0.05;
+			myRedraw="both";
+		</script>
+		';
+		
+	}
+	
+	add_action('plchf_msb_theme_header', 'plchf_msb_iframe_zoom');
 
 /* ----------------------------------------------------------------------------
 

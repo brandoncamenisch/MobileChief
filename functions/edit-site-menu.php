@@ -19,8 +19,21 @@
 			// Page Elements Title
 			echo '<li><p>'.apply_filters('plchf_msb_edit_site_page_title_prefix', get_the_title( $site_id ) ).': '.' '.apply_filters('plchf_msb_edit_site_page_title','Site Settings').'</p></li>';
 			
-			// Element Sections Hook
-			do_action('plchf_msb_edit_page_menu_items');
+
+			$support = plchf_msb_get_theme_info('Multiple Pages');
+			
+			// If Theme Supports Page Elements
+			if ($support == 'Yes') {
+			
+				// Element Sections Hook
+				do_action('plchf_msb_edit_page_menu_items');
+			
+			} else {
+				
+				// No Support For Page Elements in this theme
+				do_action('plchf_msb_edit_page_menu_items_no_support');
+				
+			}
 		
 		// End the Menu Output
 		echo '</ul>';
@@ -43,6 +56,7 @@
 	}
 	
 	add_action('plchf_msb_edit_page_menu_items','plchf_msb_edit_page_menu_delete_site_menu_item');
+	add_action('plchf_msb_edit_page_menu_items_no_support','plchf_msb_edit_page_menu_delete_site_menu_item');
 
 /* ---------------------------------------------------------------------------- */
 /* Add Delete Site Item to the Menu
