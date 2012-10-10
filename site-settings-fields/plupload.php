@@ -107,7 +107,7 @@
 
 		$output .= '<br/>';
 
-		$output .= '<a id="'.$field_id.'plupload-browse-button" class="btn btn-primary" class="button" />Select Files</a>';
+		$output .= '<input id="'.$field_id.'plupload-browse-button" class="btn btn-primary" value="Select Files" type="button" />';
 
 		$output .= '<div class="clear"></div>';
 
