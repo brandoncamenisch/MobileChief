@@ -1800,7 +1800,7 @@ function plchf_msb_googl_shortlink($url) {
 
 	}
 
-	//add_action('admin_head', 'plchf_msb_plupload_admin_head');
+	add_action('admin_head', 'plchf_msb_plupload_admin_head');
 
 /* ----------------------------------------------------------------------------
 	Upload Images with AJAX

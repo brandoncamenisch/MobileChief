@@ -25,12 +25,6 @@
 			$multiple = false;
 		}
 		
-		if ($multiple == 'true') {
-			$multiple = true;
-		} else {
-			$multiple = false;
-		}
-		
 		$id 		= $field_id; 
 		$svalue 	= $value; 	
 		$multiple 	= $multiple; 	
