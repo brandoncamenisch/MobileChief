@@ -27,6 +27,41 @@
 		$width 		= null; 	// If you want to automatically resize all uploaded images then provide width here (in pixels)
 		$height 	= null; 	// If you want to automatically resize all uploaded images then provide height here (in pixels)
 	
+	
+		// JS For the PLupload Uploader
+	    $plupload_init = array(
+	        'runtimes' => 'html5, silverlight, flash, html4',
+	        'browse_button' => ''.$field_id.'plupload-browse-button', // will be adjusted per uploader
+	        'container' => ''.$field_id.'plupload-upload-ui', // will be adjusted per uploader
+	        'drop_element' => 'drag-drop-area', // will be adjusted per uploader
+	        'file_data_name' => 'async-upload', // will be adjusted per uploader
+	        'multiple_queues' => true,
+	        'url' => admin_url('admin-ajax.php'),
+	        'flash_swf_url' => includes_url('js/plupload/plupload.flash.swf'),
+	        'silverlight_xap_url' => includes_url('js/plupload/plupload.silverlight.xap'),
+	        'filters' => array(
+	        	array(
+	        		'title' => __('Allowed Files'),
+	        		'extensions' => '*')
+	        	),
+	        'multipart' => true,
+	        'urlstream_upload' => true,
+	        'multi_selection' => false, // will be added per uploader
+	        'multipart_params' => array(
+	            '_ajax_nonce' => "", // will be added per uploader
+	            'action' => 'plupload_action', // the ajax action name
+	            'imgid' => 0 // will be added per uploader
+	        )
+	    );
+
+
+	    $output = '
+	    <script type="text/javascript">
+	    var base_plupload_config='. json_encode($plupload_init) .'
+	    </script>
+	    ';
+	
+	
 		$output .= '
 		<label>'.$label.'
 			<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
