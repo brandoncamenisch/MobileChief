@@ -36,6 +36,7 @@
     	wp_enqueue_script('jquery-ui-datepicker');
     	wp_enqueue_script('jquery-ui-slider');
     	wp_enqueue_script('jquery-touch-punch');
+    	wp_enqueue_script('plupload-all');
     	wp_enqueue_script('plchf_msb_plupload', 	PLUGINCHIEFMSB . 'js/scripts/plupload.min.js');
     	//wp_enqueue_script('plchf_msb_minicolors', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.min.js');
     	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.min.js');
@@ -151,9 +152,15 @@
 		echo '
 		<script type="text/javascript" src="'.$pluginchiefmsbdir.'/js/vendor-scripts/jquery.squeezeframe.js"></script>
 		<script type="text/javascript">
-			myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
-			myMax=0.05;
-			myRedraw="both";
+			var isInIFrame = (window.location != window.parent.location);
+			if(isInIFrame==true){
+
+				myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
+				myMax=0.05;
+				myRedraw="both";
+				
+			    // iframe
+			}
 		</script>
 		';
 		

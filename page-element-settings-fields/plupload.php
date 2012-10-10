@@ -39,7 +39,7 @@
 			</a>
 		</label>';
 			
-		$output .= '<input type="hidden" name="'.$id.'" id="'.$id.'" value="'.$svalue.'" />';
+		$output .= '<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" id="'.$id.'" value="'.$svalue.'" />';
 			$output .= '<div class="plupload-upload-uic hide-if-no-js ';
 				
 				if ($multiple) { $output .='plupload-upload-uic-multiple'; } $output .='" id="'.$id.'plupload-upload-ui">';
