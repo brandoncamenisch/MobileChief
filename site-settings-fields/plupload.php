@@ -28,7 +28,7 @@
 		$height 	= null;	
 		 
 		// Label & Tooltip
-		$output .= '
+		$output = '
 		<label>'.$label.'
 			<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
 				<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
@@ -36,19 +36,25 @@
 		</label>';
 			
 		$output .= '<input type="hidden" name="'.$id.'" id="'.$id.'" value="'.$svalue.'" />';
-			$output .= '<div class="plupload-upload-uic hide-if-no-js '.if ($multiple): .'plupload-upload-uic-multiple'. endif.'" id="'.$id.'plupload-upload-ui">';
-				$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="'. esc_attr_e('Select Files').'" class="button" />';
-		    		$output .= '<span class="ajaxnonceplu" id="ajaxnonceplu'.wp_create_nonce($id . 'pluploadan').'">';
-		    		$output .= '</span>';
-			    	if ($width && $height):
-			    		$output .= '<span class="plupload-resize"></span>';
-			    		$output .= '<span class="plupload-width" id="plupload-width'.$width.'"></span>';
-			    		$output .= '<span class="plupload-height" id="plupload-height'.$height.'"></span>';
-			    	endif; 
+			$output .= '<div class="plupload-upload-uic hide-if-no-js ';
+				
+				if ($multiple) { $output .='plupload-upload-uic-multiple'; } $output .='" id="'.$id.'plupload-upload-ui">';
+				
+		    	$output .= '<span class="ajaxnonceplu" id="ajaxnonceplu'.wp_create_nonce($id . 'pluploadan').'">';
+		    	$output .= '</span>';
+			    if ($width && $height):
+			    	$output .= '<span class="plupload-resize"></span>';
+			    	$output .= '<span class="plupload-width" id="plupload-width'.$width.'"></span>';
+			    	$output .= '<span class="plupload-height" id="plupload-height'.$height.'"></span>';
+			    endif; 
 		    	$output .= '<div class="filelist"></div>';
 		    $output .= '</div>';
-		    $output .= '<div class="plupload-thumbs '.if ($multiple): .'plupload-thumbs-multiple'. endif.'" id="'.$id.'plupload-thumbs">';
+		    $output .= '<div class="plupload-thumbs '; 
+		    	if ($multiple) { $output .='plupload-thumbs-multiple'; } 
+		    $output .='" id="'.$id.'plupload-thumbs">';
 		    $output .= '</div>';
+		$output .= '<div class="clear"></div>';
+		$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="Select Files" class="btn btn-primary" />';
 		$output .= '<div class="clear"></div>';
 		$output .= '<br/>';
 

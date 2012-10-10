@@ -20,7 +20,7 @@
 
     	// Enqueue Styles
     	wp_enqueue_style('jquery-ui-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css');
-    	wp_enqueue_style('miniColors', PLUGINCHIEFMSB . 'css/jquery.miniColors.js');
+    	wp_enqueue_style('miniColors', PLUGINCHIEFMSB . 'css/jquery.miniColors.css');
     	wp_enqueue_style('plchf_msb_font_awesome_styles');
     	wp_enqueue_style('plchf_msb_admin_styles');
 
@@ -1801,7 +1801,7 @@ function plchf_msb_googl_shortlink($url) {
 
 	}
 
-	add_action('admin_head', 'plchf_msb_plupload_admin_head');
+	//add_action('admin_head', 'plchf_msb_plupload_admin_head');
 
 /* ----------------------------------------------------------------------------
 	Upload Images with AJAX
