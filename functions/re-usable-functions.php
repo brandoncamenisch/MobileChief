@@ -28,7 +28,6 @@
     	// Enqueue JS
     	add_thickbox();
     	wp_enqueue_script('jquery');
-    	wp_enqueue_script('json2', 	PLUGINCHIEFMSB . 'js/vendor-scripts/json2.js');
     	wp_enqueue_script('plupload-all');
     	wp_enqueue_script('jquery-ui-core');
     	wp_enqueue_script('jquery-ui-sortable');
