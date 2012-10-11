@@ -380,7 +380,15 @@ jQuery(document).ready(function($){
 		var postID 		= $('.page-generator').attr('data-postid');
 		
 		var data = '' + elementForm + '&post_id=' + postID + '&action=plchf_msb_save_the_page_elements_ajax';
-	
+
+		// Scroll document up to PluginChief Wrapper
+		$('html, body').animate({
+			scrollTop: $("#pluginchiefmsb-wrapper").offset().top
+		}, 500);
+		
+		// Slide Up all Panels
+		$('.page-element .content').slideUp(500);
+				
 		$.ajax({
 			type: 'POST',
 		  	url: ajaxurl,
@@ -389,6 +397,14 @@ jQuery(document).ready(function($){
 		  		
 		  		// Display AJAX Response
 		  		// alert(response);
+		  		
+		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.page-generator');
+		  		
+		  		success_message.slideDown(300, function(){
+				  	setTimeout(function () {
+					    success_message.slideUp();
+					}, 2300);	
+		  		});
 		  		
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
@@ -440,7 +456,15 @@ jQuery(document).ready(function($){
 		
 		// Get the Data in a String
 		var data = '' + optionsForm + '&site_id=' + siteID + '&action=plchf_msb_save_site_options_ajax';
-	
+		
+		// Scroll document up to PluginChief Wrapper
+		$('html, body').animate({
+			scrollTop: $("#pluginchiefmsb-wrapper").offset().top
+		}, 500);
+		
+		// Slide Up all Panels
+		$('.page-element .content').slideUp(500);
+			
 		// Submit the data with AJAX
 		$.ajax({
 			type: 'POST',
@@ -451,6 +475,14 @@ jQuery(document).ready(function($){
 		  		// Display AJAX Response
 		  		// alert(response);
 		  		
+		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.site-settings');
+		  		
+		  		success_message.slideDown(300, function(){
+				  	setTimeout(function () {
+					    success_message.slideUp();
+					}, 2300);	
+		  		});
+
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
 		  		
