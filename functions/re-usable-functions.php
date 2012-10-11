@@ -150,7 +150,7 @@
 		global $pluginchiefmsbdir;
 		
 		echo '
-		<script type="text/javascript" src="'.$pluginchiefmsbdir.'/js/vendor-scripts/jquery.squeezeframe.js"></script>
+		<script type="text/javascript" src="'.$pluginchiefmsbdir.'js/vendor-scripts/jquery.squeezeframe.js"></script>
 		<script type="text/javascript">
 			var isInIFrame = (window.location != window.parent.location);
 			if(isInIFrame==true){
@@ -940,7 +940,9 @@
 	add_action( 'wp_ajax_nopriv_plchf_msb_add_section','plchf_msb_add_section');
 
 /* ----------------------------------------------------------------------------
-	Create some JS Variables
+	
+	Page Section API - In Progress
+	
 ---------------------------------------------------------------------------- */
 
 	function plchf_msb_page_section_start_1($section_type, $fields, $count, $values) {
