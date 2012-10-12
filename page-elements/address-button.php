@@ -56,7 +56,7 @@
 				'name' 			=> 'Address',
 				'id' 			=> '_button_address_',
 				'tooltip' 		=> 'Enter the Address to open in Google Maps',
-				'placeholder' 	=> '123 PluginChief Road, Denver, CO 80213',
+				'placeholder' 	=> '123 Insdustrial Ave, Anycity, ST 55555',
 			),
 		
 		);
@@ -72,23 +72,6 @@
 				'options' 		=> array(
 					'_self'		=> 'Open in Same Window',
 					'_blank'	=> 'Open in New Window',
-				)
-			),
-		
-		);
-		
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
-				'type' 			=> 'select',
-				'name' 			=> 'Button Size',
-				'id' 			=> '_button_size_',
-				'tooltip' 		=> 'Choose the size of the button',
-				'options' 		=> array(
-					'btn-mini'	=> 'Mini',
-					'btn-small'	=> 'Small',
-					'btn-large'	=> 'Large',
 				)
 			),
 		
@@ -131,30 +114,6 @@
 		
 		);
 		
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
-				'type' 			=> 'icon_select',
-				'name' 			=> 'Button Icon',
-				'id' 			=> '_button_icon_',
-				'tooltip' 		=> 'Should the Button have an Icon?',
-			),
-		
-		);
-
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
-				'type' 			=> 'colorpicker',
-				'name' 			=> 'Button Icon Color',
-				'id' 			=> '_button_icon_color_',
-				'tooltip' 		=> 'Choose the color of the button icon',
-			),
-		
-		);
-		
 		// Create Element Settings Panel
 		plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values);
 		
@@ -171,23 +130,15 @@
 		$text		= $values['_button_text_'];
 		$address	= $values['_button_address_'];
 		$target		= $values['_button_target_'];
-		$size 		= ' '.$values['_button_size_'];
+		$size 		= ' btn-large';
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];
-		$icon		= $values['_button_icon_'];
-		$iconcolor	= ' '.$values['_button_icon_color_'];
+		$icon		= 'icon-home';
 		
 		// Check to see if Icon was set
 		if ($icon != 'no-icon') {
-			
-			// Set Icon Color, Default to White
-			if ($iconcolor) {
-				$iconcolor = $iconcolor;
-			} else {
-				$iconcolor = '#fff';
-			}
 						
-			$icon = '<i class="'.$icon.'" style="color:'.$iconcolor.'"></i> ';
+			$icon = '<i class="'.$icon.'"></i> ';
 		
 		} else {
 			

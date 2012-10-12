@@ -786,7 +786,7 @@
 
 			// Display Message When No Page Elements Exist
 			echo '<div class="element-placeholder">';
-				echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
+				echo apply_filters('plchf_msb_no_page_elements_message','Add Elements to the Page.');
 			echo '</div>';
 
 		}

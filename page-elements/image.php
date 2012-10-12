@@ -25,11 +25,12 @@
 		$fields[] = array(
 			
 			'field' 	=> array(
-				'type' 			=> 'image',
+				'type' 			=> 'plupload',
 				'name' 			=> 'Upload an Image',
 				'id' 			=> '_image_',
 				'tooltip' 		=> 'Upload an Image',
 				'placeholder' 	=> 'Image',
+				'multiple' 		=> 'false',
 			),
 		
 		);

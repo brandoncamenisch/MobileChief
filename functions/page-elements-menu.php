@@ -101,7 +101,7 @@ function pluginchiefmsb_page_elements_menu() {
 									
 		echo '<li class="floatr">';
 			
-			echo '<a href="#" class="deletesite">';	
+			echo '<a href="#" class="">';	
 			
 				echo '<span class="'.apply_filters('plchf_msb_edit_site_page_delete_menu_item_icon','delete_site').'"></span>';
 				
