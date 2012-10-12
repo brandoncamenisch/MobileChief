@@ -17,8 +17,10 @@
 		
 		if ($multiple == 'true') {
 			$multiple = true;
+			$upload_text = 'Upload Images';
 		} else {
 			$multiple = false;
+			$upload_text = 'Upload Image';
 		}
 		
 		$id 		= $field_id; 
@@ -54,7 +56,7 @@
 		    $output .='" id="'.$id.'plupload-thumbs">';
 		    $output .= '</div>';
 		$output .= '<div class="clear"></div>';
-		$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="Upload Images" class="btn btn-primary" />';
+		$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="'.$upload_text.'" class="btn btn-primary" />';
 		$output .= '<div class="clear"></div>';
 		$output .= '<br/>';
 
