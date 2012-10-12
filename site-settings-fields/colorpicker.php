@@ -24,7 +24,7 @@ function plchf_msb_site_settings_field_colorpicker($fields, $count) {
 	$output .= '
 	<label>'.$label.'
 		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
-			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px" class="info-tooltip-icon">
+			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20" height="20" class="info-tooltip-icon">
 		</a>
 	</label>';
 
