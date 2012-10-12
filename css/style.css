@@ -1362,10 +1362,7 @@ border: 1px solid  #DFDFDF;
 	display: block;
 }
 
-#pluginchiefmsb-wrapper .menu-items .info-tooltip-icon{
-	height: 20px;
-	width: 20px;
-}
+
 
 /* ---------------------------------------------------------------------------------- */
 
@@ -5127,4 +5124,9 @@ Progress Bars
 	margin: 0;
 	padding: 0;
 	border: 0;
+}
+
+#pluginchiefmsb-wrapper .menu-items .info-tooltip-icon{
+	height: 20px;
+	width: 20px;
 }
