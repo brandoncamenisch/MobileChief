@@ -5117,3 +5117,9 @@ Progress Bars
 #pluginchiefmsb-wrapper .carousel-caption p {
   margin-bottom: 0;
 }
+
+#tinymce p{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}

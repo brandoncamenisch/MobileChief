@@ -58,7 +58,7 @@
 		    $output .='" id="'.$id.'plupload-thumbs">';
 		    $output .= '</div>';
 		$output .= '<div class="clear"></div>';
-		$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="Select Files" class="btn btn-primary" />';
+		$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="Upload Images" class="btn btn-primary" />';
 		$output .= '<div class="clear"></div>';
 		$output .= '<br/>';
 		
