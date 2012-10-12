@@ -22,7 +22,7 @@ function plchf_msb_page_element_settings_field_text_area($fields, $element_type,
 	$output .= '
 	<label>'.$label.'
 		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
-			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px">
+			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20px" class="info-tooltip-icon">
 		</a>
 	</label>';
 	
