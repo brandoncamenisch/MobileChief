@@ -150,7 +150,7 @@
 		// Output a Paragraph with the Address Button
 		echo '
 		<p>
-			<a href="href="https://maps.google.com/?q='.$address.'" class="btn'.$align.$style.$size.'" target="'.$target.'">'.$icon.$text.'</a>
+			<a href="https://maps.google.com/?q='.$address.'" class="btn'.$align.$style.$size.'" target="'.$target.'">'.$icon.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
 		';
