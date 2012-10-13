@@ -22,8 +22,8 @@ function plchf_msb_page_element_settings_field_icon_select($fields, $element_typ
 	// Field Label
 	$output .= '
 	<label>'.$label.'
-		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
-			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20" height="20" class="info-tooltip-icon">
+		<a href="#" class="tipsy-se floatr info-tooltip-icon" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
+			<img src="'.PLUGINCHIEFMSB.'images/element-icons/element-info.png" width="20" height="20">
 		</a>
 	</label>
 	';
