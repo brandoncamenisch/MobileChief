@@ -128,7 +128,7 @@ jQuery(document).ready(function($){
 	    
 	}
 	
-	plchf_msb_colorpicker();
+	// plchf_msb_colorpicker();
 	
 /* ----------------------------------------------------------------------------
 	Make Page Elements Sortable, and Nestable in Page Sections
