@@ -27,7 +27,7 @@
 			$upload_text = 'Upload Image';
 		}
 		
-		$id 		= $field_id; 
+		$id 		= $field_id.$count; 
 		$svalue 	= $value; 	
 		$multiple 	= $multiple; 	
 		$width 		= null; 

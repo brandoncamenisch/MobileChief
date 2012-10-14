@@ -50,13 +50,13 @@
 			    	$output .= '<span class="plupload-height" id="plupload-height'.$height.'"></span>';
 			    endif; 
 		    	$output .= '<div class="filelist"></div>';
+		    	$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="'.$upload_text.'" class="btn btn-primary" />';
 		    $output .= '</div>';
 		    $output .= '<div class="plupload-thumbs '; 
 		    	if ($multiple) { $output .='plupload-thumbs-multiple'; } 
 		    $output .='" id="'.$id.'plupload-thumbs">';
+		    
 		    $output .= '</div>';
-		$output .= '<div class="clear"></div>';
-		$output .= '<input id="'.$id.'plupload-browse-button" type="button" value="'.$upload_text.'" class="btn btn-primary" />';
 		$output .= '<div class="clear"></div>';
 		$output .= '<br/>';
 

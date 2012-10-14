@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
  
             // a file was added in the queue
             uploader.bind('FilesAdded', function(up, files){
-                $.each(files, function(i, file) {
+	                $.each(files, function(i, file) {
                     $this.find('.filelist').append(
                         '<div class="file" id="' + file.id + '"><b>' +
  

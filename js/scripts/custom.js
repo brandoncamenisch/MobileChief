@@ -6,9 +6,9 @@ jQuery(document).ready(function($){
 	
 	function plchf_msb_tooltips() {
 	
-		if ($("[rel=tooltip]").length) {
-			$("[rel=tooltip]").tooltip();
-		}
+		$("body").tooltip({
+			selector: '[rel=tooltip]'	
+		});
 	
 	}
 	
@@ -142,7 +142,18 @@ jQuery(document).ready(function($){
 				connectWith: ".connected-sortable",
 				placeholder: "element-placeholder", 
 				items: ".page-element, .page-section",
-				handle: ".element-move"
+				handle: ".element-move",
+				start: function(e, ui) {
+					$(this).find('.tinymce').each(function(){
+				        tinyMCE.execCommand( 'mceRemoveControl', false, $(this).attr('id') );
+				    });
+				},
+				stop: function(response){
+					$(this).find('.tinymce').each(function(){
+				        tinyMCE.execCommand( 'mceAddControl', true, $(this).attr('id') );
+				        $(this).sortable("refresh");
+				    });
+				}
 			});
 		
 		}
