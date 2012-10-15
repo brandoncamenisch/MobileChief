@@ -129,18 +129,6 @@
 		
 		);
 
-		// Define Settings Fields
-		$fields[] = array(
-			
-			'field' 	=> array(
-				'type' 			=> 'colorpicker',
-				'name' 			=> 'Button Icon Color',
-				'id' 			=> '_button_icon_color_',
-				'tooltip' 		=> 'Choose the color of the button icon',
-			),
-		
-		);
-		
 		// Create Element Settings Panel
 		plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values);
 		
