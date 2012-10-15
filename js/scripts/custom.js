@@ -196,7 +196,7 @@ jQuery(document).ready(function($){
 			  		plchf_msb_tinymce();
 			  		plchf_msb_sortable_page_sections();
 			  		plchf_msb_dropdowns();
-			  		plchf_msb_plupload().die();
+			  		plchf_msb_plupload().unbind();
 			  		plchf_msb_plupload();
 			  	}
 			});
@@ -243,7 +243,7 @@ jQuery(document).ready(function($){
 			  		plchf_msb_tinymce();
 			  		plchf_msb_sortable_page_sections();
 			  		plchf_msb_dropdowns();
-			  		plchf_msb_plupload().die();
+			  		plchf_msb_plupload().unbind();
 			  		plchf_msb_plupload();
 			  	}
 			});
@@ -598,8 +598,10 @@ jQuery(document).ready(function($){
 					'Yes'	: {
 						'class'	: 'btn btn-primary',
 						'action': function(){
-							item.remove();
-							plchf_msb_save_mobile_page_content();
+							item.slideUp(500, function(){
+								item.remove();
+								plchf_msb_save_mobile_page_content();
+							});							
 						}
 					},
 					'No'	: {
@@ -823,7 +825,9 @@ jQuery(document).ready(function($){
 		}
 
 	    if($(".plupload-upload-uic").exists()) {
+	        
 	        var pconfig=false;
+	        
 	        $(".plupload-upload-uic").each(function() {
 	            var $this=$(this);
 	            var id1=$this.attr("id");
@@ -855,13 +859,13 @@ jQuery(document).ready(function($){
 	            }
 	 
 	            var uploader = new plupload.Uploader(pconfig);
-	 
+	   
 	            uploader.bind('Init', function(up){
 	 
 	                });
 	 
 	            uploader.init();
-	 
+	            
 	            // a file was added in the queue
 	            uploader.bind('FilesAdded', function(up, files){
 		                $.each(files, function(i, file) {
@@ -908,9 +912,9 @@ jQuery(document).ready(function($){
 	                // show thumbs 
 	                plu_show_thumbs(imgId);
 	            });
-	 
-	 
-	 
+	            
+	            uploader.unbind();
+	            
 	        });
 	    }
 	}
