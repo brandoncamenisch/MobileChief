@@ -53,7 +53,7 @@
 
 				<div class="clear"></div><!-- Clear -->
 
-				<hr class="edit-site-page-top">
+				<hr>
 
 				<?php
 
@@ -69,7 +69,7 @@
 					<!-- Page Title -->
 					<h2><?php echo apply_filters('plchf_msb_page_label', 'Page:'); ?> <?php echo plchf_msb_get_page_title(); ?></h2>
 
-					<hr>
+					<hr class="edit-site-page-top">
 
 					<!-- Mobile Page Generator Form -->
 					<?php plchf_msb_page_generator(); ?>

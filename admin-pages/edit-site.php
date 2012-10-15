@@ -58,7 +58,7 @@
 				
 				<div class="clear"></div><!-- Clear -->
 				
-				<hr class="edit-site-top">
+				<hr>
 				
 				<?php pluginchiefmsb_edit_site_menu(); ?>
 				
@@ -70,7 +70,7 @@
 					<!-- Page Title -->
 					<h2><?php echo apply_filters('plchf_msb_site_label', 'Site:'); ?> <?php echo plchf_msb_get_site_title($site_id); ?></h2>
 					
-					<hr>
+					<hr class="edit-site-top">
 						
 					<!-- Mobile Site Settings -->
 					<?php plchf_msb_site_settings(); ?>
