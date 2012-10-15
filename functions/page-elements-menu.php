@@ -127,7 +127,7 @@ function pluginchiefmsb_page_elements_menu() {
 				
 						echo '<li>';
 						
-							echo '<a href="'.apply_filters('plchf_msb_edit_page_page', '/wp-admin/admin.php').'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+							echo '<a href="'.apply_filters('plchf_msb_edit_page_page', get_admin_url() ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
 								echo $post->post_title; 
 								
@@ -171,7 +171,7 @@ function pluginchiefmsb_page_elements_menu() {
 		$siteid = plchf_msb_get_site_id();
 		
 		// Add Link to the Edit Site Page
-		$link = apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo("url").'/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'';
+		$link = apply_filters( 'plchf_msb_edit_sites_page', get_admin_url() ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'';
 		
 		plchf_msb_add_page_element_link('Site Settings', 'right', 'editpage', $link);
 		

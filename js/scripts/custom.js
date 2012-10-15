@@ -196,8 +196,7 @@ jQuery(document).ready(function($){
 			  		plchf_msb_tinymce();
 			  		plchf_msb_sortable_page_sections();
 			  		plchf_msb_dropdowns();
-			  		plchf_msb_plupload().unbind();
-			  		plchf_msb_plupload();
+			  		// plchf_msb_plupload();
 			  	}
 			});
 			
@@ -243,7 +242,6 @@ jQuery(document).ready(function($){
 			  		plchf_msb_tinymce();
 			  		plchf_msb_sortable_page_sections();
 			  		plchf_msb_dropdowns();
-			  		plchf_msb_plupload().unbind();
 			  		plchf_msb_plupload();
 			  	}
 			});
@@ -859,7 +857,7 @@ jQuery(document).ready(function($){
 	            }
 	 
 	            var uploader = new plupload.Uploader(pconfig);
-	   
+	            
 	            uploader.bind('Init', function(up){
 	 
 	                });
@@ -911,9 +909,8 @@ jQuery(document).ready(function($){
 	 
 	                // show thumbs 
 	                plu_show_thumbs(imgId);
+	                
 	            });
-	            
-	            uploader.unbind();
 	            
 	        });
 	    }

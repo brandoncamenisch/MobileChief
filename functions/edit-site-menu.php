@@ -94,7 +94,7 @@
 				
 						$output .= '<li>';
 						
-							$output .= '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+							$output .= '<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_admin_url() ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
 								$output .= $post->post_title; 
 								
