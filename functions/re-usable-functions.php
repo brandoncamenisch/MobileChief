@@ -1743,6 +1743,28 @@ function plchf_msb_googl_shortlink($url) {
 
     add_action('plchf_msb_theme_header','plchf_msb_load_bootstrap_styles', 2);
 
+/* ---------------------------------------------------------------------------- */
+/* Add FitVid to All Themes
+/* ---------------------------------------------------------------------------- */
+
+	function plchf_msb_fitvid_setup() {
+	
+		global $pluginchiefmsbdir;
+		
+		$output = '<script src="'.$pluginchiefmsbdir.'theme-assets/js/fitvid.js"></script>';
+		$output .= '<script type="text/javascript">';
+			$output .= '
+			jQuery(document).ready(function($){
+				$("body").fitVids();
+			});';
+		$output .= '</script>';
+		
+		echo apply_filters('plchf_msb_setup_fitvid', $output);
+		
+	}
+
+	 add_action('plchf_msb_theme_footer','plchf_msb_fitvid_setup', 2);
+
 /*-------------------------------------------------------------------------
 
 	DELETE MOBILE SITE PAGE SELF
