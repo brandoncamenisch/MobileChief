@@ -5127,6 +5127,6 @@ Progress Bars
 }
 
 #pluginchiefmsb-wrapper .menu-items .info-tooltip-icon{
-	max-height: 20px;
-	max-width: 20px;
+	height: 20px!important;
+	width: 20px!important;
 }

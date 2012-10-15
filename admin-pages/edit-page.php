@@ -53,7 +53,7 @@
 
 				<div class="clear"></div><!-- Clear -->
 
-				<hr>
+				<hr class="edit-site-page-top">
 
 				<?php
 

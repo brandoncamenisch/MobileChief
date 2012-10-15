@@ -409,7 +409,7 @@ jQuery(document).ready(function($){
 		  		// Display AJAX Response
 		  		// alert(response);
 		  		
-		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.page-generator');
+		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.edit-site-page-top');
 		  		
 		  		success_message.slideDown(300, function(){
 				  	setTimeout(function () {
@@ -486,7 +486,7 @@ jQuery(document).ready(function($){
 		  		// Display AJAX Response
 		  		// alert(response);
 		  		
-		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.site-settings');
+		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.edit-site-top');
 		  		
 		  		success_message.slideDown(300, function(){
 				  	setTimeout(function () {

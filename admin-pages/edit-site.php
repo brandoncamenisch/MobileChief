@@ -58,7 +58,7 @@
 				
 				<div class="clear"></div><!-- Clear -->
 				
-				<hr>
+				<hr class="edit-site-top">
 				
 				<?php pluginchiefmsb_edit_site_menu(); ?>
 				
