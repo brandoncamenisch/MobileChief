@@ -4,22 +4,22 @@
 /* Add Styled Button Element to the Page Elements Menu
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_add_styled_button_element_styled_button() {
+	function plchf_add_button_element_button() {
 	
-		plchf_msb_add_page_element('Styled Button');
+		plchf_msb_add_page_element('Button');
 		
 	}
 	
-	add_action('plchf_msb_content_elements','plchf_add_styled_button_element_styled_button');
+	add_action('plchf_msb_content_elements','plchf_add_button_element_button');
 
 /* ---------------------------------------------------------------------------- */
 /* Create Settings for the Styled Button Element
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_msb_page_element_settings_styled_button($count, $values){
+	function plchf_msb_page_element_settings_button($count, $values){
 		
 		// Define Element Type
-		$element_type 	= 'Styled Button';
+		$element_type 	= 'Button';
 		
 		// Define Settings Fields
 		$fields[] = array(
@@ -134,13 +134,13 @@
 		
 	}
 	
-	add_action('plchf_msb_page_element_settings_styled_button','plchf_msb_page_element_settings_styled_button', 10, 2);
+	add_action('plchf_msb_page_element_settings_button','plchf_msb_page_element_settings_button', 10, 2);
 
 /* ---------------------------------------------------------------------------- */
 /* Display Output for the Styled Button Element
 /* ---------------------------------------------------------------------------- */
 
-	function plchf_msb_page_element_output_styled_button($values) {
+	function plchf_msb_page_element_output_button($values) {
 		
 		$text		= $values['_button_text_'];
 		$url		= $values['_button_url_'];
@@ -178,8 +178,8 @@
 		</p>
 		';
 		
-		echo apply_filters('plchf_msb_page_element_output_styled_button_filter', $output);
+		echo apply_filters('plchf_msb_page_element_output_button_filter', $output);
 		
 	}
 	
-	add_action('plchf_msb_page_element_output_styled_button','plchf_msb_page_element_output_styled_button', 10, 1);
+	add_action('plchf_msb_page_element_output_button','plchf_msb_page_element_output_button', 10, 1);

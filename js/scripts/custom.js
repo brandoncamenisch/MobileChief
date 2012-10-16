@@ -411,13 +411,7 @@ jQuery(document).ready(function($){
 		  		// Display AJAX Response
 		  		// alert(response);
 		  		
-		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.edit-site-page-top');
-		  		
-		  		success_message.slideDown(300, function(){
-				  	setTimeout(function () {
-					    success_message.slideUp();
-					}, 2300);	
-		  		});
+		  		toastr.success('Success!', 'Your Settings Have Been Saved')
 		  		
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
@@ -487,14 +481,8 @@ jQuery(document).ready(function($){
 		  		
 		  		// Display AJAX Response
 		  		// alert(response);
-		  		
-		  		var success_message = $('<div class="alert alert-success hide">Your Settings Have Been Saved</div>').prependTo('.edit-site-top');
-		  		
-		  		success_message.slideDown(300, function(){
-				  	setTimeout(function () {
-					    success_message.slideUp();
-					}, 2300);	
-		  		});
+		
+		  		toastr.success('Success!', 'Your Settings Have Been Saved')
 
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
