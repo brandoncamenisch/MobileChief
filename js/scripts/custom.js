@@ -393,7 +393,10 @@ jQuery(document).ready(function($){
 		var postID 		= $('.page-generator').attr('data-postid');
 		
 		var data = '' + elementForm + '&post_id=' + postID + '&action=plchf_msb_save_the_page_elements_ajax';
-
+		
+		// Alert
+		toastr.warning('Your Settings Are Being Saved', 'Processing. . .');
+		
 		// Scroll document up to PluginChief Wrapper
 		$('html, body').animate({
 			scrollTop: $("#pluginchiefmsb-wrapper").offset().top
@@ -411,7 +414,7 @@ jQuery(document).ready(function($){
 		  		// Display AJAX Response
 		  		// alert(response);
 		  		
-		  		toastr.success('Success!', 'Your Settings Have Been Saved')
+		  		toastr.success('Your Settings Have Been Saved', 'Success!');
 		  		
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
@@ -464,6 +467,9 @@ jQuery(document).ready(function($){
 		// Get the Data in a String
 		var data = '' + optionsForm + '&site_id=' + siteID + '&action=plchf_msb_save_site_options_ajax';
 		
+		// Alert
+		toastr.warning('Your Settings Are Being Saved', 'Processing. . .');
+		
 		// Scroll document up to PluginChief Wrapper
 		$('html, body').animate({
 			scrollTop: $("#pluginchiefmsb-wrapper").offset().top
@@ -482,7 +488,7 @@ jQuery(document).ready(function($){
 		  		// Display AJAX Response
 		  		// alert(response);
 		
-		  		toastr.success('Success!', 'Your Settings Have Been Saved')
+		  		toastr.success('Your Settings Have Been Saved', 'Success!');
 
 		  		// Refresh the iPhone Preview
 		  		plchf_msb_refresh_iphone_preview();
