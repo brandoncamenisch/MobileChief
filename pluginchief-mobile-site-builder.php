@@ -4,7 +4,7 @@ Plugin Name: Plugin Chief Mobile Site Builder
 Plugin URI: http://visioniz.com
 Description: Mobile Site Builder
 Version: 1.0
-Author: Visioniz, Jason Bahl, Brandon Camenisch
+Author: Visioniz, Jason Bahl, Brandon Camenisch, PluginChief
 Author URI: http://visioniz.com/
 License: GPLv2 or later
 
@@ -68,15 +68,3 @@ ____   ____.__       .__              .__
 	foreach (glob(PLUGINCHIEFMSB_PATH . "/mobile-themes/*/*.php") as $files){
 		require_once $files;
 	}
-
-/* ---------------------------------------------------------------------------- */
-/* Updater
-/* ---------------------------------------------------------------------------- */
-
-	function plchf_msb_plugin_updater() {
-		if (class_exists('PluginUpdateChecker')) {
-			$PluginChief_MSB_Stats_AddOn = new PluginUpdateChecker( 'http://pluginchief.com/wp-content/plugins/pluginchief-updatechief/json/pluginchief-mobilechief.json', __FILE__,'pluginchief-mobilechief');
-
-		}
-	}
-	add_action('plugins_loaded','plchf_msb_plugin_updater');
