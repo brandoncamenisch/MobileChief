@@ -4,7 +4,7 @@
 /* Select Field
 /* ---------------------------------------------------------------------------- */
 
-function plchf_msb_site_settings_field_select($fields, $element_type, $count, $values) {
+function plchf_msb_site_settings_field_select($fields, $count) {
 
 	$type 			= $fields['type'];
 	$label 			= $fields['name'];
