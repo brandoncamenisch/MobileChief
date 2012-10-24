@@ -99,6 +99,7 @@ function pluginchiefmsb_page_elements_menu() {
 	
 	function plchf_msb_edit_page_menu_edit_pages_menu_items() {
 		
+		// Site ID
 		$site_id = plchf_msb_get_site_id();									
 									
 		echo '<li class="floatr">';
@@ -155,8 +156,16 @@ function pluginchiefmsb_page_elements_menu() {
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_add_element_section_delete_page() {
+
+		$pageid 	= plchf_msb_get_page_id();
+		$site_id 	= plchf_msb_get_site_id();
+		$homepage 	= get_post_meta($site_id, '_homepage_', true); 
 		
-		plchf_msb_add_page_element_link('Delete Page', 'right', 'deletepageself', '#');
+		if ($homepage != $pageid) {
+		
+			plchf_msb_add_page_element_link('Delete Page', 'right', 'deletepageself', '#');
+		
+		}
 		
 	}
 	
