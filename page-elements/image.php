@@ -10,7 +10,7 @@
 		
 	}
 	
-	add_action('plchf_msb_content_elements','plchf_add_image_element', 1);
+	add_action('plchf_msb_media_elements','plchf_add_image_element', 1);
 
 /* ---------------------------------------------------------------------------- */
 /* Create Settings for the Text Element
@@ -25,7 +25,7 @@
 		$fields[] = array(
 			
 			'field' 	=> array(
-				'type' 			=> 'plupload',
+				'type' 			=> 'image',
 				'name' 			=> 'Upload an Image',
 				'id' 			=> '_image_',
 				'tooltip' 		=> 'Upload an Image',
