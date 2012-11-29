@@ -58,7 +58,7 @@ function pluginchiefmsb_page_elements_menu() {
 /* ---------------------------------------------------------------------------- */
 /* Media Section
 /* ---------------------------------------------------------------------------- */
-
+	
 	function plchf_add_element_section_media() {
 		
 		plchf_msb_add_page_element_section('Media', 'left');
@@ -70,7 +70,13 @@ function pluginchiefmsb_page_elements_menu() {
 /* ---------------------------------------------------------------------------- */
 /* Social Section
 /* ---------------------------------------------------------------------------- */
-
+	
+	/*
+	
+	Removed in Version 1.1.01
+	Should be added when elements require this section, 
+	not by default as there are no elements in the section by default
+	
 	function plchf_add_element_section_social() {
 		
 		plchf_msb_add_page_element_section('Social', 'left');
@@ -78,11 +84,13 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_social');
+	*/
 	
 /* ---------------------------------------------------------------------------- */
 /* Style Section
 /* ---------------------------------------------------------------------------- */
-
+	
+	/*
 	function plchf_add_element_section_style() {
 		
 		plchf_msb_add_page_element_section('Style', 'left');
@@ -90,6 +98,7 @@ function pluginchiefmsb_page_elements_menu() {
 	}
 	
 	add_action('plchf_msb_page_element_sections','plchf_add_element_section_style');
+	*/
 	
 /* ---------------------------------------------------------------------------- */
 /* Add Edit Page Items to the Menu
@@ -97,6 +106,7 @@ function pluginchiefmsb_page_elements_menu() {
 	
 	function plchf_msb_edit_page_menu_edit_pages_menu_items() {
 		
+		// Site ID
 		$site_id = plchf_msb_get_site_id();									
 									
 		echo '<li class="floatr">';
@@ -127,7 +137,7 @@ function pluginchiefmsb_page_elements_menu() {
 				
 						echo '<li>';
 						
-							echo '<a href="'.apply_filters('plchf_msb_edit_page_page', get_admin_url() ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
+							echo '<a href="'.apply_filters('plchf_msb_edit_page_page', get_admin_url().'admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'">';
 								
 								echo $post->post_title; 
 								
@@ -153,8 +163,16 @@ function pluginchiefmsb_page_elements_menu() {
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_add_element_section_delete_page() {
+
+		$pageid 	= plchf_msb_get_page_id();
+		$site_id 	= plchf_msb_get_site_id();
+		$homepage 	= get_post_meta($site_id, '_homepage_', true); 
 		
-		plchf_msb_add_page_element_link('Delete Page', 'right', 'deletepageself', '#');
+		if ($homepage != $pageid) {
+		
+			plchf_msb_add_page_element_link('Delete Page', 'right', 'deletepageself', '#');
+		
+		}
 		
 	}
 	
@@ -171,7 +189,7 @@ function pluginchiefmsb_page_elements_menu() {
 		$siteid = plchf_msb_get_site_id();
 		
 		// Add Link to the Edit Site Page
-		$link = apply_filters( 'plchf_msb_edit_sites_page', get_admin_url() ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'';
+		$link = apply_filters( 'plchf_msb_edit_sites_page', get_admin_url().'admin.php' ).'?page=pluginchiefmsb/edit-site&mobilesite_site_id='.$siteid.'';
 		
 		plchf_msb_add_page_element_link('Site Settings', 'right', 'editpage', $link);
 		

@@ -120,7 +120,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 									<div class="clear"></div>
 
-									<?php do_action('plchf_msb_my_sites_below_site_title'); ?>
+									<?php do_action('plchf_msb_my_sites_below_site_title', $siteid); ?>
 
 									<div class="clear"></div><!-- Clear -->
 
@@ -128,7 +128,7 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 									<div class="clear"></div>
 
-									<?php do_action('plchf_msb_sites_page_above_site_info'); ?>
+									<?php do_action('plchf_msb_sites_page_above_site_info', $siteid); ?>
 
 									<div class="clear"></div>
 

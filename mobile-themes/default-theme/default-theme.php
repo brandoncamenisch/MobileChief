@@ -108,6 +108,9 @@
 		
 		);
 		
+		// Create the Panel
+		plchf_site_settings_settings_panel($panels);
+		
 	}
 	
 	add_action('plchf_msb_site_settings_content_default_theme','plchf_msb_defualt_theme_site_options');

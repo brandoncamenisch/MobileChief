@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Plugin Chief Mobile Site Builder
+Plugin Name: MobileChief - Mobile Site Builder
 Plugin URI: http://visioniz.com
-Description: Mobile Site Builder
-Version: 1.0
-Author: Visioniz, Jason Bahl, Brandon Camenisch
+Description: MobileChief is a powerful, extendable mobile site builder that makes it easier than ever to create mobile landing pages and mobile sites with an intuitive drag and drop interface. Unlike other WordPress Mobile Plugins, MobileChief doesn't take your existing WordPress site and convert it to a Mobile Optimized Site, rather it lets you create new content in new mobile sites. The ability to create mobile sites like this, allows you to run mobile marketing campaigns with targeted information, rather than sending a user to a full website where they may get lost and never find the information you're trying to provide.
+Version: 1.1.01
+Author: Visioniz, Jason Bahl, Brandon Camenisch, PluginChief
 Author URI: http://visioniz.com/
 License: GPLv2 or later
 
@@ -68,15 +68,3 @@ ____   ____.__       .__              .__
 	foreach (glob(PLUGINCHIEFMSB_PATH . "/mobile-themes/*/*.php") as $files){
 		require_once $files;
 	}
-
-/* ---------------------------------------------------------------------------- */
-/* Updater
-/* ---------------------------------------------------------------------------- */
-
-	function plchf_msb_plugin_updater() {
-		if (class_exists('PluginUpdateChecker')) {
-			$PluginChief_MSB_Stats_AddOn = new PluginUpdateChecker( 'http://pluginchief.com/wp-content/plugins/pluginchief-updatechief/json/pluginchief-mobilechief.json', __FILE__,'pluginchief-mobilechief');
-
-		}
-	}
-	add_action('plugins_loaded','plchf_msb_plugin_updater');
