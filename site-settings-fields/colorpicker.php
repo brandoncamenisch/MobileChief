@@ -11,7 +11,7 @@ function plchf_msb_site_settings_field_colorpicker($fields, $count) {
 	$tooltip		 	= $fields['tooltip'];
 	$placeholder		= $fields['placeholder'];
 	$field_id			= $fields['id'];
-	
+
 	// Get the saved Value
 	$value			= plchf_msb_get_site_option($type, $field_id);
 
@@ -29,7 +29,7 @@ function plchf_msb_site_settings_field_colorpicker($fields, $count) {
 	</label>';
 
 	$output .= '
-	<input type="text" class="colorpicker" data-colorpicker="colorpicker'.$field_id.'" name="field['.$type.$field_id.']['.$field_id.']" value="'.$value.'" />';
+	<input type="color" class="colorpicker" data-colorpicker="colorpicker'.$field_id.'" name="field['.$type.$field_id.']['.$field_id.']" value="'.$value.'" />';
 
 	$output .= '
 	<div id="colorpicker'.$field_id.'"></div>
