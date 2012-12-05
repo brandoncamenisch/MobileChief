@@ -479,9 +479,10 @@
 			$postid = $wp_query->post->ID;
 
 			// Get Front End Page IDs
-			$edit_page_id 	= $plchf_msb_options['_edit_page_page_'];
-			$edit_site_id 	= $plchf_msb_options['_edit_site_page_'];
-			$my_sites_id 	= $plchf_msb_options['_my_sites_page_'];
+
+			$edit_page_id 	=& $plchf_msb_options['_edit_page_page_'];
+			$edit_site_id 	=& $plchf_msb_options['_edit_site_page_'];
+			$my_sites_id 		=& $plchf_msb_options['_my_sites_page_'];
 
 			// Check if Page is one of the Pages selected in the Plugin Settings Panel
 			if ( ($postid == $edit_page_id) ) {
@@ -502,7 +503,7 @@
 		}
 
 	    $url = get_permalink($id);
-
+	    $postid =& $postid;
 		// Iframe Preview
 		$output = '<iframe id="preview-frame" src="'.$url.'" data-siteid="'.$id.'" data-id="'.$postid.'" width="230" height="343"></iframe>';
 
@@ -693,7 +694,7 @@
 			}
 
 		}
-
+		$output =& $output;
 		return $output;
 
 	}
@@ -1226,9 +1227,9 @@
 			$postid = $wp_query->post->ID;
 
 			// Get Front End Page IDs
-			$edit_page_id 	= $plchf_msb_options['_edit_page_page_'];
-			$edit_site_id 	= $plchf_msb_options['_edit_site_page_'];
-			$my_sites_id 	= $plchf_msb_options['_my_sites_page_'];
+			$edit_page_id 	=& $plchf_msb_options['_edit_page_page_'];
+			$edit_site_id 	=& $plchf_msb_options['_edit_site_page_'];
+			$my_sites_id 		=& $plchf_msb_options['_my_sites_page_'];
 
 			// Check if Page is one of the Pages selected in the Plugin Settings Panel
 			if ( ($postid == $edit_page_id) ) {
@@ -1251,7 +1252,7 @@
 			}
 
 		}
-
+			$site_id =& $site_id;
 	    return apply_filters('plchf_msb_get_site_id', $site_id);
 
     }
@@ -1549,7 +1550,7 @@ function plchf_msb_googl_shortlink($url) {
 
 		$posts = get_posts( $args );
 
-		$output .= '<ul class="mobile-site-pages">';
+		$output = '<ul class="mobile-site-pages">';
 
 		foreach ($posts as $post) {
 
@@ -1585,7 +1586,7 @@ function plchf_msb_googl_shortlink($url) {
 
 		$url = get_permalink($siteid);
 
-		$output .= '<ul class="mobile-site-pages">';
+		$output = '<ul class="mobile-site-pages">';
 
 			do_action('plchf_msb_sites_before_right_column_site_details_links');
 

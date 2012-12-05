@@ -5,11 +5,11 @@
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_add_button_element_button() {
-	
+
 		plchf_msb_add_page_element('Button');
-		
+
 	}
-	
+
 	add_action('plchf_msb_content_elements','plchf_add_button_element_button');
 
 /* ---------------------------------------------------------------------------- */
@@ -17,13 +17,13 @@
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_msb_page_element_settings_button($count, $values){
-		
+
 		// Define Element Type
 		$element_type 	= 'Button';
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'text',
 				'name' 			=> 'Button Text',
@@ -31,12 +31,12 @@
 				'tooltip' 		=> 'Enter Button Text Here',
 				'placeholder' 	=> 'Button Text',
 			),
-		
+
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'text',
 				'name' 			=> 'Button URL',
@@ -44,12 +44,12 @@
 				'tooltip' 		=> 'Enter the Button URL Here',
 				'placeholder' 	=> 'http://pluginchief.com',
 			),
-		
+
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'select',
 				'name' 			=> 'Button Target',
@@ -60,12 +60,12 @@
 					'_blank'	=> 'Open in New Window',
 				)
 			),
-		
+
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'select',
 				'name' 			=> 'Button Size',
@@ -77,12 +77,12 @@
 					'btn-large'	=> 'Large',
 				)
 			),
-		
+
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'select',
 				'name' 			=> 'Button Style',
@@ -97,12 +97,12 @@
 					'btn-inverse'	=> 'Inverse',
 				)
 			),
-		
+
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'select',
 				'name' 			=> 'Button Allignment',
@@ -114,26 +114,26 @@
 					'floatr'		=> 'Right',
 				)
 			),
-		
+
 		);
-		
+
 		// Define Settings Fields
 		$fields[] = array(
-			
+
 			'field' 	=> array(
 				'type' 			=> 'icon_select',
 				'name' 			=> 'Button Icon',
 				'id' 			=> '_button_icon_',
 				'tooltip' 		=> 'Should the Button have an Icon?',
 			),
-		
+
 		);
 
 		// Create Element Settings Panel
 		plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values);
-		
+
 	}
-	
+
 	add_action('plchf_msb_page_element_settings_button','plchf_msb_page_element_settings_button', 10, 2);
 
 /* ---------------------------------------------------------------------------- */
@@ -141,7 +141,7 @@
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_msb_page_element_output_button($values) {
-		
+
 		$text		= $values['_button_text_'];
 		$url		= $values['_button_url_'];
 		$target		= $values['_button_target_'];
@@ -149,37 +149,39 @@
 		$style 		= ' '.$values['_button_style_'];
 		$align		= ' '.$values['_button_align_'];
 		$icon		= $values['_button_icon_'];
+		$values['_button_icon_color_'][0]	=& $values['_button_icon_color_'][0];
 		$iconcolor	= ' '.$values['_button_icon_color_'][0];
-		
+
+		$state	=& $state;
 		// Check to see if Icon was set
 		if ($icon != 'no-icon') {
-			
+
 			// Set Icon Color, Default to White
 			if ($iconcolor) {
 				$iconcolor = $iconcolor;
 			} else {
 				$iconcolor = '#fff';
 			}
-						
+
 			$icon = '<i class="'.$icon.'" style="color:'.$iconcolor.'"></i> ';
-		
+
 		} else {
-			
+
 			// If No Icon is selected, don't output an icon
 			$icon = '';
-		
+
 		}
-		
+
 		// Output a Paragraph with the Styled Button
-		$output .= '
+		$output = '
 		<p>
 			<a href="'.$url.'" class="btn'.$align.$style.$size.$state.'" target="'.$target.'">'.$icon.$text.'</a>
 			<div class="clearfix"></div>
 		</p>
 		';
-		
+
 		echo apply_filters('plchf_msb_page_element_output_button_filter', $output);
-		
+
 	}
-	
+
 	add_action('plchf_msb_page_element_output_button','plchf_msb_page_element_output_button', 10, 1);
