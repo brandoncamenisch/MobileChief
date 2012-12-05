@@ -145,9 +145,9 @@
 ---------------------------------------------------------------------------- */
 
 	function plchf_msb_iframe_zoom() {
-		
+
 		global $pluginchiefmsbdir;
-		
+
 		echo '
 		<script type="text/javascript" src="'.$pluginchiefmsbdir.'js/vendor-scripts/jquery.squeezeframe.js"></script>
 		<script type="text/javascript">
@@ -157,14 +157,14 @@
 				myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
 				myMax=0.05;
 				myRedraw="both";
-				
+
 			    // iframe
 			}
 		</script>
 		';
-		
+
 	}
-	
+
 	add_action('plchf_msb_theme_header', 'plchf_msb_iframe_zoom');
 
 /* ----------------------------------------------------------------------------
@@ -348,7 +348,7 @@
 
 		$page_id = $_GET['mobilesite_page_id'];
 
-		$output .= get_the_title( $page_id );
+		$output  = get_the_title( $page_id );
 
 		return apply_filters('plchf_msb_get_page_title', $output);
 
@@ -939,9 +939,9 @@
 	add_action( 'wp_ajax_nopriv_plchf_msb_add_section','plchf_msb_add_section');
 
 /* ----------------------------------------------------------------------------
-	
+
 	Page Section API - In Progress
-	
+
 ---------------------------------------------------------------------------- */
 
 	function plchf_msb_page_section_start_1($section_type, $fields, $count, $values) {
@@ -1747,9 +1747,9 @@ function plchf_msb_googl_shortlink($url) {
 /* ---------------------------------------------------------------------------- */
 
 	function plchf_msb_fitvid_setup() {
-	
+
 		global $pluginchiefmsbdir;
-		
+
 		$output = '<script src="'.$pluginchiefmsbdir.'theme-assets/js/fitvid.js"></script>';
 		$output .= '<script type="text/javascript">';
 			$output .= '
@@ -1757,9 +1757,9 @@ function plchf_msb_googl_shortlink($url) {
 				$("body").fitVids();
 			});';
 		$output .= '</script>';
-		
+
 		echo apply_filters('plchf_msb_setup_fitvid', $output);
-		
+
 	}
 
 	 add_action('plchf_msb_theme_footer','plchf_msb_fitvid_setup', 2);
