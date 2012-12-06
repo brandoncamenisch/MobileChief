@@ -7,13 +7,12 @@
 function plchf_msb_page_element_settings_field_wysiwyg($fields, $element_type, $count, $values) {
 
 	// Get the Element Type
-	$element_type 	= $element_type;
-
-	$type 			= $fields['field']['type'];
-	$label 			= $fields['field']['name'];
-	$tooltip	 	= $fields['field']['tooltip'];
-	$placeholder	= $fields['field']['placeholder'];
-	$field_id		= $fields['field']['id'];
+	$element_type 	=& $element_type;
+	$type 			=& $fields['field']['type'];
+	$label 			=& $fields['field']['name'];
+	$tooltip	 	=& $fields['field']['tooltip'];
+	$placeholder	=& $fields['field']['placeholder'];
+	$field_id		=& $fields['field']['id'];
 
 	// Get the saved Value
 	$value			= $values[''.$field_id.''];
