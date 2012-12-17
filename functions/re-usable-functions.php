@@ -564,7 +564,7 @@
 			    		// We then pass that to the element type action
 			    		$element_type_and_count = explode("_", $k);
 			    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
-			    		$count	= $element_type_and_count[1];
+			    		$count	=& $element_type_and_count[1];
 
 			    		// Check if the Element Type is
 			    		if ($element_type == 'section_start') {

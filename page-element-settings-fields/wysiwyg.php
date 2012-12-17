@@ -15,7 +15,7 @@ function plchf_msb_page_element_settings_field_wysiwyg($fields, $element_type, $
 	$field_id		=& $fields['field']['id'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			=& $values[''.$field_id.''];
 
 	$output = '
 	<label>'.$label.'

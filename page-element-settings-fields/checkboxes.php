@@ -9,15 +9,15 @@ function plchf_msb_page_element_settings_field_checkboxes($fields, $element_type
 	// Get the Element Type
 	$element_type 	= $element_type;
 
-	$type 			= $fields['field']['type'];
-	$label 			= $fields['field']['name'];
-	$tooltip	 	= $fields['field']['tooltip'];
-  if(isset($fields['field']['placeholder']) ? $placeholder = $fields['field']['placeholder'] : $placeholder = NULL);
-	$field_id		= $fields['field']['id'];
-	$options		= $fields['field']['options'];
+	$type 			=& $fields['field']['type'];
+	$label 			=& $fields['field']['name'];
+	$tooltip	 	=& $fields['field']['tooltip'];
+  $placeholder =& $fields['field']['placeholder'];
+	$field_id		=& $fields['field']['id'];
+	$options		=& $fields['field']['options'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			=& $values[''.$field_id.''];
 
 	$output = '
 	<label>'.$label.'

@@ -10,16 +10,16 @@ function plchf_msb_page_element_settings_field_hidden($fields, $element_type, $c
 	$element_type 	= $element_type;
 
 	// Get the Field Definitions
-	$type 			= $fields['field']['type'];
-	$label 			= $fields['field']['name'];
-  if(isset($fields['tooltip']) ? $tooltip = $fields['tooltip'] : $tooltip = NULL);
-	$placeholder	= $fields['field']['placeholder'];
-	$field_id		= $fields['field']['id'];
+	$type 			=& $fields['field']['type'];
+	$label 			=& $fields['field']['name'];
+	$tooltip =& $fields['tooltip'];
+	$placeholder	=& $fields['field']['placeholder'];
+	$field_id		=& $fields['field']['id'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			=& $values[''.$field_id.''];
 
-	$output .= '<p>'.$tooltip.'</p>';
+	$output = '<p>'.$tooltip.'</p>';
 
 	$output .= '
 	<input type="hidden" name="field['.$element_type.'_'.$count.']['.$field_id.']" placeholder="'.$placeholder.'" value="'.$value.'"/>

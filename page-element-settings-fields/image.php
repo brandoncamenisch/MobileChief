@@ -10,14 +10,14 @@ function plchf_msb_page_element_settings_field_image($fields, $element_type, $co
 	$element_type 	= $element_type;
 
 	// Get the Field Definitions
-	$type 				= $fields['field']['type'];
-	$label 				= $fields['field']['name'];
-	$tooltip		 	= $fields['field']['tooltip'];
-	$placeholder	= $fields['field']['placeholder'];
-	$field_id			= $fields['field']['id'];
+	$type 				=& $fields['field']['type'];
+	$label 				=& $fields['field']['name'];
+	$tooltip		 	=& $fields['field']['tooltip'];
+	$placeholder	=& $fields['field']['placeholder'];
+	$field_id			=& $fields['field']['id'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			=& $values[''.$field_id.''];
 
 	// Field Label
 	$output .= '

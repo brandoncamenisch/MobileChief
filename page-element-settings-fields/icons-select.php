@@ -9,16 +9,15 @@ function plchf_msb_page_element_settings_field_icon_select($fields, $element_typ
 	// Get the Element Type
 	$element_type 	= $element_type;
 
-	$type 			= $fields['field']['type'];
-	$label 			= $fields['field']['name'];
-	$tooltip	 	= $fields['field']['tooltip'];
-
+	$type 			=& $fields['field']['type'];
+	$label 			=& $fields['field']['name'];
+	$tooltip	 	=& $fields['field']['tooltip'];
 	$placeholder	=& $fields['field']['placeholder'];
-	$field_id		= $fields['field']['id'];
+	$field_id		=& $fields['field']['id'];
 	$options		=& $fields['field']['options'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''];
+	$value			=& $values[''.$field_id.''];
 
 	// Field Label
 	$output = '

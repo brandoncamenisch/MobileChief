@@ -10,15 +10,15 @@ function plchf_msb_page_element_settings_field_colorpicker($fields, $element_typ
 	$element_type 	= $element_type;
 
 	// Get the Field Definitions
-	$type 				= $fields['field']['type'];
-	$label 				= $fields['field']['name'];
-	$tooltip	 		= $fields['field']['tooltip'];
-	$placeholder		= $fields['field']['placeholder'];
-	$field_id			= $fields['field']['id'];
-	$default			= $fields['field']['default'];
+	$type 				=& $fields['field']['type'];
+	$label 				=& $fields['field']['name'];
+	$tooltip	 		=& $fields['field']['tooltip'];
+	$placeholder		=& $fields['field']['placeholder'];
+	$field_id			=& $fields['field']['id'];
+	$default			=& $fields['field']['default'];
 
 	// Get the saved Value
-	$value			= $values[''.$field_id.''][0];
+	$value			=& $values[''.$field_id.''][0];
 
 	if ($value) {
 		$value = $value;

@@ -7,17 +7,17 @@
 	function plchf_msb_site_settings_field_menu_manager($fields, $count) {
 
 		// Get the Field Definitions
-		$type 			= $fields['type'];
-		$label 			= $fields['name'];
-		$tooltip		= $fields['tooltip'];
-		$placeholder	= $fields['placeholder'];
-		$field_id		= $fields['id'];
+		$type 			=& $fields['type'];
+		$label 			=& $fields['name'];
+		$tooltip		=& $fields['tooltip'];
+		$placeholder	=& $fields['placeholder'];
+		$field_id		=& $fields['id'];
 
 		global $post, $wp_query;
 
 		// Site ID
 		$site_id 	= $_GET['mobilesite_site_id'];
-		$homepage 	= get_post_meta($site_id, '_homepage_', true); 
+		$homepage 	= get_post_meta($site_id, '_homepage_', true);
 
 		// Site Root
 		$root = get_bloginfo('url');
@@ -75,12 +75,12 @@
 
 										$output .='<div class="menuitem-move" rel="tooltip" data-placement="top" data-original-title="Drag & Drop to Re-Order the Pages">Move</div>';
 
-										$output .='<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'" class="menuitem-edit" rel="tooltip" data-placement="top" data-original-title="Edit the '.$post->post_title.' Page">Edit</a>';						
+										$output .='<a href="'.apply_filters( 'plchf_msb_edit_page_page', get_bloginfo('url') . '/wp-admin/admin.php' ).'?page=pluginchiefmsb/edit-page&mobilesite_page_id='.$post->ID.'" class="menuitem-edit" rel="tooltip" data-placement="top" data-original-title="Edit the '.$post->post_title.' Page">Edit</a>';
 										// Only Show if NOT the Home Page
 										if ($homepage != $post->ID) {
-										
+
 											$output .='<div class="menuitem-close deletepage" rel="tooltip" data-placement="top" data-original-title="Delete the '.$post->post_title.' Page">Close</div>';
-										
+
 										}
 
 									$output .= '</div><br/>';
