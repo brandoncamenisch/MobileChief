@@ -893,7 +893,7 @@
 		$values =& $values;
 		// Get Current Page Element Count
 		$meta 	= get_post_custom($pageid);
-		$count	= $meta['_plchf_msb_page_element_count'][0];
+		$count	=& $meta['_plchf_msb_page_element_count'][0];
 
 		// Increase Page Element Count By 1
 		$count 	= ($count+1);
@@ -926,7 +926,7 @@
 
 		// Increase Page Element Count By 1
 		$count 	= ($count+1);
-
+		$values =& $values;
 		// Update Page Element Count
 		update_post_meta($pageid, '_plchf_msb_page_element_count', $count);
 
