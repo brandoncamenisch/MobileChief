@@ -1,5 +1,0 @@
-<?php
-
-// Variables
-
-// Markup 
