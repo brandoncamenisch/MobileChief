@@ -55,15 +55,11 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 				<?php do_action('plchf_msb_my_sites_below_page_title'); ?>
 
-				<hr>
-
 				<div id="sites-list">
-
 					<?php
-
 					$pluginchiefmsb_args = array(
-						'post_type' 	=> 'pluginchiefmsb-sites',
-						'post_parent'	=> 0,
+						'post_type' 		=> 'pluginchiefmsb-sites',
+						'post_parent'		=> 0,
 						'posts_per_page'=> -1,
 					);
 
@@ -96,35 +92,20 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 									<div class="widget-title">
 
-										<h4><?php echo $site->post_title; ?></h4>
+										<h4><i class="icon-globe">&nbsp;</i><?php echo $site->post_title; ?></h4>
 
 									</div><!-- / Widget Title -->
 
 								</div><!-- / Widget Top -->
 
-								<div class="module-inside">
+								<div class="module-inside" style="display:none;">
 
 									<?php do_action('plchf_msb_my_sites_above_site_title'); ?>
 
 									<div class="clear"></div><!-- Clear -->
 
-									<h3 class="section-title floatl">
-
-										<?php echo $site->post_title; ?>
-
-									</h3><!-- End Title -->
-
-									<a class="btn btn-primary floatr" href="<?php echo apply_filters( 'plchf_msb_edit_sites_page', get_bloginfo('url') . '/wp-admin/admin.php' ); ?>?page=pluginchiefmsb/edit-site&mobilesite_site_id=<?php echo $site->ID; ?>">Edit Site</a>
-
-									<a class="btn btn-primary floatr deletesite" data-siteid="<?php echo $site->ID; ?>" href="#">Delete Site</a>
-
-									<div class="clear"></div>
-
 									<?php do_action('plchf_msb_my_sites_below_site_title', $siteid); ?>
 
-									<div class="clear"></div><!-- Clear -->
-
-									<hr>
 
 									<div class="clear"></div>
 
@@ -133,10 +114,6 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 									<div class="clear"></div>
 
 									<div class="one_fourth">
-
-										<h4>Site Preview</h4>
-
-										<hr>
 
 										<?php plchf_msb_qrcode_preview($home_id); ?>
 
@@ -148,30 +125,19 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 										<div class="one_half">
 
-											<h4>Pages</h4>
-
-											<hr>
-
 											<?php do_action('plchf_msb_sites_center_column', $siteid); ?>
 
 										</div>
 
 										<div class="one_half column-last">
 
-											<h4>Site</h4>
-
-											<hr>
-
 											<?php do_action('plchf_msb_sites_right_column', $siteid); ?>
-
 
 										</div>
 
 									</div>
 
 									<div class="clear"></div>
-
-									<hr>
 
 									<?php do_action('plchf_msb_sites_page_below_site_info', $siteid); ?>
 
