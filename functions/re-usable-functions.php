@@ -890,7 +890,7 @@
 		$pageid			= $_POST['pageid'];
 		$element_type 	= $_POST['elementType'];
 		$element_type 	= strtolower(str_replace("-", "_", $element_type));
-
+		$values =& $values;
 		// Get Current Page Element Count
 		$meta 	= get_post_custom($pageid);
 		$count	= $meta['_plchf_msb_page_element_count'][0];
