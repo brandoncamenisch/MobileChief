@@ -1309,7 +1309,7 @@ function plchf_msb_googl_shortlink($url) {
 	);
 
 	$result 	= json_decode($result['body']);
-	$shortlink 	= $result->id;
+	$shortlink 	=& $result->id;
 
 	if ($shortlink) {
 		return $shortlink;
