@@ -1,32 +1,26 @@
 <?php
 
-/* ----------------------------------------------------------------------------
+	/**
+	 * plchf_msb_enqueue_plugin_scripts_and_styles function.
+	 *
+	 * @access public
+	 * @return void
 
-	Create a Function to Enqueue Styles & Scripts
+			Usage: Call this function within a wp_enqueue_scripts function to enqueue the scripts
+			NOTE: This was abstracted to an individual function so we can call it in multiple places, such as the Front-End Add-On
 
-	Usage: Call this function within a wp_enqueue_scripts function to enqueue the scripts
-
-	NOTE:
-	This was abstracted to an individual function so we can call it
-	in multiple places, such as the Front-End Add-On
-
----------------------------------------------------------------------------- */
-
+	 */
 	function plchf_msb_enqueue_plugin_scripts_and_styles() {
-
-    	// Register Styles
+			#Register Styles
     	wp_register_style( 'plchf_msb_admin_styles', PLUGINCHIEFMSB . 'css/style.css');
     	wp_register_style( 'plchf_msb_font_awesome_styles', PLUGINCHIEFMSB . 'css/font-awesome/css/font-awesome.css');
-
-    	// Enqueue Styles
+    	#Enqueue Styles
     	wp_enqueue_style('jquery-ui-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/flick/jquery-ui.css');
     	wp_enqueue_style('farbtastic');
     	wp_enqueue_style('miniColors', PLUGINCHIEFMSB . 'css/jquery.miniColors.css');
     	wp_enqueue_style('plchf_msb_font_awesome_styles');
     	wp_enqueue_style('plchf_msb_admin_styles');
-
-
-    	// Enqueue JS
+    	#Enqueue JS
     	add_thickbox();
     	wp_enqueue_script('jquery');
     	wp_enqueue_script('jquery-ui-core');
@@ -44,128 +38,113 @@
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.min.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
     	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
-
     }
 
-/* ----------------------------------------------------------------------------
+	/**
+	 * plchf_msb_all_admin_js function.
+	 *
+	 * @access public
+	 * @return void
 
-	Hide Submenu Pages
+			Hide Submenu Pages
 
-	This enqueues a js that we need on ALL admin pages, such as the JS that
-	hides the edit-site and edit-page pages from the admin sub-menus.
+			This enqueues a js that we need on ALL admin pages, such as the JS that
+			hides the edit-site and edit-page pages from the admin sub-menus.
 
-	We use jQuery because remove_submenu_page breaks the page functionality.
-	(Perhaps there's a more elegant way around this?)
-
----------------------------------------------------------------------------- */
-
+			We use jQuery because remove_submenu_page breaks the page functionality.
+			(Perhaps there's a more elegant way around this?)
+	 */
 	function plchf_msb_all_admin_js() {
 
 		wp_enqueue_script('plchf_msb_all_admin', 	PLUGINCHIEFMSB . 'js/scripts/admin.min.js');
 
-	}
+	} add_action('admin_enqueue_scripts','plchf_msb_all_admin_js');
 
-	add_action('admin_enqueue_scripts','plchf_msb_all_admin_js');
+	/**
+	 * plchf_msb_enqueue_styles_and_scripts function.
+	 *
+	 * @access public
+	 * @return void
 
-/* ----------------------------------------------------------------------------
-
-	Enqueue Styles & Scripts
-
-	This enqueues the scripts and styles on any of the
-	PluginChief Mobile Site Builder Admin Pages
-
----------------------------------------------------------------------------- */
-
+			Enqueue Styles & Scripts
+			This enqueues the scripts and styles on any of the
+			PluginChief Mobile Site Builder Admin Pages
+	 */
 	function plchf_msb_enqueue_styles_and_scripts() {
 
-		if (is_admin()) {
-
-			$screen = get_current_screen();
-			$screenid = $screen->id;
-
-			// If pluginchiefmsb is in the Screen ID
-			// (So ultimately any sub-page of the main Plugin Chief Admin Page)
-			if ( strpos($screenid, 'pluginchiefmsb') ) {
-
+			if (is_admin()) {
+			$screen =& get_current_screen();
+			$screenid =& $screen->id;
+			#If pluginchiefmsb is in the Screen ID (So ultimately any sub-page of the main Plugin Chief Admin Page)
+				if ( strpos($screenid, 'pluginchiefmsb') ) {
 				plchf_msb_enqueue_plugin_scripts_and_styles();
+				}
+			}
+    } add_action( 'admin_enqueue_scripts', 'plchf_msb_enqueue_styles_and_scripts' );
 
-	        }
+	/**
+	 * get_pluginchiefmsb_header function.
+	 *
+	 * @access public
+	 * @return void
 
-        }
+			Setup Settings Pages Template Files
 
-    }
-
-    add_action( 'admin_enqueue_scripts', 'plchf_msb_enqueue_styles_and_scripts' );
-
-/* ----------------------------------------------------------------------------
-
-	Setup Settings Pages Template Files
-
-	Here we set up some hooks that we can use in any admin pages for the Mobile Site Builder.
-	These allow us to hook into certain parts of the templates.
-
----------------------------------------------------------------------------- */
-
-	// Get the Header for Admin Pages
+			Here we set up some hooks that we can use in any admin pages for the Mobile Site Builder.
+			These allow us to hook into certain parts of the templates.
+	 */
 	function get_pluginchiefmsb_header(){
-
 		global $pluginchiefmsbdir;
-
-		// Pre-Header Hook
+		#Pre-Header Hook
 		do_action('pluginchiefmsb_admin_pre_header');
-
-		// Header Hook
+		#Header Hook
 		do_action('pluginchiefmsb_admin_header');
-
-		// Post Header Hook
+		#Post Header Hook
 		do_action('pluginchiefmsb_admin_post_header');
-
 	}
 
-	// Get the Footer for Admin Pages
+	/**
+	 * get_pluginchiefmsb_footer function.
+	 *
+	 * @access public
+	 * @return void
+	 		Get the Footer for Admin Pages
+	 */
 	function get_pluginchiefmsb_footer(){
-
 		global $pluginchiefmsbdir;
-
-		// Pre Footer Hook
+		#Pre Footer Hook
 		do_action('pluginchiefmsb_admin_pre_footer');
-
-		// Footer Hook
+		#Footer Hook
 		do_action('pluginchiefmsb_admin_footer');
-
-		// Post Footer Hook
+		#Post Footer Hook
 		do_action('pluginchiefmsb_admin_post_footer');
-
 	}
 
-/* ----------------------------------------------------------------------------
 
-	Zoom the Contents of the iPhone Preview iFrame
-
----------------------------------------------------------------------------- */
-
+	/**
+	 * plchf_msb_iframe_zoom function.
+	 *
+	 * @access public
+	 * @return void
+	 	Zoom the Contents of the iPhone Preview iFrame
+	 */
 	function plchf_msb_iframe_zoom() {
 
 		global $pluginchiefmsbdir;
 
-		echo '
-		<script type="text/javascript" src="'.$pluginchiefmsbdir.'js/vendor-scripts/jquery.squeezeframe.js"></script>
-		<script type="text/javascript">
-			var isInIFrame = (window.location != window.parent.location);
-			if(isInIFrame==true){
+		echo '<script type="text/javascript" src="'.$pluginchiefmsbdir.'js/vendor-scripts/jquery.squeezeframe.js"></script>
+					<script type="text/javascript">
+						var isInIFrame = (window.location != window.parent.location);
+						if(isInIFrame==true){
 
-				myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
-				myMax=0.05;
-				myRedraw="both";
+							myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
+							myMax=0.05;
+							myRedraw="both";
 
-			    // iframe
-			}
-		</script>
-		';
-
-	}
-
-	add_action('plchf_msb_theme_header', 'plchf_msb_iframe_zoom');
+						    // iframe
+						}
+					</script>';
+	} add_action('plchf_msb_theme_header', 'plchf_msb_iframe_zoom');
 
 /* ----------------------------------------------------------------------------
 
@@ -310,7 +289,6 @@
 ---------------------------------------------------------------------------- */
 
 	function plchf_msb_add_page_element($element_type){
-
 		echo '<li>';
 			echo '<a href="#" data-elementtype="'.strtolower(str_replace(" ", "-", $element_type)).'">';
 				echo $element_type;
@@ -554,62 +532,43 @@
 
 			if($elements) {
 
-				// Loop Through the Post Meta
+				#Loop Through the Post Meta
 				foreach($elements as $element) {
 
 		    		foreach ($element as $k => $values) {
-
-			    		// $k is the element type, and element count, we split that into 2 parts
-			    		// so part [0] is the Element Type and part [1] is the element count
-			    		// We then pass that to the element type action
+			    		#$k is the element type, and element count, we split that into 2 parts
+			    		#so part [0] is the Element Type and part [1] is the element count
+			    		#We then pass that to the element type action
 			    		$element_type_and_count = explode("_", $k);
 			    		$element_type = str_ireplace("-", "_", $element_type_and_count[0]);
 			    		$count	=& $element_type_and_count[1];
 
-			    		// Check if the Element Type is
+			    		#Check if the Element Type is
 			    		if ($element_type == 'section_start') {
-
 			    			echo plchf_msb_page_section_start('Start Section','',$count,'');
-
 			    		}  elseif ($element_type == 'section_end') {
-
-
 				    		echo plchf_msb_page_section_end('End Section','',$count,'');
-
 			    		}
-
-			    		// We run the action for each element
+			    		#We run the action for each element
 			    		do_action('plchf_msb_page_element_settings_'.$element_type.'', $element_type_and_count[1], $values);
 
 		    		}
 
 	    		}
-
 			} else {
-
-				// Display Message When No Page Elements Exist
-
+				#Display Message When No Page Elements Exist
 				echo '<div class="element-placeholder"><br/>';
-
 					echo apply_filters('plchf_msb_no_page_elements_message','Choose elements above to add to the page.');
-
 				echo '</div>';
-
 			}
-
-			// Run Action at the Bottom of the Page Generator
+			#Run Action at the Bottom of the Page Generator
 			do_action('plchf_msb_bottom_page_generator');
-
 			echo apply_filters('plchf_msb_page_generator_save_button','<button class="ajaxsave btn btn-primary">Save</button>');
-
 			wp_nonce_field('page_elements_nonce', 'page_elements_nonce_field');
-
-		// End Form
+			#End Form
 		echo '</form>';
-
-		// Run Action After Page Generator Form
+		#Run Action After Page Generator Form
 		do_action('plchf_msb_after_page_generator');
-
 	}
 
 /* ----------------------------------------------------------------------------
@@ -887,13 +846,12 @@
 
 	function plchf_msb_add_element(){
 
-		$pageid			= $_POST['pageid'];
-		$element_type 	= $_POST['elementType'];
-		$element_type 	= strtolower(str_replace("-", "_", $element_type));
-		$values =& $values;
-		// Get Current Page Element Count
-		$meta 	= get_post_custom($pageid);
-		$count	=& $meta['_plchf_msb_page_element_count'][0];
+		$pageid					=& $_POST['pageid'];
+		$element_type 	=& $_POST['elementType'];
+		$element_type 	=& strtolower(str_replace("-", "_", $element_type));
+		$values 				=& $values;
+		$meta 					=& get_post_custom($pageid);
+		$count					=& $meta['_plchf_msb_page_element_count'][0];
 
 		// Increase Page Element Count By 1
 		$count 	= ($count+1);
@@ -929,11 +887,8 @@
 		$values =& $values;
 		// Update Page Element Count
 		update_post_meta($pageid, '_plchf_msb_page_element_count', $count);
-
 		do_action('plchf_msb_page_element_settings_'.$section_type.'', $count, $values);
-
 		die();
-
 	}
 
 	add_action( 'wp_ajax_plchf_msb_add_section','plchf_msb_add_section');
