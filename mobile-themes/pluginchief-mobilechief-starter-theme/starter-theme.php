@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'Starter Theme',
 				'Slug'			=> 'starter_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://visioniz.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_STARTERTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_STARTERTHEME . '',

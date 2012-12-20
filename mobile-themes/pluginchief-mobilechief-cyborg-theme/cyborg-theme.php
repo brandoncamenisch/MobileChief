@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'Cyborg Theme',
 				'Slug'			=> 'cyborg_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_CYBORGTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_CYBORGTHEME . '',

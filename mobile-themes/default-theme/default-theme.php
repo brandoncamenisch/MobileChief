@@ -9,7 +9,7 @@
 				'Theme Name' 	=> 'Default Theme',
 				'Slug'			=> 'default_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://visioniz.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_PATH . '/mobile-themes/default-theme/',
 				'Theme Root'	=> PLUGINCHIEFMSB . 'mobile-themes/default-theme/',

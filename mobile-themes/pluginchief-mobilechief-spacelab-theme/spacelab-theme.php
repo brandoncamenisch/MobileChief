@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'Spacelab Theme',
 				'Slug'			=> 'spacelab_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_SPACELABTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_SPACELABTHEME . '',

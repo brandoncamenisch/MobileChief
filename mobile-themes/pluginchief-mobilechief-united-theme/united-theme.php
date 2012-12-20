@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'United Theme',
 				'Slug'			=> 'united_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_UNITEDTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_UNITEDTHEME . '',

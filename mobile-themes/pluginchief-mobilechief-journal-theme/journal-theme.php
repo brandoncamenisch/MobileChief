@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'Journal Theme',
 				'Slug'			=> 'journal_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_JOURNALTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_JOURNALTHEME . '',

@@ -12,7 +12,7 @@
 				'Theme Name' 	=> 'Simplex Theme',
 				'Slug'			=> 'simplex_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_SIMPLEXTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_SIMPLEXTHEME . '',

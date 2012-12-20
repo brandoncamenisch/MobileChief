@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'Cerulean Theme',
 				'Slug'			=> 'cerulean_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_CERULEANTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_CERULEANTHEME . '',

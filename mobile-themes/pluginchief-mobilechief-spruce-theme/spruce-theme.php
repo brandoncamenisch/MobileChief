@@ -14,7 +14,7 @@
 				'Theme Name' 	=> 'Spruce Theme',
 				'Slug'			=> 'spruce_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_SPRUCETHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_SPRUCETHEME . '',

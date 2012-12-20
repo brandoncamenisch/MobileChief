@@ -13,7 +13,7 @@
 				'Theme Name' 	=> 'Superhero Theme',
 				'Slug'			=> 'superhero_theme',
 				'Version'		=> '1.0',
-				'Author Name'	=> 'Jason Bahl',
+				'Author Name'	=> 'PluginChief',
 				'Author URL'	=> 'http://pluginchief.com',
 				'Theme Path'	=> PLUGINCHIEFMSB_SUPERHEROTHEME_PATH . '/',
 				'Theme Root'	=> PLUGINCHIEFMSB_SUPERHEROTHEME . '',
