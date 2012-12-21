@@ -8,8 +8,7 @@
 	 */
 	function plchf_add_alert_element_alert() {
 		plchf_msb_add_page_element('Alert');
-	}
-	add_action('plchf_msb_content_elements','plchf_add_alert_element_alert', 1);
+	} add_action('plchf_msb_content_elements','plchf_add_alert_element_alert', 1);
 
 	/**
 	 * plchf_msb_page_element_settings_alert function.

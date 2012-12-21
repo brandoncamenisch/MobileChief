@@ -29,6 +29,7 @@
 																					'tooltip' 		=> 'Enter Button Text Here',
 																					'placeholder' => 'Button Text',
 																				));
+
 		$fields[] = array( 'field' 	=> array( 'type' 				=> 'text',
 																					'name' 				=> 'Button link',
 																					'id' 					=> '_button_link_',
