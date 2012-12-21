@@ -32,13 +32,29 @@
     	wp_enqueue_script('jquery-touch-punch');
     	wp_enqueue_script('plupload-all');
     	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'js/vendor-scripts/farbtastic.min.js');
-    	wp_enqueue_script('plchf_msb_toastr', 		PLUGINCHIEFMSB . 'js/vendor-scripts/toastr.js');
-    	wp_enqueue_script('plchf_msb_tinymce', 		PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.min.js');
+    	wp_enqueue_script('plchf_msb_toastr', 		  PLUGINCHIEFMSB . 'js/vendor-scripts/toastr.js');
+    	wp_enqueue_script('plchf_msb_tinymce', 		  PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.min.js');
     	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'js/vendor-scripts/bootstrap.min.js');
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.waypoints.min.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
-    	wp_enqueue_script('plchf_msb_custom_js', 	PLUGINCHIEFMSB . 'js/scripts/custom.js');
+    	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
     }
+
+
+	/**
+	 * plchf_msb_call_footer_scripts function.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	function plchf_msb_call_footer_scripts() {
+		$output  = '<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	  	<script src="'.PLUGINCHIEFMSB.'js/vendor-scripts/fitvid.min.js"></script>
+	    <script src="'.PLUGINCHIEFMSB.'js/vendor-scripts/bootstrap.min.js"></script>
+	    <script src="'.PLUGINCHIEFMSB.'mobile-themes/default-theme/theme/js/custom.js"></script>';
+
+	  echo $output;
+	} add_action('plchf_msb_theme_footer', 'plchf_msb_call_footer_scripts');
 
 	/**
 	 * plchf_msb_all_admin_js function.
@@ -120,31 +136,6 @@
 		do_action('pluginchiefmsb_admin_post_footer');
 	}
 
-
-	/**
-	 * plchf_msb_iframe_zoom function.
-	 *
-	 * @access public
-	 * @return void
-	 	Zoom the Contents of the iPhone Preview iFrame
-	 */
-	function plchf_msb_iframe_zoom() {
-
-		global $pluginchiefmsbdir;
-
-		echo '<script type="text/javascript" src="'.$pluginchiefmsbdir.'js/vendor-scripts/jquery.squeezeframe.js"></script>
-					<script type="text/javascript">
-						var isInIFrame = (window.location != window.parent.location);
-						if(isInIFrame==true){
-
-							myContainer="http://aqropolis.com/my-mobile-sites/edit-mobile-site";
-							myMax=0.05;
-							myRedraw="both";
-
-						    // iframe
-						}
-					</script>';
-	} add_action('plchf_msb_theme_header', 'plchf_msb_iframe_zoom');
 
 /* ----------------------------------------------------------------------------
 
@@ -1691,28 +1682,6 @@ function plchf_msb_googl_shortlink($url) {
     }
 
     add_action('plchf_msb_theme_header','plchf_msb_load_bootstrap_styles', 2);
-
-/* ---------------------------------------------------------------------------- */
-/* Add FitVid to All Themes
-/* ---------------------------------------------------------------------------- */
-
-	function plchf_msb_fitvid_setup() {
-
-		global $pluginchiefmsbdir;
-
-		$output = '<script src="'.$pluginchiefmsbdir.'theme-assets/js/fitvid.js"></script>';
-		$output .= '<script type="text/javascript">';
-			$output .= '
-			jQuery(document).ready(function($){
-				$("body").fitVids();
-			});';
-		$output .= '</script>';
-
-		echo apply_filters('plchf_msb_setup_fitvid', $output);
-
-	}
-
-	 add_action('plchf_msb_theme_footer','plchf_msb_fitvid_setup', 2);
 
 /*-------------------------------------------------------------------------
 
