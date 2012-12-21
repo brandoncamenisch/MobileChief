@@ -25,8 +25,6 @@
 
   	<!-- Include the Theme Stylesheet -->
   	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/style.css" rel="stylesheet">
-  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/responsive.css" rel="stylesheet">
-
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
