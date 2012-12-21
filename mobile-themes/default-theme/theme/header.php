@@ -24,8 +24,8 @@
   	<?php plchf_msb_theme_header(); ?>
 
   	<!-- Include the Theme Stylesheet -->
-  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/style.min.css" rel="stylesheet">
-  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/style-responsive.min.css" rel="stylesheet">
+  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/style.css" rel="stylesheet">
+  	<link href="<?php echo $pluginchiefmsbdir; ?>mobile-themes/default-theme/theme/css/responsive.css" rel="stylesheet">
 
   </head>
 

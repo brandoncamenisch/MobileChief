@@ -14,8 +14,6 @@ ____   ____.__       .__              .__
   \     /  |  |\___ \|  (  <_> )   |  \  |/    /
    \___/   |__/____  >__|\____/|___|  /__/_____ \
                    \/               \/         \/
-
-
 */
 
 /* ---------------------------------------------------------------------------- */
@@ -58,6 +56,8 @@ ____   ____.__       .__              .__
 	foreach (glob(PLUGINCHIEFMSB_PATH . "/*/*.php") as $files){
 		require_once $files;
 	}
+	#LESS COMPILER
+	require_once PLUGINCHIEFMSB_PATH . "/lib/lessphp/lessc.inc.php";
 
 /* ---------------------------------------------------------------------------- */
 /* Inlcude Built-In Theme Files

@@ -1680,12 +1680,6 @@ function plchf_msb_googl_shortlink($url) {
 		global $pluginchiefmsbdir;
 
 		$output = '
-		<!-- Le styles -->
-		<link href="'.$pluginchiefmsbdir.'theme-assets/css/bootstrap.css" rel="stylesheet">
-		<link href="'.$pluginchiefmsbdir.'theme-assets/css/app.css" rel="stylesheet">
-		<link href="'.$pluginchiefmsbdir.'theme-assets/css/bootstrap-responsive.css" rel="stylesheet">
-		<link href="'.$pluginchiefmsbdir.'css/font-awesome/css/font-awesome.css" rel="stylesheet">
-
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 		  <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -1858,4 +1852,14 @@ function plchf_msb_googl_shortlink($url) {
 
 	function plchf_msb_front_end_deactivation() {
 		wp_clear_scheduled_hook('plchf_msb_front_end_daily_wp_cron');
+	}
+
+/* ---------------------------------------------------------------------------- */
+/* Compile LESS files for bootstrap
+/* ---------------------------------------------------------------------------- */
+	function plchf_msb_compile_theme_less_files($input, $output) {
+		$less   = new lessc;
+	  if (is_readable($input)) {
+		  $less->checkedCompile($input, $output);
+		}
 	}
