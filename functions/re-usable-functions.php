@@ -874,13 +874,13 @@
 
 	function plchf_msb_add_section() {
 
-		$pageid			= $_POST['pageid'];
-		$section_type 	= $_POST['sectionType'];
+		$pageid			=& $_POST['pageid'];
+		$section_type 	=& $_POST['sectionType'];
 		$section_type 	= strtolower(str_replace("-", "_", $section_type));
 
 		// Get Current Page Element Count
-		$meta 	= get_post_custom($pageid);
-		$count	= $meta['_plchf_msb_page_element_count'][0];
+		$meta 	=& get_post_custom($pageid);
+		$count	=& $meta['_plchf_msb_page_element_count'][0];
 
 		// Increase Page Element Count By 1
 		$count 	= ($count+1);
