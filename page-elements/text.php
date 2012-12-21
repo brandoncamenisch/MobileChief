@@ -45,6 +45,6 @@
 		#Get the Values
 		$text 	=& $values['_text_'];
 		#Output a Paragraph with the Text
-		$output .= '<p>'.$text.'</p>';
+		$output = '<p>'.$text.'</p>';
 		echo apply_filters('plchf_msb_page_element_output_text_filter',$output);
 	} add_action('plchf_msb_page_element_output_text','plchf_msb_page_element_output_text', 1, 1);

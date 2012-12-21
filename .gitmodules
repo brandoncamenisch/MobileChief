@@ -4,3 +4,6 @@
 [submodule "lib/fontawesome"]
 	path = lib/fontawesome
 	url = https://github.com/FortAwesome/Font-Awesome.git
+[submodule "lib/lessphp"]
+	path = lib/lessphp
+	url = https://github.com/leafo/lessphp.git
