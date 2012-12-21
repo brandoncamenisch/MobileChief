@@ -1231,7 +1231,7 @@
 	    $permalink = get_permalink($site_id);
 
 	    $output = '
-	    <div style="display:block; margin:0px auto; width:80%;">
+	    <div>
 	    	<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.$permalink.'&choe=UTF-8&chld=|0" width="100%" height="auto">
 	    </div>
 	    ';
