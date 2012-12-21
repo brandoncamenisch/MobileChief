@@ -51,7 +51,7 @@
 		$output  = '<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	  	<script src="'.PLUGINCHIEFMSB.'js/vendor-scripts/fitvid.min.js"></script>
 	    <script src="'.PLUGINCHIEFMSB.'js/vendor-scripts/bootstrap.min.js"></script>
-	    <script src="'.PLUGINCHIEFMSB.'mobile-themes/default-theme/theme/js/custom.js"></script>';
+	    <script src="'.PLUGINCHIEFMSB.'js/scripts/re-usable-theme-custom.js"></script>';
 
 	  echo $output;
 	} add_action('plchf_msb_theme_footer', 'plchf_msb_call_footer_scripts');
