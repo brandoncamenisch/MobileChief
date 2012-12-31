@@ -118,3 +118,5 @@
 	}
 
 	add_action('plchf_msb_site_settings_content_superhero_theme','plchf_msb_superhero_theme_site_options');
+
+	plchf_msb_compile_theme_less_files(PLUGINCHIEFMSB_SUPERHEROTHEME_PATH . "theme/css/bootswatch.less", PLUGINCHIEFMSB_SUPERHEROTHEME_PATH . "theme/css/style.css");

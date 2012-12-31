@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
   	<?php
 	global $pluginchiefmsb_ameliatheme_dir, $post, $wp_query;
   	$post_id 	= $wp_query->post->ID;

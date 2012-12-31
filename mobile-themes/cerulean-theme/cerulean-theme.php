@@ -118,3 +118,5 @@
 	}
 
 	add_action('plchf_msb_site_settings_content_cerulean_theme','plchf_msb_cerulean_theme_site_options');
+
+	plchf_msb_compile_theme_less_files(PLUGINCHIEFMSB_CERULEANTHEME_PATH . "theme/css/bootswatch.less", PLUGINCHIEFMSB_CERULEANTHEME_PATH . "theme/css/style.css");

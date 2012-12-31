@@ -117,3 +117,5 @@
 	}
 
 	add_action('plchf_msb_site_settings_content_simplex_theme','plchf_msb_simplex_theme_site_options');
+
+	plchf_msb_compile_theme_less_files(PLUGINCHIEFMSB_SIMPLEXTHEME_PATH . "theme/css/bootswatch.less", PLUGINCHIEFMSB_SIMPLEXTHEME_PATH . "theme/css/style.css");

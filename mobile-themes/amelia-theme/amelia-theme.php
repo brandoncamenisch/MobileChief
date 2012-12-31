@@ -1,5 +1,4 @@
 <?php
-
 	define('PLUGINCHIEFMSB_AMELIATHEME', plugin_dir_url(__FILE__));
 	define('PLUGINCHIEFMSB_AMELIATHEME_PATH', plugin_dir_path(__FILE__));
 	$pluginchiefmsb_ameliatheme_dir = plugin_dir_url(__FILE__);
@@ -69,6 +68,5 @@
 		#Create the Panel
 		plchf_site_settings_settings_panel($panels);
 	} add_action('plchf_msb_site_settings_content_amelia_theme','plchf_msb_amelia_theme_site_options');
-
 
 	plchf_msb_compile_theme_less_files(PLUGINCHIEFMSB_AMELIATHEME_PATH . "theme/css/bootswatch.less", PLUGINCHIEFMSB_AMELIATHEME_PATH . "theme/css/style.css");

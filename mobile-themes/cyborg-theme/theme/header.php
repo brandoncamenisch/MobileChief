@@ -19,14 +19,8 @@
 		$site_name = 'Site Title';
 	}
 	?>
-
-  	<!-- Theme Header Hook -->
   	<?php plchf_msb_theme_header(); ?>
-
-  	<!-- Include the Theme Stylesheet -->
-  	<link href="<?php echo $pluginchiefmsb_cyborgtheme_dir; ?>theme/css/style.min.css" rel="stylesheet">
-  	<link href="<?php echo $pluginchiefmsb_cyborgtheme_dir; ?>theme/css/style-responsive.min.css" rel="stylesheet">
-
+  	<link href="<?php echo $pluginchiefmsb_cyborgtheme_dir; ?>theme/css/style.css" rel="stylesheet">
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">

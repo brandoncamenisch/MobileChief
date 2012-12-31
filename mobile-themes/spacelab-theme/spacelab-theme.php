@@ -118,3 +118,5 @@
 	}
 
 	add_action('plchf_msb_site_settings_content_spacelab_theme','plchf_msb_spacelab_theme_site_options');
+
+	plchf_msb_compile_theme_less_files(PLUGINCHIEFMSB_SPACELABTHEME_PATH . "theme/css/bootswatch.less", PLUGINCHIEFMSB_SPACELABTHEME_PATH . "theme/css/style.css");

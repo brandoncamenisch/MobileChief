@@ -114,7 +114,7 @@
 		#Pre-Header Hook
 		do_action('pluginchiefmsb_admin_pre_header');
 		#Header Hook
-		do_action('pluginchiefmsb_admin_header');
+		#do_action('pluginchiefmsb_admin_header');
 		#Post Header Hook
 		do_action('pluginchiefmsb_admin_post_header');
 	}
