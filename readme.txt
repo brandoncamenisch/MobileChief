@@ -3,7 +3,7 @@ Contributors: visioniz, jasonbahl, mountaininja
 Tags: mobile, qr, qrcode, mobile landing page, builder, ajax, site, multisite, wp-touch, add-on, extensions, developer, marketing, qrlicious, visioniz, marketing, campains, marketers, affiliates
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 1.1.01
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,7 +11,7 @@ MobileChief is a powerful, extendable mobile site builder that helps you create 
 
 == Description ==
 
-MobileChief is a powerful, extendable mobile site builder that makes it easier than ever to create mobile landing pages and mobile sites with an intuitive drag and drop interface. 
+MobileChief is a powerful, extendable mobile site builder that makes it easier than ever to create mobile landing pages and mobile sites with an intuitive drag and drop interface.
 
 Unlike other WordPress Mobile Plugins, MobileChief doesn't take your existing WordPress site and convert it to a Mobile Optimized Site, rather it lets you create new content in new mobile sites.
 
@@ -19,9 +19,9 @@ The ability to create mobile sites like this, allows you to run mobile marketing
 
 = UNLIMITED SITES & PAGES =
 
-From a single WordPress install, users can create unlimited Mobile Sites, each with unlimited pages. 
+From a single WordPress install, users can create unlimited Mobile Sites, each with unlimited pages.
 
-Each site can have it's own theme, options, pages and content. 
+Each site can have it's own theme, options, pages and content.
 
 All themes are optimized for mobile devices small and large, and even look good on desktops.
 
@@ -33,13 +33,13 @@ This allows for easily adding new basic and premium themes, as well as basic and
 
 = EXTENSIVE API =
 
-MobileChief has several APIs that make it easy for developers to extend, including a Theme API, Site Settings API, Plugin Settings API, Page Element API and more. 
+MobileChief has several APIs that make it easy for developers to extend, including a Theme API, Site Settings API, Plugin Settings API, Page Element API and more.
 
 = ADD-ONS GALORE =
 
-MobileChief is built by the experienced folk at PluginChief who offer support for MobileChief and also supply premium MobileChief add-ons as well as other handy WordPress plugins, tutorials and more. 
+MobileChief is built by the experienced folk at PluginChief who offer support for MobileChief and also supply premium MobileChief add-ons as well as other handy WordPress plugins, tutorials and more.
 
-PluginChief allows users to sign up for a PluginChief membership for a low yearly price to access ALL PluginChief plugins, or users can purchase plugins individually. 
+PluginChief allows users to sign up for a PluginChief membership for a low yearly price to access ALL PluginChief plugins, or users can purchase plugins individually.
 
 = AFFILIATE PROGRAM =
 
@@ -105,7 +105,7 @@ Bugs can be reported in our support support forum.
 
 == Changelog ==
 
-= 1.1.01 - Oct. 25, 2012 = 
+= 2.0 - Oct. 25, 2012 =
 
 - Added PluginChief as Author
 - Removed updater
@@ -117,7 +117,7 @@ Bugs can be reported in our support support forum.
 - Set Image Uploader to use the WordPress uploader
 - Set Image element under the Media element menu
 
-= 1.1 - Oct. 18, 2012 = 
+= 1.1 - Oct. 18, 2012 =
 
 - Changed Map encode to https://
 - Fixed 2 hooks on the "My Site" page to pass the $siteid variable to the hook
