@@ -7,3 +7,9 @@
 [submodule "lib/lessphp"]
 	path = lib/lessphp
 	url = https://github.com/leafo/lessphp.git
+[submodule "lib/jquery-validate"]
+	path = lib/jquery-validate
+	url = https://github.com/jzaefferer/jquery-validation.git
+[submodule "lib/fitvid"]
+	path = lib/fitvid
+	url = https://github.com/davatron5000/FitVids.js.git
