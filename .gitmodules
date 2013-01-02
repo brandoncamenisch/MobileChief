@@ -13,3 +13,6 @@
 [submodule "lib/fitvid"]
 	path = lib/fitvid
 	url = https://github.com/davatron5000/FitVids.js.git
+[submodule "lib/simplehtmldom"]
+	path = lib/simplehtmldom
+	url = https://github.com/jjanyan/Simple-HTML-DOM.git
