@@ -10,7 +10,7 @@
 		$type 			=& $fields['type'];
 		$label 			=& $fields['name'];
 		$tooltip		=& $fields['tooltip'];
-		$placeholder	=& $fields['placeholder'];
+		$placeholder=& $fields['placeholder'];
 		$field_id		=& $fields['id'];
 
 		global $post, $wp_query;
@@ -55,10 +55,11 @@
 				$output .= '<div class="menu-container" data-postid="'.$site_id.'">';
 
 					$args = array(
-						'post_parent' 	=> $site_id,
-						'post_type' 	=> 'pluginchiefmsb-sites',
-						'orderby' 		=> 'menu_order',
-						'order' 		=> 'ASC'
+						'post_parent'=> $site_id,
+						'post_type'  => 'pluginchiefmsb-sites',
+						'numberposts'=> 0,
+						'orderby' 	 => 'menu_order',
+						'order' 		 => 'ASC',
 					);
 
 					$posts = get_posts($args);

@@ -54,6 +54,7 @@
 					'post_type' 	=> 'pluginchiefmsb-sites',
 					'orderby' 		=> 'menu_order',
 					'order' 		=> 'ASC',
+					'numberposts'     => 0,
 					'post_parent' 	=> $site_id
 				);
 

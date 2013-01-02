@@ -1355,7 +1355,8 @@ function plchf_msb_googl_shortlink($url) {
 
 		$args = array(
 		    'post_parent' => $siteid,
-		    'post_type' => 'pluginchiefmsb-sites'
+		    'post_type'   => 'pluginchiefmsb-sites',
+		    'numberposts'=> 0
 		);
 
 		$posts = apply_filters('plchf_msb_delete_site_args', get_posts( $args ));
@@ -1490,8 +1491,9 @@ function plchf_msb_googl_shortlink($url) {
 		$args = array(
 			'post_type' 	=> 'pluginchiefmsb-sites',
 			'orderby' 		=> 'menu_order',
-			'order' 		=> 'ASC',
-			'post_parent' 	=> $siteid
+			'order' 			=> 'ASC',
+			'post_parent' => $siteid,
+			'numberposts' => 0
 		);
 
 		$posts = get_posts( $args );
