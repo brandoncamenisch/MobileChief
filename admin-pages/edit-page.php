@@ -8,8 +8,8 @@
 
 		add_submenu_page(
 			'pluginchiefmsb',
-			'Edit Page',
-			'Edit Page',
+			NULL,
+			NULL,
 			'add_users',
 			'pluginchiefmsb/edit-page',
 			'pluginchiefmsb_edit_page_menu_page_content'
@@ -27,7 +27,7 @@
 	?>
 
 		<?php
-		$page_id 	= $_GET['mobilesite_page_id'];
+		$page_id 	=& $_GET['mobilesite_page_id'];
 
 		// Make Sure we're trying to edit an actual site
 		if ( ($page_id) && ( get_post_type( $page_id ) == 'pluginchiefmsb-sites') ) {

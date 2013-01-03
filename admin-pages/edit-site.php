@@ -8,8 +8,8 @@
 
 		add_submenu_page(
 			'pluginchiefmsb',
-			'Edit Site',
-			'Edit Site',
+			NULL,
+			NULL,
 			'add_users',
 			'pluginchiefmsb/edit-site',
 			'pluginchiefmsb_edit_site_menu_page_content'
@@ -28,10 +28,10 @@
 
 		<?php
 
-		$site_id 	= plchf_msb_get_site_id();
+		$site_id 	=& plchf_msb_get_site_id();
 
 		// ID of the Home Page we generated on Site Completion
-		$home_id = get_post_meta($site_id, '_homepage_', true);
+		$home_id =& get_post_meta($site_id, '_homepage_', true);
 
 		// Make Sure we're trying to edit an actual site
 		if ( ($site_id) && ( get_post_type( $site_id ) == 'pluginchiefmsb-sites') ) {

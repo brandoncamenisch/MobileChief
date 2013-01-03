@@ -335,9 +335,9 @@
 
 		// Get the ID Passed to the Function or Get the Site ID if on Site Page
 		if ($_GET['mobilesite_site_id'] != '') {
-			$id = $_GET['mobilesite_site_id'];
+			$id =& $_GET['mobilesite_site_id'];
 		} else {
-			$id = $id;
+			$id =& $id;
 		}
 
 		$post = get_post( $id );
@@ -424,16 +424,16 @@
 			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
 
 				// Get the Page We're Editing
-				$id = $_GET['mobilesite_page_id'];
+				$id =& $_GET['mobilesite_page_id'];
 
 			// Get the Site ID on the Edit Site Page
 			} elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
 
 				// Get the Home Page
-				$id = $_GET['mobilesite_site_id'];
+				$id =& $_GET['mobilesite_site_id'];
 
 				// ID of the Home Page we generated on Site Completion
-				$id = get_post_meta($id, '_homepage_', true);
+				$id =& get_post_meta($id, '_homepage_', true);
 
 		    }
 
@@ -456,15 +456,15 @@
 			if ( ($postid == $edit_page_id) ) {
 
 				// Get the Page We're Editing
-				$id = $_GET['mobilesite_page_id'];
+				$id =& $_GET['mobilesite_page_id'];
 
 			} elseif ( ($postid == $edit_site_id) || ($postid == $my_sites_id) ) {
 
 				// Site ID
-				$id = $_GET['mobilesite_site_id'];
+				$id =& $_GET['mobilesite_site_id'];
 
 				// ID of the Home Page we generated on Site Completion
-				$id = get_post_meta($id, '_homepage_', true);
+				$id =& get_post_meta($id, '_homepage_', true);
 
 			}
 
@@ -1158,7 +1158,7 @@
 			// Get the Site ID on the Edit Site Page
 		    } elseif ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-site') {
 
-				$site_id = $_GET['mobilesite_site_id'];
+				$site_id =& $_GET['mobilesite_site_id'];
 
 		    }
 
