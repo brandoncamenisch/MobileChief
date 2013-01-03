@@ -314,7 +314,7 @@
 
 	function plchf_msb_get_page_title(){
 
-		$page_id =& $_GET['mobilesite_page_id'];
+		$page_id = $_GET['mobilesite_page_id'];
 
 		$output  = get_the_title( $page_id );
 
@@ -367,7 +367,7 @@
 
 			global $post, $wp_query;
 
-			$page_id =& $wp_query->post->ID;
+			$page_id = $wp_query->post->ID;
 
 
 		} else {
@@ -377,12 +377,12 @@
 			// Get Screen ID on Edit Page, page
 			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
 
-				$page_id =& $_GET['mobilesite_page_id'];
+				$page_id = $_GET['mobilesite_page_id'];
 
 			}
 
 		}
-		$page_id =& $page_id;
+
 		return apply_filters('plchf_msb_get_page_id_filter', $page_id);
 
 	}
@@ -469,10 +469,9 @@
 			}
 
 		}
-	    $id =& $id;
+
 	    $url = get_permalink($id);
 	    $postid =& $postid;
-
 		// Iframe Preview
 		$output = '<iframe id="preview-frame" src="'.$url.'" data-siteid="'.$id.'" data-id="'.$postid.'" width="230" height="343"></iframe>';
 
@@ -508,7 +507,7 @@
 		// Run action before Page Generator Form
 		do_action('plchf_msb_before_page_generator');
 
-		$page_id =& plchf_msb_get_page_id();
+		$page_id = plchf_msb_get_page_id();
 
 		// Page Generator Form
 		echo '<form id="page-generator" class="page-generator connected-sortable" enctype="multipart/form-data" action="" method="post" data-postid="'.$page_id.'">';
@@ -581,7 +580,7 @@
 	function plchf_msb_get_page_element_field( $element_field ){
 
 		// Get the Page ID
-		$page_id =& plchf_msb_get_page_id();
+		$page_id = plchf_msb_get_page_id();
 
 		// Get teh Page Elements
 		$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
@@ -706,7 +705,7 @@
 	  	global $post, $wp_query;
 
 	  	// Get Page ID
-	  	$page_id =& $wp_query->post->ID;
+	  	$page_id = $wp_query->post->ID;
 
 	  	// Get Page Elements
 	  	$elements = get_post_meta($page_id, '_plchf_msb_page_elements', true);
@@ -1151,7 +1150,7 @@
 			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
 
 				// Get the Page We're Editing
-			    $page_id =& $_GET['mobilesite_page_id'];
+			    $page_id = $_GET['mobilesite_page_id'];
 
 			    // Get the Page Parent, which is the Site
 			    $site_id = get_post($page_id)->post_parent;
@@ -1181,7 +1180,7 @@
 			if ( ($postid == $edit_page_id) ) {
 
 				// Get the Page We're Editing
-				$page_id =& $_GET['mobilesite_page_id'];
+				$page_id = $_GET['mobilesite_page_id'];
 
 				// Get the Page Parent, which is the Site
 				$site_id = get_post($page_id)->post_parent;

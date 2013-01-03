@@ -7,12 +7,12 @@
 	function pluginchief_mobile_site_builder_menu() {
 
 		add_menu_page(
-			'MobileChief',
-			'MobileChief',
+			'Mobile Site Builder',
+			'Mobile Site Builder',
 			'add_users',
 			'pluginchiefmsb',
 			'pluginchiefmsb_msb_my_sites_page_content',
-			PLUGINCHIEFMSB . 'images/msb-icon.png',
+			PLUGINCHIEFMSB . '/images/msb-icon.png',
 			90
 		);
 
