@@ -45,7 +45,8 @@ function plchf_msb_setup_framework_options(){
 	$sections[] = array( 'icon' 	=> PLCHF_MSB__OPTIONS_URL.'img/glyphicons/glyphicons_086_display.png',
 											 'title'  => __('Front End', 'plchf_msb_opts'),
 											 'desc' 	=> __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'plchf_msb_opts'),
-											 'fields' => array( #text|textarea|editor|checkbox|multi_checkbox|radio|radio_img|button_set|select|multi_select|color|date|divide|info|upload
+											 'fields' => array(
+											 #text|textarea|editor|checkbox|multi_checkbox|radio|radio_img|button_set|select|multi_select|color|date|divide|info|upload
 											 										#builtin validation includes: email|html|html_custom|no_html|js|numeric|url
 											 									)
 										 );
@@ -55,9 +56,7 @@ function plchf_msb_setup_framework_options(){
 	global $PLCHF_MSB__Options;
 	$PLCHF_MSB__Options = new PLCHF_MSB__Options($sections, $args, $tabs);
 
-}
-
-add_action('init', 'plchf_msb_setup_framework_options', 0);
+} add_action('init', 'plchf_msb_setup_framework_options', 0);
 
 /**
  * plchf_msb_my_custom_field function.
