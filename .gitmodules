@@ -16,3 +16,12 @@
 [submodule "lib/simplehtmldom"]
 	path = lib/simplehtmldom
 	url = https://github.com/jjanyan/Simple-HTML-DOM.git
+[submodule "lib/farbtastic"]
+	path = lib/farbtastic
+	url = https://github.com/mattfarina/farbtastic.git
+[submodule "lib/waypoints"]
+	path = lib/waypoints
+	url = https://github.com/imakewebthings/jquery-waypoints.git
+[submodule "lib/toastr"]
+	path = lib/toastr
+	url = https://github.com/CodeSeven/toastr.git
