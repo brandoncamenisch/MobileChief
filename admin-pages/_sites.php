@@ -8,7 +8,7 @@
 
 		add_menu_page(
 			'Mobile Site Builder',
-			'Mobile Site Builder',
+			'MobileChief',
 			'add_users',
 			'pluginchiefmsb',
 			'pluginchiefmsb_msb_my_sites_page_content',
