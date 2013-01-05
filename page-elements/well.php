@@ -38,22 +38,14 @@
 																					));
 
 		$fields[] = array( 'field' 	=> array( 'type' 		=> 'select',
-																					'name' 		=> 'Well Style',
-																					'id' 			=> '_well_style_',
-																					'tooltip' => 'Select the Style for the Well',
-																					'options' => array( NULL							=> 'Warning',
-																																'well-error'	  => 'Error',
-																																'well-success'	=> 'Success',
-																																'well-info'		=> 'Info',
+																					'name' 		=> 'Well Size',
+																					'id' 			=> '_well_size_',
+																					'tooltip' => 'Select the Size for the Well',
+																					'options' => array( NULL							=> 'Normal',
+																																'well-large'	  => 'Large',
+																																'well-small'	=> 'Small'
 																																)));
 
-		$fields[] = array( 'field' 	=> array( 'type' 		=> 'select',
-																					'name' 		=> 'Dismiss Well',
-																					'id' 			=> '_well_dismiss_',
-																					'tooltip' => 'Show a Dismiss Well Button, Allowing the User to Close the Well',
-																					'options' => array( 'do-not-dismiss' => 'Do Not Show Dismiss Button',
-																															'dismiss'			   => 'Show Dismiss Button',
-																																)));
 		#Create Element Settings Panel
 		plchf_msb_page_element_settings_panel($element_type, $fields, $count, $values);
 	} add_action('plchf_msb_page_element_settings_well','plchf_msb_page_element_settings_well', 10, 2);
@@ -70,10 +62,10 @@
 		#Get the Values
 		$title 		=& $values['_well_title_'];
 		$content 	=& $values['_well_content_'];
-		$style		= ' '.$values['_well_style_'];
+		$size		= ' '.$values['_well_size_'];
 		$dismiss	=& $values['_well_dismiss_'];
 		#Output a Paragraph with the Well
-		$output = '<div class="well well-block'.$style.'">';
+		$output = '<div class="well well-block'.$size.'">';
 			#Show Dismiss Button
 			if ($dismiss == 'dismiss') {
 				$output .= '<a class="close" data-dismiss="well" href="#">×</a>';
