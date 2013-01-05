@@ -48,7 +48,7 @@
 	 */
 	function plchf_msb_call_footer_scripts() {
 		$output  = '<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	  	<script src="'.PLUGINCHIEFMSB.'lib/fitvid/jquery.fitvids.js"></script>
+	  	<script src="'.PLUGINCHIEFMSB.'lib/fitvid/jquery.fitvids.min.js"></script>
 	    <script src="'.PLUGINCHIEFMSB.'lib/bootstrap/js/bootstrap.min.js"></script>
 	    <script src="'.PLUGINCHIEFMSB.'js/scripts/re-usable-theme-custom.js"></script>';
 
