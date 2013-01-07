@@ -78,8 +78,27 @@ function plchf_msb_setup_framework_options(){
 	                                              'desc' 		 => __('', 'plchf_msb_opts'),
 	                                              'std' 		 => '',
 	                                              'class' 	 => ''
-	                                            )));
-
+	                                            ),
+	                                       array( 'id' 		   => '_new_sites_page_',
+	                                       				'type' 		 => 'pages_select',
+	                                       				'title' 	 => __('Page: Create New Sites', 'plchf_msb_opts'),
+	                                       				'sub_desc' => __('Choose which Page will be used as the "Create New Sites" page.', 'plchf_msb_opts'),
+	                                       			),
+	                                       array( 'id' 		   => '_edit_page_page_',
+	                                       				'type' 		 => 'pages_select',
+	                                       				'title' 	 => __('Page: Edit Page', 'plchf_msb_opts'),
+	                                       				'sub_desc' => __('Choose which Page will be used as the "Edit Page" page.', 'plchf_msb_opts'),
+	                                       		  ),
+	                                       array( 'id' 		   => '_edit_site_page_',
+	                                       				'type' 		 => 'pages_select',
+	                                       				'title' 	 => __('Page: Edit Site', 'plchf_msb_opts'),
+	                                       				'sub_desc' => __('Choose which Page will be used as the "Edit Site" page.', 'plchf_msb_opts'),
+	                                       			),
+	                                       array( 'id' 		   => '_my_sites_page_',
+	                                       				'type' 		 => 'pages_select',
+	                                       				'title' 	 => __('Page: My Sites', 'plchf_msb_opts'),
+	                                       				'sub_desc' => __('Choose which Page will be used as the "My Sites" page.', 'plchf_msb_opts'),
+	                                       			)));
 #text|textarea|editor|checkbox|multi_checkbox|radio|radio_img|button_set|select|multi_select|color|date|divide|info|upload
 #builtin validation includes: email|html|html_custom|no_html|js|numeric|url
 	$tabs = array();

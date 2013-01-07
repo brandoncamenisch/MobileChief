@@ -1,11 +1,15 @@
 <?php
+/* ---------------------------------------------------------------------------- */
+/* Add Content to the page selected to be the "Edit Page" page
+/* ---------------------------------------------------------------------------- */
 
-function plchf_msb_front_end($atts) {
-#if [plchf_msb_front_end] option is enabled
-#if Require users to register is enabled
-#if Enable front end download is enabled
-#if front end URL stripper
-#if user meta _mobilechief_user_check
-var_dump(plchf_msb_get_site_id());
-}
-add_shortcode('plchf_msb_front_end', 'plchf_msb_front_end');
+function plchf_msb_front_end_page_content_for_edit_page($content) {
+	global $post, $plchf_msb_options;
+	#Get Edit Page Option Value
+	$edit_page_id =& $plchf_msb_options['_edit_page_page_'];
+	#If this page is selected as the Edit Page page, let's filter the content
+	if ($edit_page_id == $post->ID) {
+		$content =& pluginchiefmsb_edit_page_menu_page_content();
+	}
+	return $content;
+} add_filter( 'the_content', 'plchf_msb_front_end_page_content_for_edit_page', 1);

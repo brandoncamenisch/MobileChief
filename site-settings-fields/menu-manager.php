@@ -17,7 +17,7 @@
 
 		global $post, $wp_query;
 		#Site ID
-		$site_id 	= $_GET['mobilesite_site_id'];
+		$site_id 	=& $_GET['mobilesite_site_id'];
 		$homepage 	= get_post_meta($site_id, '_homepage_', true);
 
 		#Site Root
