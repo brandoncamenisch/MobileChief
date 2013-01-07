@@ -1202,22 +1202,24 @@
 
     }
 
-/* ----------------------------------------------------------------------------
-	QR Code Site Preview
----------------------------------------------------------------------------- */
-
+    /**
+     * plchf_msb_qrcode_preview function.
+     * QR Code Site Preview
+     * @access public
+     * @param mixed $id
+     * @return void
+     */
     function plchf_msb_qrcode_preview($id) {
 
-	    // Get Site ID
-	    $site_id = plchf_msb_get_site_id();
-
+	    #Get Site ID
+	    $site_id =& plchf_msb_get_site_id();
 	    if ($id) {
 		    $site_id = $id;
 	    } else if ($site_id) {
 		    $site_id = $site_id;
 	    }
 
-	    // Get Permalink for the Site ID
+	    #Get Permalink for the Site ID
 	    $permalink = get_permalink($site_id);
 
 	    $output = '
@@ -1267,7 +1269,6 @@ function plchf_msb_googl_shortlink($url) {
 /* ----------------------------------------------------------------------------
 	Mobile Site Shortlink
 ---------------------------------------------------------------------------- */
-
     function plchf_msb_site_shortlink($home_id) {
 
 	    // Get Permalink for the Site ID
@@ -1827,9 +1828,29 @@ function plchf_msb_googl_shortlink($url) {
 /* ---------------------------------------------------------------------------- */
 /* Compile LESS files for bootstrap
 /* ---------------------------------------------------------------------------- */
+	/**
+	 * plchf_msb_compile_theme_less_files function.
+	 *
+	 * @access public
+	 * @param mixed $input
+	 * @param mixed $output
+	 * @return void
+	 */
 	function plchf_msb_compile_theme_less_files($input, $output) {
 		$less   = new lessc;
 	  if (is_readable($input)) {
 		  $less->checkedCompile($input, $output);
 		}
 	}
+
+/* ---------------------------------------------------------------------------- */
+/* Create Custom User Meta
+/* ---------------------------------------------------------------------------- */
+	function plchf_msb_create_user_meta(){
+		global $current_user;
+    get_currentuserinfo();
+		$mobilesiteuser = true;
+
+		add_user_meta(isset($current_user->ID), '_mobilechief_user_check', $mobilesiteuser, true);
+
+} add_action('init', 'plchf_msb_create_user_meta');

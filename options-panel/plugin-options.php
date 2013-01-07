@@ -73,8 +73,8 @@ function plchf_msb_setup_framework_options(){
 	                                            ),
 	                                       array( 'id' 			 => $id++,
 	                                              'type' 		 => 'checkbox',
-	                                              'title' 	 => __('Enable front end download', 'plchf_msb_opts'),
-	                                              'sub_desc' => __('If the download shortcode is enabled above then this will convert the URL\'s to relative ones and all domains matching your Wordpress URL will be removed. External URL\'s will be left alone.', 'plchf_msb_opts'),
+	                                              'title' 	 => __('Strip the URL\'s', 'plchf_msb_opts'),
+	                                              'sub_desc' => __('If the download shortcode is enabled above then this will convert the URL\'s to relative ones and all domains matching your Wordpress URL will be removed. External URL\'s will be left alone. This is so the downloaded static files can be put onto a different server and ran anywhere without Wordpress', 'plchf_msb_opts'),
 	                                              'desc' 		 => __('', 'plchf_msb_opts'),
 	                                              'std' 		 => '',
 	                                              'class' 	 => ''
