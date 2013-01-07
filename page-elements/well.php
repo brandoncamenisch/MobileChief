@@ -62,14 +62,10 @@
 		#Get the Values
 		$title 		=& $values['_well_title_'];
 		$content 	=& $values['_well_content_'];
-		$size		= ' '.$values['_well_size_'];
+		$size		  =& $values['_well_size_'];
 		$dismiss	=& $values['_well_dismiss_'];
 		#Output a Paragraph with the Well
-		$output = '<div class="well well-block'.$size.'">';
-			#Show Dismiss Button
-			if ($dismiss == 'dismiss') {
-				$output .= '<a class="close" data-dismiss="well" href="#">×</a>';
-			} else { }
+		$output = '<div class="well '.$size.'">';
 			#Well Title
 			$output .= '<h4 class="well-heading">'.$title.'</h4>';
 			#Well Content
