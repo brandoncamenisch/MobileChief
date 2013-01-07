@@ -38,6 +38,7 @@
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
     	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
     	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
+
     }
 
 
@@ -1843,15 +1844,3 @@ function plchf_msb_googl_shortlink($url) {
 		  $less->checkedCompile($input, $output);
 		}
 	}
-
-/* ---------------------------------------------------------------------------- */
-/* Create Custom User Meta
-/* ---------------------------------------------------------------------------- */
-	function plchf_msb_create_user_meta(){
-		global $current_user;
-    get_currentuserinfo();
-		$mobilesiteuser = true;
-
-		add_user_meta(isset($current_user->ID), '_mobilechief_user_check', $mobilesiteuser, true);
-
-} add_action('init', 'plchf_msb_create_user_meta');
