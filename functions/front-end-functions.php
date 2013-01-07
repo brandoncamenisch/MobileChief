@@ -67,11 +67,11 @@
 		global $post, $plchf_msb_options;
 
 		// Get Edit Page Option Value
-		$new_site_id = $plchf_msb_options['_new_sites_page_'];
+		$new_site_id =& $plchf_msb_options['_new_sites_page_'];
 
 		if (!is_admin()) {
 
-			$link = get_permalink($new_site_id);
+			$link =& get_permalink($new_site_id);
 
 		}
 
@@ -98,7 +98,7 @@
 			$link =& get_permalink($edit_site_id);
 
 		}
-
+		$link =& $link;
 		return $link;
 
 	}
