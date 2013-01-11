@@ -33,6 +33,7 @@
     	wp_enqueue_script('plchf_msb_farbtastic', 	PLUGINCHIEFMSB . 'lib/farbtastic/src/farbtastic.js');
     	wp_enqueue_script('plchf_msb_toastr', 		  PLUGINCHIEFMSB . 'lib/toastr/toastr.js');
     	wp_enqueue_script('plchf_msb_tinymce', 		  PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.min.js');
+    	wp_enqueue_script('plchf_slick', 					  PLUGINCHIEFMSB . 'js/vendor-scripts/slick-dropdown.min.js');
     	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'lib/bootstrap/js/bootstrap.min.js');
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'lib/waypoints/waypoints.min.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');

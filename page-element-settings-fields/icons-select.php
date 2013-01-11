@@ -1,25 +1,30 @@
 <?php
-
-/* ---------------------------------------------------------------------------- */
-/* Icon Select Field
-/* ---------------------------------------------------------------------------- */
-
+/**
+ * plchf_msb_page_element_settings_field_icon_select function.
+ * Icon Select Field
+ * @access public
+ * @param mixed $fields
+ * @param mixed $element_type
+ * @param mixed $count
+ * @param mixed $values
+ * @return void
+ */
 function plchf_msb_page_element_settings_field_icon_select($fields, $element_type, $count, $values) {
 
-	// Get the Element Type
-	$element_type 	= $element_type;
+	#Get the Element Type
+	$element_type =& $element_type;
 
 	$type 			=& $fields['field']['type'];
 	$label 			=& $fields['field']['name'];
 	$tooltip	 	=& $fields['field']['tooltip'];
-	$placeholder	=& $fields['field']['placeholder'];
+	$placeholder=& $fields['field']['placeholder'];
 	$field_id		=& $fields['field']['id'];
 	$options		=& $fields['field']['options'];
 
-	// Get the saved Value
+	#Get the saved Value
 	$value			=& $values[''.$field_id.''];
 
-	// Field Label
+	#Field Label
 	$output = '
 	<label>'.$label.'
 		<a href="#" class="tipsy-se floatr" rel="tooltip" data-placement="top" data-original-title="'.$tooltip.'">
