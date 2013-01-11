@@ -25,3 +25,6 @@
 [submodule "lib/toastr"]
 	path = lib/toastr
 	url = https://github.com/CodeSeven/toastr.git
+[submodule "lib/bootstrap-js"]
+	path = lib/bootstrap-js
+	url = git://github.com/arhea/bower-bootstrap-js.git

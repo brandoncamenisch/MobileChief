@@ -37,7 +37,6 @@
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'lib/waypoints/waypoints.min.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
     	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
-    	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
     }
 
 
