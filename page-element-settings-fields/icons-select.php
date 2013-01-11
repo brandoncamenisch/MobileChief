@@ -27,7 +27,7 @@ function plchf_msb_page_element_settings_field_icon_select($fields, $element_typ
 	$pattern = '/\.(icon-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"(.+)";\s+}/';
 	$subject = file_get_contents(PLUGINCHIEFMSB . 'lib/fontawesome/css/font-awesome.css');
 	preg_match_all($pattern, $subject, $matches, PREG_SET_ORDER);
-	$icons = array();
+	sort($matches);
 
 	#Field Label
 	$output = '
@@ -40,13 +40,9 @@ function plchf_msb_page_element_settings_field_icon_select($fields, $element_typ
 
 	#Select Field
 	$output .= '<select class="slick-dropdown" name="field['.$element_type.'_'.$count.']['.$field_id.']">';
-
 		$output .=' <option value="no-icon">No Icon</option>';
-		sort($matches);
 		foreach($matches as $match){
-		    #$icons[$match[1]] = $match[2];
 		    $output .= "<option data-imagesrc='$match[1]' value='$match[1]'>".str_replace('icon-', NULL, $match[1])."</option>";
-
 		}
 
 
