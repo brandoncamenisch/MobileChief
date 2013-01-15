@@ -20,6 +20,7 @@
     	wp_enqueue_style('plchf_msb_admin_styles');
     	#Enqueue JS
     	add_thickbox();
+
     	wp_enqueue_script('jquery');
     	wp_enqueue_script('jquery-ui-core');
     	wp_enqueue_script('jquery-ui-sortable');
@@ -982,10 +983,8 @@
 		</script>
 		';
 
-	}
-
-	add_action('wp_head','plchf_msb_jquery_theme_directory_variable', 999);
-	add_action('admin_head','plchf_msb_jquery_theme_directory_variable');
+	} add_action('wp_head','plchf_msb_jquery_theme_directory_variable', 999);
+		add_action('admin_head','plchf_msb_jquery_theme_directory_variable');
 
 /* ----------------------------------------------------------------------------
 	Create Settings Section for Page Elements

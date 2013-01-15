@@ -24,4 +24,4 @@
 	}
 
 	// Replace the Page Content
-	add_filter( 'the_content', 'plchf_msb_front_end_create_sites_page_content', 10000);
+	add_filter( 'page_template', 'plchf_msb_front_end_create_sites_page_content', 10000);

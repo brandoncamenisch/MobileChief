@@ -113,19 +113,6 @@
 
 								<hr>
 
-								<!-- Theme Supports -->
-								<p><strong>Features:</strong></p>
-
-								<ul style="list-style:disc;">
-
-									<li style="margin-left:20px;"><strong>Multiple Pages:</strong> <?php echo $themes['Theme']['Multiple Pages']; ?></li>
-									<li style="margin-left:20px;"><strong>Page Elements:</strong> <?php echo $themes['Theme']['Page Elements']; ?></li>
-									<li style="margin-left:20px;"><strong>Settings Panel:</strong> <?php echo $$themes['Theme']['Settings Panel']; ?></li>
-
-								</ul>
-
-								<hr>
-
 								<!-- Theme Description -->
 
 								<p><strong>Theme Description:</strong></p>
