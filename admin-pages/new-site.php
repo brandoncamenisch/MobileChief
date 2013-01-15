@@ -94,16 +94,6 @@
 
 								</ul>
 
-								<div class="delete-theme">
-
-									<a class="submitdelete deletion" href="#">
-
-										Delete Theme
-
-									</a>
-
-								</div> <!-- End Delete Theme -->
-
 							</div> <!-- End Action Links -->
 
 							<div class="themedetaildiv hide-if-js">

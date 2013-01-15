@@ -1763,7 +1763,6 @@ function plchf_msb_googl_shortlink($url) {
 	        )
 	    );
 
-
 	    echo '
 	    <script type="text/javascript">
 	    var base_plupload_config='. json_encode($plupload_init) .'
