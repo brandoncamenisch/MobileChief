@@ -19,7 +19,7 @@
 	?>
 
   	<!-- Theme Header Hook -->
-  	<?php plchf_msb_theme_header(); ?>
+  	<?php plchf_msb_theme_header();	?>
 
   	<!-- Include the Theme Stylesheet -->
   	<link href="<?php echo $pluginchiefmsb_ameliatheme_dir; ?>theme/css/style.css" rel="stylesheet">

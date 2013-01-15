@@ -1,5 +1,4 @@
 <?php
-
 	/**
 	 * plchf_msb_enqueue_plugin_scripts_and_styles function.
 	 *
@@ -34,7 +33,7 @@
     	wp_enqueue_script('plchf_msb_toastr', 		  PLUGINCHIEFMSB . 'lib/toastr/toastr.js');
     	wp_enqueue_script('plchf_msb_tinymce', 		  PLUGINCHIEFMSB . 'js/vendor-scripts/tiny_mce/jquery.tinymce.min.js');
     	wp_enqueue_script('plchf_slick', 					  PLUGINCHIEFMSB . 'js/vendor-scripts/slick-dropdown.min.js');
-    	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'lib/bootstrap/js/bootstrap.min.js');
+    	wp_enqueue_script('plchf_msb_bootstrap_js', PLUGINCHIEFMSB . 'lib/bootstrap-js/bootstrap.min.js');
     	wp_enqueue_script('plchf_msb_waypoints_js', PLUGINCHIEFMSB . 'lib/waypoints/waypoints.min.js');
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
     	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
@@ -50,9 +49,8 @@
 	function plchf_msb_call_footer_scripts() {
 		$output  = '<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	  	<script src="'.PLUGINCHIEFMSB.'lib/fitvid/jquery.fitvids.min.js"></script>
-	    <script src="'.PLUGINCHIEFMSB.'lib/bootstrap/js/bootstrap.min.js"></script>
+	    <script src="'.PLUGINCHIEFMSB.'lib/bootstrap-js/bootstrap.min.js"></script>
 	    <script src="'.PLUGINCHIEFMSB.'js/scripts/re-usable-theme-custom.js"></script>';
-
 	  echo $output;
 	} add_action('plchf_msb_theme_footer', 'plchf_msb_call_footer_scripts');
 
@@ -1661,9 +1659,7 @@ function plchf_msb_googl_shortlink($url) {
 	    // Echo the Headers
 	    echo apply_filters('plchf_msb_load_default_theme_header_filter', $output);
 
-	}
-
-	add_action('plchf_msb_theme_header','plchf_msb_load_default_theme_header', 1);
+	} add_action('plchf_msb_theme_header','plchf_msb_load_default_theme_header', 1);
 
 /* ----------------------------------------------------------------------------
 	Load BootStrap Styles in Theme Header
@@ -1843,3 +1839,17 @@ function plchf_msb_googl_shortlink($url) {
 		  $less->checkedCompile($input, $output);
 		}
 	}
+
+
+	/**
+	 * remove_template_parts function.
+	 * Removes template parts for the roots theme
+	 * @access public
+	 * @return void
+	 */
+	function remove_template_parts(){
+		global $wp_query;
+    if('pluginchiefmsb-sites' == get_post_type($wp_query->post->ID)){
+			remove_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
+		}
+	} add_action('template_redirect', 'remove_template_parts');
