@@ -3,7 +3,7 @@ Contributors: visioniz, jasonbahl, mountaininja
 Tags: mobile, qr, qrcode, mobile landing page, builder, ajax, site, multisite, wp-touch, add-on, extensions, developer, marketing, qrlicious, visioniz, marketing, campains, marketers, affiliates
 Requires at least: 3.3
 Tested up to: 3.4.2
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
