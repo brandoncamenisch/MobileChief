@@ -60,7 +60,7 @@ class PLCHF_MSB__Options{
 		$defaults['dev_mode'] = true;
 		$defaults['stylesheet_override'] = false;
 
-		$defaults['footer_credit'] = __('<span id="footer-thankyou">Options Panel created using the <a href="'.$this->framework_url.'" target="_blank">PLCHF_MSB_ Theme Options Framework</a> Version '.$this->framework_version.'</span>', 'plchf_msb_opts');
+		$defaults['footer_credit'] = __('<span id="footer-thankyou"></span>', 'plchf_msb_opts');
 
 		$defaults['help_tabs'] = array();
 		$defaults['help_sidebar'] = __('', 'plchf_msb_opts');

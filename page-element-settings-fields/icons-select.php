@@ -42,7 +42,7 @@ function plchf_msb_page_element_settings_field_icon_select($fields, $element_typ
 	$output .= '<select class="slick-dropdown" name="field['.$element_type.'_'.$count.']['.$field_id.']">';
 		$output .=' <option value="no-icon">No Icon</option>';
 		foreach($matches as $match){
-		    $output .= "<option data-imagesrc='$match[1]' value='$match[1]'>".str_replace('icon-', NULL, $match[1])."</option>";
+		    $output .= "<option data-imagesrc='$match[1]' value='$match[1]'>".ucfirst(str_replace('icon-', NULL, $match[1]))."</option>";
 		}
 
 

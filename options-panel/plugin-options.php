@@ -65,6 +65,15 @@ function plchf_msb_setup_framework_options(){
 	                                            ),
 	                                       array( 'id' 			 => $id++,
 	                                              'type' 		 => 'checkbox',
+	                                              'title' 	 => __('Load front-end styles\'s', 'plchf_msb_opts'),
+	                                              'sub_desc' => __('If enabled this will load the default styles used on the backend of your Wordpress install. <strong>Note: These styles will not work on every theme on the front end and you may have to tweak the styles or create your own.</strong>'),
+	                                              'desc' 		 => __('', 'plchf_msb_opts'),
+	                                              'std' 		 => '',
+	                                              'class' 	 => ''
+	                                            ),
+/*
+	                                       array( 'id' 			 => $id++,
+	                                              'type' 		 => 'checkbox',
 	                                              'title' 	 => __('Enable front end download', 'plchf_msb_opts'),
 	                                              'sub_desc' => __('This will enable a shortcode <strong>[plchf_msb_front_end_download]</strong> for users to be able to download their created mobile website into a static .zip file for use anywhere other than wordpress.', 'plchf_msb_opts'),
 	                                              'desc' 		 => __('', 'plchf_msb_opts'),
@@ -79,6 +88,7 @@ function plchf_msb_setup_framework_options(){
 	                                              'std' 		 => '',
 	                                              'class' 	 => ''
 	                                            ),
+*/
 	                                       array( 'id' 		   => '_new_sites_page_',
 	                                       				'type' 		 => 'pages_select',
 	                                       				'title' 	 => __('Page: Create New Sites', 'plchf_msb_opts'),

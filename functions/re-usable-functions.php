@@ -5,10 +5,8 @@
 	 *
 	 * @access public
 	 * @return void
-
 			Usage: Call this function within a wp_enqueue_scripts function to enqueue the scripts
 			NOTE: This was abstracted to an individual function so we can call it in multiple places, such as the Front-End Add-On
-
 	 */
 	function plchf_msb_enqueue_plugin_scripts_and_styles() {
 			#Register Styles
@@ -39,8 +37,6 @@
     	wp_enqueue_script('plchf_msb_confirm_js', 	PLUGINCHIEFMSB . 'js/vendor-scripts/jquery.confirm.min.js');
     	wp_enqueue_script('plchf_msb_custom_js',   	PLUGINCHIEFMSB . 'js/scripts/custom.js');
     }
-
-
 	/**
 	 * plchf_msb_call_footer_scripts function.
 	 *
