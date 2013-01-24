@@ -57,10 +57,8 @@ jQuery(document).ready(function($){
 		var widgetAction = $('.widget-action');
 
 		widgetAction.live('click', function(event){
-
 			// Prevent Default
 			event.preventDefault();
-
 			// Toggle the content
 			$(this).parent().parent().next('.module-inside').slideToggle();
 

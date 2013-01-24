@@ -45,9 +45,10 @@ function plchf_msb_setup_framework_options(){
 	$id = 1;
 
 	$sections[] = array( 'icon' 	=> PLCHF_MSB__OPTIONS_URL.'img/glyphicons/glyphicons_086_display.png',
-											 'title'  => __('Front End', 'plchf_msb_opts'),
+											 'title'  => __('Front End<sub>beta</sub>', 'plchf_msb_opts'),
 											 'desc' 	=> __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'plchf_msb_opts'),
-											 'fields' => array(array( 'id' 			 => $id++,
+											 'fields' => array(/*
+array( 'id' 			 => $id++,
 	                                              'type' 		 => 'checkbox',
 	                                              'title' 	 => __('Enable Front End Mobile Site Builder', 'plchf_msb_opts'),
 	                                              'sub_desc' => __('This will enable the front end mobile site builder allowing users to create mobile sites from the front end of your Wordpress site. You can then use the Shortcode <strong>[plchf_msb_front_end]</strong> to display on any page of your website.', 'plchf_msb_opts'),
@@ -65,15 +66,6 @@ function plchf_msb_setup_framework_options(){
 	                                            ),
 	                                       array( 'id' 			 => $id++,
 	                                              'type' 		 => 'checkbox',
-	                                              'title' 	 => __('Load front-end styles\'s', 'plchf_msb_opts'),
-	                                              'sub_desc' => __('If enabled this will load the default styles used on the backend of your Wordpress install. <strong>Note: These styles will not work on every theme on the front end and you may have to tweak the styles or create your own.</strong>'),
-	                                              'desc' 		 => __('', 'plchf_msb_opts'),
-	                                              'std' 		 => '',
-	                                              'class' 	 => ''
-	                                            ),
-/*
-	                                       array( 'id' 			 => $id++,
-	                                              'type' 		 => 'checkbox',
 	                                              'title' 	 => __('Enable front end download', 'plchf_msb_opts'),
 	                                              'sub_desc' => __('This will enable a shortcode <strong>[plchf_msb_front_end_download]</strong> for users to be able to download their created mobile website into a static .zip file for use anywhere other than wordpress.', 'plchf_msb_opts'),
 	                                              'desc' 		 => __('', 'plchf_msb_opts'),
@@ -88,8 +80,8 @@ function plchf_msb_setup_framework_options(){
 	                                              'std' 		 => '',
 	                                              'class' 	 => ''
 	                                            ),
-*/
-	                                       array( 'id' 		   => '_new_sites_page_',
+
+*/array( 'id' 		   => '_new_sites_page_',
 	                                       				'type' 		 => 'pages_select',
 	                                       				'title' 	 => __('Page: Create New Sites', 'plchf_msb_opts'),
 	                                       				'sub_desc' => __('Choose which Page will be used as the "Create New Sites" page.', 'plchf_msb_opts'),

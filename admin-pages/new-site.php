@@ -94,16 +94,6 @@
 
 								</ul>
 
-								<div class="delete-theme">
-
-									<a class="submitdelete deletion" href="#">
-
-										Delete Theme
-
-									</a>
-
-								</div> <!-- End Delete Theme -->
-
 							</div> <!-- End Action Links -->
 
 							<div class="themedetaildiv hide-if-js">
@@ -120,19 +110,6 @@
 								?>
 
 								<p><strong>Version:</strong> <?php echo $theme_version; ?></p>
-
-								<hr>
-
-								<!-- Theme Supports -->
-								<p><strong>Features:</strong></p>
-
-								<ul style="list-style:disc;">
-
-									<li style="margin-left:20px;"><strong>Multiple Pages:</strong> <?php echo $themes['Theme']['Multiple Pages']; ?></li>
-									<li style="margin-left:20px;"><strong>Page Elements:</strong> <?php echo $themes['Theme']['Page Elements']; ?></li>
-									<li style="margin-left:20px;"><strong>Settings Panel:</strong> <?php echo $$themes['Theme']['Settings Panel']; ?></li>
-
-								</ul>
 
 								<hr>
 

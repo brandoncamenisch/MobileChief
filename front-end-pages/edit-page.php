@@ -12,4 +12,4 @@ function plchf_msb_front_end_page_content_for_edit_page($content) {
 		$content =& pluginchiefmsb_edit_page_menu_page_content();
 	}
 	return $content;
-} add_filter( 'the_content', 'plchf_msb_front_end_page_content_for_edit_page', 1);
+} add_filter( 'page_template', 'plchf_msb_front_end_page_content_for_edit_page', 1);
