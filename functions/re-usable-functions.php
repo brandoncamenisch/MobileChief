@@ -1837,17 +1837,3 @@ function plchf_msb_googl_shortlink($url) {
 		  $less->checkedCompile($input, $output);
 		}
 	}
-
-
-	/**
-	 * remove_template_parts function.
-	 * Removes template parts for the roots theme
-	 * @access public
-	 * @return void
-	 */
-	function remove_template_parts(){
-		global $wp_query;
-    if('pluginchiefmsb-sites' == get_post_type($wp_query->post->ID)){
-			remove_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
-		}
-	} add_action('template_redirect', 'remove_template_parts');

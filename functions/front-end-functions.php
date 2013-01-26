@@ -233,7 +233,7 @@
 		$my_sites_id 	=& $plchf_msb_options['_my_sites_page_'];
 		$new_site_id 	=& $plchf_msb_options['_new_sites_page_'];
 		$custom_css		=& $plchf_msb_options['_custom_css_'];
-
+		$postid =& $postid;
 		#Don't Run On Admin
 		if (!is_admin()) {
 			#Run on just the three Mobile Site Builder Pages
