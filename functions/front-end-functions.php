@@ -236,6 +236,7 @@
 
 		#Don't Run On Admin
 		if (!is_admin()) {
+		$postid =& $postid;
 			#Run on just the three Mobile Site Builder Pages
 			if ( ($edit_page_id == $postid) || ($edit_site_id == $postid) || ($my_sites_id == $postid) || ($new_site_id == $postid) ) {
 
