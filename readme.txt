@@ -105,18 +105,6 @@ Bugs can be reported in our support support forum.
 
 == Changelog ==
 
-= 2.0 - Oct. 25, 2012 =
-
-- Added PluginChief as Author
-- Removed updater
-- Fixed "Select" Site Settings Field
-- Removed ability to delete Home Page
-- Added SVN Deploy script to deploy from .git
-- Fixed Default Theme settings panel
-- Removed Socaial element menu as it's empty by default and can be added later by add-on plugins that need it
-- Set Image Uploader to use the WordPress uploader
-- Set Image element under the Media element menu
-
 = 1.1 - Oct. 18, 2012 =
 
 - Changed Map encode to https://

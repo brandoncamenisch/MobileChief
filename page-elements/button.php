@@ -63,6 +63,7 @@
 																					'options' => array( 'btn-mini'	=> 'Mini',
 																															'btn-small'	=> 'Small',
 																														  'btn-large'	=> 'Large',
+																														  'btn-block'	=> 'Block',
 																														)));
 
 		$fields[] = array( 'field' 	=> array( 'type' 		=> 'select',
