@@ -466,11 +466,7 @@
 	padding: 0;
 }
 #pluginchiefmsb-wrapper .pluginchiefmsb-wrap .widget-title h4 {
-	padding: 7px 2px 7px 9px;
-	line-height: 1.1;
-}
-#pluginchiefmsb-wrapper .pluginchiefmsb-wrap .widget-title h4 {
-	line-height: 1.1;
+
 }
 #pluginchiefmsb-wrapper .pluginchiefmsb-wrap .widget .module-inside {
 	float: left;
@@ -1945,6 +1941,7 @@ border: 1px solid  #DFDFDF;
 }
 
 #pluginchiefmsb-wrapper .sgray ul > li .bubble {
+
 	font-size:11px;
 	line-height:14px;
 	padding:1px 4px;
@@ -1995,6 +1992,7 @@ border: 1px solid  #DFDFDF;
 	-webkit-box-shadow:0 2px 1px #ddd;
 	-moz-box-shadow:0 2px 1px #ddd;
 	box-shadow:0 2px 1px #ddd;
+  list-style: none;
 }
 #pluginchiefmsb-wrapper .sgray > li.floatr > ul {right:-1px;left:auto;}
 #pluginchiefmsb-wrapper .sgray > li.floatr > ul ul {left:-127px;}

@@ -1,5 +1,4 @@
 <?php
-
 /* ---------------------------------------------------------------------------- */
 /* Add the Menu Page
 /* ---------------------------------------------------------------------------- */
@@ -59,11 +58,11 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 						'post_type' 		=> 'pluginchiefmsb-sites',
 						'post_parent'		=> 0,
 						'posts_per_page'=> -1,
+						'post_author'   => 2,
 					);
 
 					// Run Args through a filter
 					$pluginchiefmsb_args = apply_filters('plchf_msb_sites_page_args', $pluginchiefmsb_args);
-
 					$sites = get_posts( $pluginchiefmsb_args );
 
 					if ($sites) {

@@ -1,8 +1,5 @@
 <?php
-/* ---------------------------------------------------------------------------- */
-/* Add Content to the page selected to be the "Edit Page" page
-/* ---------------------------------------------------------------------------- */
-
+#Add Content to the page selected to be the "Edit Page" page
 function plchf_msb_front_end_page_content_for_edit_page($content) {
 	global $post, $plchf_msb_options;
 	#Get Edit Page Option Value
@@ -12,4 +9,4 @@ function plchf_msb_front_end_page_content_for_edit_page($content) {
 		$content =& pluginchiefmsb_edit_page_menu_page_content();
 	}
 	return $content;
-} add_filter( 'page_template', 'plchf_msb_front_end_page_content_for_edit_page', 1);
+} add_filter( 'the_content', 'plchf_msb_front_end_page_content_for_edit_page', 1);

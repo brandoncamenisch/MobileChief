@@ -11,3 +11,4 @@ function plchf_msb_front_end_page_content_for_my_sites($content) {
 	#Return the Content
 	return $content;
 } add_filter( 'the_content', 'plchf_msb_front_end_page_content_for_my_sites', 10000);
+
