@@ -41,9 +41,9 @@
 																					'name' 		=> 'Well Size',
 																					'id' 			=> '_well_size_',
 																					'tooltip' => 'Select the Size for the Well',
-																					'options' => array( NULL							=> 'Normal',
-																																'well-large'	  => 'Large',
-																																'well-small'	=> 'Small'
+																					'options' => array( 'well-small' => 'Small',
+                      																				NULL				 => 'Normal',
+																														  'well-large' => 'Large'
 																																)));
 
 		#Create Element Settings Panel

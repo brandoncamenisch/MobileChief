@@ -3147,8 +3147,8 @@ Icons
 
 @font-face {
   font-family: "FontAwesome";
-  src: url('font-awesome/css/fontawesome-webfont.eot');
-  src: url('font-awesome/css/fontawesome-webfont.eot?#iefix') format('eot'), url('font-awesome/css/fontawesome-webfont.woff') format('woff'), url('font-awesome/css/fontawesome-webfont.ttf') format('truetype'), url('font-awesome/css/fontawesome-webfont.svg#FontAwesome') format('svg');
+  src: url('../lib/fontawesome/font/fontawesome-webfont.eot');
+  src: url('../lib/fontawesome/font/fontawesome-webfont.eot?#iefix') format('eot'), url('../lib/fontawesome/font/fontawesome-webfont.woff') format('woff'), url('../lib/fontawesome/font/fontawesome-webfont.ttf') format('truetype'), url('../lib/fontawesome/font/fontawesome-webfont.svg#FontAwesome') format('svg');
   font-weight: normal;
   font-style: normal;
 }
