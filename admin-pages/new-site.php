@@ -128,7 +128,7 @@
 
 								<!-- Create Site Form -->
 								<form id="plchf_msb_create_new_site" name="plchf_msb_create_new_site" action="" method="post" style="display:block; margin:0px auto; width:70%;">
-
+  								<h2><?php echo $themes['Theme']['Theme Name'] ?></h2>
 									<img src="<?php echo $themes['Theme']['Theme Root']; ?><?php echo $screenshot; ?>" alt="<?php echo $themes['Theme']['Theme Name']; ?>" style="display:block; margin:0px auto;">
 
 									<label><?php echo apply_filters('plchf_msb_new_site_name','Site Name'); ?></label><br/>

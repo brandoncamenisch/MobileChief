@@ -40,7 +40,6 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 				<?php do_action('plchf_msb_my_sites_above_page_title'); ?>
 
-				<div class="clear"></div><!-- Clear -->
 
 				<div class="settings-title">
 
@@ -51,7 +50,6 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 				</div>
 
-				<div class="clear"></div><!-- Clear -->
 
 				<?php do_action('plchf_msb_my_sites_below_page_title'); ?>
 
@@ -102,16 +100,9 @@ function pluginchiefmsb_msb_my_sites_page_content() {
 
 									<?php do_action('plchf_msb_my_sites_above_site_title'); ?>
 
-									<div class="clear"></div><!-- Clear -->
-
 									<?php do_action('plchf_msb_my_sites_below_site_title', $siteid); ?>
 
-
-									<div class="clear"></div>
-
 									<?php do_action('plchf_msb_sites_page_above_site_info', $siteid); ?>
-
-									<div class="clear"></div>
 
 									<div class="one_fourth">
 

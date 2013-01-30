@@ -1269,7 +1269,7 @@ function plchf_msb_googl_shortlink($url) {
 
 	    $output = do_action('plchf_msb_above_googl_shortlink', $home_id);
 	    $output .= '<hr>';
-	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', 'Site Shortlink:').'</strong> ';
+	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', '<i class="icon-link"></i>').'</strong> ';
 	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
 
 	    echo apply_filters('plchf_msb_googl_site_shortlink', $output, $home_id);

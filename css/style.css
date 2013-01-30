@@ -1,13 +1,9 @@
-#pluginchiefmsb-wrapper{
-	float: left;
-	width:100%;
-	min-height: 800px;
-}
-
 /* ---------------------------------------------------------------------------
 	Mobile Chief Scaffolding
 --------------------------------------------------------------------------- */
-
+#pluginchiefmsb-wrapper h4 {
+  display: inline-block
+}
 #pluginchiefmsb-wrapper sub,
 #pluginchiefmsb-wrapper sup {
   position: relative;
@@ -389,7 +385,7 @@
 #pluginchiefmsb-wrapper .one_sixth,
 #pluginchiefmsb-wrapper .five_sixth {
 	position: relative;
-	margin-right: 4%;
+	margin-right: 10px;
 	margin-bottom: 20px;
 	float: left;
 }
@@ -463,6 +459,7 @@
 #pluginchiefmsb-wrapper .pluginchiefmsb-wrap .widget-top {
 	height: auto;
 	cursor: default;
+	box-shadow: none;
 }
 #pluginchiefmsb-wrapper .pluginchiefmsb-wrap .widget-title {
 	cursor: default;
@@ -476,10 +473,8 @@
 	line-height: 1.1;
 }
 #pluginchiefmsb-wrapper .pluginchiefmsb-wrap .widget .module-inside {
-	padding: 2%;
 	float: left;
-	width: 96%;
-	line-height: 18px;
+	padding:10px;
 }
 
 #pluginchiefmsb-wrapper hr{
@@ -490,7 +485,7 @@
 }
 
 #pluginchiefmsb-wrapper #sites-list{
-	margin-top: 20px;
+	margin-top: 40px;
 }
 
 #pluginchiefmsb-wrapper .no-sites{
@@ -1550,6 +1545,8 @@ border: 1px solid  #DFDFDF;
 #pluginchiefmsb-wrapper .mobile-site-pages li{
 	width: 100%;
 	float: left;
+	margin:0;
+	padding:0;
 }
 #pluginchiefmsb-wrapper .mobile-site-pages li a{
 	float: left;
