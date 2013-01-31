@@ -413,7 +413,7 @@
 
 		if (is_admin()) {
 
-			$screen = get_current_screen();
+			$screen =& get_current_screen();
 
 			// Get Screen ID on Edit Page, page
 			if ($screen->id == 'mobile-site-builder_page_pluginchiefmsb/edit-page') {
@@ -1232,7 +1232,6 @@
 /*-----------------------------------------------------------------------------------*/
 /* Creates Google Shortlink for Pages and Posts | Usage: wp_get_shortlink();
 /*-----------------------------------------------------------------------------------*/
-
 function plchf_msb_googl_shortlink($url) {
 
 	$http = new WP_Http();
@@ -1265,12 +1264,12 @@ function plchf_msb_googl_shortlink($url) {
     function plchf_msb_site_shortlink($home_id) {
 
 	    // Get Permalink for the Site ID
-	    $permalink = get_permalink($home_id);
+	    $permalink =& get_permalink($home_id);
 
 	    $output = do_action('plchf_msb_above_googl_shortlink', $home_id);
 	    $output .= '<hr>';
 	    $output .= '<strong>'.apply_filters('plchf_msb_shortlink_title', '<i class="icon-link"></i>').'</strong> ';
-	    $output .= '<a href="'.plchf_msb_googl_shortlink($permalink).'" target="_blank">'.plchf_msb_googl_shortlink($permalink).'</a>';
+	    $output .= '<a href="'.$permalink.'" target="_blank">'.$permalink.'</a>';
 
 	    echo apply_filters('plchf_msb_googl_site_shortlink', $output, $home_id);
 
